@@ -111,7 +111,7 @@ export default function AIChatbot({ isOpen, onToggle }: ChatbotProps) {
   if (!isOpen) return null
 
   return (
-    <div className="fixed bottom-4 md:bottom-6 right-4 md:right-6 z-[55]">
+    <div className="fixed top-24 right-6 z-[55]">
       <Card
         className={`w-80 md:w-96 bg-gradient-to-br from-slate-900/95 to-slate-800/95 dark:from-slate-950/95 dark:to-slate-900/95 backdrop-blur-3xl border border-cyan-400/20 shadow-2xl shadow-cyan-500/10 transition-all duration-300 ${
           isMinimized ? "h-14 md:h-16" : "h-[500px] md:h-[600px]"

@@ -596,13 +596,13 @@ export default function AnamayPortfolio() {
                     </div>
 
                     {/* Quick Facts */}
-                    <div className="grid grid-cols-3 gap-3 md:gap-4 pt-3 md:pt-4">
+                    <div className="grid grid-cols-3 gap-4 md:gap-6 pt-4 md:pt-6">
                       {quickFacts.slice(0, 3).map((fact, index) => (
                         <div key={fact.label} className="text-center">
-                          <div className="p-3 md:p-4 rounded-xl bg-gray-800/60 border border-gray-700/50">
+                          <div className="p-4 md:p-6 rounded-xl bg-gray-800/60 border border-gray-700/50 hover:bg-gray-800/80 transition-all duration-200">
                             <CircularProgress
                               percentage={fact.percentage}
-                              size={50}
+                              size={60}
                               color={fact.color}
                               value={fact.value.toString() + fact.suffix}
                               label={fact.label}

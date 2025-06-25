@@ -13,10 +13,10 @@ export function FloatingChatbotButton() {
     <>
       {/* Floating Button - Moved to top-right */}
       <motion.div
-        className="fixed top-24 right-6 z-[60]"
+        className="fixed top-6 right-6 z-[60]"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 3 }}
+        transition={{ duration: 0.5, delay: 1 }}
       >
         <AnimatePresence>
           {!isOpen && (
@@ -28,7 +28,7 @@ export function FloatingChatbotButton() {
             >
               <Button
                 onClick={() => setIsOpen(true)}
-                className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0 shadow-2xl hover:shadow-3xl transition-all duration-300 group relative overflow-hidden"
+                className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0 shadow-2xl hover:shadow-3xl transition-all duration-300 group relative overflow-hidden"
               >
                 {/* Animated background */}
                 <motion.div
@@ -45,7 +45,7 @@ export function FloatingChatbotButton() {
                 />
 
                 <div className="relative z-10 flex items-center justify-center">
-                  <MessageCircle className="w-6 h-6 group-hover:scale-110 transition-transform duration-200" />
+                  <MessageCircle className="w-7 h-7 group-hover:scale-110 transition-transform duration-200" />
                 </div>
 
                 {/* Sparkle effect */}
@@ -57,16 +57,16 @@ export function FloatingChatbotButton() {
                   }}
                   transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
                 >
-                  <Sparkles className="w-3 h-3 text-yellow-300" />
+                  <Sparkles className="w-4 h-4 text-yellow-300" />
                 </motion.div>
               </Button>
 
               {/* Tooltip */}
               <motion.div
-                className="absolute top-full right-0 mt-3 px-3 py-2 bg-gray-900/90 backdrop-blur-xl text-white text-sm rounded-lg border border-gray-700/50 whitespace-nowrap"
+                className="absolute top-full right-0 mt-3 px-4 py-2 bg-gray-900/90 backdrop-blur-xl text-white text-sm rounded-lg border border-gray-700/50 whitespace-nowrap shadow-xl"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 4 }}
+                transition={{ delay: 2 }}
               >
                 Ask me about Anamay!
                 <div className="absolute bottom-full right-4 w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-gray-900/90" />
@@ -86,9 +86,9 @@ export function FloatingChatbotButton() {
             >
               <Button
                 onClick={() => setIsOpen(false)}
-                className="w-14 h-14 rounded-full bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white border-0 shadow-2xl hover:shadow-3xl transition-all duration-300 group"
+                className="w-16 h-16 rounded-full bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white border-0 shadow-2xl hover:shadow-3xl transition-all duration-300 group"
               >
-                <X className="w-6 h-6 group-hover:scale-110 transition-transform duration-200" />
+                <X className="w-7 h-7 group-hover:scale-110 transition-transform duration-200" />
               </Button>
             </motion.div>
           )}
@@ -96,7 +96,7 @@ export function FloatingChatbotButton() {
       </motion.div>
 
       {/* AI Chatbot - Positioned in top-right area */}
-      <div className="fixed top-24 right-6 z-[55]">
+      <div className="fixed top-6 right-6 z-[55]">
         <AIChatbot isOpen={isOpen} onToggle={() => setIsOpen(!isOpen)} />
       </div>
     </>
