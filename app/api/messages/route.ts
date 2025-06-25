@@ -1,5 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { supabase } from "@/lib/supabase"
+import { neon } from "@neondatabase/serverless"
+
+const sql = neon(process.env.DATABASE_URL!)
 
 export async function GET(req: NextRequest) {
   try {
@@ -7,22 +9,20 @@ export async function GET(req: NextRequest) {
     const limit = Number.parseInt(searchParams.get("limit") || "50")
     const offset = Number.parseInt(searchParams.get("offset") || "0")
 
-    const { data: messages, error } = await supabase
-      .from("chat_messages")
-      .select("id, message, session_id, user_info, created_at, ip_address")
-      .order("created_at", { ascending: false })
-      .range(offset, offset + limit - 1)
+    const messages = await sql`
+      SELECT id, message, session_id, user_info, created_at, ip_address
+      FROM chat_messages
+      ORDER BY created_at DESC
+      LIMIT ${limit}
+      OFFSET ${offset};
+    `
 
-    if (error) {
-      throw error
-    }
-
-    const { count } = await supabase.from("chat_messages").select("*", { count: "exact", head: true })
+    const [{ count }] = await sql`SELECT COUNT(*)::int FROM chat_messages;`
 
     return NextResponse.json({
       messages,
-      total: count || 0,
-      hasMore: offset + limit < (count || 0),
+      total: count,
+      hasMore: offset + limit < count,
     })
   } catch (error) {
     console.error("Error fetching messages:", error)
@@ -41,27 +41,16 @@ export async function POST(req: NextRequest) {
     const ip = req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip") || "unknown"
     const sessionId = userInfo?.sessionId || Date.now().toString()
 
-    const { data: result, error } = await supabase
-      .from("chat_messages")
-      .insert({
-        message: message.trim(),
-        session_id: sessionId,
-        user_info: userInfo || {},
-        ip_address: ip,
-      })
-      .select()
-      .single()
-
-    if (error) {
-      throw error
-    }
-
-    console.log("New chatbot message saved to Supabase:", result.id)
+    const [inserted] = await sql`
+      INSERT INTO chat_messages (message, session_id, user_info, ip_address)
+      VALUES (${message.trim()}, ${sessionId}, ${JSON.stringify(userInfo || {})}, ${ip})
+      RETURNING id, created_at;
+    `
 
     return NextResponse.json({
       success: true,
-      message: "Message stored successfully",
-      id: result.id,
+      id: inserted.id,
+      created_at: inserted.created_at,
     })
   } catch (error) {
     console.error("Error storing message:", error)
