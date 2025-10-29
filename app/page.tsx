@@ -2,16 +2,16 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { AnimatedCounter } from "@/components/ui/animated-counter"
-import { CircularProgress } from "@/components/ui/circular-progress"
+import ProfileCard from "@/components/ui/profile-card"
+import { ContainerScroll } from "@/components/ui/container-scroll-animation"
+import { GlowingEffect } from "@/components/ui/glowing-effect"
+import CinematicThemeSwitcher from "@/components/ui/cinematic-theme-switcher"
+import { RadialOrbitalTimeline } from "@/components/ui/radial-orbital-timeline"
 // import { FloatingChatbotButton } from "@/components/ui/floating-chatbot-button"
 import {
   Github,
-  Linkedin,
   Mail,
-  Phone,
-  MapPin,
   ExternalLink,
   ArrowRight,
   Code,
@@ -34,6 +34,7 @@ import {
 } from "lucide-react"
 import { useState, useEffect, useCallback, useMemo, lazy, Suspense } from "react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 // Lazy load heavy components for better performance
 const NetworkBackground = lazy(() =>
@@ -81,6 +82,54 @@ export default function AnamayPortfolio() {
       "Problem Solver 🧩",
       "UI/UX Enthusiast 🎨",
       "Tech Innovator ⚡",
+    ],
+    [],
+  )
+
+  const timelineEvents = useMemo(
+    () => [
+      {
+        id: 1,
+        year: "2023",
+        title: "Started B.Tech",
+        description: "Began Data Science Engineering at MIT Manipal",
+        icon: "🎓",
+      },
+      {
+        id: 2,
+        year: "2024",
+        title: "Technical Head",
+        description: "Led technical development at YaanBarpe Startup",
+        icon: "🚀",
+      },
+      {
+        id: 3,
+        year: "2024",
+        title: "Data Analyst Intern",
+        description: "Joined Intellect Design Arena",
+        icon: "💼",
+      },
+      {
+        id: 4,
+        year: "2024",
+        title: "Meta Certified",
+        description: "Completed Meta Data Analyst Certification",
+        icon: "📊",
+      },
+      {
+        id: 5,
+        year: "2024",
+        title: "IBM GenAI Pro",
+        description: "Certified in Generative AI by IBM",
+        icon: "🤖",
+      },
+      {
+        id: 6,
+        year: "2027",
+        title: "Graduation",
+        description: "Expected graduation from MIT Manipal",
+        icon: "🎯",
+      },
     ],
     [],
   )
@@ -282,6 +331,17 @@ export default function AnamayPortfolio() {
     [],
   )
 
+  const profileCardData = useMemo(
+    () => ({
+      username: "@anamay_tripathy",
+      bio: "Building the future with data science and full-stack development. Always learning, always creating.",
+      status: ["DEVELOPER", "INNOVATOR", "LEADER", "CREATOR"],
+      tier: 3,
+      imageUrl: "/images/anamay-photo.png",
+    }),
+    [],
+  )
+
   // Optimized time update with reduced frequency
   useEffect(() => {
     const updateTime = () => {
@@ -452,7 +512,7 @@ export default function AnamayPortfolio() {
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
               <span className="text-green-400 text-xs font-medium">Available</span>
             </div>
-            <ThemeToggle />
+            <CinematicThemeSwitcher />
             <Button
               onClick={handleDownloadResume}
               disabled={isDownloading}
@@ -544,8 +604,16 @@ export default function AnamayPortfolio() {
                 {stats.slice(0, 6).map((stat, index) => (
                   <Card
                     key={index}
-                    className="bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 hover:border-blue-500/50 transition-all duration-200"
+                    className="bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 relative"
                   >
+                    <GlowingEffect
+                      spread={30}
+                      glow={true}
+                      disabled={false}
+                      proximity={80}
+                      inactiveZone={0.3}
+                      borderWidth={2}
+                    />
                     <CardContent className="p-3 md:p-4 text-center">
                       <div
                         className={`w-8 h-8 md:w-10 md:h-10 mx-auto mb-2 md:mb-3 bg-gradient-to-r ${stat.color} rounded-xl flex items-center justify-center shadow-lg`}
@@ -562,142 +630,13 @@ export default function AnamayPortfolio() {
               </div>
             </motion.div>
 
-            {/* Profile Card */}
             <motion.div
-              className="space-y-6 md:space-y-8"
+              className="flex justify-center items-center"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
             >
-              <Card className="bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 shadow-2xl">
-                <CardContent className="p-6 md:p-8">
-                  <div className="text-center space-y-4 md:space-y-6">
-                    {/* Profile Avatar */}
-                    <div className="relative mx-auto w-24 h-24 md:w-32 md:h-32">
-                      <div className="w-full h-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full flex items-center justify-center shadow-2xl">
-                        <span className="text-white font-bold text-2xl md:text-3xl">AT</span>
-                      </div>
-                      <div className="absolute -bottom-1 -right-1 w-6 h-6 md:w-8 md:h-8 bg-green-400 rounded-full border-2 md:border-4 border-gray-900 flex items-center justify-center">
-                        <div className="w-2 h-2 md:w-3 md:h-3 bg-white rounded-full animate-pulse" />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2 md:space-y-3">
-                      <h3 className="text-xl md:text-2xl font-bold text-white">Anamay Tripathy</h3>
-                      <p className="text-blue-400 text-sm md:text-base font-medium">B.Tech Data Science Engineering</p>
-                      <div className="flex justify-center gap-2 md:gap-3">
-                        <Badge className="bg-blue-500/20 text-blue-300 border border-blue-400/30 px-3 md:px-4 py-1 md:py-1.5 text-xs md:text-sm">
-                          MIT Manipal
-                        </Badge>
-                        <Badge className="bg-purple-500/20 text-purple-300 border border-purple-400/30 px-3 md:px-4 py-1 md:py-1.5 text-xs md:text-sm">
-                          Class of 2027
-                        </Badge>
-                      </div>
-                    </div>
-
-                    {/* Quick Facts */}
-                    <div className="grid grid-cols-3 gap-4 md:gap-6 pt-4 md:pt-6">
-                      {quickFacts.slice(0, 3).map((fact, index) => (
-                        <div key={fact.label} className="text-center">
-                          <div className="p-4 md:p-6 rounded-xl bg-gray-800/60 border border-gray-700/50 hover:bg-gray-800/80 transition-all duration-200">
-                            <CircularProgress
-                              percentage={fact.percentage}
-                              size={60}
-                              color={fact.color}
-                              value={fact.value.toString() + fact.suffix}
-                              label={fact.label}
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Action buttons */}
-                    <div className="flex gap-2 md:gap-3 pt-3 md:pt-4">
-                      <Button
-                        size="sm"
-                        onClick={() => handleContactClick("github")}
-                        className="flex-1 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0"
-                      >
-                        <Github className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
-                        GitHub
-                      </Button>
-                      <Button
-                        size="sm"
-                        onClick={() => handleContactClick("linkedin")}
-                        className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white border-0"
-                      >
-                        <Linkedin className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
-                        LinkedIn
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Status Cards */}
-              <div className="grid grid-cols-2 gap-3 md:gap-4">
-                <Card className="bg-green-500/10 border border-green-400/20">
-                  <CardContent className="p-4 md:p-5">
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="w-8 h-8 md:w-11 md:h-11 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center">
-                        <Briefcase className="w-4 h-4 md:w-5 md:h-5 text-white" />
-                      </div>
-                      <div>
-                        <p className="text-white font-semibold text-xs md:text-sm">Currently Working</p>
-                        <p className="text-green-400 text-xs font-medium">3 Active Roles</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-blue-500/10 border border-blue-400/20">
-                  <CardContent className="p-4 md:p-5">
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="w-8 h-8 md:w-11 md:h-11 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl flex items-center justify-center">
-                        <BookOpen className="w-4 h-4 md:w-5 md:h-5 text-white" />
-                      </div>
-                      <div>
-                        <p className="text-white font-semibold text-xs md:text-sm">Currently Learning</p>
-                        <p className="text-blue-400 text-xs font-medium">Data Science & AI</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* Contact Card */}
-              <Card className="bg-gray-900/60 border border-gray-700/50">
-                <CardContent className="p-4 md:p-6">
-                  <h4 className="text-white font-semibold mb-3 md:mb-4 text-sm">Quick Contact</h4>
-                  <div className="space-y-2 md:space-y-3">
-                    {[
-                      { icon: MapPin, text: "Mumbai, India 🇮🇳", color: "text-purple-400", action: null },
-                      {
-                        icon: Mail,
-                        text: "tripathy.anamay23@gmail.com",
-                        color: "text-blue-400",
-                        action: () => handleContactClick("email"),
-                      },
-                      {
-                        icon: Phone,
-                        text: "+91 9877454747",
-                        color: "text-green-400",
-                        action: () => handleContactClick("phone"),
-                      },
-                    ].map((contact, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center gap-2 md:gap-3 p-2 rounded-lg hover:bg-gray-800/50 transition-colors cursor-pointer"
-                        onClick={contact.action || undefined}
-                      >
-                        <contact.icon className={`w-3 h-3 md:w-4 md:h-4 ${contact.color}`} />
-                        <span className="text-gray-300 text-xs font-medium">{contact.text}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              <ProfileCard data={profileCardData} />
             </motion.div>
           </div>
 
@@ -707,6 +646,28 @@ export default function AnamayPortfolio() {
               <EnhancedDeveloperDashboard />
             </Suspense>
           </div>
+        </section>
+
+        <section className="py-10 md:py-20">
+          <ContainerScroll
+            titleComponent={
+              <>
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Featured Project Showcase</h2>
+                <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                  Scroll to explore my latest work in detail
+                </p>
+              </>
+            }
+          >
+            <Image
+              src="/images/anamay-photo.png"
+              alt="Featured Project"
+              height={720}
+              width={1400}
+              className="mx-auto rounded-2xl object-cover h-full object-center"
+              draggable={false}
+            />
+          </ContainerScroll>
         </section>
 
         {/* About Section */}
@@ -720,6 +681,18 @@ export default function AnamayPortfolio() {
           <Suspense fallback={<LoadingFallback height="500px" />}>
             <EnhancedJourneySection />
           </Suspense>
+        </section>
+
+        <section className="py-10 md:py-20">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-white">My Journey</h2>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+              A visual timeline of my academic and professional milestones
+            </p>
+          </div>
+          <div className="flex justify-center items-center min-h-[600px]">
+            <RadialOrbitalTimeline events={timelineEvents} />
+          </div>
         </section>
 
         {/* Experience Section */}
@@ -749,7 +722,15 @@ export default function AnamayPortfolio() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true, margin: "-50px" }}
               >
-                <Card className="bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 overflow-hidden group">
+                <Card className="bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 overflow-hidden group relative">
+                  <GlowingEffect
+                    spread={40}
+                    glow={true}
+                    disabled={false}
+                    proximity={100}
+                    inactiveZone={0.2}
+                    borderWidth={2}
+                  />
                   <CardContent className="p-0">
                     <div className="relative h-48 md:h-64 overflow-hidden">
                       <div
