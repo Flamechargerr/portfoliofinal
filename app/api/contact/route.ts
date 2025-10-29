@@ -1,9 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
-import { neon } from "@neondatabase/serverless"
-
-const resend = new Resend(process.env.RESEND_API_KEY)
-const sql = neon(process.env.DATABASE_URL!)
 
 export async function POST(request: NextRequest) {
   try {
