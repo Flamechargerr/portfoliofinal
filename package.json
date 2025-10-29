@@ -9,7 +9,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@ai-sdk/openai": "0.1.9",
     "@emotion/is-prop-valid": "latest",
     "@hookform/resolvers": "^3.9.1",
     "@neondatabase/serverless": "latest",
@@ -44,7 +43,6 @@
     "@splinetool/react-spline": "latest",
     "@splinetool/runtime": "^1.9.48",
     "@supabase/supabase-js": "latest",
-    "ai": "3.0.21",
     "autoprefixer": "^10.4.20",
     "canvas-confetti": "latest",
     "class-variance-authority": "^0.7.1",
