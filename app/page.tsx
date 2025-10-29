@@ -685,7 +685,7 @@ export default function AnamayPortfolio() {
         <section id="projects" className="py-10 md:py-20">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-white">Featured Projects</h2>
-            <p className="text-lg md:text-xl text-gray-300">Real projects I've built and deployed</p>
+            <p className="text-lg md:text-xl text-gray-300">Scroll through my portfolio of innovative projects</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
@@ -697,22 +697,19 @@ export default function AnamayPortfolio() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true, margin: "-50px" }}
               >
-                <Card className="bg-gray-900/60 backdrop-blur-xl border-2 border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 overflow-hidden group relative">
+                <Card className="bg-gray-900/60 backdrop-blur-xl border-2 border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 overflow-hidden group relative h-full">
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                     <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 blur-2xl`} />
                   </div>
                   <CardContent className="p-0 relative z-10">
-                    <div className="relative h-48 md:h-64 overflow-hidden">
-                      <div
-                        className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-30 transition-opacity`}
+                    <div className="relative h-48 md:h-64 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+                      <Image
+                        src={project.image || "/placeholder.svg"}
+                        alt={project.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-300"
                       />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div
-                          className={`w-16 h-16 md:w-24 md:h-24 bg-gradient-to-br ${project.color} rounded-2xl md:rounded-3xl flex items-center justify-center shadow-2xl`}
-                        >
-                          <project.icon className="w-8 h-8 md:w-12 md:h-12 text-white" />
-                        </div>
-                      </div>
+                      <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20`} />
                       <div className="absolute top-3 md:top-4 right-3 md:right-4 flex gap-2">
                         <Badge className={`bg-gradient-to-r ${project.color} text-white border-0 text-xs`}>
                           {project.category}
