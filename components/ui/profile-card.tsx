@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { ExternalLink } from "lucide-react"
+import { ProfileModal } from "@/components/ui/profile-modal"
 
 export const CARD_CONFIG = {
   width: 420,
@@ -26,6 +27,7 @@ interface ProfileCardProps {
 export default function ProfileCard({ data }: ProfileCardProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [statusIndex, setStatusIndex] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,25 +37,26 @@ export default function ProfileCard({ data }: ProfileCardProps) {
   }, [data.status.length])
 
   const handleViewProfile = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
+    setIsModalOpen(true)
   }
 
   return (
-    <motion.div
-      className="relative group"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      style={{
-        width: CARD_CONFIG.width,
-        height: CARD_CONFIG.height,
-        perspective: "1500px",
-      }}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div
-        className={`
+    <>
+      <motion.div
+        className="relative group"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{
+          width: CARD_CONFIG.width,
+          height: CARD_CONFIG.height,
+          perspective: "1500px",
+        }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div
+          className={`
           absolute 
           -inset-4
           rounded-3xl 
@@ -67,11 +70,10 @@ export default function ProfileCard({ data }: ProfileCardProps) {
           transition-opacity 
           duration-500
         `}
-      />
+        />
 
-      {/* Card container */}
-      <div
-        className={`
+        <div
+          className={`
           relative 
           w-full 
           h-full 
@@ -87,14 +89,13 @@ export default function ProfileCard({ data }: ProfileCardProps) {
           duration-500
           ${isHovered ? "scale-105 border-cyan-500/50 shadow-2xl shadow-cyan-500/30" : ""}
         `}
-        style={{
-          transformStyle: "preserve-3d",
-          transform: isHovered ? "rotateY(5deg) rotateX(-5deg)" : "rotateY(0deg) rotateX(0deg)",
-        }}
-      >
-        {/* Animated background gradient */}
-        <div
-          className={`
+          style={{
+            transformStyle: "preserve-3d",
+            transform: isHovered ? "rotateY(5deg) rotateX(-5deg)" : "rotateY(0deg) rotateX(0deg)",
+          }}
+        >
+          <div
+            className={`
             absolute 
             inset-0 
             bg-gradient-to-br 
@@ -106,12 +107,11 @@ export default function ProfileCard({ data }: ProfileCardProps) {
             transition-opacity 
             duration-500
           `}
-        />
+          />
 
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-center justify-between h-full p-8">
-          <motion.div
-            className={`
+          <div className="relative z-10 flex flex-col items-center justify-between h-full p-8">
+            <motion.div
+              className={`
               px-6
               py-2
               rounded-full 
@@ -126,14 +126,14 @@ export default function ProfileCard({ data }: ProfileCardProps) {
               shadow-cyan-500/50
               border border-cyan-300/30
             `}
-            whileHover={{ scale: 1.05 }}
-          >
-            TIER {data.tier}
-          </motion.div>
+              whileHover={{ scale: 1.05 }}
+            >
+              TIER {data.tier}
+            </motion.div>
 
-          <div className="relative">
-            <div
-              className={`
+            <div className="relative">
+              <div
+                className={`
                 absolute 
                 -inset-3
                 rounded-full 
@@ -148,37 +148,35 @@ export default function ProfileCard({ data }: ProfileCardProps) {
                 duration-500
                 animate-pulse
               `}
-            />
-            <motion.img
-              src={data.imageUrl || "/placeholder.svg"}
-              alt={data.username}
-              className="relative w-48 h-48 rounded-full object-cover border-4 border-gray-700 group-hover:border-cyan-500 transition-colors duration-300"
-              whileHover={{ scale: 1.05 }}
-            />
-          </div>
+              />
+              <motion.img
+                src={data.imageUrl || "/placeholder.svg"}
+                alt={data.username}
+                className="relative w-48 h-48 rounded-full object-cover border-4 border-gray-700 group-hover:border-cyan-500 transition-colors duration-300"
+                whileHover={{ scale: 1.05 }}
+              />
+            </div>
 
-          {/* User info */}
-          <div className="text-center space-y-3">
-            <h2 className="text-3xl font-bold text-white">{data.username}</h2>
-            <p className="text-gray-300 text-base leading-relaxed px-4">{data.bio}</p>
-          </div>
+            <div className="text-center space-y-3">
+              <h2 className="text-3xl font-bold text-white">{data.username}</h2>
+              <p className="text-gray-300 text-base leading-relaxed px-4">{data.bio}</p>
+            </div>
 
-          {/* Animated status */}
-          <div className="h-8 flex items-center justify-center">
-            <motion.div
-              key={statusIndex}
-              className="text-cyan-400 text-sm font-mono font-bold tracking-wider"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-            >
-              {data.status[statusIndex]}
-            </motion.div>
-          </div>
+            <div className="h-8 flex items-center justify-center">
+              <motion.div
+                key={statusIndex}
+                className="text-cyan-400 text-sm font-mono font-bold tracking-wider"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+              >
+                {data.status[statusIndex]}
+              </motion.div>
+            </div>
 
-          <motion.button
-            onClick={handleViewProfile}
-            className="
+            <motion.button
+              onClick={handleViewProfile}
+              className="
               w-full 
               py-4
               rounded-xl 
@@ -198,14 +196,17 @@ export default function ProfileCard({ data }: ProfileCardProps) {
               flex items-center justify-center gap-2
               border border-cyan-300/30
             "
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {CARD_CONFIG.buttonText}
-            <ExternalLink className="w-5 h-5" />
-          </motion.button>
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {CARD_CONFIG.buttonText}
+              <ExternalLink className="w-5 h-5" />
+            </motion.button>
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+
+      <ProfileModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   )
 }

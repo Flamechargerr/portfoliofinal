@@ -629,14 +629,14 @@ export default function AnamayPortfolio() {
               <>
                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Featured Project Showcase</h2>
                 <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-                  Scroll to explore my latest work in detail
+                  Scroll to explore CrimeConnect - my flagship case management system
                 </p>
               </>
             }
           >
             <Image
-              src={projects[0].image || "/placeholder.svg"}
-              alt={projects[0].title}
+              src="/crime-management-dashboard.jpg"
+              alt="CrimeConnect - Case Management System"
               height={720}
               width={1400}
               className="mx-auto rounded-2xl object-cover h-full object-center"
