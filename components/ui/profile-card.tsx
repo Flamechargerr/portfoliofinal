@@ -7,7 +7,7 @@ import { ProfileModal } from "@/components/ui/profile-modal"
 
 export const CARD_CONFIG = {
   width: 420,
-  height: 600,
+  height: 540,
   glowColor: "cyan",
   buttonText: "View Full Profile",
 }
@@ -16,7 +16,6 @@ interface ProfileData {
   username: string
   bio: string
   status: string[]
-  tier: number
   imageUrl: string
 }
 
