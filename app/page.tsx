@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { AnimatedCounter } from "@/components/ui/animated-counter"
 import { CircularProgress } from "@/components/ui/circular-progress"
-import { FloatingChatbotButton } from "@/components/ui/floating-chatbot-button"
+// import { FloatingChatbotButton } from "@/components/ui/floating-chatbot-button"
 import {
   Github,
   Linkedin,
@@ -523,7 +523,7 @@ export default function AnamayPortfolio() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-blue-500 text-blue-400 hover:bg-blue-500/10 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg"
+                  className="border-blue-500 text-blue-400 hover:bg-blue-500/10 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg bg-transparent"
                   onClick={() => scrollToSection("projects")}
                 >
                   <Code className="w-4 h-4 md:w-5 md:h-5 mr-2" />
@@ -531,7 +531,7 @@ export default function AnamayPortfolio() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-gray-500 text-gray-400 hover:bg-gray-500/10 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg"
+                  className="border-gray-500 text-gray-400 hover:bg-gray-500/10 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg bg-transparent"
                   onClick={() => handleContactClick("github")}
                 >
                   <Github className="w-4 h-4 md:w-5 md:h-5 mr-2" />
@@ -875,8 +875,7 @@ export default function AnamayPortfolio() {
         </section>
       </div>
 
-      {/* Floating Chatbot Button */}
-      <FloatingChatbotButton />
+      {/* <FloatingChatbotButton /> */}
     </div>
   )
 }

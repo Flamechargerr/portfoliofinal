@@ -3,57 +3,61 @@ import { neon } from "@neondatabase/serverless"
 
 const sql = neon(process.env.DATABASE_URL!)
 
-export async function GET(req: NextRequest) {
+export async function POST(request: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url)
-    const limit = Number.parseInt(searchParams.get("limit") || "50")
-    const offset = Number.parseInt(searchParams.get("offset") || "0")
+    const { message, sessionId, userInfo } = await request.json()
 
-    const messages = await sql`
-      SELECT id, message, session_id, user_info, created_at, ip_address
-      FROM chat_messages
-      ORDER BY created_at DESC
-      LIMIT ${limit}
-      OFFSET ${offset};
-    `
-
-    const [{ count }] = await sql`SELECT COUNT(*)::int FROM chat_messages;`
-
-    return NextResponse.json({
-      messages,
-      total: count,
-      hasMore: offset + limit < count,
-    })
-  } catch (error) {
-    console.error("Error fetching messages:", error)
-    return NextResponse.json({ error: "Failed to fetch messages" }, { status: 500 })
-  }
-}
-
-export async function POST(req: NextRequest) {
-  try {
-    const { message, userInfo } = await req.json()
-
-    if (!message || !message.trim()) {
+    if (!message?.trim()) {
       return NextResponse.json({ error: "Message is required" }, { status: 400 })
     }
 
-    const ip = req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip") || "unknown"
-    const sessionId = userInfo?.sessionId || Date.now().toString()
+    // Get client IP
+    const forwarded = request.headers.get("x-forwarded-for")
+    const ip = forwarded ? forwarded.split(",")[0] : "unknown"
 
-    const [inserted] = await sql`
+    // Store message in database
+    const result = await sql`
       INSERT INTO chat_messages (message, session_id, user_info, ip_address)
-      VALUES (${message.trim()}, ${sessionId}, ${JSON.stringify(userInfo || {})}, ${ip})
-      RETURNING id, created_at;
+      VALUES (${message}, ${sessionId || null}, ${JSON.stringify(userInfo || {})}, ${ip})
+      RETURNING id, created_at
     `
+
+    console.log("✅ Message saved to database:", result[0])
 
     return NextResponse.json({
       success: true,
-      id: inserted.id,
-      created_at: inserted.created_at,
+      id: result[0].id,
+      timestamp: result[0].created_at,
     })
   } catch (error) {
-    console.error("Error storing message:", error)
-    return NextResponse.json({ error: "Failed to store message" }, { status: 500 })
+    console.error("❌ Error saving message:", error)
+    return NextResponse.json(
+      {
+        error: "Failed to save message",
+        details: error instanceof Error ? error.message : "Unknown error",
+      },
+      { status: 500 },
+    )
+  }
+}
+
+export async function GET() {
+  try {
+    const messages = await sql`
+      SELECT id, message, session_id, user_info, created_at, ip_address
+      FROM chat_messages 
+      ORDER BY created_at DESC 
+      LIMIT 50
+    `
+
+    return NextResponse.json({ messages })
+  } catch (error) {
+    console.error("❌ Error fetching messages:", error)
+    return NextResponse.json(
+      {
+        error: "Failed to fetch messages",
+      },
+      { status: 500 },
+    )
   }
 }
