@@ -110,27 +110,6 @@ export default function ProfileCard({ data }: ProfileCardProps) {
           />
 
           <div className="relative z-10 flex flex-col items-center justify-between h-full p-8">
-            <motion.div
-              className={`
-              px-6
-              py-2
-              rounded-full 
-              bg-gradient-to-r 
-              from-cyan-500 
-              to-blue-500 
-              text-white 
-              text-sm
-              font-bold 
-              tracking-wider 
-              shadow-lg 
-              shadow-cyan-500/50
-              border border-cyan-300/30
-            `}
-              whileHover={{ scale: 1.05 }}
-            >
-              TIER {data.tier}
-            </motion.div>
-
             <div className="relative">
               <div
                 className={`

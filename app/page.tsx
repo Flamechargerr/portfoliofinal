@@ -4,7 +4,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { AnimatedCounter } from "@/components/ui/animated-counter"
 import ProfileCard from "@/components/ui/profile-card"
-import { ContainerScroll } from "@/components/ui/container-scroll-animation"
 import CinematicThemeSwitcher from "@/components/ui/cinematic-theme-switcher"
 import { RadialOrbitalTimeline } from "@/components/ui/radial-orbital-timeline"
 import {
@@ -514,7 +513,7 @@ export default function AnamayPortfolio() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-20 md:space-y-32 relative z-10 pt-20 md:pt-24">
         {/* Hero Section */}
         <section id="home" className="py-10 md:py-20">
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-start">
             <motion.div
               className="space-y-6 md:space-y-8"
               initial={{ opacity: 0, x: -30 }}
@@ -624,25 +623,125 @@ export default function AnamayPortfolio() {
         </section>
 
         <section className="py-10 md:py-20">
-          <ContainerScroll
-            titleComponent={
-              <>
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Featured Project Showcase</h2>
-                <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-                  Scroll to explore CrimeConnect - my flagship case management system
-                </p>
-              </>
-            }
-          >
-            <Image
-              src="/crime-management-dashboard.jpg"
-              alt="CrimeConnect - Case Management System"
-              height={720}
-              width={1400}
-              className="mx-auto rounded-2xl object-cover h-full object-center"
-              draggable={false}
-            />
-          </ContainerScroll>
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-white">Featured Projects</h2>
+            <p className="text-lg md:text-xl text-gray-300">My portfolio of innovative projects</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                <Card className="bg-gray-900/60 backdrop-blur-xl border-2 border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 overflow-hidden group relative h-full">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 blur-2xl`} />
+                  </div>
+                  <CardContent className="p-0 relative z-10">
+                    <div className="relative h-48 md:h-64 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+                      <Image
+                        src={project.image || "/placeholder.svg"}
+                        alt={project.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20`} />
+                      <div className="absolute top-3 md:top-4 right-3 md:right-4 flex gap-2">
+                        <Badge className={`bg-gradient-to-r ${project.color} text-white border-0 text-xs`}>
+                          {project.category}
+                        </Badge>
+                        <Badge
+                          variant="outline"
+                          className={`text-xs ${
+                            project.status === "Live"
+                              ? "border-green-500 text-green-300 bg-green-50/10"
+                              : project.status === "Ready for Deployment"
+                                ? "border-yellow-500 text-yellow-300 bg-yellow-50/10"
+                                : "border-blue-500 text-blue-300 bg-blue-50/10"
+                          }`}
+                        >
+                          {project.status}
+                        </Badge>
+                      </div>
+                    </div>
+
+                    <div className="p-4 md:p-6 space-y-3 md:space-y-4">
+                      <div>
+                        <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                          {project.title}
+                        </h3>
+                        <p className="text-blue-400 font-medium text-sm md:text-base">{project.subtitle}</p>
+                      </div>
+
+                      <p className="text-gray-300 leading-relaxed text-sm md:text-base">{project.description}</p>
+
+                      <div className="grid grid-cols-2 gap-3 md:gap-4">
+                        {Object.entries(project.metrics)
+                          .slice(0, 2)
+                          .map(([key, value]) => (
+                            <div
+                              key={key}
+                              className="text-center p-2 md:p-3 bg-gray-800/60 rounded-lg border border-gray-700/50"
+                            >
+                              <p className="text-lg md:text-xl font-bold text-white flex items-center justify-center gap-1">
+                                {value}
+                                {key === "rating" && (
+                                  <Star className="w-3 h-3 md:w-4 md:h-4 text-yellow-400 fill-current" />
+                                )}
+                                {key === "completion" && (
+                                  <TrendingUp className="w-3 h-3 md:w-4 md:h-4 text-green-400" />
+                                )}
+                                {key === "funding" && <DollarSign className="w-3 h-3 md:w-4 md:h-4 text-yellow-400" />}
+                              </p>
+                              <p className="text-gray-400 text-xs md:text-sm capitalize font-medium">{key}</p>
+                            </div>
+                          ))}
+                      </div>
+
+                      <div className="flex flex-wrap gap-1.5 md:gap-2">
+                        {project.tech.slice(0, 4).map((tech) => (
+                          <Badge key={tech} className="bg-gray-800/60 text-blue-300 text-xs border border-gray-600/50">
+                            {tech}
+                          </Badge>
+                        ))}
+                        {project.tech.length > 4 && (
+                          <Badge className="bg-gray-800/60 text-gray-400 text-xs border border-gray-600/50">
+                            +{project.tech.length - 4} more
+                          </Badge>
+                        )}
+                      </div>
+
+                      <div className="flex gap-2 md:gap-3">
+                        <Button
+                          size="sm"
+                          onClick={() => window.open(project.github, "_blank", "noopener,noreferrer")}
+                          className={`bg-gradient-to-r ${project.color} hover:opacity-90 text-white border-0 shadow-lg`}
+                        >
+                          <Github className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
+                          Code
+                        </Button>
+                        {project.demo !== "#" && (
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => window.open(project.demo, "_blank", "noopener,noreferrer")}
+                            className="border-blue-500 text-blue-400 hover:bg-blue-500/10"
+                          >
+                            <ExternalLink className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
+                            Demo
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </section>
 
         {/* About Section */}
