@@ -218,3 +218,49 @@ html {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Added responsive utilities for better mobile experience */
+@media (max-width: 768px) {
+  .text-gradient-animate {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  /* Ensure cards are properly sized on mobile */
+  .profile-card-container {
+    transform: scale(0.85);
+  }
+}
+
+@media (max-width: 640px) {
+  .profile-card-container {
+    transform: scale(0.75);
+  }
+}
+
+/* Improved text contrast for better visibility */
+.text-white {
+  color: #ffffff !important;
+}
+
+.text-gray-300 {
+  color: #d1d5db !important;
+}
+
+.text-gray-400 {
+  color: #9ca3af !important;
+}
+
+/* Enhanced glowing effect visibility */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.glow-effect {
+  animation: glow-pulse 2s ease-in-out infinite;
+}

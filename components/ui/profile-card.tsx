@@ -1,21 +1,21 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
+import { ExternalLink } from "lucide-react"
 
-/** I. CONFIGURATION */
 export const CARD_CONFIG = {
-  width: 360,
-  height: 540,
+  width: 420,
+  height: 600,
   glowColor: "cyan",
-  buttonText: "View Profile",
+  buttonText: "View Full Profile",
 }
 
-/** II. TYPES */
 interface ProfileData {
   username: string
   bio: string
   status: string[]
-  tier: string
+  tier: number
   imageUrl: string
 }
 
@@ -23,12 +23,10 @@ interface ProfileCardProps {
   data: ProfileData
 }
 
-/** III. MAIN COMPONENT */
 export default function ProfileCard({ data }: ProfileCardProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [statusIndex, setStatusIndex] = useState(0)
 
-  // Cycle through status messages
   useEffect(() => {
     const interval = setInterval(() => {
       setStatusIndex((prev) => (prev + 1) % data.status.length)
@@ -36,30 +34,36 @@ export default function ProfileCard({ data }: ProfileCardProps) {
     return () => clearInterval(interval)
   }, [data.status.length])
 
+  const handleViewProfile = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
   return (
-    <div
+    <motion.div
       className="relative group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
         width: CARD_CONFIG.width,
         height: CARD_CONFIG.height,
-        perspective: "1000px",
+        perspective: "1500px",
       }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
     >
-      {/* Glow effect */}
       <div
         className={`
           absolute 
-          inset-0 
+          -inset-4
           rounded-3xl 
           bg-gradient-to-br 
           from-cyan-500 
           via-blue-500 
           to-purple-600 
           opacity-0 
-          group-hover:opacity-100 
-          blur-xl 
+          group-hover:opacity-70
+          blur-2xl 
           transition-opacity 
           duration-500
         `}
@@ -74,13 +78,14 @@ export default function ProfileCard({ data }: ProfileCardProps) {
           rounded-3xl 
           bg-gradient-to-br 
           from-gray-900 
-          to-gray-800 
+          via-gray-800
+          to-gray-900 
           border-2 
           border-gray-700 
           overflow-hidden 
           transition-all 
           duration-500
-          ${isHovered ? "scale-105 border-cyan-500/50" : ""}
+          ${isHovered ? "scale-105 border-cyan-500/50 shadow-2xl shadow-cyan-500/30" : ""}
         `}
         style={{
           transformStyle: "preserve-3d",
@@ -93,9 +98,9 @@ export default function ProfileCard({ data }: ProfileCardProps) {
             absolute 
             inset-0 
             bg-gradient-to-br 
-            from-cyan-500/10 
-            via-transparent 
-            to-purple-500/10 
+            from-cyan-500/20
+            via-blue-500/10
+            to-purple-500/20
             opacity-0 
             group-hover:opacity-100 
             transition-opacity 
@@ -105,32 +110,32 @@ export default function ProfileCard({ data }: ProfileCardProps) {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center justify-between h-full p-8">
-          {/* Tier badge */}
-          <div
+          <motion.div
             className={`
-              px-4 
-              py-1 
+              px-6
+              py-2
               rounded-full 
               bg-gradient-to-r 
               from-cyan-500 
               to-blue-500 
               text-white 
-              text-xs 
+              text-sm
               font-bold 
               tracking-wider 
               shadow-lg 
               shadow-cyan-500/50
+              border border-cyan-300/30
             `}
+            whileHover={{ scale: 1.05 }}
           >
-            {data.tier}
-          </div>
+            TIER {data.tier}
+          </motion.div>
 
-          {/* Profile image */}
           <div className="relative">
             <div
               className={`
                 absolute 
-                -inset-2 
+                -inset-3
                 rounded-full 
                 bg-gradient-to-r 
                 from-cyan-500 
@@ -138,57 +143,69 @@ export default function ProfileCard({ data }: ProfileCardProps) {
                 to-purple-500 
                 opacity-0 
                 group-hover:opacity-100 
-                blur-md 
+                blur-xl
                 transition-opacity 
                 duration-500
+                animate-pulse
               `}
             />
-            <img
+            <motion.img
               src={data.imageUrl || "/placeholder.svg"}
               alt={data.username}
-              className="relative w-32 h-32 rounded-full object-cover border-4 border-gray-700 group-hover:border-cyan-500 transition-colors duration-300"
+              className="relative w-48 h-48 rounded-full object-cover border-4 border-gray-700 group-hover:border-cyan-500 transition-colors duration-300"
+              whileHover={{ scale: 1.05 }}
             />
           </div>
 
           {/* User info */}
-          <div className="text-center space-y-2">
-            <h2 className="text-2xl font-bold text-white">{data.username}</h2>
-            <p className="text-gray-400 text-sm">{data.bio}</p>
+          <div className="text-center space-y-3">
+            <h2 className="text-3xl font-bold text-white">{data.username}</h2>
+            <p className="text-gray-300 text-base leading-relaxed px-4">{data.bio}</p>
           </div>
 
           {/* Animated status */}
-          <div className="h-6 flex items-center justify-center">
-            <div key={statusIndex} className="text-cyan-400 text-xs font-mono animate-pulse">
+          <div className="h-8 flex items-center justify-center">
+            <motion.div
+              key={statusIndex}
+              className="text-cyan-400 text-sm font-mono font-bold tracking-wider"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+            >
               {data.status[statusIndex]}
-            </div>
+            </motion.div>
           </div>
 
-          {/* CTA Button */}
-          <button
+          <motion.button
+            onClick={handleViewProfile}
             className="
               w-full 
-              py-3 
+              py-4
               rounded-xl 
               bg-gradient-to-r 
               from-cyan-500 
               to-blue-500 
               text-white 
-              font-semibold 
+              font-bold
+              text-lg
               shadow-lg 
               shadow-cyan-500/50 
               hover:shadow-cyan-500/70 
               hover:from-cyan-400 
               hover:to-blue-400 
-              hover:bg-cyan-400 
               transition-all 
               duration-300 
-              hover:scale-105
+              flex items-center justify-center gap-2
+              border border-cyan-300/30
             "
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             {CARD_CONFIG.buttonText}
-          </button>
+            <ExternalLink className="w-5 h-5" />
+          </motion.button>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

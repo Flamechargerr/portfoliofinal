@@ -5,10 +5,8 @@ import { Badge } from "@/components/ui/badge"
 import { AnimatedCounter } from "@/components/ui/animated-counter"
 import ProfileCard from "@/components/ui/profile-card"
 import { ContainerScroll } from "@/components/ui/container-scroll-animation"
-import { GlowingEffect } from "@/components/ui/glowing-effect"
 import CinematicThemeSwitcher from "@/components/ui/cinematic-theme-switcher"
 import { RadialOrbitalTimeline } from "@/components/ui/radial-orbital-timeline"
-// import { FloatingChatbotButton } from "@/components/ui/floating-chatbot-button"
 import {
   Github,
   Mail,
@@ -55,7 +53,6 @@ const EnhancedContactSection = lazy(() =>
 )
 const EnhancedLoadingScreen = lazy(() => import("@/components/ui/enhanced-loading-screen"))
 
-// Loading fallback component
 const LoadingFallback = ({ height = "400px" }: { height?: string }) => (
   <div className={`w-full bg-gray-900/30 rounded-xl animate-pulse flex items-center justify-center`} style={{ height }}>
     <div className="text-gray-500 text-sm">Loading...</div>
@@ -72,7 +69,6 @@ export default function AnamayPortfolio() {
   const [isDownloading, setIsDownloading] = useState(false)
   const [sectionsInView, setSectionsInView] = useState<Record<string, boolean>>({})
 
-  // Memoized static data
   const roles = useMemo(
     () => [
       "Data Science Student 📊",
@@ -245,18 +241,6 @@ export default function AnamayPortfolio() {
     [],
   )
 
-  const quickFacts = useMemo(
-    () => [
-      { label: "Age", value: 21, suffix: "", color: "#3b82f6", percentage: 85 },
-      { label: "Experience", value: 2, suffix: "+ Years", color: "#10b981", percentage: 70 },
-      { label: "Projects", value: 15, suffix: "+ Built", color: "#8b5cf6", percentage: 90 },
-      { label: "CGPA", value: 7.7, suffix: "/10", color: "#f59e0b", percentage: 77 },
-      { label: "Certifications", value: 8, suffix: "+", color: "#ec4899", percentage: 80 },
-      { label: "Coffee Cups", value: 999, suffix: "+", color: "#f97316", percentage: 95 },
-    ],
-    [],
-  )
-
   const stats = useMemo(
     () => [
       { label: "Projects Built", value: 15, icon: Code, color: "from-blue-500 to-purple-500" },
@@ -284,6 +268,7 @@ export default function AnamayPortfolio() {
         tech: ["React", "Node.js", "MongoDB", "Data Analytics"],
         github: "https://github.com/Flamechargerr/crime-connect-fbi",
         demo: "https://crime-connect-fbi.lovable.app/login",
+        image: "/crime-management-dashboard.jpg",
       },
       {
         id: 2,
@@ -298,6 +283,7 @@ export default function AnamayPortfolio() {
         tech: ["Python", "Machine Learning", "React", "API Integration"],
         github: "https://github.com/Flamechargerr/VARtificial-Intelligence",
         demo: "https://match-predictor-genie-66.lovable.app/",
+        image: "/ai-sports-prediction-dashboard.jpg",
       },
       {
         id: 3,
@@ -312,6 +298,7 @@ export default function AnamayPortfolio() {
         tech: ["JavaScript", "Node.js", "Cybersecurity", "Game Design"],
         github: "https://github.com/Flamechargerr/HackOps",
         demo: "https://playful-password-playground.lovable.app/",
+        image: "/cybersecurity-hacking-game.jpg",
       },
       {
         id: 4,
@@ -326,6 +313,7 @@ export default function AnamayPortfolio() {
         tech: ["JavaScript", "HTML5 Canvas", "Game Physics", "Animation"],
         github: "https://github.com/Flamechargerr/flora-fight-frenzy",
         demo: "#",
+        image: "/plants-vs-zombies-tower-defense-game.jpg",
       },
     ],
     [],
@@ -342,7 +330,6 @@ export default function AnamayPortfolio() {
     [],
   )
 
-  // Optimized time update with reduced frequency
   useEffect(() => {
     const updateTime = () => {
       const now = new Date()
@@ -355,11 +342,10 @@ export default function AnamayPortfolio() {
     }
 
     updateTime()
-    const interval = setInterval(updateTime, 30000) // Update every 30 seconds instead of 1 second
+    const interval = setInterval(updateTime, 30000)
     return () => clearInterval(interval)
   }, [])
 
-  // Optimized typing effect with faster completion
   useEffect(() => {
     const role = roles[currentRole]
     let index = 0
@@ -371,19 +357,17 @@ export default function AnamayPortfolio() {
         setTimeout(() => {
           setCurrentRole((prev) => (prev + 1) % roles.length)
           setTypedText("")
-        }, 1500) // Reduced delay
+        }, 1500)
         clearInterval(timer)
       }
-    }, 60) // Faster typing
+    }, 60)
     return () => clearInterval(timer)
   }, [currentRole, roles])
 
-  // Fast loading completion
   const handleLoadingComplete = useCallback(() => {
     setIsLoading(false)
   }, [])
 
-  // Highly optimized scroll handler with intersection observer
   useEffect(() => {
     const observerOptions = {
       threshold: 0.3,
@@ -413,13 +397,12 @@ export default function AnamayPortfolio() {
     return () => observer.disconnect()
   }, [])
 
-  // Optimized handlers with debouncing
   const handleDownloadResume = useCallback(async () => {
     if (isDownloading) return
 
     setIsDownloading(true)
     try {
-      await new Promise((resolve) => setTimeout(resolve, 800)) // Faster simulation
+      await new Promise((resolve) => setTimeout(resolve, 800))
       const link = document.createElement("a")
       link.href = "/resume-anamay-tripathy.pdf"
       link.download = "Anamay_Tripathy_Resume.pdf"
@@ -448,7 +431,6 @@ export default function AnamayPortfolio() {
     }
   }, [])
 
-  // Show loading screen
   if (isLoading) {
     return (
       <Suspense
@@ -465,12 +447,11 @@ export default function AnamayPortfolio() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
-      {/* Lazy loaded Network Background */}
       <Suspense fallback={null}>
         <NetworkBackground />
       </Suspense>
 
-      {/* Optimized Navigation */}
+      {/* Navigation */}
       <motion.nav
         className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-xl border-b border-gray-800/50"
         initial={{ y: -100 }}
@@ -604,17 +585,12 @@ export default function AnamayPortfolio() {
                 {stats.slice(0, 6).map((stat, index) => (
                   <Card
                     key={index}
-                    className="bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 relative"
+                    className="bg-gray-900/60 backdrop-blur-xl border-2 border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 relative overflow-hidden group"
                   >
-                    <GlowingEffect
-                      spread={30}
-                      glow={true}
-                      disabled={false}
-                      proximity={80}
-                      inactiveZone={0.3}
-                      borderWidth={2}
-                    />
-                    <CardContent className="p-3 md:p-4 text-center">
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-xl" />
+                    </div>
+                    <CardContent className="p-3 md:p-4 text-center relative z-10">
                       <div
                         className={`w-8 h-8 md:w-10 md:h-10 mx-auto mb-2 md:mb-3 bg-gradient-to-r ${stat.color} rounded-xl flex items-center justify-center shadow-lg`}
                       >
@@ -640,7 +616,6 @@ export default function AnamayPortfolio() {
             </motion.div>
           </div>
 
-          {/* Developer Dashboard */}
           <div className="mt-12 md:mt-16">
             <Suspense fallback={<LoadingFallback height="300px" />}>
               <EnhancedDeveloperDashboard />
@@ -660,8 +635,8 @@ export default function AnamayPortfolio() {
             }
           >
             <Image
-              src="/images/anamay-photo.png"
-              alt="Featured Project"
+              src={projects[0].image || "/placeholder.svg"}
+              alt={projects[0].title}
               height={720}
               width={1400}
               className="mx-auto rounded-2xl object-cover h-full object-center"
@@ -690,7 +665,7 @@ export default function AnamayPortfolio() {
               A visual timeline of my academic and professional milestones
             </p>
           </div>
-          <div className="flex justify-center items-center min-h-[600px]">
+          <div className="flex justify-center items-center">
             <RadialOrbitalTimeline events={timelineEvents} />
           </div>
         </section>
@@ -722,16 +697,11 @@ export default function AnamayPortfolio() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true, margin: "-50px" }}
               >
-                <Card className="bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 overflow-hidden group relative">
-                  <GlowingEffect
-                    spread={40}
-                    glow={true}
-                    disabled={false}
-                    proximity={100}
-                    inactiveZone={0.2}
-                    borderWidth={2}
-                  />
-                  <CardContent className="p-0">
+                <Card className="bg-gray-900/60 backdrop-blur-xl border-2 border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 overflow-hidden group relative">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 blur-2xl`} />
+                  </div>
+                  <CardContent className="p-0 relative z-10">
                     <div className="relative h-48 md:h-64 overflow-hidden">
                       <div
                         className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-30 transition-opacity`}
@@ -855,8 +825,6 @@ export default function AnamayPortfolio() {
           </Suspense>
         </section>
       </div>
-
-      {/* <FloatingChatbotButton /> */}
     </div>
   )
 }
