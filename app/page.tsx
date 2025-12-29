@@ -109,11 +109,6 @@ export default function Home() {
         {/* Why Work With Me Section */}
         <WhyWorkWithMe />
 
-        {/* Tech Divider */}
-        <div className="relative w-full h-[80px] md:h-[120px] overflow-hidden bg-lorenzo-light">
-          <div className="absolute inset-0 tech-divider opacity-30" />
-        </div>
-
         {/* Skills Section */}
         <SkillsSection />
 
@@ -154,11 +149,6 @@ export default function Home() {
 
         {/* GitHub Activity */}
         <GitHubActivity />
-
-        {/* Tech Divider */}
-        <div className="relative w-full h-[80px] md:h-[120px] overflow-hidden bg-lorenzo-light">
-          <div className="absolute inset-0 tech-divider opacity-30 rotate-180" />
-        </div>
 
         {/* Experience Section */}
         <ExperienceSection />
