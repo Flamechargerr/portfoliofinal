@@ -310,7 +310,7 @@ function SkillDetailPanel({
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="absolute left-1/2 -translate-x-1/2 top-full mt-4 z-50 w-full max-w-md"
+            className="absolute left-1/2 -translate-x-1/2 top-full mt-4 z-[60] w-full max-w-md"
         >
             <div className="bg-gradient-to-br from-lorenzo-dark via-lorenzo-dark to-lorenzo-accent/10 border-2 border-lorenzo-accent/30 rounded-2xl p-6 shadow-2xl shadow-lorenzo-accent/10 backdrop-blur-xl">
                 {/* Close button */}
