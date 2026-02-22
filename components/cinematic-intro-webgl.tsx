@@ -48,7 +48,7 @@ function AmbientRing() {
 
     return (
         <mesh ref={ref as any} position={[0, 0, -1.5]}>
-            <torusGeometry args={[6, 0.008, 16, 200]} />
+            <torusGeometry args={[6, 0.008, 16, 64]} />
             <meshBasicMaterial color="#4f46e5" transparent opacity={0.12} />
         </mesh>
     )
@@ -82,7 +82,7 @@ function Macbook({ phase, onUnlock }: { phase: "loading" | "intro" | "lidOpening
         <group position={[0, -0.5, 0]}>
             {/* ─── BASE CHASSIS ─── */}
             <group>
-                <RoundedBox args={[3.2, 0.1, 2.2]} radius={0.05} smoothness={4} material={chassisMaterial} />
+                <RoundedBox args={[3.2, 0.1, 2.2]} radius={0.05} smoothness={2} material={chassisMaterial} />
                 <mesh position={[0, 0.051, -0.3]}>
                     <boxGeometry args={[2.8, 0.01, 1.1]} />
                     <primitive object={keyboardBaseMaterial} attach="material" />
@@ -96,7 +96,7 @@ function Macbook({ phase, onUnlock }: { phase: "loading" | "intro" | "lidOpening
             {/* ─── SCREEN LID ─── */}
             <group ref={lidRef as any} position={[0, 0.05, -1.05]} rotation-x={Math.PI}>
                 <group position={[0, 1.05, 0]} rotation-x={-Math.PI / 2}>
-                    <RoundedBox args={[3.2, 0.08, 2.2]} radius={0.05} smoothness={4} material={chassisMaterial} />
+                    <RoundedBox args={[3.2, 0.08, 2.2]} radius={0.05} smoothness={2} material={chassisMaterial} />
                     <mesh position={[0, 0.041, 0]}>
                         <boxGeometry args={[3.1, 0.01, 2.1]} />
                         <primitive object={screenBezelMaterial} attach="material" />
@@ -252,7 +252,7 @@ export default function CinematicIntro3D({ onComplete }: { onComplete: () => voi
                     animate={{ opacity: phase === "diving" ? 0 : 1 }}
                     transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
                 >
-                    <Canvas camera={{ position: [0, 0, 7], fov: 35 }} dpr={[1, 2]}>
+                    <Canvas camera={{ position: [0, 0, 7], fov: 35 }} dpr={[1, 1.5]} performance={{ min: 0.5 }}>
                         <CameraController phase={phase} />
                         <Suspense fallback={null}>
                             {/* Lighting — soft, natural, product-photography style */}
@@ -266,8 +266,6 @@ export default function CinematicIntro3D({ onComplete }: { onComplete: () => voi
                                 penumbra={1}
                                 intensity={3}
                                 color="#e2e8f0"
-                                castShadow
-                                shadow-mapSize={[1024, 1024]}
                             />
                             {/* Subtle fill from right */}
                             <spotLight
@@ -287,7 +285,7 @@ export default function CinematicIntro3D({ onComplete }: { onComplete: () => voi
                             />
 
                             {/* Star field — enough for depth */}
-                            <Stars radius={120} depth={60} count={4000} factor={3} saturation={0.2} fade speed={0.5} />
+                            <Stars radius={120} depth={60} count={2500} factor={3} saturation={0.2} fade speed={0.5} />
 
                             {/* Ambient dust particles */}
                             <Sparkles count={250} scale={22} size={1} speed={0.12} opacity={0.15} color="#a5b4fc" />
@@ -309,17 +307,17 @@ export default function CinematicIntro3D({ onComplete }: { onComplete: () => voi
 
                                     {/* Pedestal */}
                                     <mesh position={[0, -0.62, 0]}>
-                                        <cylinderGeometry args={[2.2, 2.8, 0.05, 64]} />
+                                        <cylinderGeometry args={[2.2, 2.8, 0.05, 32]} />
                                         <meshStandardMaterial color="#0e0e14" roughness={0.12} metalness={0.9} />
                                     </mesh>
                                     {/* Inner glow ring */}
                                     <mesh position={[0, -0.58, 0]} rotation={[Math.PI / 2, 0, 0]}>
-                                        <ringGeometry args={[2.15, 2.2, 128]} />
+                                        <ringGeometry args={[2.15, 2.2, 64]} />
                                         <meshBasicMaterial color="#6366f1" transparent opacity={0.15} />
                                     </mesh>
                                     {/* Outer edge ring */}
                                     <mesh position={[0, -0.64, 0]} rotation={[Math.PI / 2, 0, 0]}>
-                                        <ringGeometry args={[2.75, 2.8, 128]} />
+                                        <ringGeometry args={[2.75, 2.8, 64]} />
                                         <meshBasicMaterial color="#4f46e5" transparent opacity={0.12} />
                                     </mesh>
                                 </Float>
