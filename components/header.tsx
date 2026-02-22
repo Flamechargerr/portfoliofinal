@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import ResumeModal from "./resume-modal"
+import KineticMobileMenu from "./kinetic-mobile-menu"
+import { Ripple } from "@/components/ui/material-design-3-ripple"
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -85,12 +87,13 @@ export default function Header() {
                 key={item.name}
                 href={item.href}
                 className={`
-                  relative px-4 py-2 text-sm font-bold uppercase tracking-wider transition-colors
+                  relative px-4 py-2 text-sm font-bold uppercase tracking-wider transition-colors rounded-lg overflow-hidden
                   ${activeSection === item.href.replace("#", "")
                     ? "text-lorenzo-accent"
                     : "text-lorenzo-light/70 hover:text-lorenzo-accent"}
                 `}
               >
+                <Ripple className="text-lorenzo-accent" opacity={0.15} />
                 {item.name}
                 {activeSection === item.href.replace("#", "") && (
                   <motion.div
@@ -107,9 +110,14 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-3">
             <ResumeModal />
             <a
-              href="mailto:tripathy.anamay23@gmail.com"
-              className="px-6 py-3 bg-lorenzo-accent text-lorenzo-dark font-bold uppercase text-xs tracking-wider hover:shadow-lg hover:shadow-lorenzo-accent/30 transition-all"
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault()
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+              className="relative px-6 py-3 bg-lorenzo-accent text-lorenzo-dark font-bold uppercase text-xs tracking-wider hover:shadow-lg hover:shadow-lorenzo-accent/30 transition-all rounded overflow-hidden"
             >
+              <Ripple className="text-lorenzo-dark" opacity={0.2} />
               Hire Me
             </a>
           </div>
@@ -137,46 +145,8 @@ export default function Header() {
         </div>
       </motion.header>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-lorenzo-dark lg:hidden pt-24"
-          >
-            <nav className="flex flex-col items-center gap-6 p-8">
-              {navItems.map((item, index) => (
-                <motion.a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-3xl font-brier text-lorenzo-light uppercase hover:text-lorenzo-accent transition-colors"
-                >
-                  {item.name}
-                </motion.a>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="flex flex-col items-center gap-4 mt-8"
-              >
-                <a
-                  href="mailto:tripathy.anamay23@gmail.com"
-                  className="px-8 py-4 bg-lorenzo-accent text-lorenzo-dark font-bold uppercase tracking-wider"
-                >
-                  Hire Me
-                </a>
-              </motion.div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Kinetic Mobile Menu */}
+      <KineticMobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
     </>
   )
 }

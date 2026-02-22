@@ -1,0 +1,2001 @@
+0 verbose cli /opt/homebrew/Cellar/node/25.6.1/bin/node /opt/homebrew/bin/npm
+1 info using npm@11.9.0
+2 info using node@v25.6.1
+3 silly config load:file:/opt/homebrew/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/anamay/Desktop/projects/portfolio/.npmrc
+5 silly config load:file:/Users/anamay/.npmrc
+6 silly config load:file:/opt/homebrew/etc/npmrc
+7 verbose title npm install react-github-calendar
+8 verbose argv "install" "react-github-calendar" "--legacy-peer-deps" "--cache" ".npm-local-cache"
+9 verbose logfile logs-max:10 dir:/Users/anamay/Desktop/projects/portfolio/.npm-local-cache/_logs/2026-02-21T14_27_55_308Z-
+10 verbose logfile /Users/anamay/Desktop/projects/portfolio/.npm-local-cache/_logs/2026-02-21T14_27_55_308Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 silly idealTree buildDeps
+14 silly fetch manifest react-github-calendar@*
+15 silly packumentCache full:https://registry.npmjs.org/react-github-calendar cache-miss
+16 verbose shrinkwrap failed to load node_modules/.package-lock.json EPERM: operation not permitted, stat '/Users/anamay/Desktop/projects/portfolio/node_modules'
+17 http fetch GET 200 https://registry.npmjs.org/react-github-calendar 217ms (cache miss)
+18 silly packumentCache full:https://registry.npmjs.org/react-github-calendar set size:undefined disposed:false
+19 silly placeDep ROOT react-github-calendar@5.0.5 OK for: anamay-portfolio@1.0.0 want: *
+20 silly fetch manifest react-activity-calendar@^3.0.6
+21 silly packumentCache full:https://registry.npmjs.org/react-activity-calendar cache-miss
+22 http fetch GET 200 https://registry.npmjs.org/npm 293ms
+23 http fetch GET 200 https://registry.npmjs.org/react-activity-calendar 416ms (cache miss)
+24 silly packumentCache full:https://registry.npmjs.org/react-activity-calendar set size:undefined disposed:false
+25 silly placeDep ROOT react-activity-calendar@3.1.1 OK for: react-github-calendar@5.0.5 want: ^3.0.6
+26 silly fetch manifest @floating-ui/react@^0.27.12
+27 silly packumentCache full:https://registry.npmjs.org/@floating-ui%2freact cache-miss
+28 http fetch GET 200 https://registry.npmjs.org/@floating-ui%2freact 705ms (cache miss)
+29 silly packumentCache full:https://registry.npmjs.org/@floating-ui%2freact set size:undefined disposed:false
+30 silly placeDep ROOT @floating-ui/react@0.27.18 OK for: react-activity-calendar@3.1.1 want: ^0.27.12
+31 silly fetch manifest tabbable@^6.0.0
+32 silly packumentCache full:https://registry.npmjs.org/tabbable cache-miss
+33 http fetch GET 200 https://registry.npmjs.org/tabbable 328ms (cache miss)
+34 silly packumentCache full:https://registry.npmjs.org/tabbable set size:undefined disposed:false
+35 silly placeDep ROOT tabbable@6.4.0 OK for: @floating-ui/react@0.27.18 want: ^6.0.0
+36 silly reify moves {}
+37 silly audit bulk request {
+37 silly audit   '@alloc/quick-lru': [ '5.2.0' ],
+37 silly audit   '@babel/runtime': [ '7.28.6' ],
+37 silly audit   '@date-fns/tz': [ '1.2.0' ],
+37 silly audit   '@dimforge/rapier3d-compat': [ '0.12.0' ],
+37 silly audit   '@emailjs/browser': [ '4.4.1' ],
+37 silly audit   '@emnapi/runtime': [ '1.8.1' ],
+37 silly audit   '@emotion/is-prop-valid': [ '1.4.0' ],
+37 silly audit   '@emotion/memoize': [ '0.9.0' ],
+37 silly audit   '@floating-ui/core': [ '1.7.4' ],
+37 silly audit   '@floating-ui/dom': [ '1.7.5' ],
+37 silly audit   '@floating-ui/react-dom': [ '2.1.7' ],
+37 silly audit   '@floating-ui/utils': [ '0.2.10' ],
+37 silly audit   '@hookform/resolvers': [ '3.10.0' ],
+37 silly audit   '@img/colour': [ '1.0.0' ],
+37 silly audit   '@img/sharp-darwin-arm64': [ '0.34.5' ],
+37 silly audit   '@img/sharp-darwin-x64': [ '0.34.5' ],
+37 silly audit   '@img/sharp-libvips-darwin-arm64': [ '1.2.4' ],
+37 silly audit   '@img/sharp-libvips-darwin-x64': [ '1.2.4' ],
+37 silly audit   '@img/sharp-libvips-linux-arm': [ '1.2.4' ],
+37 silly audit   '@img/sharp-libvips-linux-arm64': [ '1.2.4' ],
+37 silly audit   '@img/sharp-libvips-linux-ppc64': [ '1.2.4' ],
+37 silly audit   '@img/sharp-libvips-linux-riscv64': [ '1.2.4' ],
+37 silly audit   '@img/sharp-libvips-linux-s390x': [ '1.2.4' ],
+37 silly audit   '@img/sharp-libvips-linux-x64': [ '1.2.4' ],
+37 silly audit   '@img/sharp-libvips-linuxmusl-arm64': [ '1.2.4' ],
+37 silly audit   '@img/sharp-libvips-linuxmusl-x64': [ '1.2.4' ],
+37 silly audit   '@img/sharp-linux-arm': [ '0.34.5' ],
+37 silly audit   '@img/sharp-linux-arm64': [ '0.34.5' ],
+37 silly audit   '@img/sharp-linux-ppc64': [ '0.34.5' ],
+37 silly audit   '@img/sharp-linux-riscv64': [ '0.34.5' ],
+37 silly audit   '@img/sharp-linux-s390x': [ '0.34.5' ],
+37 silly audit   '@img/sharp-linux-x64': [ '0.34.5' ],
+37 silly audit   '@img/sharp-linuxmusl-arm64': [ '0.34.5' ],
+37 silly audit   '@img/sharp-linuxmusl-x64': [ '0.34.5' ],
+37 silly audit   '@img/sharp-wasm32': [ '0.34.5' ],
+37 silly audit   '@img/sharp-win32-arm64': [ '0.34.5' ],
+37 silly audit   '@img/sharp-win32-ia32': [ '0.34.5' ],
+37 silly audit   '@img/sharp-win32-x64': [ '0.34.5' ],
+37 silly audit   '@jridgewell/gen-mapping': [ '0.3.13' ],
+37 silly audit   '@jridgewell/remapping': [ '2.3.5' ],
+37 silly audit   '@jridgewell/resolve-uri': [ '3.1.2' ],
+37 silly audit   '@jridgewell/sourcemap-codec': [ '1.5.5' ],
+37 silly audit   '@jridgewell/trace-mapping': [ '0.3.31' ],
+37 silly audit   '@kurkle/color': [ '0.3.4' ],
+37 silly audit   '@next/env': [ '16.1.6' ],
+37 silly audit   '@next/swc-darwin-arm64': [ '16.1.6' ],
+37 silly audit   '@next/swc-darwin-x64': [ '16.1.6' ],
+37 silly audit   '@next/swc-linux-arm64-gnu': [ '16.1.6' ],
+37 silly audit   '@next/swc-linux-arm64-musl': [ '16.1.6' ],
+37 silly audit   '@next/swc-linux-x64-gnu': [ '16.1.6' ],
+37 silly audit   '@next/swc-linux-x64-musl': [ '16.1.6' ],
+37 silly audit   '@next/swc-win32-arm64-msvc': [ '16.1.6' ],
+37 silly audit   '@next/swc-win32-x64-msvc': [ '16.1.6' ],
+37 silly audit   '@radix-ui/number': [ '1.1.0' ],
+37 silly audit   '@radix-ui/primitive': [ '1.1.1' ],
+37 silly audit   '@radix-ui/react-accordion': [ '1.2.2' ],
+37 silly audit   '@radix-ui/react-alert-dialog': [ '1.1.4' ],
+37 silly audit   '@radix-ui/react-arrow': [ '1.1.1' ],
+37 silly audit   '@radix-ui/react-aspect-ratio': [ '1.1.1' ],
+37 silly audit   '@radix-ui/react-avatar': [ '1.1.2' ],
+37 silly audit   '@radix-ui/react-checkbox': [ '1.1.3' ],
+37 silly audit   '@radix-ui/react-collapsible': [ '1.1.2' ],
+37 silly audit   '@radix-ui/react-collection': [ '1.1.1' ],
+37 silly audit   '@radix-ui/react-compose-refs': [ '1.1.1' ],
+37 silly audit   '@radix-ui/react-context': [ '1.1.1' ],
+37 silly audit   '@radix-ui/react-context-menu': [ '2.2.4' ],
+37 silly audit   '@radix-ui/react-dialog': [ '1.1.4' ],
+37 silly audit   '@radix-ui/react-direction': [ '1.1.0' ],
+37 silly audit   '@radix-ui/react-dismissable-layer': [ '1.1.3' ],
+37 silly audit   '@radix-ui/react-dropdown-menu': [ '2.1.4' ],
+37 silly audit   '@radix-ui/react-focus-guards': [ '1.1.1' ],
+37 silly audit   '@radix-ui/react-focus-scope': [ '1.1.1' ],
+37 silly audit   '@radix-ui/react-hover-card': [ '1.1.4' ],
+37 silly audit   '@radix-ui/react-id': [ '1.1.0' ],
+37 silly audit   '@radix-ui/react-label': [ '2.1.1' ],
+37 silly audit   '@radix-ui/react-menu': [ '2.1.4' ],
+37 silly audit   '@radix-ui/react-menubar': [ '1.1.4' ],
+37 silly audit   '@radix-ui/react-navigation-menu': [ '1.2.3' ],
+37 silly audit   '@radix-ui/react-popover': [ '1.1.4' ],
+37 silly audit   '@radix-ui/react-popper': [ '1.2.1' ],
+37 silly audit   '@radix-ui/react-portal': [ '1.1.3' ],
+37 silly audit   '@radix-ui/react-presence': [ '1.1.2' ],
+37 silly audit   '@radix-ui/react-primitive': [ '2.0.1' ],
+37 silly audit   '@radix-ui/react-progress': [ '1.1.1' ],
+37 silly audit   '@radix-ui/react-radio-group': [ '1.2.2' ],
+37 silly audit   '@radix-ui/react-roving-focus': [ '1.1.1' ],
+37 silly audit   '@radix-ui/react-scroll-area': [ '1.2.2' ],
+37 silly audit   '@radix-ui/react-select': [ '2.1.4' ],
+37 silly audit   '@radix-ui/react-separator': [ '1.1.1' ],
+37 silly audit   '@radix-ui/react-slider': [ '1.2.2' ],
+37 silly audit   '@radix-ui/react-slot': [ '1.1.1' ],
+37 silly audit   '@radix-ui/react-switch': [ '1.1.2' ],
+37 silly audit   '@radix-ui/react-tabs': [ '1.1.2' ],
+37 silly audit   '@radix-ui/react-toast': [ '1.2.4' ],
+37 silly audit   '@radix-ui/react-toggle': [ '1.1.1' ],
+37 silly audit   '@radix-ui/react-toggle-group': [ '1.1.1' ],
+37 silly audit   '@radix-ui/react-tooltip': [ '1.1.6' ],
+37 silly audit   '@radix-ui/react-use-callback-ref': [ '1.1.0' ],
+37 silly audit   '@radix-ui/react-use-controllable-state': [ '1.1.0' ],
+37 silly audit   '@radix-ui/react-use-escape-keydown': [ '1.1.0' ],
+37 silly audit   '@radix-ui/react-use-layout-effect': [ '1.1.0' ],
+37 silly audit   '@radix-ui/react-use-previous': [ '1.1.0' ],
+37 silly audit   '@radix-ui/react-use-rect': [ '1.1.0' ],
+37 silly audit   '@radix-ui/react-use-size': [ '1.1.0' ],
+37 silly audit   '@radix-ui/react-visually-hidden': [ '1.1.1' ],
+37 silly audit   '@radix-ui/rect': [ '1.1.0' ],
+37 silly audit   '@swc/helpers': [ '0.5.15' ],
+37 silly audit   '@tailwindcss/node': [ '4.2.0' ],
+37 silly audit   '@tailwindcss/oxide': [ '4.2.0' ],
+37 silly audit   '@tailwindcss/oxide-android-arm64': [ '4.2.0' ],
+37 silly audit   '@tailwindcss/oxide-darwin-arm64': [ '4.2.0' ],
+37 silly audit   '@tailwindcss/oxide-darwin-x64': [ '4.2.0' ],
+37 silly audit   '@tailwindcss/oxide-freebsd-x64': [ '4.2.0' ],
+37 silly audit   '@tailwindcss/oxide-linux-arm-gnueabihf': [ '4.2.0' ],
+37 silly audit   '@tailwindcss/oxide-linux-arm64-gnu': [ '4.2.0' ],
+37 silly audit   '@tailwindcss/oxide-linux-arm64-musl': [ '4.2.0' ],
+37 silly audit   '@tailwindcss/oxide-linux-x64-gnu': [ '4.2.0' ],
+37 silly audit   '@tailwindcss/oxide-linux-x64-musl': [ '4.2.0' ],
+37 silly audit   '@tailwindcss/oxide-wasm32-wasi': [ '4.2.0' ],
+37 silly audit   '@tailwindcss/oxide-win32-arm64-msvc': [ '4.2.0' ],
+37 silly audit   '@tailwindcss/oxide-win32-x64-msvc': [ '4.2.0' ],
+37 silly audit   '@tailwindcss/postcss': [ '4.2.0' ],
+37 silly audit   '@tweenjs/tween.js': [ '23.1.3' ],
+37 silly audit   '@types/d3-array': [ '3.2.2' ],
+37 silly audit   '@types/d3-color': [ '3.1.3' ],
+37 silly audit   '@types/d3-ease': [ '3.0.2' ],
+37 silly audit   '@types/d3-interpolate': [ '3.0.4' ],
+37 silly audit   '@types/d3-path': [ '3.1.1' ],
+37 silly audit   '@types/d3-scale': [ '4.0.9' ],
+37 silly audit   '@types/d3-shape': [ '3.1.8' ],
+37 silly audit   '@types/d3-time': [ '3.0.4' ],
+37 silly audit   '@types/d3-timer': [ '3.0.2' ],
+37 silly audit   '@types/node': [ '22.19.11' ],
+37 silly audit   '@types/react': [ '19.2.14' ],
+37 silly audit   '@types/react-dom': [ '19.2.3' ],
+37 silly audit   '@types/stats.js': [ '0.17.4' ],
+37 silly audit   '@types/three': [ '0.181.0' ],
+37 silly audit   '@types/webxr': [ '0.5.24' ],
+37 silly audit   '@vercel/analytics': [ '1.6.1' ],
+37 silly audit   '@webgpu/types': [ '0.1.69' ],
+37 silly audit   'aria-hidden': [ '1.2.6' ],
+37 silly audit   autoprefixer: [ '10.4.24' ],
+37 silly audit   'baseline-browser-mapping': [ '2.10.0' ],
+37 silly audit   browserslist: [ '4.28.1' ],
+37 silly audit   'caniuse-lite': [ '1.0.30001770' ],
+37 silly audit   'chart.js': [ '4.5.1' ],
+37 silly audit   'class-variance-authority': [ '0.7.1' ],
+37 silly audit   'client-only': [ '0.0.1' ],
+37 silly audit   clsx: [ '2.1.1' ],
+37 silly audit   cmdk: [ '1.0.4' ],
+37 silly audit   csstype: [ '3.2.3' ],
+37 silly audit   'd3-array': [ '3.2.4' ],
+37 silly audit   'd3-color': [ '3.1.0' ],
+37 silly audit   'd3-ease': [ '3.0.1' ],
+37 silly audit   'd3-format': [ '3.1.2' ],
+37 silly audit   'd3-interpolate': [ '3.0.1' ],
+37 silly audit   'd3-path': [ '3.1.0' ],
+37 silly audit   'd3-scale': [ '4.0.2' ],
+37 silly audit   'd3-shape': [ '3.2.0' ],
+37 silly audit   'd3-time': [ '3.1.0' ],
+37 silly audit   'd3-time-format': [ '4.1.0' ],
+37 silly audit   'd3-timer': [ '3.0.1' ],
+37 silly audit   'date-fns': [ '4.1.0' ],
+37 silly audit   'date-fns-jalali': [ '4.1.0-0' ],
+37 silly audit   'decimal.js-light': [ '2.5.1' ],
+37 silly audit   'detect-libc': [ '2.1.2' ],
+37 silly audit   'detect-node-es': [ '1.1.0' ],
+37 silly audit   'dom-helpers': [ '5.2.1' ],
+37 silly audit   'electron-to-chromium': [ '1.5.302' ],
+37 silly audit   'embla-carousel': [ '8.5.1' ],
+37 silly audit   'embla-carousel-react': [ '8.5.1' ],
+37 silly audit   'embla-carousel-reactive-utils': [ '8.5.1' ],
+37 silly audit   'enhanced-resolve': [ '5.19.0' ],
+37 silly audit   escalade: [ '3.2.0' ],
+37 silly audit   eventemitter3: [ '4.0.7' ],
+37 silly audit   'fast-equals': [ '5.4.0' ],
+37 silly audit   fflate: [ '0.8.2' ],
+37 silly audit   'fraction.js': [ '5.3.4' ],
+37 silly audit   'framer-motion': [ '11.18.2' ],
+37 silly audit   'get-nonce': [ '1.0.1' ],
+37 silly audit   goober: [ '2.1.18' ],
+37 silly audit   'graceful-fs': [ '4.2.11' ],
+37 silly audit   gsap: [ '3.14.2' ],
+37 silly audit   'input-otp': [ '1.4.1' ],
+37 silly audit   internmap: [ '2.0.3' ],
+37 silly audit   jiti: [ '2.6.1' ],
+37 silly audit   'js-tokens': [ '4.0.0' ],
+37 silly audit   lenis: [ '1.3.17' ],
+37 silly audit   lightningcss: [ '1.31.1' ],
+37 silly audit   'lightningcss-android-arm64': [ '1.31.1' ],
+37 silly audit   'lightningcss-darwin-arm64': [ '1.31.1' ],
+37 silly audit   'lightningcss-darwin-x64': [ '1.31.1' ],
+37 silly audit   'lightningcss-freebsd-x64': [ '1.31.1' ],
+37 silly audit   'lightningcss-linux-arm-gnueabihf': [ '1.31.1' ],
+37 silly audit   'lightningcss-linux-arm64-gnu': [ '1.31.1' ],
+37 silly audit   'lightningcss-linux-arm64-musl': [ '1.31.1' ],
+37 silly audit   'lightningcss-linux-x64-gnu': [ '1.31.1' ],
+37 silly audit   'lightningcss-linux-x64-musl': [ '1.31.1' ],
+37 silly audit   'lightningcss-win32-arm64-msvc': [ '1.31.1' ],
+37 silly audit   'lightningcss-win32-x64-msvc': [ '1.31.1' ],
+37 silly audit   lodash: [ '4.17.23' ],
+37 silly audit   'loose-envify': [ '1.4.0' ],
+37 silly audit   'lucide-react': [ '0.454.0' ],
+37 silly audit   'magic-string': [ '0.30.21' ],
+37 silly audit   meshoptimizer: [ '0.22.0' ],
+37 silly audit   'motion-dom': [ '11.18.1' ],
+37 silly audit   'motion-utils': [ '11.18.1' ],
+37 silly audit   nanoid: [ '3.3.11' ],
+37 silly audit   next: [ '16.1.6' ],
+37 silly audit   'next-themes': [ '0.4.6' ],
+37 silly audit   postcss: [ '8.4.31', '8.5.6' ],
+37 silly audit   'node-releases': [ '2.0.27' ],
+37 silly audit   'object-assign': [ '4.1.1' ],
+37 silly audit   picocolors: [ '1.1.1' ],
+37 silly audit   'postcss-value-parser': [ '4.2.0' ],
+37 silly audit   'prop-types': [ '15.8.1' ],
+37 silly audit   'react-is': [ '16.13.1', '18.3.1' ],
+37 silly audit   react: [ '19.2.0' ],
+37 silly audit   'react-chartjs-2': [ '5.3.1' ],
+37 silly audit   'react-day-picker': [ '9.8.0' ],
+37 silly audit   'react-dom': [ '19.2.0' ],
+37 silly audit   'react-hook-form': [ '7.71.2' ],
+37 silly audit   'react-hot-toast': [ '2.6.0' ],
+37 silly audit   'react-remove-scroll': [ '2.7.2' ],
+37 silly audit   'react-remove-scroll-bar': [ '2.3.8' ],
+37 silly audit   'react-resizable-panels': [ '2.1.9' ],
+37 silly audit   'react-smooth': [ '4.0.4' ],
+37 silly audit   'react-style-singleton': [ '2.2.3' ],
+37 silly audit   'react-transition-group': [ '4.4.5' ],
+37 silly audit   'react-type-animation': [ '3.2.0' ],
+37 silly audit   recharts: [ '2.15.4' ],
+37 silly audit   'recharts-scale': [ '0.4.5' ],
+37 silly audit   scheduler: [ '0.27.0' ],
+37 silly audit   semver: [ '7.7.4' ],
+37 silly audit   sharp: [ '0.34.5' ],
+37 silly audit   sonner: [ '1.7.4' ],
+37 silly audit   'source-map-js': [ '1.2.1' ],
+37 silly audit   'styled-jsx': [ '5.1.6' ],
+37 silly audit   'tailwind-merge': [ '2.6.1' ],
+37 silly audit   tailwindcss: [ '4.2.0' ],
+37 silly audit   'tailwindcss-animate': [ '1.0.7' ],
+37 silly audit   tapable: [ '2.3.0' ],
+37 silly audit   'tiny-invariant': [ '1.3.3' ],
+37 silly audit   tslib: [ '2.8.1' ],
+37 silly audit   'tw-animate-css': [ '1.3.3' ],
+37 silly audit   typescript: [ '5.9.3' ],
+37 silly audit   'undici-types': [ '6.21.0' ],
+37 silly audit   'update-browserslist-db': [ '1.2.3' ],
+37 silly audit   'use-callback-ref': [ '1.3.3' ],
+37 silly audit   'use-sidecar': [ '1.1.3' ],
+37 silly audit   'use-sync-external-store': [ '1.6.0' ],
+37 silly audit   vaul: [ '0.9.9' ],
+37 silly audit   'victory-vendor': [ '36.9.2' ],
+37 silly audit   zod: [ '3.25.76' ],
+37 silly audit   'react-github-calendar': [ '5.0.5' ],
+37 silly audit   'react-activity-calendar': [ '3.1.1' ],
+37 silly audit   '@floating-ui/react': [ '0.27.18' ],
+37 silly audit   tabbable: [ '6.4.0' ]
+37 silly audit }
+38 http cache @floating-ui/react@https://registry.npmjs.org/@floating-ui/react/-/react-0.27.18.tgz 0ms (cache hit)
+39 http cache react-github-calendar@https://registry.npmjs.org/react-github-calendar/-/react-github-calendar-5.0.5.tgz 0ms (cache hit)
+40 http cache react-activity-calendar@https://registry.npmjs.org/react-activity-calendar/-/react-activity-calendar-3.1.1.tgz 0ms (cache hit)
+41 http cache tabbable@https://registry.npmjs.org/tabbable/-/tabbable-6.4.0.tgz 0ms (cache hit)
+42 silly tarball no local data for @floating-ui/react@https://registry.npmjs.org/@floating-ui/react/-/react-0.27.18.tgz. Extracting by manifest.
+43 silly tarball no local data for react-github-calendar@https://registry.npmjs.org/react-github-calendar/-/react-github-calendar-5.0.5.tgz. Extracting by manifest.
+44 silly tarball no local data for react-activity-calendar@https://registry.npmjs.org/react-activity-calendar/-/react-activity-calendar-3.1.1.tgz. Extracting by manifest.
+45 silly tarball no local data for tabbable@https://registry.npmjs.org/tabbable/-/tabbable-6.4.0.tgz. Extracting by manifest.
+46 http cache tailwindcss-animate@https://registry.npmjs.org/tailwindcss-animate/-/tailwindcss-animate-1.0.7.tgz 0ms (cache hit)
+47 http cache undici-types@https://registry.npmjs.org/undici-types/-/undici-types-6.21.0.tgz 0ms (cache hit)
+48 http cache picocolors@https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz 0ms (cache hit)
+49 http cache meshoptimizer@https://registry.npmjs.org/meshoptimizer/-/meshoptimizer-0.22.0.tgz 0ms (cache hit)
+50 http cache object-assign@https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz 0ms (cache hit)
+51 http cache lightningcss-darwin-arm64@https://registry.npmjs.org/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.31.1.tgz 0ms (cache hit)
+52 http cache js-tokens@https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz 0ms (cache hit)
+53 http cache graceful-fs@https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz 0ms (cache hit)
+54 http cache electron-to-chromium@https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.5.302.tgz 0ms (cache hit)
+55 http cache csstype@https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz 0ms (cache hit)
+56 http cache client-only@https://registry.npmjs.org/client-only/-/client-only-0.0.1.tgz 0ms (cache hit)
+57 http cache @types/webxr@https://registry.npmjs.org/@types/webxr/-/webxr-0.5.24.tgz 0ms (cache hit)
+58 http cache @types/d3-path@https://registry.npmjs.org/@types/d3-path/-/d3-path-3.1.1.tgz 0ms (cache hit)
+59 http cache @types/d3-timer@https://registry.npmjs.org/@types/d3-timer/-/d3-timer-3.0.2.tgz 0ms (cache hit)
+60 http cache @types/d3-ease@https://registry.npmjs.org/@types/d3-ease/-/d3-ease-3.0.2.tgz 0ms (cache hit)
+61 http cache @types/d3-scale@https://registry.npmjs.org/@types/d3-scale/-/d3-scale-4.0.9.tgz 0ms (cache hit)
+62 http cache @types/d3-shape@https://registry.npmjs.org/@types/d3-shape/-/d3-shape-3.1.8.tgz 0ms (cache hit)
+63 http cache @types/stats.js@https://registry.npmjs.org/@types/stats.js/-/stats.js-0.17.4.tgz 0ms (cache hit)
+64 http cache @types/d3-interpolate@https://registry.npmjs.org/@types/d3-interpolate/-/d3-interpolate-3.0.4.tgz 0ms (cache hit)
+65 http cache @types/d3-color@https://registry.npmjs.org/@types/d3-color/-/d3-color-3.1.3.tgz 0ms (cache hit)
+66 http cache @tailwindcss/oxide-darwin-arm64@https://registry.npmjs.org/@tailwindcss/oxide-darwin-arm64/-/oxide-darwin-arm64-4.2.0.tgz 0ms (cache hit)
+67 http cache @types/d3-time@https://registry.npmjs.org/@types/d3-time/-/d3-time-3.0.4.tgz 0ms (cache hit)
+68 http cache @tailwindcss/oxide@https://registry.npmjs.org/@tailwindcss/oxide/-/oxide-4.2.0.tgz 0ms (cache hit)
+69 http cache @types/d3-array@https://registry.npmjs.org/@types/d3-array/-/d3-array-3.2.2.tgz 0ms (cache hit)
+70 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 437ms
+71 silly audit report {}
+72 http cache @next/swc-darwin-arm64@https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-16.1.6.tgz 0ms (cache hit)
+73 http cache @img/colour@https://registry.npmjs.org/@img/colour/-/colour-1.0.0.tgz 0ms (cache hit)
+74 http cache @alloc/quick-lru@https://registry.npmjs.org/@alloc/quick-lru/-/quick-lru-5.2.0.tgz 0ms (cache hit)
+75 silly tarball no local data for tailwindcss-animate@https://registry.npmjs.org/tailwindcss-animate/-/tailwindcss-animate-1.0.7.tgz. Extracting by manifest.
+76 http cache update-browserslist-db@https://registry.npmjs.org/update-browserslist-db/-/update-browserslist-db-1.2.3.tgz 0ms (cache hit)
+77 silly tarball no local data for undici-types@https://registry.npmjs.org/undici-types/-/undici-types-6.21.0.tgz. Extracting by manifest.
+78 silly tarball no local data for picocolors@https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz. Extracting by manifest.
+79 silly tarball no local data for object-assign@https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz. Extracting by manifest.
+80 silly tarball no local data for meshoptimizer@https://registry.npmjs.org/meshoptimizer/-/meshoptimizer-0.22.0.tgz. Extracting by manifest.
+81 silly tarball no local data for lightningcss-darwin-arm64@https://registry.npmjs.org/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.31.1.tgz. Extracting by manifest.
+82 silly tarball no local data for js-tokens@https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz. Extracting by manifest.
+83 silly tarball no local data for graceful-fs@https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz. Extracting by manifest.
+84 silly tarball no local data for electron-to-chromium@https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.5.302.tgz. Extracting by manifest.
+85 http cache loose-envify@https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz 0ms (cache hit)
+86 silly tarball no local data for csstype@https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz. Extracting by manifest.
+87 silly tarball no local data for client-only@https://registry.npmjs.org/client-only/-/client-only-0.0.1.tgz. Extracting by manifest.
+88 silly tarball no local data for @types/webxr@https://registry.npmjs.org/@types/webxr/-/webxr-0.5.24.tgz. Extracting by manifest.
+89 silly tarball no local data for @types/d3-path@https://registry.npmjs.org/@types/d3-path/-/d3-path-3.1.1.tgz. Extracting by manifest.
+90 silly tarball no local data for @types/d3-timer@https://registry.npmjs.org/@types/d3-timer/-/d3-timer-3.0.2.tgz. Extracting by manifest.
+91 silly tarball no local data for @types/d3-ease@https://registry.npmjs.org/@types/d3-ease/-/d3-ease-3.0.2.tgz. Extracting by manifest.
+92 silly tarball no local data for @types/d3-scale@https://registry.npmjs.org/@types/d3-scale/-/d3-scale-4.0.9.tgz. Extracting by manifest.
+93 silly tarball no local data for @types/d3-shape@https://registry.npmjs.org/@types/d3-shape/-/d3-shape-3.1.8.tgz. Extracting by manifest.
+94 silly tarball no local data for @types/stats.js@https://registry.npmjs.org/@types/stats.js/-/stats.js-0.17.4.tgz. Extracting by manifest.
+95 silly tarball no local data for @types/d3-color@https://registry.npmjs.org/@types/d3-color/-/d3-color-3.1.3.tgz. Extracting by manifest.
+96 silly tarball no local data for @types/d3-interpolate@https://registry.npmjs.org/@types/d3-interpolate/-/d3-interpolate-3.0.4.tgz. Extracting by manifest.
+97 silly tarball no local data for @tailwindcss/oxide-darwin-arm64@https://registry.npmjs.org/@tailwindcss/oxide-darwin-arm64/-/oxide-darwin-arm64-4.2.0.tgz. Extracting by manifest.
+98 silly tarball no local data for @types/d3-time@https://registry.npmjs.org/@types/d3-time/-/d3-time-3.0.4.tgz. Extracting by manifest.
+99 silly tarball no local data for @tailwindcss/oxide@https://registry.npmjs.org/@tailwindcss/oxide/-/oxide-4.2.0.tgz. Extracting by manifest.
+100 silly tarball no local data for @types/d3-array@https://registry.npmjs.org/@types/d3-array/-/d3-array-3.2.2.tgz. Extracting by manifest.
+101 http cache browserslist@https://registry.npmjs.org/browserslist/-/browserslist-4.28.1.tgz 0ms (cache hit)
+102 silly tarball no local data for @next/swc-darwin-arm64@https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-16.1.6.tgz. Extracting by manifest.
+103 silly tarball no local data for @img/colour@https://registry.npmjs.org/@img/colour/-/colour-1.0.0.tgz. Extracting by manifest.
+104 silly tarball no local data for @alloc/quick-lru@https://registry.npmjs.org/@alloc/quick-lru/-/quick-lru-5.2.0.tgz. Extracting by manifest.
+105 silly tarball no local data for update-browserslist-db@https://registry.npmjs.org/update-browserslist-db/-/update-browserslist-db-1.2.3.tgz. Extracting by manifest.
+106 silly tarball no local data for loose-envify@https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz. Extracting by manifest.
+107 silly tarball no local data for browserslist@https://registry.npmjs.org/browserslist/-/browserslist-4.28.1.tgz. Extracting by manifest.
+108 http cache vaul@https://registry.npmjs.org/vaul/-/vaul-0.9.9.tgz 0ms (cache hit)
+109 http cache tw-animate-css@https://registry.npmjs.org/tw-animate-css/-/tw-animate-css-1.3.3.tgz 0ms (cache hit)
+110 http cache tailwindcss@https://registry.npmjs.org/tailwindcss/-/tailwindcss-4.2.0.tgz 0ms (cache hit)
+111 http cache tslib@https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz 0ms (cache hit)
+112 http cache source-map-js@https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz 0ms (cache hit)
+113 http cache tapable@https://registry.npmjs.org/tapable/-/tapable-2.3.0.tgz 0ms (cache hit)
+114 http cache sonner@https://registry.npmjs.org/sonner/-/sonner-1.7.4.tgz 0ms (cache hit)
+115 http cache scheduler@https://registry.npmjs.org/scheduler/-/scheduler-0.27.0.tgz 0ms (cache hit)
+116 http cache react-smooth@https://registry.npmjs.org/react-smooth/-/react-smooth-4.0.4.tgz 0ms (cache hit)
+117 http cache react-dom@https://registry.npmjs.org/react-dom/-/react-dom-19.2.0.tgz 0ms (cache hit)
+118 http cache react-is@https://registry.npmjs.org/react-is/-/react-is-18.3.1.tgz 0ms (cache hit)
+119 http cache react@https://registry.npmjs.org/react/-/react-19.2.0.tgz 0ms (cache hit)
+120 http cache postcss-value-parser@https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz 0ms (cache hit)
+121 http cache react-chartjs-2@https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-5.3.1.tgz 0ms (cache hit)
+122 http cache postcss@https://registry.npmjs.org/postcss/-/postcss-8.5.6.tgz 0ms (cache hit)
+123 http cache prop-types@https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz 0ms (cache hit)
+124 http cache sharp@https://registry.npmjs.org/sharp/-/sharp-0.34.5.tgz 0ms (cache hit)
+125 http cache next-themes@https://registry.npmjs.org/next-themes/-/next-themes-0.4.6.tgz 0ms (cache hit)
+126 http cache lightningcss@https://registry.npmjs.org/lightningcss/-/lightningcss-1.31.1.tgz 0ms (cache hit)
+127 http cache magic-string@https://registry.npmjs.org/magic-string/-/magic-string-0.30.21.tgz 0ms (cache hit)
+128 http cache internmap@https://registry.npmjs.org/internmap/-/internmap-2.0.3.tgz 0ms (cache hit)
+129 http cache fflate@https://registry.npmjs.org/fflate/-/fflate-0.8.2.tgz 2ms (cache hit)
+130 http cache eventemitter3@https://registry.npmjs.org/eventemitter3/-/eventemitter3-4.0.7.tgz 0ms (cache hit)
+131 http cache input-otp@https://registry.npmjs.org/input-otp/-/input-otp-1.4.1.tgz 0ms (cache hit)
+132 http cache detect-node-es@https://registry.npmjs.org/detect-node-es/-/detect-node-es-1.1.0.tgz 0ms (cache hit)
+133 http cache d3-time-format@https://registry.npmjs.org/d3-time-format/-/d3-time-format-4.1.0.tgz 0ms (cache hit)
+134 http cache fraction.js@https://registry.npmjs.org/fraction.js/-/fraction.js-5.3.4.tgz 0ms (cache hit)
+135 http cache escalade@https://registry.npmjs.org/escalade/-/escalade-3.2.0.tgz 0ms (cache hit)
+136 http cache detect-libc@https://registry.npmjs.org/detect-libc/-/detect-libc-2.1.2.tgz 0ms (cache hit)
+137 http cache d3-time@https://registry.npmjs.org/d3-time/-/d3-time-3.1.0.tgz 0ms (cache hit)
+138 http cache decimal.js-light@https://registry.npmjs.org/decimal.js-light/-/decimal.js-light-2.5.1.tgz 0ms (cache hit)
+139 http cache d3-path@https://registry.npmjs.org/d3-path/-/d3-path-3.1.0.tgz 0ms (cache hit)
+140 http cache d3-scale@https://registry.npmjs.org/d3-scale/-/d3-scale-4.0.2.tgz 0ms (cache hit)
+141 http cache d3-format@https://registry.npmjs.org/d3-format/-/d3-format-3.1.2.tgz 0ms (cache hit)
+142 http cache clsx@https://registry.npmjs.org/clsx/-/clsx-2.1.1.tgz 0ms (cache hit)
+143 http cache class-variance-authority@https://registry.npmjs.org/class-variance-authority/-/class-variance-authority-0.7.1.tgz 0ms (cache hit)
+144 http cache @webgpu/types@https://registry.npmjs.org/@webgpu/types/-/types-0.1.69.tgz 0ms (cache hit)
+145 http cache d3-timer@https://registry.npmjs.org/d3-timer/-/d3-timer-3.0.1.tgz 0ms (cache hit)
+146 http cache d3-ease@https://registry.npmjs.org/d3-ease/-/d3-ease-3.0.1.tgz 0ms (cache hit)
+147 http cache dom-helpers@https://registry.npmjs.org/dom-helpers/-/dom-helpers-5.2.1.tgz 0ms (cache hit)
+148 http cache d3-color@https://registry.npmjs.org/d3-color/-/d3-color-3.1.0.tgz 0ms (cache hit)
+149 http cache @types/node@https://registry.npmjs.org/@types/node/-/node-22.19.11.tgz 1ms (cache hit)
+150 http cache cmdk@https://registry.npmjs.org/cmdk/-/cmdk-1.0.4.tgz 0ms (cache hit)
+151 http cache @types/react-dom@https://registry.npmjs.org/@types/react-dom/-/react-dom-19.2.3.tgz 0ms (cache hit)
+152 http cache lodash@https://registry.npmjs.org/lodash/-/lodash-4.17.23.tgz 0ms (cache hit)
+153 http cache @types/react@https://registry.npmjs.org/@types/react/-/react-19.2.14.tgz 0ms (cache hit)
+154 http cache @tweenjs/tween.js@https://registry.npmjs.org/@tweenjs/tween.js/-/tween.js-23.1.3.tgz 0ms (cache hit)
+155 http cache @tailwindcss/postcss@https://registry.npmjs.org/@tailwindcss/postcss/-/postcss-4.2.0.tgz 0ms (cache hit)
+156 http cache @radix-ui/react-use-size@https://registry.npmjs.org/@radix-ui/react-use-size/-/react-use-size-1.1.0.tgz 0ms (cache hit)
+157 http cache @radix-ui/rect@https://registry.npmjs.org/@radix-ui/rect/-/rect-1.1.0.tgz 0ms (cache hit)
+158 http cache @radix-ui/react-use-rect@https://registry.npmjs.org/@radix-ui/react-use-rect/-/react-use-rect-1.1.0.tgz 0ms (cache hit)
+159 http cache @radix-ui/react-visually-hidden@https://registry.npmjs.org/@radix-ui/react-visually-hidden/-/react-visually-hidden-1.1.1.tgz 0ms (cache hit)
+160 http cache @radix-ui/react-use-previous@https://registry.npmjs.org/@radix-ui/react-use-previous/-/react-use-previous-1.1.0.tgz 0ms (cache hit)
+161 http cache @radix-ui/react-toggle-group@https://registry.npmjs.org/@radix-ui/react-toggle-group/-/react-toggle-group-1.1.1.tgz 0ms (cache hit)
+162 http cache @radix-ui/react-use-escape-keydown@https://registry.npmjs.org/@radix-ui/react-use-escape-keydown/-/react-use-escape-keydown-1.1.0.tgz 0ms (cache hit)
+163 http cache @radix-ui/react-use-controllable-state@https://registry.npmjs.org/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.1.0.tgz 0ms (cache hit)
+164 http cache @radix-ui/react-toggle@https://registry.npmjs.org/@radix-ui/react-toggle/-/react-toggle-1.1.1.tgz 0ms (cache hit)
+165 http cache @radix-ui/react-use-layout-effect@https://registry.npmjs.org/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.0.tgz 0ms (cache hit)
+166 http cache @radix-ui/react-slider@https://registry.npmjs.org/@radix-ui/react-slider/-/react-slider-1.2.2.tgz 0ms (cache hit)
+167 http cache @radix-ui/react-slot@https://registry.npmjs.org/@radix-ui/react-slot/-/react-slot-1.1.1.tgz 0ms (cache hit)
+168 http cache @radix-ui/react-separator@https://registry.npmjs.org/@radix-ui/react-separator/-/react-separator-1.1.1.tgz 0ms (cache hit)
+169 http cache @radix-ui/react-radio-group@https://registry.npmjs.org/@radix-ui/react-radio-group/-/react-radio-group-1.2.2.tgz 0ms (cache hit)
+170 http cache @tailwindcss/node@https://registry.npmjs.org/@tailwindcss/node/-/node-4.2.0.tgz 0ms (cache hit)
+171 http cache @radix-ui/react-switch@https://registry.npmjs.org/@radix-ui/react-switch/-/react-switch-1.1.2.tgz 0ms (cache hit)
+172 http cache @radix-ui/react-toast@https://registry.npmjs.org/@radix-ui/react-toast/-/react-toast-1.2.4.tgz 0ms (cache hit)
+173 http cache @radix-ui/react-presence@https://registry.npmjs.org/@radix-ui/react-presence/-/react-presence-1.1.2.tgz 0ms (cache hit)
+174 http cache @radix-ui/react-select@https://registry.npmjs.org/@radix-ui/react-select/-/react-select-2.1.4.tgz 0ms (cache hit)
+175 http cache @radix-ui/react-use-callback-ref@https://registry.npmjs.org/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-1.1.0.tgz 0ms (cache hit)
+176 http cache @radix-ui/react-scroll-area@https://registry.npmjs.org/@radix-ui/react-scroll-area/-/react-scroll-area-1.2.2.tgz 0ms (cache hit)
+177 http cache @radix-ui/react-tooltip@https://registry.npmjs.org/@radix-ui/react-tooltip/-/react-tooltip-1.1.6.tgz 0ms (cache hit)
+178 http cache @radix-ui/react-progress@https://registry.npmjs.org/@radix-ui/react-progress/-/react-progress-1.1.1.tgz 0ms (cache hit)
+179 http cache @radix-ui/react-primitive@https://registry.npmjs.org/@radix-ui/react-primitive/-/react-primitive-2.0.1.tgz 0ms (cache hit)
+180 http cache @radix-ui/react-label@https://registry.npmjs.org/@radix-ui/react-label/-/react-label-2.1.1.tgz 0ms (cache hit)
+181 http cache @radix-ui/react-portal@https://registry.npmjs.org/@radix-ui/react-portal/-/react-portal-1.1.3.tgz 0ms (cache hit)
+182 http cache @radix-ui/react-menubar@https://registry.npmjs.org/@radix-ui/react-menubar/-/react-menubar-1.1.4.tgz 0ms (cache hit)
+183 http cache @radix-ui/react-popper@https://registry.npmjs.org/@radix-ui/react-popper/-/react-popper-1.2.1.tgz 0ms (cache hit)
+184 http cache @radix-ui/react-popover@https://registry.npmjs.org/@radix-ui/react-popover/-/react-popover-1.1.4.tgz 0ms (cache hit)
+185 http cache @radix-ui/react-navigation-menu@https://registry.npmjs.org/@radix-ui/react-navigation-menu/-/react-navigation-menu-1.2.3.tgz 0ms (cache hit)
+186 http cache @radix-ui/react-hover-card@https://registry.npmjs.org/@radix-ui/react-hover-card/-/react-hover-card-1.1.4.tgz 0ms (cache hit)
+187 http cache @radix-ui/react-menu@https://registry.npmjs.org/@radix-ui/react-menu/-/react-menu-2.1.4.tgz 0ms (cache hit)
+188 http cache @radix-ui/react-focus-scope@https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.1.tgz 0ms (cache hit)
+189 http cache @radix-ui/react-focus-guards@https://registry.npmjs.org/@radix-ui/react-focus-guards/-/react-focus-guards-1.1.1.tgz 0ms (cache hit)
+190 http cache @radix-ui/react-compose-refs@https://registry.npmjs.org/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.1.tgz 0ms (cache hit)
+191 http cache @radix-ui/react-tabs@https://registry.npmjs.org/@radix-ui/react-tabs/-/react-tabs-1.1.2.tgz 0ms (cache hit)
+192 http cache @radix-ui/react-collection@https://registry.npmjs.org/@radix-ui/react-collection/-/react-collection-1.1.1.tgz 5ms (cache hit)
+193 http cache @radix-ui/react-dropdown-menu@https://registry.npmjs.org/@radix-ui/react-dropdown-menu/-/react-dropdown-menu-2.1.4.tgz 0ms (cache hit)
+194 http cache @radix-ui/react-id@https://registry.npmjs.org/@radix-ui/react-id/-/react-id-1.1.0.tgz 0ms (cache hit)
+195 http cache @radix-ui/react-arrow@https://registry.npmjs.org/@radix-ui/react-arrow/-/react-arrow-1.1.1.tgz 0ms (cache hit)
+196 http cache @radix-ui/react-context@https://registry.npmjs.org/@radix-ui/react-context/-/react-context-1.1.1.tgz 0ms (cache hit)
+197 warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'
+198 silly tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build' [Error: ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'] {
+198 silly tar   errno: -2,
+198 silly tar   code: 'ENOENT',
+198 silly tar   syscall: 'lstat',
+198 silly tar   path: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build',
+198 silly tar   entry: ReadEntry {
+198 silly tar     _events: [Object: null prototype] { end: [Array] },
+198 silly tar     _eventsCount: 1,
+198 silly tar     _maxListeners: undefined,
+198 silly tar     writable: false,
+198 silly tar     readable: true,
+198 silly tar     extended: undefined,
+198 silly tar     globalExtended: undefined,
+198 silly tar     header: Header {
+198 silly tar       cksumValid: true,
+198 silly tar       needPax: false,
+198 silly tar       nullBlock: false,
+198 silly tar       block: undefined,
+198 silly tar       path: 'package/build/tooltips.css',
+198 silly tar       mode: 420,
+198 silly tar       uid: undefined,
+198 silly tar       gid: undefined,
+198 silly tar       size: 633,
+198 silly tar       cksum: 5606,
+198 silly tar       linkpath: '',
+198 silly tar       uname: '',
+198 silly tar       gname: '',
+198 silly tar       devmaj: 0,
+198 silly tar       devmin: 0,
+198 silly tar       atime: undefined,
+198 silly tar       ctime: undefined,
+198 silly tar       mtime: 1985-10-26T08:15:00.000Z,
+198 silly tar       charset: undefined,
+198 silly tar       comment: undefined
+198 silly tar     },
+198 silly tar     startBlockSize: 1024,
+198 silly tar     blockRemain: 0,
+198 silly tar     remain: 0,
+198 silly tar     type: 'File',
+198 silly tar     meta: false,
+198 silly tar     ignore: false,
+198 silly tar     path: 'build/tooltips.css',
+198 silly tar     mode: 438,
+198 silly tar     uid: undefined,
+198 silly tar     gid: undefined,
+198 silly tar     uname: '',
+198 silly tar     gname: '',
+198 silly tar     size: 633,
+198 silly tar     mtime: 1985-10-26T08:15:00.000Z,
+198 silly tar     atime: undefined,
+198 silly tar     ctime: undefined,
+198 silly tar     linkpath: undefined,
+198 silly tar     dev: undefined,
+198 silly tar     ino: undefined,
+198 silly tar     nlink: undefined,
+198 silly tar     invalid: false,
+198 silly tar     absolute: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build/tooltips.css',
+198 silly tar     unsupported: false,
+198 silly tar     Symbol(shapeMode): false,
+198 silly tar     Symbol(kCapture): false,
+198 silly tar     Symbol(flowing): false,
+198 silly tar     Symbol(paused): true,
+198 silly tar     Symbol(pipes): [],
+198 silly tar     Symbol(buffer): [
+198 silly tar       <Buffer 2e 72 65 61 63 74 2d 61 63 74 69 76 69 74 79 2d 63 61 6c 65 6e 64 61 72 5f 5f 74 6f 6f 6c 74 69 70 20 7b 0a 20 20 77 69 64 74 68 3a 20 6d 61 78 2d 63 ... 583 more bytes>
+198 silly tar     ],
+198 silly tar     Symbol(objectMode): false,
+198 silly tar     Symbol(encoding): null,
+198 silly tar     Symbol(async): false,
+198 silly tar     Symbol(decoder): null,
+198 silly tar     Symbol(EOF): true,
+198 silly tar     Symbol(emittedEnd): false,
+198 silly tar     Symbol(emittingEnd): false,
+198 silly tar     Symbol(closed): false,
+198 silly tar     Symbol(emittedError): null,
+198 silly tar     Symbol(bufferLength): 633,
+198 silly tar     Symbol(destroyed): false,
+198 silly tar     Symbol(signal): undefined,
+198 silly tar     Symbol(aborted): false,
+198 silly tar     Symbol(dataListeners): 0,
+198 silly tar     Symbol(discarded): false
+198 silly tar   },
+198 silly tar   cwd: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar',
+198 silly tar   tarCode: 'TAR_ENTRY_ERROR'
+198 silly tar }
+199 http cache @radix-ui/react-collapsible@https://registry.npmjs.org/@radix-ui/react-collapsible/-/react-collapsible-1.1.2.tgz 0ms (cache hit)
+200 http cache @radix-ui/react-alert-dialog@https://registry.npmjs.org/@radix-ui/react-alert-dialog/-/react-alert-dialog-1.1.4.tgz 0ms (cache hit)
+201 http cache @radix-ui/react-dialog@https://registry.npmjs.org/@radix-ui/react-dialog/-/react-dialog-1.1.4.tgz 0ms (cache hit)
+202 http cache @radix-ui/react-dismissable-layer@https://registry.npmjs.org/@radix-ui/react-dismissable-layer/-/react-dismissable-layer-1.1.3.tgz 0ms (cache hit)
+203 http cache @radix-ui/react-direction@https://registry.npmjs.org/@radix-ui/react-direction/-/react-direction-1.1.0.tgz 0ms (cache hit)
+204 http cache @radix-ui/react-avatar@https://registry.npmjs.org/@radix-ui/react-avatar/-/react-avatar-1.1.2.tgz 0ms (cache hit)
+205 http cache @radix-ui/primitive@https://registry.npmjs.org/@radix-ui/primitive/-/primitive-1.1.1.tgz 0ms (cache hit)
+206 http cache @radix-ui/react-checkbox@https://registry.npmjs.org/@radix-ui/react-checkbox/-/react-checkbox-1.1.3.tgz 0ms (cache hit)
+207 http cache @radix-ui/react-context-menu@https://registry.npmjs.org/@radix-ui/react-context-menu/-/react-context-menu-2.2.4.tgz 0ms (cache hit)
+208 http cache @next/env@https://registry.npmjs.org/@next/env/-/env-16.1.6.tgz 0ms (cache hit)
+209 http cache @jridgewell/sourcemap-codec@https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.5.tgz 0ms (cache hit)
+210 http cache @kurkle/color@https://registry.npmjs.org/@kurkle/color/-/color-0.3.4.tgz 0ms (cache hit)
+211 http cache @radix-ui/number@https://registry.npmjs.org/@radix-ui/number/-/number-1.1.0.tgz 0ms (cache hit)
+212 http cache @radix-ui/react-accordion@https://registry.npmjs.org/@radix-ui/react-accordion/-/react-accordion-1.2.2.tgz 0ms (cache hit)
+213 http cache @radix-ui/react-roving-focus@https://registry.npmjs.org/@radix-ui/react-roving-focus/-/react-roving-focus-1.1.1.tgz 0ms (cache hit)
+214 http cache @jridgewell/trace-mapping@https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.31.tgz 0ms (cache hit)
+215 http cache @radix-ui/react-aspect-ratio@https://registry.npmjs.org/@radix-ui/react-aspect-ratio/-/react-aspect-ratio-1.1.1.tgz 0ms (cache hit)
+216 http cache @floating-ui/core@https://registry.npmjs.org/@floating-ui/core/-/core-1.7.4.tgz 0ms (cache hit)
+217 http cache @img/sharp-darwin-arm64@https://registry.npmjs.org/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.34.5.tgz 0ms (cache hit)
+218 http cache @floating-ui/react-dom@https://registry.npmjs.org/@floating-ui/react-dom/-/react-dom-2.1.7.tgz 0ms (cache hit)
+219 http cache @jridgewell/remapping@https://registry.npmjs.org/@jridgewell/remapping/-/remapping-2.3.5.tgz 0ms (cache hit)
+220 http cache @emnapi/runtime@https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.8.1.tgz 0ms (cache hit)
+221 http cache @floating-ui/dom@https://registry.npmjs.org/@floating-ui/dom/-/dom-1.7.5.tgz 0ms (cache hit)
+222 http cache @floating-ui/utils@https://registry.npmjs.org/@floating-ui/utils/-/utils-0.2.10.tgz 0ms (cache hit)
+223 http cache @date-fns/tz@https://registry.npmjs.org/@date-fns/tz/-/tz-1.2.0.tgz 0ms (cache hit)
+224 warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build'
+225 silly tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build' [Error: ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build'] {
+225 silly tar   errno: -2,
+225 silly tar   code: 'ENOENT',
+225 silly tar   syscall: 'lstat',
+225 silly tar   path: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build',
+225 silly tar   entry: ReadEntry {
+225 silly tar     _events: [Object: null prototype] { end: [Array] },
+225 silly tar     _eventsCount: 1,
+225 silly tar     _maxListeners: undefined,
+225 silly tar     writable: false,
+225 silly tar     readable: true,
+225 silly tar     extended: undefined,
+225 silly tar     globalExtended: undefined,
+225 silly tar     header: Header {
+225 silly tar       cksumValid: true,
+225 silly tar       needPax: false,
+225 silly tar       nullBlock: false,
+225 silly tar       block: undefined,
+225 silly tar       path: 'package/build/tooltips.css',
+225 silly tar       mode: 420,
+225 silly tar       uid: undefined,
+225 silly tar       gid: undefined,
+225 silly tar       size: 633,
+225 silly tar       cksum: 5606,
+225 silly tar       linkpath: '',
+225 silly tar       uname: '',
+225 silly tar       gname: '',
+225 silly tar       devmaj: 0,
+225 silly tar       devmin: 0,
+225 silly tar       atime: undefined,
+225 silly tar       ctime: undefined,
+225 silly tar       mtime: 1985-10-26T08:15:00.000Z,
+225 silly tar       charset: undefined,
+225 silly tar       comment: undefined
+225 silly tar     },
+225 silly tar     startBlockSize: 1024,
+225 silly tar     blockRemain: 0,
+225 silly tar     remain: 0,
+225 silly tar     type: 'File',
+225 silly tar     meta: false,
+225 silly tar     ignore: false,
+225 silly tar     path: 'build/tooltips.css',
+225 silly tar     mode: 438,
+225 silly tar     uid: undefined,
+225 silly tar     gid: undefined,
+225 silly tar     uname: '',
+225 silly tar     gname: '',
+225 silly tar     size: 633,
+225 silly tar     mtime: 1985-10-26T08:15:00.000Z,
+225 silly tar     atime: undefined,
+225 silly tar     ctime: undefined,
+225 silly tar     linkpath: undefined,
+225 silly tar     dev: undefined,
+225 silly tar     ino: undefined,
+225 silly tar     nlink: undefined,
+225 silly tar     invalid: false,
+225 silly tar     absolute: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build/tooltips.css',
+225 silly tar     unsupported: false,
+225 silly tar     Symbol(shapeMode): false,
+225 silly tar     Symbol(kCapture): false,
+225 silly tar     Symbol(flowing): false,
+225 silly tar     Symbol(paused): true,
+225 silly tar     Symbol(pipes): [],
+225 silly tar     Symbol(buffer): [
+225 silly tar       <Buffer 2e 72 65 61 63 74 2d 61 63 74 69 76 69 74 79 2d 63 61 6c 65 6e 64 61 72 5f 5f 74 6f 6f 6c 74 69 70 20 7b 0a 20 20 77 69 64 74 68 3a 20 6d 61 78 2d 63 ... 583 more bytes>
+225 silly tar     ],
+225 silly tar     Symbol(objectMode): false,
+225 silly tar     Symbol(encoding): null,
+225 silly tar     Symbol(async): false,
+225 silly tar     Symbol(decoder): null,
+225 silly tar     Symbol(EOF): true,
+225 silly tar     Symbol(emittedEnd): false,
+225 silly tar     Symbol(emittingEnd): false,
+225 silly tar     Symbol(closed): false,
+225 silly tar     Symbol(emittedError): null,
+225 silly tar     Symbol(bufferLength): 633,
+225 silly tar     Symbol(destroyed): false,
+225 silly tar     Symbol(signal): undefined,
+225 silly tar     Symbol(aborted): false,
+225 silly tar     Symbol(dataListeners): 0,
+225 silly tar     Symbol(discarded): false
+225 silly tar   },
+225 silly tar   cwd: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar',
+225 silly tar   tarCode: 'TAR_ENTRY_ERROR'
+225 silly tar }
+226 http cache postcss@https://registry.npmjs.org/postcss/-/postcss-8.4.31.tgz 0ms (cache hit)
+227 silly tarball no local data for vaul@https://registry.npmjs.org/vaul/-/vaul-0.9.9.tgz. Extracting by manifest.
+228 silly tarball no local data for tw-animate-css@https://registry.npmjs.org/tw-animate-css/-/tw-animate-css-1.3.3.tgz. Extracting by manifest.
+229 http cache @dimforge/rapier3d-compat@https://registry.npmjs.org/@dimforge/rapier3d-compat/-/rapier3d-compat-0.12.0.tgz 0ms (cache hit)
+230 silly tarball no local data for tailwindcss@https://registry.npmjs.org/tailwindcss/-/tailwindcss-4.2.0.tgz. Extracting by manifest.
+231 silly tarball no local data for tslib@https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz. Extracting by manifest.
+232 silly tarball no local data for source-map-js@https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz. Extracting by manifest.
+233 silly tarball no local data for tapable@https://registry.npmjs.org/tapable/-/tapable-2.3.0.tgz. Extracting by manifest.
+234 silly tarball no local data for sonner@https://registry.npmjs.org/sonner/-/sonner-1.7.4.tgz. Extracting by manifest.
+235 silly tarball no local data for scheduler@https://registry.npmjs.org/scheduler/-/scheduler-0.27.0.tgz. Extracting by manifest.
+236 http cache react-is@https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz 0ms (cache hit)
+237 http cache semver@https://registry.npmjs.org/semver/-/semver-7.7.4.tgz 0ms (cache hit)
+238 silly tarball no local data for react-smooth@https://registry.npmjs.org/react-smooth/-/react-smooth-4.0.4.tgz. Extracting by manifest.
+239 silly tarball no local data for react-dom@https://registry.npmjs.org/react-dom/-/react-dom-19.2.0.tgz. Extracting by manifest.
+240 silly tarball no local data for react-is@https://registry.npmjs.org/react-is/-/react-is-18.3.1.tgz. Extracting by manifest.
+241 silly tarball no local data for react@https://registry.npmjs.org/react/-/react-19.2.0.tgz. Extracting by manifest.
+242 silly tarball no local data for postcss-value-parser@https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz. Extracting by manifest.
+243 silly tarball no local data for react-chartjs-2@https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-5.3.1.tgz. Extracting by manifest.
+244 silly tarball no local data for postcss@https://registry.npmjs.org/postcss/-/postcss-8.5.6.tgz. Extracting by manifest.
+245 silly tarball no local data for prop-types@https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz. Extracting by manifest.
+246 silly tarball no local data for sharp@https://registry.npmjs.org/sharp/-/sharp-0.34.5.tgz. Extracting by manifest.
+247 silly tarball no local data for next-themes@https://registry.npmjs.org/next-themes/-/next-themes-0.4.6.tgz. Extracting by manifest.
+248 silly tarball no local data for lightningcss@https://registry.npmjs.org/lightningcss/-/lightningcss-1.31.1.tgz. Extracting by manifest.
+249 silly tarball no local data for magic-string@https://registry.npmjs.org/magic-string/-/magic-string-0.30.21.tgz. Extracting by manifest.
+250 http cache nanoid@https://registry.npmjs.org/nanoid/-/nanoid-3.3.11.tgz 0ms (cache hit)
+251 silly tarball no local data for internmap@https://registry.npmjs.org/internmap/-/internmap-2.0.3.tgz. Extracting by manifest.
+252 silly tarball no local data for fflate@https://registry.npmjs.org/fflate/-/fflate-0.8.2.tgz. Extracting by manifest.
+253 silly tarball no local data for eventemitter3@https://registry.npmjs.org/eventemitter3/-/eventemitter3-4.0.7.tgz. Extracting by manifest.
+254 silly tarball no local data for input-otp@https://registry.npmjs.org/input-otp/-/input-otp-1.4.1.tgz. Extracting by manifest.
+255 silly tarball no local data for detect-node-es@https://registry.npmjs.org/detect-node-es/-/detect-node-es-1.1.0.tgz. Extracting by manifest.
+256 silly tarball no local data for d3-time-format@https://registry.npmjs.org/d3-time-format/-/d3-time-format-4.1.0.tgz. Extracting by manifest.
+257 silly tarball no local data for fraction.js@https://registry.npmjs.org/fraction.js/-/fraction.js-5.3.4.tgz. Extracting by manifest.
+258 silly tarball no local data for escalade@https://registry.npmjs.org/escalade/-/escalade-3.2.0.tgz. Extracting by manifest.
+259 silly tarball no local data for detect-libc@https://registry.npmjs.org/detect-libc/-/detect-libc-2.1.2.tgz. Extracting by manifest.
+260 silly tarball no local data for d3-time@https://registry.npmjs.org/d3-time/-/d3-time-3.1.0.tgz. Extracting by manifest.
+261 silly tarball no local data for decimal.js-light@https://registry.npmjs.org/decimal.js-light/-/decimal.js-light-2.5.1.tgz. Extracting by manifest.
+262 silly tarball no local data for d3-path@https://registry.npmjs.org/d3-path/-/d3-path-3.1.0.tgz. Extracting by manifest.
+263 silly tarball no local data for d3-scale@https://registry.npmjs.org/d3-scale/-/d3-scale-4.0.2.tgz. Extracting by manifest.
+264 silly tarball no local data for d3-format@https://registry.npmjs.org/d3-format/-/d3-format-3.1.2.tgz. Extracting by manifest.
+265 silly tarball no local data for clsx@https://registry.npmjs.org/clsx/-/clsx-2.1.1.tgz. Extracting by manifest.
+266 silly tarball no local data for class-variance-authority@https://registry.npmjs.org/class-variance-authority/-/class-variance-authority-0.7.1.tgz. Extracting by manifest.
+267 silly tarball no local data for @webgpu/types@https://registry.npmjs.org/@webgpu/types/-/types-0.1.69.tgz. Extracting by manifest.
+268 silly tarball no local data for d3-timer@https://registry.npmjs.org/d3-timer/-/d3-timer-3.0.1.tgz. Extracting by manifest.
+269 silly tarball no local data for d3-ease@https://registry.npmjs.org/d3-ease/-/d3-ease-3.0.1.tgz. Extracting by manifest.
+270 silly tarball no local data for dom-helpers@https://registry.npmjs.org/dom-helpers/-/dom-helpers-5.2.1.tgz. Extracting by manifest.
+271 silly tarball no local data for d3-color@https://registry.npmjs.org/d3-color/-/d3-color-3.1.0.tgz. Extracting by manifest.
+272 http cache baseline-browser-mapping@https://registry.npmjs.org/baseline-browser-mapping/-/baseline-browser-mapping-2.10.0.tgz 0ms (cache hit)
+273 http cache jiti@https://registry.npmjs.org/jiti/-/jiti-2.6.1.tgz 0ms (cache hit)
+274 silly tarball no local data for @types/node@https://registry.npmjs.org/@types/node/-/node-22.19.11.tgz. Extracting by manifest.
+275 silly tarball no local data for lodash@https://registry.npmjs.org/lodash/-/lodash-4.17.23.tgz. Extracting by manifest.
+276 silly tarball no local data for @types/react-dom@https://registry.npmjs.org/@types/react-dom/-/react-dom-19.2.3.tgz. Extracting by manifest.
+277 silly tarball no local data for cmdk@https://registry.npmjs.org/cmdk/-/cmdk-1.0.4.tgz. Extracting by manifest.
+278 silly tarball no local data for @types/react@https://registry.npmjs.org/@types/react/-/react-19.2.14.tgz. Extracting by manifest.
+279 silly tarball no local data for @tweenjs/tween.js@https://registry.npmjs.org/@tweenjs/tween.js/-/tween.js-23.1.3.tgz. Extracting by manifest.
+280 silly tarball no local data for @tailwindcss/postcss@https://registry.npmjs.org/@tailwindcss/postcss/-/postcss-4.2.0.tgz. Extracting by manifest.
+281 silly tarball no local data for @radix-ui/react-use-size@https://registry.npmjs.org/@radix-ui/react-use-size/-/react-use-size-1.1.0.tgz. Extracting by manifest.
+282 silly tarball no local data for @radix-ui/rect@https://registry.npmjs.org/@radix-ui/rect/-/rect-1.1.0.tgz. Extracting by manifest.
+283 silly tarball no local data for @radix-ui/react-use-rect@https://registry.npmjs.org/@radix-ui/react-use-rect/-/react-use-rect-1.1.0.tgz. Extracting by manifest.
+284 silly tarball no local data for @radix-ui/react-visually-hidden@https://registry.npmjs.org/@radix-ui/react-visually-hidden/-/react-visually-hidden-1.1.1.tgz. Extracting by manifest.
+285 silly tarball no local data for @radix-ui/react-use-previous@https://registry.npmjs.org/@radix-ui/react-use-previous/-/react-use-previous-1.1.0.tgz. Extracting by manifest.
+286 silly tarball no local data for @radix-ui/react-toggle-group@https://registry.npmjs.org/@radix-ui/react-toggle-group/-/react-toggle-group-1.1.1.tgz. Extracting by manifest.
+287 silly tarball no local data for @radix-ui/react-use-escape-keydown@https://registry.npmjs.org/@radix-ui/react-use-escape-keydown/-/react-use-escape-keydown-1.1.0.tgz. Extracting by manifest.
+288 silly tarball no local data for @radix-ui/react-use-controllable-state@https://registry.npmjs.org/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.1.0.tgz. Extracting by manifest.
+289 silly tarball no local data for @radix-ui/react-toggle@https://registry.npmjs.org/@radix-ui/react-toggle/-/react-toggle-1.1.1.tgz. Extracting by manifest.
+290 silly tarball no local data for @radix-ui/react-use-layout-effect@https://registry.npmjs.org/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.0.tgz. Extracting by manifest.
+291 silly tarball no local data for @radix-ui/react-slider@https://registry.npmjs.org/@radix-ui/react-slider/-/react-slider-1.2.2.tgz. Extracting by manifest.
+292 silly tarball no local data for @radix-ui/react-slot@https://registry.npmjs.org/@radix-ui/react-slot/-/react-slot-1.1.1.tgz. Extracting by manifest.
+293 silly tarball no local data for @radix-ui/react-separator@https://registry.npmjs.org/@radix-ui/react-separator/-/react-separator-1.1.1.tgz. Extracting by manifest.
+294 silly tarball no local data for @radix-ui/react-radio-group@https://registry.npmjs.org/@radix-ui/react-radio-group/-/react-radio-group-1.2.2.tgz. Extracting by manifest.
+295 silly tarball no local data for @tailwindcss/node@https://registry.npmjs.org/@tailwindcss/node/-/node-4.2.0.tgz. Extracting by manifest.
+296 silly tarball no local data for @radix-ui/react-switch@https://registry.npmjs.org/@radix-ui/react-switch/-/react-switch-1.1.2.tgz. Extracting by manifest.
+297 silly tarball no local data for @radix-ui/react-toast@https://registry.npmjs.org/@radix-ui/react-toast/-/react-toast-1.2.4.tgz. Extracting by manifest.
+298 silly tarball no local data for @radix-ui/react-presence@https://registry.npmjs.org/@radix-ui/react-presence/-/react-presence-1.1.2.tgz. Extracting by manifest.
+299 silly tarball no local data for @radix-ui/react-select@https://registry.npmjs.org/@radix-ui/react-select/-/react-select-2.1.4.tgz. Extracting by manifest.
+300 silly tarball no local data for @radix-ui/react-use-callback-ref@https://registry.npmjs.org/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-1.1.0.tgz. Extracting by manifest.
+301 silly tarball no local data for @radix-ui/react-scroll-area@https://registry.npmjs.org/@radix-ui/react-scroll-area/-/react-scroll-area-1.2.2.tgz. Extracting by manifest.
+302 silly tarball no local data for @radix-ui/react-tooltip@https://registry.npmjs.org/@radix-ui/react-tooltip/-/react-tooltip-1.1.6.tgz. Extracting by manifest.
+303 silly tarball no local data for @radix-ui/react-progress@https://registry.npmjs.org/@radix-ui/react-progress/-/react-progress-1.1.1.tgz. Extracting by manifest.
+304 silly tarball no local data for @radix-ui/react-primitive@https://registry.npmjs.org/@radix-ui/react-primitive/-/react-primitive-2.0.1.tgz. Extracting by manifest.
+305 silly tarball no local data for @radix-ui/react-label@https://registry.npmjs.org/@radix-ui/react-label/-/react-label-2.1.1.tgz. Extracting by manifest.
+306 silly tarball no local data for @radix-ui/react-portal@https://registry.npmjs.org/@radix-ui/react-portal/-/react-portal-1.1.3.tgz. Extracting by manifest.
+307 silly tarball no local data for @radix-ui/react-menubar@https://registry.npmjs.org/@radix-ui/react-menubar/-/react-menubar-1.1.4.tgz. Extracting by manifest.
+308 silly tarball no local data for @radix-ui/react-popper@https://registry.npmjs.org/@radix-ui/react-popper/-/react-popper-1.2.1.tgz. Extracting by manifest.
+309 silly tarball no local data for @radix-ui/react-popover@https://registry.npmjs.org/@radix-ui/react-popover/-/react-popover-1.1.4.tgz. Extracting by manifest.
+310 silly tarball no local data for @radix-ui/react-navigation-menu@https://registry.npmjs.org/@radix-ui/react-navigation-menu/-/react-navigation-menu-1.2.3.tgz. Extracting by manifest.
+311 silly tarball no local data for @radix-ui/react-hover-card@https://registry.npmjs.org/@radix-ui/react-hover-card/-/react-hover-card-1.1.4.tgz. Extracting by manifest.
+312 silly tarball no local data for @radix-ui/react-menu@https://registry.npmjs.org/@radix-ui/react-menu/-/react-menu-2.1.4.tgz. Extracting by manifest.
+313 silly tarball no local data for @radix-ui/react-focus-scope@https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.1.tgz. Extracting by manifest.
+314 silly tarball no local data for @radix-ui/react-focus-guards@https://registry.npmjs.org/@radix-ui/react-focus-guards/-/react-focus-guards-1.1.1.tgz. Extracting by manifest.
+315 silly tarball no local data for @radix-ui/react-compose-refs@https://registry.npmjs.org/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.1.tgz. Extracting by manifest.
+316 silly tarball no local data for @radix-ui/react-tabs@https://registry.npmjs.org/@radix-ui/react-tabs/-/react-tabs-1.1.2.tgz. Extracting by manifest.
+317 silly tarball no local data for @radix-ui/react-collection@https://registry.npmjs.org/@radix-ui/react-collection/-/react-collection-1.1.1.tgz. Extracting by manifest.
+318 silly tarball no local data for @radix-ui/react-dropdown-menu@https://registry.npmjs.org/@radix-ui/react-dropdown-menu/-/react-dropdown-menu-2.1.4.tgz. Extracting by manifest.
+319 silly tarball no local data for @radix-ui/react-arrow@https://registry.npmjs.org/@radix-ui/react-arrow/-/react-arrow-1.1.1.tgz. Extracting by manifest.
+320 silly tarball no local data for @radix-ui/react-id@https://registry.npmjs.org/@radix-ui/react-id/-/react-id-1.1.0.tgz. Extracting by manifest.
+321 silly tarball no local data for @radix-ui/react-context@https://registry.npmjs.org/@radix-ui/react-context/-/react-context-1.1.1.tgz. Extracting by manifest.
+322 silly tarball no local data for @radix-ui/react-collapsible@https://registry.npmjs.org/@radix-ui/react-collapsible/-/react-collapsible-1.1.2.tgz. Extracting by manifest.
+323 silly tarball no local data for @radix-ui/react-alert-dialog@https://registry.npmjs.org/@radix-ui/react-alert-dialog/-/react-alert-dialog-1.1.4.tgz. Extracting by manifest.
+324 silly tarball no local data for @radix-ui/react-dialog@https://registry.npmjs.org/@radix-ui/react-dialog/-/react-dialog-1.1.4.tgz. Extracting by manifest.
+325 silly tarball no local data for @radix-ui/react-dismissable-layer@https://registry.npmjs.org/@radix-ui/react-dismissable-layer/-/react-dismissable-layer-1.1.3.tgz. Extracting by manifest.
+326 silly tarball no local data for @radix-ui/react-direction@https://registry.npmjs.org/@radix-ui/react-direction/-/react-direction-1.1.0.tgz. Extracting by manifest.
+327 silly tarball no local data for @radix-ui/react-avatar@https://registry.npmjs.org/@radix-ui/react-avatar/-/react-avatar-1.1.2.tgz. Extracting by manifest.
+328 silly tarball no local data for @radix-ui/primitive@https://registry.npmjs.org/@radix-ui/primitive/-/primitive-1.1.1.tgz. Extracting by manifest.
+329 silly tarball no local data for @radix-ui/react-checkbox@https://registry.npmjs.org/@radix-ui/react-checkbox/-/react-checkbox-1.1.3.tgz. Extracting by manifest.
+330 silly tarball no local data for @radix-ui/react-context-menu@https://registry.npmjs.org/@radix-ui/react-context-menu/-/react-context-menu-2.2.4.tgz. Extracting by manifest.
+331 silly tarball no local data for @next/env@https://registry.npmjs.org/@next/env/-/env-16.1.6.tgz. Extracting by manifest.
+332 silly tarball no local data for @jridgewell/sourcemap-codec@https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.5.tgz. Extracting by manifest.
+333 silly tarball no local data for @kurkle/color@https://registry.npmjs.org/@kurkle/color/-/color-0.3.4.tgz. Extracting by manifest.
+334 silly tarball no local data for @radix-ui/number@https://registry.npmjs.org/@radix-ui/number/-/number-1.1.0.tgz. Extracting by manifest.
+335 silly tarball no local data for @radix-ui/react-accordion@https://registry.npmjs.org/@radix-ui/react-accordion/-/react-accordion-1.2.2.tgz. Extracting by manifest.
+336 silly tarball no local data for @radix-ui/react-roving-focus@https://registry.npmjs.org/@radix-ui/react-roving-focus/-/react-roving-focus-1.1.1.tgz. Extracting by manifest.
+337 silly tarball no local data for @jridgewell/trace-mapping@https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.31.tgz. Extracting by manifest.
+338 silly tarball no local data for @radix-ui/react-aspect-ratio@https://registry.npmjs.org/@radix-ui/react-aspect-ratio/-/react-aspect-ratio-1.1.1.tgz. Extracting by manifest.
+339 silly tarball no local data for @floating-ui/core@https://registry.npmjs.org/@floating-ui/core/-/core-1.7.4.tgz. Extracting by manifest.
+340 silly tarball no local data for @img/sharp-darwin-arm64@https://registry.npmjs.org/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.34.5.tgz. Extracting by manifest.
+341 silly tarball no local data for @floating-ui/react-dom@https://registry.npmjs.org/@floating-ui/react-dom/-/react-dom-2.1.7.tgz. Extracting by manifest.
+342 silly tarball no local data for @jridgewell/remapping@https://registry.npmjs.org/@jridgewell/remapping/-/remapping-2.3.5.tgz. Extracting by manifest.
+343 silly tarball no local data for @emnapi/runtime@https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.8.1.tgz. Extracting by manifest.
+344 silly tarball no local data for @floating-ui/dom@https://registry.npmjs.org/@floating-ui/dom/-/dom-1.7.5.tgz. Extracting by manifest.
+345 silly tarball no local data for @floating-ui/utils@https://registry.npmjs.org/@floating-ui/utils/-/utils-0.2.10.tgz. Extracting by manifest.
+346 silly tarball no local data for @date-fns/tz@https://registry.npmjs.org/@date-fns/tz/-/tz-1.2.0.tgz. Extracting by manifest.
+347 silly tarball no local data for postcss@https://registry.npmjs.org/postcss/-/postcss-8.4.31.tgz. Extracting by manifest.
+348 silly tarball no local data for @dimforge/rapier3d-compat@https://registry.npmjs.org/@dimforge/rapier3d-compat/-/rapier3d-compat-0.12.0.tgz. Extracting by manifest.
+349 silly tarball no local data for react-is@https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz. Extracting by manifest.
+350 silly tarball no local data for semver@https://registry.npmjs.org/semver/-/semver-7.7.4.tgz. Extracting by manifest.
+351 silly tarball no local data for nanoid@https://registry.npmjs.org/nanoid/-/nanoid-3.3.11.tgz. Extracting by manifest.
+352 silly tarball no local data for baseline-browser-mapping@https://registry.npmjs.org/baseline-browser-mapping/-/baseline-browser-mapping-2.10.0.tgz. Extracting by manifest.
+353 silly tarball no local data for jiti@https://registry.npmjs.org/jiti/-/jiti-2.6.1.tgz. Extracting by manifest.
+354 warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build'
+355 silly tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build' [Error: ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build'] {
+355 silly tar   errno: -2,
+355 silly tar   code: 'ENOENT',
+355 silly tar   syscall: 'lstat',
+355 silly tar   path: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build',
+355 silly tar   entry: ReadEntry {
+355 silly tar     _events: [Object: null prototype] { end: [Array], drain: [Function] },
+355 silly tar     _eventsCount: 2,
+355 silly tar     _maxListeners: undefined,
+355 silly tar     writable: true,
+355 silly tar     readable: true,
+355 silly tar     extended: undefined,
+355 silly tar     globalExtended: undefined,
+355 silly tar     header: Header {
+355 silly tar       cksumValid: true,
+355 silly tar       needPax: false,
+355 silly tar       nullBlock: false,
+355 silly tar       block: undefined,
+355 silly tar       path: 'package/build/index.js',
+355 silly tar       mode: 420,
+355 silly tar       uid: undefined,
+355 silly tar       gid: undefined,
+355 silly tar       size: 3418,
+355 silly tar       cksum: 5146,
+355 silly tar       linkpath: '',
+355 silly tar       uname: '',
+355 silly tar       gname: '',
+355 silly tar       devmaj: 0,
+355 silly tar       devmin: 0,
+355 silly tar       atime: undefined,
+355 silly tar       ctime: undefined,
+355 silly tar       mtime: 1985-10-26T08:15:00.000Z,
+355 silly tar       charset: undefined,
+355 silly tar       comment: undefined
+355 silly tar     },
+355 silly tar     startBlockSize: 3584,
+355 silly tar     blockRemain: 1121,
+355 silly tar     remain: 955,
+355 silly tar     type: 'File',
+355 silly tar     meta: false,
+355 silly tar     ignore: false,
+355 silly tar     path: 'build/index.js',
+355 silly tar     mode: 438,
+355 silly tar     uid: undefined,
+355 silly tar     gid: undefined,
+355 silly tar     uname: '',
+355 silly tar     gname: '',
+355 silly tar     size: 3418,
+355 silly tar     mtime: 1985-10-26T08:15:00.000Z,
+355 silly tar     atime: undefined,
+355 silly tar     ctime: undefined,
+355 silly tar     linkpath: undefined,
+355 silly tar     dev: undefined,
+355 silly tar     ino: undefined,
+355 silly tar     nlink: undefined,
+355 silly tar     invalid: false,
+355 silly tar     absolute: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build/index.js',
+355 silly tar     unsupported: false,
+355 silly tar     Symbol(shapeMode): false,
+355 silly tar     Symbol(kCapture): false,
+355 silly tar     Symbol(flowing): false,
+355 silly tar     Symbol(paused): true,
+355 silly tar     Symbol(pipes): [],
+355 silly tar     Symbol(buffer): [
+355 silly tar       <Buffer 27 75 73 65 20 63 6c 69 65 6e 74 27 3b 0a 69 6d 70 6f 72 74 20 7b 20 66 6f 72 77 61 72 64 52 65 66 2c 20 75 73 65 53 74 61 74 65 2c 20 75 73 65 43 61 ... 2413 more bytes>
+355 silly tar     ],
+355 silly tar     Symbol(objectMode): false,
+355 silly tar     Symbol(encoding): null,
+355 silly tar     Symbol(async): false,
+355 silly tar     Symbol(decoder): null,
+355 silly tar     Symbol(EOF): false,
+355 silly tar     Symbol(emittedEnd): false,
+355 silly tar     Symbol(emittingEnd): false,
+355 silly tar     Symbol(closed): false,
+355 silly tar     Symbol(emittedError): null,
+355 silly tar     Symbol(bufferLength): 2463,
+355 silly tar     Symbol(destroyed): false,
+355 silly tar     Symbol(signal): undefined,
+355 silly tar     Symbol(aborted): false,
+355 silly tar     Symbol(dataListeners): 0,
+355 silly tar     Symbol(discarded): false
+355 silly tar   },
+355 silly tar   cwd: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar',
+355 silly tar   tarCode: 'TAR_ENTRY_ERROR'
+355 silly tar }
+356 http cache use-sync-external-store@https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.6.0.tgz 0ms (cache hit)
+357 http cache tiny-invariant@https://registry.npmjs.org/tiny-invariant/-/tiny-invariant-1.3.3.tgz 0ms (cache hit)
+358 http cache tailwind-merge@https://registry.npmjs.org/tailwind-merge/-/tailwind-merge-2.6.1.tgz 0ms (cache hit)
+359 http cache styled-jsx@https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.1.6.tgz 0ms (cache hit)
+360 http cache use-sidecar@https://registry.npmjs.org/use-sidecar/-/use-sidecar-1.1.3.tgz 0ms (cache hit)
+361 http cache recharts-scale@https://registry.npmjs.org/recharts-scale/-/recharts-scale-0.4.5.tgz 0ms (cache hit)
+362 http cache react-transition-group@https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.5.tgz 0ms (cache hit)
+363 http cache use-callback-ref@https://registry.npmjs.org/use-callback-ref/-/use-callback-ref-1.3.3.tgz 0ms (cache hit)
+364 http cache react-hot-toast@https://registry.npmjs.org/react-hot-toast/-/react-hot-toast-2.6.0.tgz 0ms (cache hit)
+365 http cache react-remove-scroll-bar@https://registry.npmjs.org/react-remove-scroll-bar/-/react-remove-scroll-bar-2.3.8.tgz 0ms (cache hit)
+366 http cache react-remove-scroll@https://registry.npmjs.org/react-remove-scroll/-/react-remove-scroll-2.7.2.tgz 0ms (cache hit)
+367 http cache react-style-singleton@https://registry.npmjs.org/react-style-singleton/-/react-style-singleton-2.2.3.tgz 0ms (cache hit)
+368 http cache motion-utils@https://registry.npmjs.org/motion-utils/-/motion-utils-11.18.1.tgz 0ms (cache hit)
+369 http cache node-releases@https://registry.npmjs.org/node-releases/-/node-releases-2.0.27.tgz 0ms (cache hit)
+370 http cache gsap@https://registry.npmjs.org/gsap/-/gsap-3.14.2.tgz 0ms (cache hit)
+371 http cache fast-equals@https://registry.npmjs.org/fast-equals/-/fast-equals-5.4.0.tgz 0ms (cache hit)
+372 http cache get-nonce@https://registry.npmjs.org/get-nonce/-/get-nonce-1.0.1.tgz 0ms (cache hit)
+373 http cache embla-carousel-react@https://registry.npmjs.org/embla-carousel-react/-/embla-carousel-react-8.5.1.tgz 0ms (cache hit)
+374 http cache embla-carousel-reactive-utils@https://registry.npmjs.org/embla-carousel-reactive-utils/-/embla-carousel-reactive-utils-8.5.1.tgz 0ms (cache hit)
+375 http cache d3-array@https://registry.npmjs.org/d3-array/-/d3-array-3.2.4.tgz 0ms (cache hit)
+376 http cache d3-interpolate@https://registry.npmjs.org/d3-interpolate/-/d3-interpolate-3.0.1.tgz 0ms (cache hit)
+377 http cache enhanced-resolve@https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-5.19.0.tgz 0ms (cache hit)
+378 http cache d3-shape@https://registry.npmjs.org/d3-shape/-/d3-shape-3.2.0.tgz 0ms (cache hit)
+379 http cache aria-hidden@https://registry.npmjs.org/aria-hidden/-/aria-hidden-1.2.6.tgz 0ms (cache hit)
+380 http cache embla-carousel@https://registry.npmjs.org/embla-carousel/-/embla-carousel-8.5.1.tgz 0ms (cache hit)
+381 http cache @jridgewell/resolve-uri@https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz 0ms (cache hit)
+382 http cache @vercel/analytics@https://registry.npmjs.org/@vercel/analytics/-/analytics-1.6.1.tgz 0ms (cache hit)
+383 http cache caniuse-lite@https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001770.tgz 0ms (cache hit)
+384 http cache @swc/helpers@https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.15.tgz 0ms (cache hit)
+385 http cache @jridgewell/gen-mapping@https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.13.tgz 0ms (cache hit)
+386 silly tarball no local data for use-sync-external-store@https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.6.0.tgz. Extracting by manifest.
+387 http cache @babel/runtime@https://registry.npmjs.org/@babel/runtime/-/runtime-7.28.6.tgz 0ms (cache hit)
+388 silly tarball no local data for tiny-invariant@https://registry.npmjs.org/tiny-invariant/-/tiny-invariant-1.3.3.tgz. Extracting by manifest.
+389 silly tarball no local data for tailwind-merge@https://registry.npmjs.org/tailwind-merge/-/tailwind-merge-2.6.1.tgz. Extracting by manifest.
+390 silly tarball no local data for styled-jsx@https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.1.6.tgz. Extracting by manifest.
+391 http cache typescript@https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz 0ms (cache hit)
+392 silly tarball no local data for use-sidecar@https://registry.npmjs.org/use-sidecar/-/use-sidecar-1.1.3.tgz. Extracting by manifest.
+393 silly tarball no local data for recharts-scale@https://registry.npmjs.org/recharts-scale/-/recharts-scale-0.4.5.tgz. Extracting by manifest.
+394 silly tarball no local data for react-transition-group@https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.5.tgz. Extracting by manifest.
+395 silly tarball no local data for use-callback-ref@https://registry.npmjs.org/use-callback-ref/-/use-callback-ref-1.3.3.tgz. Extracting by manifest.
+396 silly tarball no local data for react-hot-toast@https://registry.npmjs.org/react-hot-toast/-/react-hot-toast-2.6.0.tgz. Extracting by manifest.
+397 silly tarball no local data for react-remove-scroll-bar@https://registry.npmjs.org/react-remove-scroll-bar/-/react-remove-scroll-bar-2.3.8.tgz. Extracting by manifest.
+398 silly tarball no local data for react-remove-scroll@https://registry.npmjs.org/react-remove-scroll/-/react-remove-scroll-2.7.2.tgz. Extracting by manifest.
+399 silly tarball no local data for react-style-singleton@https://registry.npmjs.org/react-style-singleton/-/react-style-singleton-2.2.3.tgz. Extracting by manifest.
+400 silly tarball no local data for motion-utils@https://registry.npmjs.org/motion-utils/-/motion-utils-11.18.1.tgz. Extracting by manifest.
+401 silly tarball no local data for node-releases@https://registry.npmjs.org/node-releases/-/node-releases-2.0.27.tgz. Extracting by manifest.
+402 silly tarball no local data for gsap@https://registry.npmjs.org/gsap/-/gsap-3.14.2.tgz. Extracting by manifest.
+403 silly tarball no local data for fast-equals@https://registry.npmjs.org/fast-equals/-/fast-equals-5.4.0.tgz. Extracting by manifest.
+404 silly tarball no local data for get-nonce@https://registry.npmjs.org/get-nonce/-/get-nonce-1.0.1.tgz. Extracting by manifest.
+405 silly tarball no local data for embla-carousel-react@https://registry.npmjs.org/embla-carousel-react/-/embla-carousel-react-8.5.1.tgz. Extracting by manifest.
+406 silly tarball no local data for embla-carousel-reactive-utils@https://registry.npmjs.org/embla-carousel-reactive-utils/-/embla-carousel-reactive-utils-8.5.1.tgz. Extracting by manifest.
+407 silly tarball no local data for d3-array@https://registry.npmjs.org/d3-array/-/d3-array-3.2.4.tgz. Extracting by manifest.
+408 silly tarball no local data for d3-interpolate@https://registry.npmjs.org/d3-interpolate/-/d3-interpolate-3.0.1.tgz. Extracting by manifest.
+409 silly tarball no local data for enhanced-resolve@https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-5.19.0.tgz. Extracting by manifest.
+410 silly tarball no local data for d3-shape@https://registry.npmjs.org/d3-shape/-/d3-shape-3.2.0.tgz. Extracting by manifest.
+411 silly tarball no local data for aria-hidden@https://registry.npmjs.org/aria-hidden/-/aria-hidden-1.2.6.tgz. Extracting by manifest.
+412 silly tarball no local data for embla-carousel@https://registry.npmjs.org/embla-carousel/-/embla-carousel-8.5.1.tgz. Extracting by manifest.
+413 silly tarball no local data for @jridgewell/resolve-uri@https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz. Extracting by manifest.
+414 silly tarball no local data for @vercel/analytics@https://registry.npmjs.org/@vercel/analytics/-/analytics-1.6.1.tgz. Extracting by manifest.
+415 warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'
+416 silly tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build' [Error: ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'] {
+416 silly tar   errno: -2,
+416 silly tar   code: 'ENOENT',
+416 silly tar   syscall: 'lstat',
+416 silly tar   path: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build',
+416 silly tar   entry: ReadEntry {
+416 silly tar     _events: [Object: null prototype] { end: [Array], drain: [Function] },
+416 silly tar     _eventsCount: 2,
+416 silly tar     _maxListeners: undefined,
+416 silly tar     writable: true,
+416 silly tar     readable: true,
+416 silly tar     extended: undefined,
+416 silly tar     globalExtended: undefined,
+416 silly tar     header: Header {
+416 silly tar       cksumValid: true,
+416 silly tar       needPax: false,
+416 silly tar       nullBlock: false,
+416 silly tar       block: undefined,
+416 silly tar       path: 'package/build/chunks/index-CqFS6gMj.js',
+416 silly tar       mode: 420,
+416 silly tar       uid: undefined,
+416 silly tar       gid: undefined,
+416 silly tar       size: 21693,
+416 silly tar       cksum: 6568,
+416 silly tar       linkpath: '',
+416 silly tar       uname: '',
+416 silly tar       gname: '',
+416 silly tar       devmaj: 0,
+416 silly tar       devmin: 0,
+416 silly tar       atime: undefined,
+416 silly tar       ctime: undefined,
+416 silly tar       mtime: 1985-10-26T08:15:00.000Z,
+416 silly tar       charset: undefined,
+416 silly tar       comment: undefined
+416 silly tar     },
+416 silly tar     startBlockSize: 22016,
+416 silly tar     blockRemain: 20138,
+416 silly tar     remain: 19815,
+416 silly tar     type: 'File',
+416 silly tar     meta: false,
+416 silly tar     ignore: false,
+416 silly tar     path: 'build/chunks/index-CqFS6gMj.js',
+416 silly tar     mode: 438,
+416 silly tar     uid: undefined,
+416 silly tar     gid: undefined,
+416 silly tar     uname: '',
+416 silly tar     gname: '',
+416 silly tar     size: 21693,
+416 silly tar     mtime: 1985-10-26T08:15:00.000Z,
+416 silly tar     atime: undefined,
+416 silly tar     ctime: undefined,
+416 silly tar     linkpath: undefined,
+416 silly tar     dev: undefined,
+416 silly tar     ino: undefined,
+416 silly tar     nlink: undefined,
+416 silly tar     invalid: false,
+416 silly tar     absolute: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build/chunks/index-CqFS6gMj.js',
+416 silly tar     unsupported: false,
+416 silly tar     Symbol(shapeMode): false,
+416 silly tar     Symbol(kCapture): false,
+416 silly tar     Symbol(flowing): false,
+416 silly tar     Symbol(paused): true,
+416 silly tar     Symbol(pipes): [],
+416 silly tar     Symbol(buffer): [
+416 silly tar       <Buffer 27 75 73 65 20 63 6c 69 65 6e 74 27 3b 0a 69 6d 70 6f 72 74 20 7b 20 75 73 65 53 74 61 74 65 2c 20 75 73 65 45 66 66 65 63 74 2c 20 66 6f 72 77 61 72 ... 1828 more bytes>
+416 silly tar     ],
+416 silly tar     Symbol(objectMode): false,
+416 silly tar     Symbol(encoding): null,
+416 silly tar     Symbol(async): false,
+416 silly tar     Symbol(decoder): null,
+416 silly tar     Symbol(EOF): false,
+416 silly tar     Symbol(emittedEnd): false,
+416 silly tar     Symbol(emittingEnd): false,
+416 silly tar     Symbol(closed): false,
+416 silly tar     Symbol(emittedError): null,
+416 silly tar     Symbol(bufferLength): 1878,
+416 silly tar     Symbol(destroyed): false,
+416 silly tar     Symbol(signal): undefined,
+416 silly tar     Symbol(aborted): false,
+416 silly tar     Symbol(dataListeners): 0,
+416 silly tar     Symbol(discarded): false
+416 silly tar   },
+416 silly tar   cwd: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar',
+416 silly tar   tarCode: 'TAR_ENTRY_ERROR'
+416 silly tar }
+417 http cache autoprefixer@https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.4.24.tgz 0ms (cache hit)
+418 silly tarball no local data for caniuse-lite@https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001770.tgz. Extracting by manifest.
+419 silly tarball no local data for @jridgewell/gen-mapping@https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.13.tgz. Extracting by manifest.
+420 warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build'
+421 silly tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build' [Error: ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build'] {
+421 silly tar   errno: -2,
+421 silly tar   code: 'ENOENT',
+421 silly tar   syscall: 'lstat',
+421 silly tar   path: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build',
+421 silly tar   entry: ReadEntry {
+421 silly tar     _events: [Object: null prototype] {
+421 silly tar       end: [Function (anonymous)],
+421 silly tar       drain: [Function]
+421 silly tar     },
+421 silly tar     _eventsCount: 2,
+421 silly tar     _maxListeners: undefined,
+421 silly tar     writable: true,
+421 silly tar     readable: true,
+421 silly tar     extended: undefined,
+421 silly tar     globalExtended: undefined,
+421 silly tar     header: Header {
+421 silly tar       cksumValid: true,
+421 silly tar       needPax: false,
+421 silly tar       nullBlock: false,
+421 silly tar       block: undefined,
+421 silly tar       path: 'package/build/index.js.map',
+421 silly tar       mode: 420,
+421 silly tar       uid: undefined,
+421 silly tar       gid: undefined,
+421 silly tar       size: 8771,
+421 silly tar       cksum: 5501,
+421 silly tar       linkpath: '',
+421 silly tar       uname: '',
+421 silly tar       gname: '',
+421 silly tar       devmaj: 0,
+421 silly tar       devmin: 0,
+421 silly tar       atime: undefined,
+421 silly tar       ctime: undefined,
+421 silly tar       mtime: 1985-10-26T08:15:00.000Z,
+421 silly tar       charset: undefined,
+421 silly tar       comment: undefined
+421 silly tar     },
+421 silly tar     startBlockSize: 9216,
+421 silly tar     blockRemain: 8285,
+421 silly tar     remain: 7840,
+421 silly tar     type: 'File',
+421 silly tar     meta: false,
+421 silly tar     ignore: false,
+421 silly tar     path: 'build/index.js.map',
+421 silly tar     mode: 438,
+421 silly tar     uid: undefined,
+421 silly tar     gid: undefined,
+421 silly tar     uname: '',
+421 silly tar     gname: '',
+421 silly tar     size: 8771,
+421 silly tar     mtime: 1985-10-26T08:15:00.000Z,
+421 silly tar     atime: undefined,
+421 silly tar     ctime: undefined,
+421 silly tar     linkpath: undefined,
+421 silly tar     dev: undefined,
+421 silly tar     ino: undefined,
+421 silly tar     nlink: undefined,
+421 silly tar     invalid: false,
+421 silly tar     absolute: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build/index.js.map',
+421 silly tar     unsupported: false,
+421 silly tar     Symbol(shapeMode): false,
+421 silly tar     Symbol(kCapture): false,
+421 silly tar     Symbol(flowing): false,
+421 silly tar     Symbol(paused): true,
+421 silly tar     Symbol(pipes): [],
+421 silly tar     Symbol(buffer): [
+421 silly tar       <Buffer 7b 22 76 65 72 73 69 6f 6e 22 3a 33 2c 22 66 69 6c 65 22 3a 22 69 6e 64 65 78 2e 6a 73 22 2c 22 73 6f 75 72 63 65 73 22 3a 5b 22 2e 2e 2f 73 72 63 2f ... 881 more bytes>
+421 silly tar     ],
+421 silly tar     Symbol(objectMode): false,
+421 silly tar     Symbol(encoding): null,
+421 silly tar     Symbol(async): false,
+421 silly tar     Symbol(decoder): null,
+421 silly tar     Symbol(EOF): false,
+421 silly tar     Symbol(emittedEnd): false,
+421 silly tar     Symbol(emittingEnd): false,
+421 silly tar     Symbol(closed): false,
+421 silly tar     Symbol(emittedError): null,
+421 silly tar     Symbol(bufferLength): 931,
+421 silly tar     Symbol(destroyed): false,
+421 silly tar     Symbol(signal): undefined,
+421 silly tar     Symbol(aborted): false,
+421 silly tar     Symbol(dataListeners): 0,
+421 silly tar     Symbol(discarded): false
+421 silly tar   },
+421 silly tar   cwd: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar',
+421 silly tar   tarCode: 'TAR_ENTRY_ERROR'
+421 silly tar }
+422 silly tarball no local data for @babel/runtime@https://registry.npmjs.org/@babel/runtime/-/runtime-7.28.6.tgz. Extracting by manifest.
+423 silly tarball no local data for typescript@https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz. Extracting by manifest.
+424 silly tarball no local data for @swc/helpers@https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.15.tgz. Extracting by manifest.
+425 silly tarball no local data for autoprefixer@https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.4.24.tgz. Extracting by manifest.
+426 http cache recharts@https://registry.npmjs.org/recharts/-/recharts-2.15.4.tgz 0ms (cache hit)
+427 http cache react-hook-form@https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.71.2.tgz 0ms (cache hit)
+428 http cache react-day-picker@https://registry.npmjs.org/react-day-picker/-/react-day-picker-9.8.0.tgz 0ms (cache hit)
+429 http cache lenis@https://registry.npmjs.org/lenis/-/lenis-1.3.17.tgz 1ms (cache hit)
+430 http cache chart.js@https://registry.npmjs.org/chart.js/-/chart.js-4.5.1.tgz 0ms (cache hit)
+431 http cache date-fns-jalali@https://registry.npmjs.org/date-fns-jalali/-/date-fns-jalali-4.1.0-0.tgz 0ms (cache hit)
+432 http cache @emotion/memoize@https://registry.npmjs.org/@emotion/memoize/-/memoize-0.9.0.tgz 0ms (cache hit)
+433 http cache @img/sharp-libvips-darwin-arm64@https://registry.npmjs.org/@img/sharp-libvips-darwin-arm64/-/sharp-libvips-darwin-arm64-1.2.4.tgz 0ms (cache hit)
+434 http cache @emotion/is-prop-valid@https://registry.npmjs.org/@emotion/is-prop-valid/-/is-prop-valid-1.4.0.tgz 0ms (cache hit)
+435 http cache @emailjs/browser@https://registry.npmjs.org/@emailjs/browser/-/browser-4.4.1.tgz 0ms (cache hit)
+436 silly tarball no local data for recharts@https://registry.npmjs.org/recharts/-/recharts-2.15.4.tgz. Extracting by manifest.
+437 silly tarball no local data for react-hook-form@https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.71.2.tgz. Extracting by manifest.
+438 silly tarball no local data for react-day-picker@https://registry.npmjs.org/react-day-picker/-/react-day-picker-9.8.0.tgz. Extracting by manifest.
+439 silly tarball no local data for lenis@https://registry.npmjs.org/lenis/-/lenis-1.3.17.tgz. Extracting by manifest.
+440 silly tarball no local data for chart.js@https://registry.npmjs.org/chart.js/-/chart.js-4.5.1.tgz. Extracting by manifest.
+441 warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'
+442 silly tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build' [Error: ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'] {
+442 silly tar   errno: -2,
+442 silly tar   code: 'ENOENT',
+442 silly tar   syscall: 'lstat',
+442 silly tar   path: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build',
+442 silly tar   entry: ReadEntry {
+442 silly tar     _events: [Object: null prototype] { end: [Function (anonymous)] },
+442 silly tar     _eventsCount: 1,
+442 silly tar     _maxListeners: undefined,
+442 silly tar     writable: false,
+442 silly tar     readable: true,
+442 silly tar     extended: undefined,
+442 silly tar     globalExtended: undefined,
+442 silly tar     header: Header {
+442 silly tar       cksumValid: true,
+442 silly tar       needPax: false,
+442 silly tar       nullBlock: false,
+442 silly tar       block: undefined,
+442 silly tar       path: 'package/build/index.js',
+442 silly tar       mode: 420,
+442 silly tar       uid: undefined,
+442 silly tar       gid: undefined,
+442 silly tar       size: 179,
+442 silly tar       cksum: 5141,
+442 silly tar       linkpath: '',
+442 silly tar       uname: '',
+442 silly tar       gname: '',
+442 silly tar       devmaj: 0,
+442 silly tar       devmin: 0,
+442 silly tar       atime: undefined,
+442 silly tar       ctime: undefined,
+442 silly tar       mtime: 1985-10-26T08:15:00.000Z,
+442 silly tar       charset: undefined,
+442 silly tar       comment: undefined
+442 silly tar     },
+442 silly tar     startBlockSize: 512,
+442 silly tar     blockRemain: 0,
+442 silly tar     remain: 0,
+442 silly tar     type: 'File',
+442 silly tar     meta: false,
+442 silly tar     ignore: false,
+442 silly tar     path: 'build/index.js',
+442 silly tar     mode: 438,
+442 silly tar     uid: undefined,
+442 silly tar     gid: undefined,
+442 silly tar     uname: '',
+442 silly tar     gname: '',
+442 silly tar     size: 179,
+442 silly tar     mtime: 1985-10-26T08:15:00.000Z,
+442 silly tar     atime: undefined,
+442 silly tar     ctime: undefined,
+442 silly tar     linkpath: undefined,
+442 silly tar     dev: undefined,
+442 silly tar     ino: undefined,
+442 silly tar     nlink: undefined,
+442 silly tar     invalid: false,
+442 silly tar     absolute: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build/index.js',
+442 silly tar     unsupported: false,
+442 silly tar     Symbol(shapeMode): false,
+442 silly tar     Symbol(kCapture): false,
+442 silly tar     Symbol(flowing): false,
+442 silly tar     Symbol(paused): true,
+442 silly tar     Symbol(pipes): [],
+442 silly tar     Symbol(buffer): [
+442 silly tar       <Buffer 27 75 73 65 20 63 6c 69 65 6e 74 27 3b 0a 65 78 70 6f 72 74 20 7b 20 41 20 61 73 20 41 63 74 69 76 69 74 79 43 61 6c 65 6e 64 61 72 20 7d 20 66 72 6f ... 129 more bytes>
+442 silly tar     ],
+442 silly tar     Symbol(objectMode): false,
+442 silly tar     Symbol(encoding): null,
+442 silly tar     Symbol(async): false,
+442 silly tar     Symbol(decoder): null,
+442 silly tar     Symbol(EOF): true,
+442 silly tar     Symbol(emittedEnd): false,
+442 silly tar     Symbol(emittingEnd): false,
+442 silly tar     Symbol(closed): false,
+442 silly tar     Symbol(emittedError): null,
+442 silly tar     Symbol(bufferLength): 179,
+442 silly tar     Symbol(destroyed): false,
+442 silly tar     Symbol(signal): undefined,
+442 silly tar     Symbol(aborted): false,
+442 silly tar     Symbol(dataListeners): 0,
+442 silly tar     Symbol(discarded): false
+442 silly tar   },
+442 silly tar   cwd: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar',
+442 silly tar   tarCode: 'TAR_ENTRY_ERROR'
+442 silly tar }
+443 silly tarball no local data for date-fns-jalali@https://registry.npmjs.org/date-fns-jalali/-/date-fns-jalali-4.1.0-0.tgz. Extracting by manifest.
+444 silly tarball no local data for @emotion/memoize@https://registry.npmjs.org/@emotion/memoize/-/memoize-0.9.0.tgz. Extracting by manifest.
+445 http cache date-fns@https://registry.npmjs.org/date-fns/-/date-fns-4.1.0.tgz 0ms (cache hit)
+446 silly tarball no local data for @img/sharp-libvips-darwin-arm64@https://registry.npmjs.org/@img/sharp-libvips-darwin-arm64/-/sharp-libvips-darwin-arm64-1.2.4.tgz. Extracting by manifest.
+447 silly tarball no local data for @emotion/is-prop-valid@https://registry.npmjs.org/@emotion/is-prop-valid/-/is-prop-valid-1.4.0.tgz. Extracting by manifest.
+448 silly tarball no local data for @emailjs/browser@https://registry.npmjs.org/@emailjs/browser/-/browser-4.4.1.tgz. Extracting by manifest.
+449 silly tarball no local data for date-fns@https://registry.npmjs.org/date-fns/-/date-fns-4.1.0.tgz. Extracting by manifest.
+450 warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build'
+451 silly tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build' [Error: ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build'] {
+451 silly tar   errno: -2,
+451 silly tar   code: 'ENOENT',
+451 silly tar   syscall: 'lstat',
+451 silly tar   path: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build',
+451 silly tar   entry: ReadEntry {
+451 silly tar     _events: [Object: null prototype] { end: [Function (anonymous)] },
+451 silly tar     _eventsCount: 1,
+451 silly tar     _maxListeners: undefined,
+451 silly tar     writable: false,
+451 silly tar     readable: true,
+451 silly tar     extended: undefined,
+451 silly tar     globalExtended: undefined,
+451 silly tar     header: Header {
+451 silly tar       cksumValid: true,
+451 silly tar       needPax: false,
+451 silly tar       nullBlock: false,
+451 silly tar       block: undefined,
+451 silly tar       path: 'package/build/index.d.ts',
+451 silly tar       mode: 420,
+451 silly tar       uid: undefined,
+451 silly tar       gid: undefined,
+451 silly tar       size: 560,
+451 silly tar       cksum: 5293,
+451 silly tar       linkpath: '',
+451 silly tar       uname: '',
+451 silly tar       gname: '',
+451 silly tar       devmaj: 0,
+451 silly tar       devmin: 0,
+451 silly tar       atime: undefined,
+451 silly tar       ctime: undefined,
+451 silly tar       mtime: 1985-10-26T08:15:00.000Z,
+451 silly tar       charset: undefined,
+451 silly tar       comment: undefined
+451 silly tar     },
+451 silly tar     startBlockSize: 1024,
+451 silly tar     blockRemain: 0,
+451 silly tar     remain: 0,
+451 silly tar     type: 'File',
+451 silly tar     meta: false,
+451 silly tar     ignore: false,
+451 silly tar     path: 'build/index.d.ts',
+451 silly tar     mode: 438,
+451 silly tar     uid: undefined,
+451 silly tar     gid: undefined,
+451 silly tar     uname: '',
+451 silly tar     gname: '',
+451 silly tar     size: 560,
+451 silly tar     mtime: 1985-10-26T08:15:00.000Z,
+451 silly tar     atime: undefined,
+451 silly tar     ctime: undefined,
+451 silly tar     linkpath: undefined,
+451 silly tar     dev: undefined,
+451 silly tar     ino: undefined,
+451 silly tar     nlink: undefined,
+451 silly tar     invalid: false,
+451 silly tar     absolute: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar/build/index.d.ts',
+451 silly tar     unsupported: false,
+451 silly tar     Symbol(shapeMode): false,
+451 silly tar     Symbol(kCapture): false,
+451 silly tar     Symbol(flowing): false,
+451 silly tar     Symbol(paused): true,
+451 silly tar     Symbol(pipes): [],
+451 silly tar     Symbol(buffer): [
+451 silly tar       <Buffer 69 6d 70 6f 72 74 20 7b 20 50 72 6f 70 73 20 61 73 20 41 63 74 69 76 69 74 79 43 61 6c 65 6e 64 61 72 50 72 6f 70 73 20 7d 20 66 72 6f 6d 20 27 72 65 ... 510 more bytes>
+451 silly tar     ],
+451 silly tar     Symbol(objectMode): false,
+451 silly tar     Symbol(encoding): null,
+451 silly tar     Symbol(async): false,
+451 silly tar     Symbol(decoder): null,
+451 silly tar     Symbol(EOF): true,
+451 silly tar     Symbol(emittedEnd): false,
+451 silly tar     Symbol(emittingEnd): false,
+451 silly tar     Symbol(closed): false,
+451 silly tar     Symbol(emittedError): null,
+451 silly tar     Symbol(bufferLength): 560,
+451 silly tar     Symbol(destroyed): false,
+451 silly tar     Symbol(signal): undefined,
+451 silly tar     Symbol(aborted): false,
+451 silly tar     Symbol(dataListeners): 0,
+451 silly tar     Symbol(discarded): false
+451 silly tar   },
+451 silly tar   cwd: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-github-calendar',
+451 silly tar   tarCode: 'TAR_ENTRY_ERROR'
+451 silly tar }
+452 warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'
+453 silly tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build' [Error: ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'] {
+453 silly tar   errno: -2,
+453 silly tar   code: 'ENOENT',
+453 silly tar   syscall: 'lstat',
+453 silly tar   path: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build',
+453 silly tar   entry: ReadEntry {
+453 silly tar     _events: [Object: null prototype] { end: [Function (anonymous)] },
+453 silly tar     _eventsCount: 1,
+453 silly tar     _maxListeners: undefined,
+453 silly tar     writable: false,
+453 silly tar     readable: true,
+453 silly tar     extended: undefined,
+453 silly tar     globalExtended: undefined,
+453 silly tar     header: Header {
+453 silly tar       cksumValid: true,
+453 silly tar       needPax: false,
+453 silly tar       nullBlock: false,
+453 silly tar       block: undefined,
+453 silly tar       path: 'package/build/chunks/Tooltip-BAxPWbMb.js',
+453 silly tar       mode: 420,
+453 silly tar       uid: undefined,
+453 silly tar       gid: undefined,
+453 silly tar       size: 2157,
+453 silly tar       cksum: 6791,
+453 silly tar       linkpath: '',
+453 silly tar       uname: '',
+453 silly tar       gname: '',
+453 silly tar       devmaj: 0,
+453 silly tar       devmin: 0,
+453 silly tar       atime: undefined,
+453 silly tar       ctime: undefined,
+453 silly tar       mtime: 1985-10-26T08:15:00.000Z,
+453 silly tar       charset: undefined,
+453 silly tar       comment: undefined
+453 silly tar     },
+453 silly tar     startBlockSize: 2560,
+453 silly tar     blockRemain: 0,
+453 silly tar     remain: 0,
+453 silly tar     type: 'File',
+453 silly tar     meta: false,
+453 silly tar     ignore: false,
+453 silly tar     path: 'build/chunks/Tooltip-BAxPWbMb.js',
+453 silly tar     mode: 438,
+453 silly tar     uid: undefined,
+453 silly tar     gid: undefined,
+453 silly tar     uname: '',
+453 silly tar     gname: '',
+453 silly tar     size: 2157,
+453 silly tar     mtime: 1985-10-26T08:15:00.000Z,
+453 silly tar     atime: undefined,
+453 silly tar     ctime: undefined,
+453 silly tar     linkpath: undefined,
+453 silly tar     dev: undefined,
+453 silly tar     ino: undefined,
+453 silly tar     nlink: undefined,
+453 silly tar     invalid: false,
+453 silly tar     absolute: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build/chunks/Tooltip-BAxPWbMb.js',
+453 silly tar     unsupported: false,
+453 silly tar     Symbol(shapeMode): false,
+453 silly tar     Symbol(kCapture): false,
+453 silly tar     Symbol(flowing): false,
+453 silly tar     Symbol(paused): true,
+453 silly tar     Symbol(pipes): [],
+453 silly tar     Symbol(buffer): [
+453 silly tar       <Buffer 27 75 73 65 20 63 6c 69 65 6e 74 27 3b 0a 69 6d 70 6f 72 74 20 7b 20 75 73 65 53 74 61 74 65 2c 20 75 73 65 52 65 66 2c 20 63 6c 6f 6e 65 45 6c 65 6d ... 2107 more bytes>
+453 silly tar     ],
+453 silly tar     Symbol(objectMode): false,
+453 silly tar     Symbol(encoding): null,
+453 silly tar     Symbol(async): false,
+453 silly tar     Symbol(decoder): null,
+453 silly tar     Symbol(EOF): true,
+453 silly tar     Symbol(emittedEnd): false,
+453 silly tar     Symbol(emittingEnd): false,
+453 silly tar     Symbol(closed): false,
+453 silly tar     Symbol(emittedError): null,
+453 silly tar     Symbol(bufferLength): 2157,
+453 silly tar     Symbol(destroyed): false,
+453 silly tar     Symbol(signal): undefined,
+453 silly tar     Symbol(aborted): false,
+453 silly tar     Symbol(dataListeners): 0,
+453 silly tar     Symbol(discarded): false
+453 silly tar   },
+453 silly tar   cwd: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar',
+453 silly tar   tarCode: 'TAR_ENTRY_ERROR'
+453 silly tar }
+454 http cache react-type-animation@https://registry.npmjs.org/react-type-animation/-/react-type-animation-3.2.0.tgz 0ms (cache hit)
+455 http cache victory-vendor@https://registry.npmjs.org/victory-vendor/-/victory-vendor-36.9.2.tgz 0ms (cache hit)
+456 http cache goober@https://registry.npmjs.org/goober/-/goober-2.1.18.tgz 0ms (cache hit)
+457 http cache lucide-react@https://registry.npmjs.org/lucide-react/-/lucide-react-0.454.0.tgz 0ms (cache hit)
+458 silly tarball no local data for react-type-animation@https://registry.npmjs.org/react-type-animation/-/react-type-animation-3.2.0.tgz. Extracting by manifest.
+459 silly tarball no local data for victory-vendor@https://registry.npmjs.org/victory-vendor/-/victory-vendor-36.9.2.tgz. Extracting by manifest.
+460 silly tarball no local data for goober@https://registry.npmjs.org/goober/-/goober-2.1.18.tgz. Extracting by manifest.
+461 silly tarball no local data for lucide-react@https://registry.npmjs.org/lucide-react/-/lucide-react-0.454.0.tgz. Extracting by manifest.
+462 http cache @hookform/resolvers@https://registry.npmjs.org/@hookform/resolvers/-/resolvers-3.10.0.tgz 0ms (cache hit)
+463 silly tarball no local data for @hookform/resolvers@https://registry.npmjs.org/@hookform/resolvers/-/resolvers-3.10.0.tgz. Extracting by manifest.
+464 http cache zod@https://registry.npmjs.org/zod/-/zod-3.25.76.tgz 0ms (cache hit)
+465 http cache react-resizable-panels@https://registry.npmjs.org/react-resizable-panels/-/react-resizable-panels-2.1.9.tgz 0ms (cache hit)
+466 http cache motion-dom@https://registry.npmjs.org/motion-dom/-/motion-dom-11.18.1.tgz 0ms (cache hit)
+467 silly tarball no local data for zod@https://registry.npmjs.org/zod/-/zod-3.25.76.tgz. Extracting by manifest.
+468 silly tarball no local data for react-resizable-panels@https://registry.npmjs.org/react-resizable-panels/-/react-resizable-panels-2.1.9.tgz. Extracting by manifest.
+469 silly tarball no local data for motion-dom@https://registry.npmjs.org/motion-dom/-/motion-dom-11.18.1.tgz. Extracting by manifest.
+470 warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'
+471 silly tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build' [Error: ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'] {
+471 silly tar   errno: -2,
+471 silly tar   code: 'ENOENT',
+471 silly tar   syscall: 'lstat',
+471 silly tar   path: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build',
+471 silly tar   entry: ReadEntry {
+471 silly tar     _events: [Object: null prototype] {
+471 silly tar       end: [Function (anonymous)],
+471 silly tar       drain: [Function]
+471 silly tar     },
+471 silly tar     _eventsCount: 2,
+471 silly tar     _maxListeners: undefined,
+471 silly tar     writable: true,
+471 silly tar     readable: true,
+471 silly tar     extended: undefined,
+471 silly tar     globalExtended: undefined,
+471 silly tar     header: Header {
+471 silly tar       cksumValid: true,
+471 silly tar       needPax: false,
+471 silly tar       nullBlock: false,
+471 silly tar       block: undefined,
+471 silly tar       path: 'package/build/chunks/index-CqFS6gMj.js.map',
+471 silly tar       mode: 420,
+471 silly tar       uid: undefined,
+471 silly tar       gid: undefined,
+471 silly tar       size: 57959,
+471 silly tar       cksum: 6931,
+471 silly tar       linkpath: '',
+471 silly tar       uname: '',
+471 silly tar       gname: '',
+471 silly tar       devmaj: 0,
+471 silly tar       devmin: 0,
+471 silly tar       atime: undefined,
+471 silly tar       ctime: undefined,
+471 silly tar       mtime: 1985-10-26T08:15:00.000Z,
+471 silly tar       charset: undefined,
+471 silly tar       comment: undefined
+471 silly tar     },
+471 silly tar     startBlockSize: 58368,
+471 silly tar     blockRemain: 57076,
+471 silly tar     remain: 56667,
+471 silly tar     type: 'File',
+471 silly tar     meta: false,
+471 silly tar     ignore: false,
+471 silly tar     path: 'build/chunks/index-CqFS6gMj.js.map',
+471 silly tar     mode: 438,
+471 silly tar     uid: undefined,
+471 silly tar     gid: undefined,
+471 silly tar     uname: '',
+471 silly tar     gname: '',
+471 silly tar     size: 57959,
+471 silly tar     mtime: 1985-10-26T08:15:00.000Z,
+471 silly tar     atime: undefined,
+471 silly tar     ctime: undefined,
+471 silly tar     linkpath: undefined,
+471 silly tar     dev: undefined,
+471 silly tar     ino: undefined,
+471 silly tar     nlink: undefined,
+471 silly tar     invalid: false,
+471 silly tar     absolute: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build/chunks/index-CqFS6gMj.js.map',
+471 silly tar     unsupported: false,
+471 silly tar     Symbol(shapeMode): false,
+471 silly tar     Symbol(kCapture): false,
+471 silly tar     Symbol(flowing): false,
+471 silly tar     Symbol(paused): true,
+471 silly tar     Symbol(pipes): [],
+471 silly tar     Symbol(buffer): [
+471 silly tar       <Buffer 7b 22 76 65 72 73 69 6f 6e 22 3a 33 2c 22 66 69 6c 65 22 3a 22 69 6e 64 65 78 2d 43 71 46 53 36 67 4d 6a 2e 6a 73 22 2c 22 73 6f 75 72 63 65 73 22 3a ... 1242 more bytes>
+471 silly tar     ],
+471 silly tar     Symbol(objectMode): false,
+471 silly tar     Symbol(encoding): null,
+471 silly tar     Symbol(async): false,
+471 silly tar     Symbol(decoder): null,
+471 silly tar     Symbol(EOF): false,
+471 silly tar     Symbol(emittedEnd): false,
+471 silly tar     Symbol(emittingEnd): false,
+471 silly tar     Symbol(closed): false,
+471 silly tar     Symbol(emittedError): null,
+471 silly tar     Symbol(bufferLength): 1292,
+471 silly tar     Symbol(destroyed): false,
+471 silly tar     Symbol(signal): undefined,
+471 silly tar     Symbol(aborted): false,
+471 silly tar     Symbol(dataListeners): 0,
+471 silly tar     Symbol(discarded): false
+471 silly tar   },
+471 silly tar   cwd: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar',
+471 silly tar   tarCode: 'TAR_ENTRY_ERROR'
+471 silly tar }
+472 http fetch GET 200 https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz 2200ms (cache miss)
+473 http fetch GET 200 https://registry.npmjs.org/tailwindcss-animate/-/tailwindcss-animate-1.0.7.tgz 2276ms (cache miss)
+474 http fetch GET 200 https://registry.npmjs.org/@types/stats.js/-/stats.js-0.17.4.tgz 2125ms (cache miss)
+475 http fetch GET 200 https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz 2204ms (cache miss)
+476 http fetch GET 200 https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz 2211ms (cache miss)
+477 http cache framer-motion@https://registry.npmjs.org/framer-motion/-/framer-motion-11.18.2.tgz 0ms (cache hit)
+478 silly tarball no local data for framer-motion@https://registry.npmjs.org/framer-motion/-/framer-motion-11.18.2.tgz. Extracting by manifest.
+479 http fetch GET 200 https://registry.npmjs.org/@types/d3-color/-/d3-color-3.1.3.tgz 2134ms (cache miss)
+480 http fetch GET 200 https://registry.npmjs.org/client-only/-/client-only-0.0.1.tgz 2165ms (cache miss)
+481 http fetch GET 200 https://registry.npmjs.org/@alloc/quick-lru/-/quick-lru-5.2.0.tgz 1957ms (cache miss)
+482 http fetch GET 200 https://registry.npmjs.org/react-github-calendar/-/react-github-calendar-5.0.5.tgz 2713ms (cache miss)
+483 http fetch GET 200 https://registry.npmjs.org/@tailwindcss/oxide/-/oxide-4.2.0.tgz 2130ms (cache miss)
+484 http fetch GET 200 https://registry.npmjs.org/@types/d3-time/-/d3-time-3.0.4.tgz 2131ms (cache miss)
+485 http fetch GET 200 https://registry.npmjs.org/@types/d3-ease/-/d3-ease-3.0.2.tgz 2145ms (cache miss)
+486 http fetch GET 200 https://registry.npmjs.org/@types/d3-interpolate/-/d3-interpolate-3.0.4.tgz 2146ms (cache miss)
+487 http fetch GET 200 https://registry.npmjs.org/update-browserslist-db/-/update-browserslist-db-1.2.3.tgz 1956ms (cache miss)
+488 http fetch GET 200 https://registry.npmjs.org/@types/d3-path/-/d3-path-3.1.1.tgz 2155ms (cache miss)
+489 http fetch GET 200 https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz 2223ms (cache miss)
+490 warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'
+491 silly tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build' [Error: ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'] {
+491 silly tar   errno: -2,
+491 silly tar   code: 'ENOENT',
+491 silly tar   syscall: 'lstat',
+491 silly tar   path: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build',
+491 silly tar   entry: ReadEntry {
+491 silly tar     _events: [Object: null prototype] { end: [Function (anonymous)] },
+491 silly tar     _eventsCount: 1,
+491 silly tar     _maxListeners: undefined,
+491 silly tar     writable: false,
+491 silly tar     readable: true,
+491 silly tar     extended: undefined,
+491 silly tar     globalExtended: undefined,
+491 silly tar     header: Header {
+491 silly tar       cksumValid: true,
+491 silly tar       needPax: false,
+491 silly tar       nullBlock: false,
+491 silly tar       block: undefined,
+491 silly tar       path: 'package/build/index.js.map',
+491 silly tar       mode: 420,
+491 silly tar       uid: undefined,
+491 silly tar       gid: undefined,
+491 silly tar       size: 93,
+491 silly tar       cksum: 5503,
+491 silly tar       linkpath: '',
+491 silly tar       uname: '',
+491 silly tar       gname: '',
+491 silly tar       devmaj: 0,
+491 silly tar       devmin: 0,
+491 silly tar       atime: undefined,
+491 silly tar       ctime: undefined,
+491 silly tar       mtime: 1985-10-26T08:15:00.000Z,
+491 silly tar       charset: undefined,
+491 silly tar       comment: undefined
+491 silly tar     },
+491 silly tar     startBlockSize: 512,
+491 silly tar     blockRemain: 0,
+491 silly tar     remain: 0,
+491 silly tar     type: 'File',
+491 silly tar     meta: false,
+491 silly tar     ignore: false,
+491 silly tar     path: 'build/index.js.map',
+491 silly tar     mode: 438,
+491 silly tar     uid: undefined,
+491 silly tar     gid: undefined,
+491 silly tar     uname: '',
+491 silly tar     gname: '',
+491 silly tar     size: 93,
+491 silly tar     mtime: 1985-10-26T08:15:00.000Z,
+491 silly tar     atime: undefined,
+491 silly tar     ctime: undefined,
+491 silly tar     linkpath: undefined,
+491 silly tar     dev: undefined,
+491 silly tar     ino: undefined,
+491 silly tar     nlink: undefined,
+491 silly tar     invalid: false,
+491 silly tar     absolute: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build/index.js.map',
+491 silly tar     unsupported: false,
+491 silly tar     Symbol(shapeMode): false,
+491 silly tar     Symbol(kCapture): false,
+491 silly tar     Symbol(flowing): false,
+491 silly tar     Symbol(paused): true,
+491 silly tar     Symbol(pipes): [],
+491 silly tar     Symbol(buffer): [
+491 silly tar       <Buffer 7b 22 76 65 72 73 69 6f 6e 22 3a 33 2c 22 66 69 6c 65 22 3a 22 69 6e 64 65 78 2e 6a 73 22 2c 22 73 6f 75 72 63 65 73 22 3a 5b 5d 2c 22 73 6f 75 72 63 ... 43 more bytes>
+491 silly tar     ],
+491 silly tar     Symbol(objectMode): false,
+491 silly tar     Symbol(encoding): null,
+491 silly tar     Symbol(async): false,
+491 silly tar     Symbol(decoder): null,
+491 silly tar     Symbol(EOF): true,
+491 silly tar     Symbol(emittedEnd): false,
+491 silly tar     Symbol(emittingEnd): false,
+491 silly tar     Symbol(closed): false,
+491 silly tar     Symbol(emittedError): null,
+491 silly tar     Symbol(bufferLength): 93,
+491 silly tar     Symbol(destroyed): false,
+491 silly tar     Symbol(signal): undefined,
+491 silly tar     Symbol(aborted): false,
+491 silly tar     Symbol(dataListeners): 0,
+491 silly tar     Symbol(discarded): false
+491 silly tar   },
+491 silly tar   cwd: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar',
+491 silly tar   tarCode: 'TAR_ENTRY_ERROR'
+491 silly tar }
+492 http fetch GET 200 https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz 1815ms (cache miss)
+493 http fetch GET 200 https://registry.npmjs.org/@types/d3-array/-/d3-array-3.2.2.tgz 2158ms (cache miss)
+494 http fetch GET 200 https://registry.npmjs.org/@img/colour/-/colour-1.0.0.tgz 1991ms (cache miss)
+495 warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'
+496 silly tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build' [Error: ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'] {
+496 silly tar   errno: -2,
+496 silly tar   code: 'ENOENT',
+496 silly tar   syscall: 'lstat',
+496 silly tar   path: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build',
+496 silly tar   entry: ReadEntry {
+496 silly tar     _events: [Object: null prototype] {
+496 silly tar       end: [Function (anonymous)],
+496 silly tar       drain: [Function]
+496 silly tar     },
+496 silly tar     _eventsCount: 2,
+496 silly tar     _maxListeners: undefined,
+496 silly tar     writable: true,
+496 silly tar     readable: true,
+496 silly tar     extended: undefined,
+496 silly tar     globalExtended: undefined,
+496 silly tar     header: Header {
+496 silly tar       cksumValid: true,
+496 silly tar       needPax: false,
+496 silly tar       nullBlock: false,
+496 silly tar       block: undefined,
+496 silly tar       path: 'package/build/chunks/Tooltip-BAxPWbMb.js.map',
+496 silly tar       mode: 420,
+496 silly tar       uid: undefined,
+496 silly tar       gid: undefined,
+496 silly tar       size: 5195,
+496 silly tar       cksum: 7148,
+496 silly tar       linkpath: '',
+496 silly tar       uname: '',
+496 silly tar       gname: '',
+496 silly tar       devmaj: 0,
+496 silly tar       devmin: 0,
+496 silly tar       atime: undefined,
+496 silly tar       ctime: undefined,
+496 silly tar       mtime: 1985-10-26T08:15:00.000Z,
+496 silly tar       charset: undefined,
+496 silly tar       comment: undefined
+496 silly tar     },
+496 silly tar     startBlockSize: 5632,
+496 silly tar     blockRemain: 1778,
+496 silly tar     remain: 1341,
+496 silly tar     type: 'File',
+496 silly tar     meta: false,
+496 silly tar     ignore: false,
+496 silly tar     path: 'build/chunks/Tooltip-BAxPWbMb.js.map',
+496 silly tar     mode: 438,
+496 silly tar     uid: undefined,
+496 silly tar     gid: undefined,
+496 silly tar     uname: '',
+496 silly tar     gname: '',
+496 silly tar     size: 5195,
+496 silly tar     mtime: 1985-10-26T08:15:00.000Z,
+496 silly tar     atime: undefined,
+496 silly tar     ctime: undefined,
+496 silly tar     linkpath: undefined,
+496 silly tar     dev: undefined,
+496 silly tar     ino: undefined,
+496 silly tar     nlink: undefined,
+496 silly tar     invalid: false,
+496 silly tar     absolute: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build/chunks/Tooltip-BAxPWbMb.js.map',
+496 silly tar     unsupported: false,
+496 silly tar     Symbol(shapeMode): false,
+496 silly tar     Symbol(kCapture): false,
+496 silly tar     Symbol(flowing): false,
+496 silly tar     Symbol(paused): true,
+496 silly tar     Symbol(pipes): [],
+496 silly tar     Symbol(buffer): [
+496 silly tar       <Buffer 7b 22 76 65 72 73 69 6f 6e 22 3a 33 2c 22 66 69 6c 65 22 3a 22 54 6f 6f 6c 74 69 70 2d 42 41 78 50 57 62 4d 62 2e 6a 73 22 2c 22 73 6f 75 72 63 65 73 ... 3804 more bytes>
+496 silly tar     ],
+496 silly tar     Symbol(objectMode): false,
+496 silly tar     Symbol(encoding): null,
+496 silly tar     Symbol(async): false,
+496 silly tar     Symbol(decoder): null,
+496 silly tar     Symbol(EOF): false,
+496 silly tar     Symbol(emittedEnd): false,
+496 silly tar     Symbol(emittingEnd): false,
+496 silly tar     Symbol(closed): false,
+496 silly tar     Symbol(emittedError): null,
+496 silly tar     Symbol(bufferLength): 3854,
+496 silly tar     Symbol(destroyed): false,
+496 silly tar     Symbol(signal): undefined,
+496 silly tar     Symbol(aborted): false,
+496 silly tar     Symbol(dataListeners): 0,
+496 silly tar     Symbol(discarded): false
+496 silly tar   },
+496 silly tar   cwd: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar',
+496 silly tar   tarCode: 'TAR_ENTRY_ERROR'
+496 silly tar }
+497 http fetch GET 200 https://registry.npmjs.org/@types/d3-shape/-/d3-shape-3.1.8.tgz 2183ms (cache miss)
+498 http fetch GET 200 https://registry.npmjs.org/browserslist/-/browserslist-4.28.1.tgz 1818ms (cache miss)
+499 http fetch GET 200 https://registry.npmjs.org/meshoptimizer/-/meshoptimizer-0.22.0.tgz 2274ms (cache miss)
+500 http fetch GET 200 https://registry.npmjs.org/undici-types/-/undici-types-6.21.0.tgz 2360ms (cache miss)
+501 warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'
+502 silly tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build' [Error: ENOENT: no such file or directory, lstat '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build'] {
+502 silly tar   errno: -2,
+502 silly tar   code: 'ENOENT',
+502 silly tar   syscall: 'lstat',
+502 silly tar   path: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build',
+502 silly tar   entry: ReadEntry {
+502 silly tar     _events: [Object: null prototype] {
+502 silly tar       end: [Function (anonymous)],
+502 silly tar       drain: [Function]
+502 silly tar     },
+502 silly tar     _eventsCount: 2,
+502 silly tar     _maxListeners: undefined,
+502 silly tar     writable: true,
+502 silly tar     readable: true,
+502 silly tar     extended: undefined,
+502 silly tar     globalExtended: undefined,
+502 silly tar     header: Header {
+502 silly tar       cksumValid: true,
+502 silly tar       needPax: false,
+502 silly tar       nullBlock: false,
+502 silly tar       block: undefined,
+502 silly tar       path: 'package/build/index.d.ts',
+502 silly tar       mode: 420,
+502 silly tar       uid: undefined,
+502 silly tar       gid: undefined,
+502 silly tar       size: 5275,
+502 silly tar       cksum: 5297,
+502 silly tar       linkpath: '',
+502 silly tar       uname: '',
+502 silly tar       gname: '',
+502 silly tar       devmaj: 0,
+502 silly tar       devmin: 0,
+502 silly tar       atime: undefined,
+502 silly tar       ctime: undefined,
+502 silly tar       mtime: 1985-10-26T08:15:00.000Z,
+502 silly tar       charset: undefined,
+502 silly tar       comment: undefined
+502 silly tar     },
+502 silly tar     startBlockSize: 5632,
+502 silly tar     blockRemain: 4222,
+502 silly tar     remain: 3865,
+502 silly tar     type: 'File',
+502 silly tar     meta: false,
+502 silly tar     ignore: false,
+502 silly tar     path: 'build/index.d.ts',
+502 silly tar     mode: 438,
+502 silly tar     uid: undefined,
+502 silly tar     gid: undefined,
+502 silly tar     uname: '',
+502 silly tar     gname: '',
+502 silly tar     size: 5275,
+502 silly tar     mtime: 1985-10-26T08:15:00.000Z,
+502 silly tar     atime: undefined,
+502 silly tar     ctime: undefined,
+502 silly tar     linkpath: undefined,
+502 silly tar     dev: undefined,
+502 silly tar     ino: undefined,
+502 silly tar     nlink: undefined,
+502 silly tar     invalid: false,
+502 silly tar     absolute: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar/build/index.d.ts',
+502 silly tar     unsupported: false,
+502 silly tar     Symbol(shapeMode): false,
+502 silly tar     Symbol(kCapture): false,
+502 silly tar     Symbol(flowing): false,
+502 silly tar     Symbol(paused): true,
+502 silly tar     Symbol(pipes): [],
+502 silly tar     Symbol(buffer): [
+502 silly tar       <Buffer 69 6d 70 6f 72 74 20 7b 20 4f 66 66 73 65 74 4f 70 74 69 6f 6e 73 2c 20 50 6c 61 63 65 6d 65 6e 74 2c 20 55 73 65 48 6f 76 65 72 50 72 6f 70 73 2c 20 ... 1360 more bytes>
+502 silly tar     ],
+502 silly tar     Symbol(objectMode): false,
+502 silly tar     Symbol(encoding): null,
+502 silly tar     Symbol(async): false,
+502 silly tar     Symbol(decoder): null,
+502 silly tar     Symbol(EOF): false,
+502 silly tar     Symbol(emittedEnd): false,
+502 silly tar     Symbol(emittingEnd): false,
+502 silly tar     Symbol(closed): false,
+502 silly tar     Symbol(emittedError): null,
+502 silly tar     Symbol(bufferLength): 1410,
+502 silly tar     Symbol(destroyed): false,
+502 silly tar     Symbol(signal): undefined,
+502 silly tar     Symbol(aborted): false,
+502 silly tar     Symbol(dataListeners): 0,
+502 silly tar     Symbol(discarded): false
+502 silly tar   },
+502 silly tar   cwd: '/Users/anamay/Desktop/projects/portfolio/node_modules/react-activity-calendar',
+502 silly tar   tarCode: 'TAR_ENTRY_ERROR'
+502 silly tar }
+503 http fetch GET 200 https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz 1384ms (cache miss)
+504 http fetch GET 200 https://registry.npmjs.org/vaul/-/vaul-0.9.9.tgz 1392ms (cache miss)
+505 http fetch GET 200 https://registry.npmjs.org/scheduler/-/scheduler-0.27.0.tgz 1390ms (cache miss)
+506 http fetch GET 200 https://registry.npmjs.org/sonner/-/sonner-1.7.4.tgz 1444ms (cache miss)
+507 http fetch GET 200 https://registry.npmjs.org/tabbable/-/tabbable-6.4.0.tgz 2878ms (cache miss)
+508 http fetch GET 200 https://registry.npmjs.org/@floating-ui/react/-/react-0.27.18.tgz 2883ms (cache miss)
+509 http fetch GET 200 https://registry.npmjs.org/react-smooth/-/react-smooth-4.0.4.tgz 1486ms (cache miss)
+510 http fetch GET 200 https://registry.npmjs.org/react-activity-calendar/-/react-activity-calendar-3.1.1.tgz 2899ms (cache miss)
+511 http fetch GET 200 https://registry.npmjs.org/tailwindcss/-/tailwindcss-4.2.0.tgz 1503ms (cache miss)
+512 http fetch GET 200 https://registry.npmjs.org/@tailwindcss/oxide-darwin-arm64/-/oxide-darwin-arm64-4.2.0.tgz 2343ms (cache miss)
+513 http fetch GET 200 https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-5.3.1.tgz 1609ms (cache miss)
+514 http fetch GET 200 https://registry.npmjs.org/react-is/-/react-is-18.3.1.tgz 1647ms (cache miss)
+515 http fetch GET 200 https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz 1800ms (cache miss)
+516 http fetch GET 200 https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz 1813ms (cache miss)
+517 http fetch GET 200 https://registry.npmjs.org/@types/webxr/-/webxr-0.5.24.tgz 2989ms (cache miss)
+518 http fetch GET 200 https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz 2176ms (cache miss)
+519 http fetch GET 200 https://registry.npmjs.org/sharp/-/sharp-0.34.5.tgz 2328ms (cache miss)
+520 http fetch GET 200 https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz 3347ms (cache miss)
+521 http fetch GET 200 https://registry.npmjs.org/tw-animate-css/-/tw-animate-css-1.3.3.tgz 2584ms (cache miss)
+522 http fetch GET 200 https://registry.npmjs.org/react/-/react-19.2.0.tgz 2707ms (cache miss)
+523 http fetch GET 200 https://registry.npmjs.org/postcss/-/postcss-8.5.6.tgz 2721ms (cache miss)
+524 http fetch GET 200 https://registry.npmjs.org/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.31.1.tgz 4111ms (cache miss)
+525 http fetch GET 200 https://registry.npmjs.org/input-otp/-/input-otp-1.4.1.tgz 3166ms (cache miss)
+526 http fetch GET 200 https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.5.302.tgz 4089ms (cache miss)
+527 http fetch GET 200 https://registry.npmjs.org/detect-node-es/-/detect-node-es-1.1.0.tgz 3167ms (cache miss)
+528 http fetch GET 200 https://registry.npmjs.org/internmap/-/internmap-2.0.3.tgz 3192ms (cache miss)
+529 http fetch GET 200 https://registry.npmjs.org/fflate/-/fflate-0.8.2.tgz 3173ms (cache miss)
+530 http fetch GET 200 https://registry.npmjs.org/magic-string/-/magic-string-0.30.21.tgz 3194ms (cache miss)
+531 http fetch GET 200 https://registry.npmjs.org/d3-time-format/-/d3-time-format-4.1.0.tgz 3179ms (cache miss)
+532 http fetch GET 200 https://registry.npmjs.org/detect-libc/-/detect-libc-2.1.2.tgz 3185ms (cache miss)
+533 http fetch GET 200 https://registry.npmjs.org/d3-path/-/d3-path-3.1.0.tgz 3203ms (cache miss)
+534 http fetch GET 200 https://registry.npmjs.org/tapable/-/tapable-2.3.0.tgz 3284ms (cache miss)
+535 http fetch GET 200 https://registry.npmjs.org/eventemitter3/-/eventemitter3-4.0.7.tgz 3251ms (cache miss)
+536 http fetch GET 200 https://registry.npmjs.org/lightningcss/-/lightningcss-1.31.1.tgz 3278ms (cache miss)
+537 http fetch GET 200 https://registry.npmjs.org/d3-time/-/d3-time-3.1.0.tgz 3254ms (cache miss)
+538 http fetch GET 200 https://registry.npmjs.org/clsx/-/clsx-2.1.1.tgz 3255ms (cache miss)
+539 http fetch GET 200 https://registry.npmjs.org/@types/d3-scale/-/d3-scale-4.0.9.tgz 4141ms (cache miss)
+540 http fetch GET 200 https://registry.npmjs.org/d3-format/-/d3-format-3.1.2.tgz 3277ms (cache miss)
+541 http fetch GET 200 https://registry.npmjs.org/class-variance-authority/-/class-variance-authority-0.7.1.tgz 3307ms (cache miss)
+542 http fetch GET 200 https://registry.npmjs.org/escalade/-/escalade-3.2.0.tgz 3320ms (cache miss)
+543 http fetch GET 200 https://registry.npmjs.org/d3-ease/-/d3-ease-3.0.1.tgz 3383ms (cache miss)
+544 http fetch GET 200 https://registry.npmjs.org/d3-timer/-/d3-timer-3.0.1.tgz 3404ms (cache miss)
+545 http fetch GET 200 https://registry.npmjs.org/dom-helpers/-/dom-helpers-5.2.1.tgz 3415ms (cache miss)
+546 http fetch GET 200 https://registry.npmjs.org/fraction.js/-/fraction.js-5.3.4.tgz 3458ms (cache miss)
+547 http fetch GET 200 https://registry.npmjs.org/next-themes/-/next-themes-0.4.6.tgz 3686ms (cache miss)
+548 http fetch GET 200 https://registry.npmjs.org/@tailwindcss/postcss/-/postcss-4.2.0.tgz 3653ms (cache miss)
+549 http fetch GET 200 https://registry.npmjs.org/d3-scale/-/d3-scale-4.0.2.tgz 3742ms (cache miss)
+550 http fetch GET 200 https://registry.npmjs.org/@types/react/-/react-19.2.14.tgz 3762ms (cache miss)
+551 http fetch GET 200 https://registry.npmjs.org/@types/react-dom/-/react-dom-19.2.3.tgz 3797ms (cache miss)
+552 http fetch GET 200 https://registry.npmjs.org/decimal.js-light/-/decimal.js-light-2.5.1.tgz 3853ms (cache miss)
+553 http fetch GET 200 https://registry.npmjs.org/cmdk/-/cmdk-1.0.4.tgz 3842ms (cache miss)
+554 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-use-size/-/react-use-size-1.1.0.tgz 3861ms (cache miss)
+555 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.1.0.tgz 3940ms (cache miss)
+556 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-visually-hidden/-/react-visually-hidden-1.1.1.tgz 3962ms (cache miss)
+557 http fetch GET 200 https://registry.npmjs.org/@types/d3-timer/-/d3-timer-3.0.2.tgz 4876ms (cache miss)
+558 http fetch GET 200 https://registry.npmjs.org/@tweenjs/tween.js/-/tween.js-23.1.3.tgz 4028ms (cache miss)
+559 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-use-previous/-/react-use-previous-1.1.0.tgz 4061ms (cache miss)
+560 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-toggle/-/react-toggle-1.1.1.tgz 4091ms (cache miss)
+561 http fetch GET 200 https://registry.npmjs.org/react-dom/-/react-dom-19.2.0.tgz 4158ms (cache miss)
+562 http fetch GET 200 https://registry.npmjs.org/d3-color/-/d3-color-3.1.0.tgz 4127ms (cache miss)
+563 http fetch GET 200 https://registry.npmjs.org/@radix-ui/rect/-/rect-1.1.0.tgz 4120ms (cache miss)
+564 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-toggle-group/-/react-toggle-group-1.1.1.tgz 4129ms (cache miss)
+565 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.0.tgz 4168ms (cache miss)
+566 http fetch GET 200 https://registry.npmjs.org/@types/node/-/node-22.19.11.tgz 4181ms (cache miss)
+567 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-radio-group/-/react-radio-group-1.2.2.tgz 4273ms (cache miss)
+568 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-use-escape-keydown/-/react-use-escape-keydown-1.1.0.tgz 4275ms (cache miss)
+569 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-slider/-/react-slider-1.2.2.tgz 4285ms (cache miss)
+570 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-separator/-/react-separator-1.1.1.tgz 4291ms (cache miss)
+571 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-slot/-/react-slot-1.1.1.tgz 4304ms (cache miss)
+572 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-switch/-/react-switch-1.1.2.tgz 4306ms (cache miss)
+573 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-use-rect/-/react-use-rect-1.1.0.tgz 4336ms (cache miss)
+574 http fetch GET 200 https://registry.npmjs.org/@webgpu/types/-/types-0.1.69.tgz 4401ms (cache miss)
+575 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-presence/-/react-presence-1.1.2.tgz 4444ms (cache miss)
+576 http fetch GET 200 https://registry.npmjs.org/@tailwindcss/node/-/node-4.2.0.tgz 4455ms (cache miss)
+577 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-label/-/react-label-2.1.1.tgz 4483ms (cache miss)
+578 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-progress/-/react-progress-1.1.1.tgz 4497ms (cache miss)
+579 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-scroll-area/-/react-scroll-area-1.2.2.tgz 4548ms (cache miss)
+580 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-menubar/-/react-menubar-1.1.4.tgz 4559ms (cache miss)
+581 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-1.1.0.tgz 4577ms (cache miss)
+582 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.1.tgz 4578ms (cache miss)
+583 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-tooltip/-/react-tooltip-1.1.6.tgz 4703ms (cache miss)
+584 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-portal/-/react-portal-1.1.3.tgz 4758ms (cache miss)
+585 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-hover-card/-/react-hover-card-1.1.4.tgz 4774ms (cache miss)
+586 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-popper/-/react-popper-1.2.1.tgz 4806ms (cache miss)
+587 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-popover/-/react-popover-1.1.4.tgz 4806ms (cache miss)
+588 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-tabs/-/react-tabs-1.1.2.tgz 4811ms (cache miss)
+589 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-primitive/-/react-primitive-2.0.1.tgz 4842ms (cache miss)
+590 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-collection/-/react-collection-1.1.1.tgz 4859ms (cache miss)
+591 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.1.tgz 4917ms (cache miss)
+592 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-toast/-/react-toast-1.2.4.tgz 4968ms (cache miss)
+593 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-focus-guards/-/react-focus-guards-1.1.1.tgz 4960ms (cache miss)
+594 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-navigation-menu/-/react-navigation-menu-1.2.3.tgz 4989ms (cache miss)
+595 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-id/-/react-id-1.1.0.tgz 5008ms (cache miss)
+596 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-select/-/react-select-2.1.4.tgz 5068ms (cache miss)
+597 http fetch GET 200 https://registry.npmjs.org/@radix-ui/primitive/-/primitive-1.1.1.tgz 5055ms (cache miss)
+598 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-collapsible/-/react-collapsible-1.1.2.tgz 5108ms (cache miss)
+599 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-checkbox/-/react-checkbox-1.1.3.tgz 5140ms (cache miss)
+600 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-avatar/-/react-avatar-1.1.2.tgz 5307ms (cache miss)
+601 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-dropdown-menu/-/react-dropdown-menu-2.1.4.tgz 5315ms (cache miss)
+602 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-context/-/react-context-1.1.1.tgz 5317ms (cache miss)
+603 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-alert-dialog/-/react-alert-dialog-1.1.4.tgz 5341ms (cache miss)
+604 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-arrow/-/react-arrow-1.1.1.tgz 5345ms (cache miss)
+605 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-menu/-/react-menu-2.1.4.tgz 5354ms (cache miss)
+606 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-dismissable-layer/-/react-dismissable-layer-1.1.3.tgz 5357ms (cache miss)
+607 http fetch GET 200 https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.5.tgz 5353ms (cache miss)
+608 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-dialog/-/react-dialog-1.1.4.tgz 5378ms (cache miss)
+609 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-context-menu/-/react-context-menu-2.2.4.tgz 5397ms (cache miss)
+610 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-direction/-/react-direction-1.1.0.tgz 5410ms (cache miss)
+611 http fetch GET 200 https://registry.npmjs.org/@kurkle/color/-/color-0.3.4.tgz 5570ms (cache miss)
+612 http fetch GET 200 https://registry.npmjs.org/@next/env/-/env-16.1.6.tgz 5578ms (cache miss)
+613 http fetch GET 200 https://registry.npmjs.org/@radix-ui/number/-/number-1.1.0.tgz 5576ms (cache miss)
+614 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-accordion/-/react-accordion-1.2.2.tgz 5572ms (cache miss)
+615 http fetch GET 200 https://registry.npmjs.org/lodash/-/lodash-4.17.23.tgz 5626ms (cache miss)
+616 http fetch GET 200 https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.31.tgz 5582ms (cache miss)
+617 http fetch GET 200 https://registry.npmjs.org/@jridgewell/remapping/-/remapping-2.3.5.tgz 5735ms (cache miss)
+618 http fetch GET 200 https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz 5685ms (cache miss)
+619 http fetch GET 200 https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.8.1.tgz 5721ms (cache miss)
+620 http fetch GET 200 https://registry.npmjs.org/semver/-/semver-7.7.4.tgz 5697ms (cache miss)
+621 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-aspect-ratio/-/react-aspect-ratio-1.1.1.tgz 5780ms (cache miss)
+622 http fetch GET 200 https://registry.npmjs.org/@floating-ui/core/-/core-1.7.4.tgz 5790ms (cache miss)
+623 http fetch GET 200 https://registry.npmjs.org/@radix-ui/react-roving-focus/-/react-roving-focus-1.1.1.tgz 5807ms (cache miss)
+624 http fetch GET 200 https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.6.0.tgz 5080ms (cache miss)
+625 http fetch GET 200 https://registry.npmjs.org/@floating-ui/react-dom/-/react-dom-2.1.7.tgz 5824ms (cache miss)
+626 http fetch GET 200 https://registry.npmjs.org/nanoid/-/nanoid-3.3.11.tgz 5689ms (cache miss)
+627 http fetch GET 200 https://registry.npmjs.org/@floating-ui/utils/-/utils-0.2.10.tgz 6040ms (cache miss)
+628 http fetch GET 200 https://registry.npmjs.org/@floating-ui/dom/-/dom-1.7.5.tgz 6044ms (cache miss)
+629 http fetch GET 200 https://registry.npmjs.org/baseline-browser-mapping/-/baseline-browser-mapping-2.10.0.tgz 5903ms (cache miss)
+630 http fetch GET 200 https://registry.npmjs.org/use-sidecar/-/use-sidecar-1.1.3.tgz 5357ms (cache miss)
+631 http fetch GET 200 https://registry.npmjs.org/recharts-scale/-/recharts-scale-0.4.5.tgz 5368ms (cache miss)
+632 http fetch GET 200 https://registry.npmjs.org/tiny-invariant/-/tiny-invariant-1.3.3.tgz 5374ms (cache miss)
+633 http fetch GET 200 https://registry.npmjs.org/use-callback-ref/-/use-callback-ref-1.3.3.tgz 5381ms (cache miss)
+634 http fetch GET 200 https://registry.npmjs.org/tailwind-merge/-/tailwind-merge-2.6.1.tgz 5386ms (cache miss)
+635 http fetch GET 200 https://registry.npmjs.org/react-hot-toast/-/react-hot-toast-2.6.0.tgz 5392ms (cache miss)
+636 http fetch GET 200 https://registry.npmjs.org/react-remove-scroll-bar/-/react-remove-scroll-bar-2.3.8.tgz 5406ms (cache miss)
+637 http fetch GET 200 https://registry.npmjs.org/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.34.5.tgz 6151ms (cache miss)
+638 http fetch GET 200 https://registry.npmjs.org/react-style-singleton/-/react-style-singleton-2.2.3.tgz 5420ms (cache miss)
+639 http fetch GET 200 https://registry.npmjs.org/postcss/-/postcss-8.4.31.tgz 6146ms (cache miss)
+640 http fetch GET 200 https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.5.tgz 5468ms (cache miss)
+641 http fetch GET 200 https://registry.npmjs.org/embla-carousel-react/-/embla-carousel-react-8.5.1.tgz 5601ms (cache miss)
+642 http fetch GET 200 https://registry.npmjs.org/get-nonce/-/get-nonce-1.0.1.tgz 5625ms (cache miss)
+643 http fetch GET 200 https://registry.npmjs.org/d3-array/-/d3-array-3.2.4.tgz 5678ms (cache miss)
+644 http fetch GET 200 https://registry.npmjs.org/@date-fns/tz/-/tz-1.2.0.tgz 6438ms (cache miss)
+645 http fetch GET 200 https://registry.npmjs.org/fast-equals/-/fast-equals-5.4.0.tgz 5754ms (cache miss)
+646 http fetch GET 200 https://registry.npmjs.org/node-releases/-/node-releases-2.0.27.tgz 5903ms (cache miss)
+647 http fetch GET 200 https://registry.npmjs.org/d3-shape/-/d3-shape-3.2.0.tgz 5870ms (cache miss)
+648 http fetch GET 200 https://registry.npmjs.org/d3-interpolate/-/d3-interpolate-3.0.1.tgz 5961ms (cache miss)
+649 http fetch GET 200 https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz 5962ms (cache miss)
+650 http fetch GET 200 https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-5.19.0.tgz 6052ms (cache miss)
+651 http fetch GET 200 https://registry.npmjs.org/embla-carousel-reactive-utils/-/embla-carousel-reactive-utils-8.5.1.tgz 6062ms (cache miss)
+652 http fetch GET 200 https://registry.npmjs.org/aria-hidden/-/aria-hidden-1.2.6.tgz 6116ms (cache miss)
+653 http fetch GET 200 https://registry.npmjs.org/@babel/runtime/-/runtime-7.28.6.tgz 6283ms (cache miss)
+654 http fetch GET 200 https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.15.tgz 6428ms (cache miss)
+655 http fetch GET 200 https://registry.npmjs.org/embla-carousel/-/embla-carousel-8.5.1.tgz 6498ms (cache miss)
+656 http fetch GET 200 https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.4.24.tgz 6420ms (cache miss)
+657 http fetch GET 200 https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.71.2.tgz 6863ms (cache miss)
+658 http fetch GET 200 https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001770.tgz 7219ms (cache miss)
+659 http fetch GET 200 https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.13.tgz 7435ms (cache miss)
+660 http fetch GET 200 https://registry.npmjs.org/@emotion/memoize/-/memoize-0.9.0.tgz 7272ms (cache miss)
+661 http fetch GET 200 https://registry.npmjs.org/lenis/-/lenis-1.3.17.tgz 7310ms (cache miss)
+662 http fetch GET 200 https://registry.npmjs.org/react-remove-scroll/-/react-remove-scroll-2.7.2.tgz 8024ms (cache miss)
+663 http fetch GET 200 https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.1.6.tgz 8054ms (cache miss)
+664 http fetch GET 200 https://registry.npmjs.org/@emotion/is-prop-valid/-/is-prop-valid-1.4.0.tgz 7765ms (cache miss)
+665 http fetch GET 200 https://registry.npmjs.org/gsap/-/gsap-3.14.2.tgz 8032ms (cache miss)
+666 http fetch GET 200 https://registry.npmjs.org/react-type-animation/-/react-type-animation-3.2.0.tgz 7755ms (cache miss)
+667 http fetch GET 200 https://registry.npmjs.org/goober/-/goober-2.1.18.tgz 7877ms (cache miss)
+668 http fetch GET 200 https://registry.npmjs.org/react-day-picker/-/react-day-picker-9.8.0.tgz 8021ms (cache miss)
+669 http fetch GET 200 https://registry.npmjs.org/@emailjs/browser/-/browser-4.4.1.tgz 8012ms (cache miss)
+670 http fetch GET 200 https://registry.npmjs.org/@vercel/analytics/-/analytics-1.6.1.tgz 8361ms (cache miss)
+671 http fetch GET 200 https://registry.npmjs.org/victory-vendor/-/victory-vendor-36.9.2.tgz 8313ms (cache miss)
+672 http fetch GET 200 https://registry.npmjs.org/motion-dom/-/motion-dom-11.18.1.tgz 8445ms (cache miss)
+673 http fetch GET 200 https://registry.npmjs.org/@hookform/resolvers/-/resolvers-3.10.0.tgz 9015ms (cache miss)
+674 http fetch GET 200 https://registry.npmjs.org/motion-utils/-/motion-utils-11.18.1.tgz 9907ms (cache miss)
+675 http fetch GET 200 https://registry.npmjs.org/chart.js/-/chart.js-4.5.1.tgz 10536ms (cache miss)
+676 http fetch GET 200 https://registry.npmjs.org/date-fns-jalali/-/date-fns-jalali-4.1.0-0.tgz 10649ms (cache miss)
+677 http fetch GET 200 https://registry.npmjs.org/react-resizable-panels/-/react-resizable-panels-2.1.9.tgz 11397ms (cache miss)
+678 http fetch GET 200 https://registry.npmjs.org/zod/-/zod-3.25.76.tgz 11679ms (cache miss)
+679 http fetch GET 200 https://registry.npmjs.org/recharts/-/recharts-2.15.4.tgz 12081ms (cache miss)
+680 http fetch GET 200 https://registry.npmjs.org/@dimforge/rapier3d-compat/-/rapier3d-compat-0.12.0.tgz 13433ms (cache miss)
+681 http fetch GET 200 https://registry.npmjs.org/framer-motion/-/framer-motion-11.18.2.tgz 12918ms (cache miss)
+682 http fetch GET 200 https://registry.npmjs.org/lucide-react/-/lucide-react-0.454.0.tgz 13804ms (cache miss)
+683 http fetch GET 200 https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz 18085ms (cache miss)
+684 http fetch GET 200 https://registry.npmjs.org/@img/sharp-libvips-darwin-arm64/-/sharp-libvips-darwin-arm64-1.2.4.tgz 21492ms (cache miss)
+685 http fetch GET 200 https://registry.npmjs.org/jiti/-/jiti-2.6.1.tgz 22801ms (cache miss)
+686 http fetch GET 200 https://registry.npmjs.org/date-fns/-/date-fns-4.1.0.tgz 23167ms (cache miss)
+687 http fetch GET 200 https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-16.1.6.tgz 31006ms (cache miss)
+688 verbose stack Error: EPERM: operation not permitted, scandir '/Users/anamay/Desktop/projects/portfolio/node_modules/next/dist/build'
+689 error code EPERM
+690 error syscall scandir
+691 error path /Users/anamay/Desktop/projects/portfolio/node_modules/next/dist/build
+692 error errno -1
+693 error [Error: EPERM: operation not permitted, scandir '/Users/anamay/Desktop/projects/portfolio/node_modules/next/dist/build'] {
+693 error   errno: -1,
+693 error   code: 'EPERM',
+693 error   syscall: 'scandir',
+693 error   path: '/Users/anamay/Desktop/projects/portfolio/node_modules/next/dist/build'
+693 error }
+694 error
+694 error The operation was rejected by your operating system.
+694 error It is likely you do not have the permissions to access this file as the current user
+694 error
+694 error If you believe this might be a permissions issue, please double-check the
+694 error permissions of the file and its containing directories, or try running
+694 error the command again as root/Administrator.
+695 silly unfinished npm timer reify 1771684075479
+696 silly unfinished npm timer reify:unpack 1771684077254
+697 silly unfinished npm timer reifyNode:node_modules/next 1771684077254
+698 silly unfinished npm timer reifyNode:node_modules/@types/three 1771684077255
+699 verbose cwd /Users/anamay/Desktop/projects/portfolio
+700 verbose os Darwin 25.3.0
+701 verbose node v25.6.1
+702 verbose npm  v11.9.0
+703 notice
+703 notice New [33mminor[39m version of npm available! [33m11.9.0[39m -> [34m11.10.1[39m
+703 notice Changelog: [34mhttps://github.com/npm/cli/releases/tag/v11.10.1[39m
+703 notice To update run: [4mnpm install -g npm@11.10.1[24m
+703 notice  { force: true, Symbol(proc-log.meta): true }
+704 verbose exit -1
+705 verbose code -1
+706 error A complete log of this run can be found in: /Users/anamay/Desktop/projects/portfolio/.npm-local-cache/_logs/2026-02-21T14_27_55_308Z-debug-0.log

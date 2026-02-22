@@ -518,3 +518,28 @@
   font-size: 0.875em;
   font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 }
+
+/* Custom 3D Transform Utilities for Cinematic Intro */
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-x-\[-90deg\] {
+  transform: rotateX(-90deg);
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.translate-z-\[5px\] {
+  transform: translateZ(5px);
+}
+
+.translate-z-\[10px\] {
+  transform: translateZ(10px);
+}

@@ -1,113 +1,107 @@
 "use client"
 
 import { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import Image from "next/image"
+import { motion, useInView } from "framer-motion"
+import InteractiveBentoGallery from "@/components/ui/interactive-bento-gallery"
 
+// Portfolio-relevant media items showcasing Anamay's work areas
 const galleryItems = [
-  { type: "quote", content: "NEVER GIVE UP", rotate: -2 },
-  { type: "image", src: "/images/lorenzo-piloto1.png", rotate: 3 },
   {
-    type: "text",
-    content: "Racing isn't just a sport, it's a lifestyle. Every moment on and off the track defines who I am.",
-    rotate: 1,
+    id: 1,
+    type: "image",
+    title: "AI Study Assistant",
+    desc: "LangChain-powered intelligent learning companion",
+    url: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+    span: "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
   },
-  { type: "quote", content: "CHASING PERFECTION", rotate: -3 },
-  { type: "image", src: "/images/lorenzo-piloto3.png", rotate: 2 },
   {
-    type: "text",
-    content: "From karting to motocross, the journey has been extraordinary. But this is just the beginning.",
-    rotate: -1,
+    id: 2,
+    type: "image",
+    title: "Data Visualization Dashboard",
+    desc: "Interactive analytics with Plotly & D3.js",
+    url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    span: "md:col-span-2 md:row-span-2 col-span-1 sm:col-span-2 sm:row-span-2",
   },
-  { type: "quote", content: "ALWAYS PUSHING", rotate: 2 },
-  { type: "image", src: "/images/lorenzo-piloto5.png", rotate: -2 },
   {
-    type: "text",
-    content: "Every race is a new challenge, every lap is a new opportunity to prove myself.",
-    rotate: 1,
+    id: 3,
+    type: "image",
+    title: "Full Stack Architecture",
+    desc: "Next.js + FastAPI microservices",
+    url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+    span: "md:col-span-1 md:row-span-3 sm:col-span-2 sm:row-span-2",
   },
-  { type: "image", src: "/images/lorenzo-piloto7.png", rotate: 1 },
-  { type: "quote", content: "LIVING THE DREAM", rotate: -1 },
-  { type: "image", src: "/images/moto.png", rotate: 2 },
-  { type: "image", src: "/images/showroom3.png", rotate: -1 },
-  { type: "image", src: "/images/lorenzo-piloto9.png", rotate: 3 },
-  { type: "image", src: "/images/showroom5.png", rotate: -2 },
-  { type: "image", src: "/images/trofeus.PNG", rotate: 1 },
+  {
+    id: 4,
+    type: "image",
+    title: "ML Model Training",
+    desc: "TensorFlow neural network pipeline",
+    url: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
+    span: "md:col-span-2 md:row-span-2 sm:col-span-1 sm:row-span-2",
+  },
+  {
+    id: 5,
+    type: "image",
+    title: "Cloud Infrastructure",
+    desc: "AWS serverless deployment",
+    url: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+    span: "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
+  },
+  {
+    id: 6,
+    type: "image",
+    title: "Mobile-First Design",
+    desc: "Responsive UI with Framer Motion",
+    url: "https://images.unsplash.com/photo-1618788372246-79faff0c3742?w=800&q=80",
+    span: "md:col-span-2 md:row-span-2 sm:col-span-1 sm:row-span-2",
+  },
+  {
+    id: 7,
+    type: "image",
+    title: "Database Architecture",
+    desc: "PostgreSQL + MongoDB hybrid approach",
+    url: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80",
+    span: "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
+  },
 ]
 
-function MasonryItem({ item, index }: { item: any; index: number }) {
-  const ref = useRef<HTMLDivElement>(null)
-
-  // Track scroll progress relative to this specific item's viewport position
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  })
-
-  // 0% (enter) -> 20% (fully visible) -> 70% (start fading) -> 100% (faded to 3%)
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.7, 1], [0, 1, 1, 0.03])
-
-  // Add a slight Y movement for parallax feel
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50])
-
-  return (
-    <motion.div
-      ref={ref}
-      style={{
-        opacity,
-        y,
-        rotate: item.rotate,
-      }}
-      whileHover={{
-        scale: 1.02,
-        rotate: 0,
-        zIndex: 10,
-        transition: { duration: 0.3 },
-      }}
-      className={`${index === 1 || index === 7 ? "md:col-span-1 md:row-span-2" : ""}`}
-    >
-      {item.type === "quote" && (
-        <div className="bg-lorenzo-accent text-lorenzo-text-dark p-10 rounded-2xl border-4 border-lorenzo-accent h-full flex flex-col items-center justify-center shadow-2xl">
-          <p className="text-3xl md:text-4xl font-black text-center uppercase leading-tight">{item.content}</p>
-        </div>
-      )}
-
-      {item.type === "image" && (
-        <div className="relative h-full min-h-[300px] md:min-h-[400px] rounded-2xl overflow-hidden border-4 border-white/10 shadow-2xl hover:scale-102 transition-transform duration-300">
-          <Image src={item.src || "/placeholder.svg"} alt="Gallery moment" fill className="object-cover" />
-        </div>
-      )}
-
-      {item.type === "text" && (
-        <div className="bg-lorenzo-light/5 border-2 border-lorenzo-light/20 p-8 rounded-2xl h-full flex items-center justify-center shadow-xl">
-          <p className="text-lg md:text-xl font-medium text-center leading-relaxed">{item.content}</p>
-        </div>
-      )}
-    </motion.div>
-  )
-}
-
 export default function GallerySection() {
-  return (
-    <section id="gallery" className="relative min-h-screen bg-lorenzo-dark text-lorenzo-text-light py-24 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
-        {/*
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="text-5xl md:text-7xl font-black uppercase mb-16 text-center"
-        >
-          MOMENTS
-        </motion.h2>
-        */}
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 })
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-auto">
-          {galleryItems.map((item, index) => (
-            <MasonryItem key={index} item={item} index={index} />
-          ))}
+  return (
+    <section id="gallery" ref={sectionRef} className="relative py-24 bg-lorenzo-dark overflow-hidden">
+      {/* Background accent */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-lorenzo-accent/5 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        className="max-w-[1400px] mx-auto px-6 md:px-12"
+      >
+        {/* Section Header */}
+        <div className="text-center mb-4">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="w-12 h-px bg-lorenzo-accent" />
+            <span className="text-xs font-bold uppercase tracking-widest text-lorenzo-accent">
+              GALLERY
+            </span>
+            <div className="w-12 h-px bg-lorenzo-accent" />
+          </div>
+          <h3 className="text-2xl md:text-4xl font-brier text-lorenzo-light uppercase mb-2">
+            PROJECT <span className="text-lorenzo-accent">SHOWCASE</span>
+          </h3>
+          <p className="text-lorenzo-light/50 text-sm max-w-lg mx-auto">
+            Drag and explore a curated collection of my work
+          </p>
         </div>
-      </div>
+
+        {/* Bento Gallery */}
+        <InteractiveBentoGallery
+          mediaItems={galleryItems}
+          title=""
+          description=""
+        />
+      </motion.div>
     </section>
   )
 }

@@ -13,18 +13,9 @@ export default function AboutSection() {
         <section
             id="about"
             ref={sectionRef}
-            className="relative min-h-screen bg-lorenzo-dark py-24 overflow-hidden"
+            className="relative min-h-screen bg-transparent py-16 md:py-20 overflow-hidden"
         >
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-                <Image
-                    src="/images/data-viz.png"
-                    alt="Data Visualization"
-                    fill
-                    className="object-cover opacity-10"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-lorenzo-dark via-lorenzo-dark/95 to-lorenzo-dark" />
-            </div>
+
 
             {/* Large Background Text */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-[1]">
@@ -42,20 +33,20 @@ export default function AboutSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8 }}
-                    className="mb-20"
+                    className="mb-16"
                 >
-                    <div className="flex items-center gap-4 mb-6">
-                        <div className="w-12 h-px bg-lorenzo-accent" />
-                        <span className="text-xs font-bold uppercase tracking-widest text-lorenzo-accent">
+                    <div className="flex items-center gap-6 mb-8">
+                        <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/40">
                             THE MISSION
                         </span>
+                        <div className="w-24 h-[1px] bg-white/10" />
                     </div>
 
-                    <h2 className="text-5xl md:text-7xl lg:text-[6rem] font-brier uppercase leading-[0.9] tracking-tight">
-                        <span className="block text-lorenzo-light">REDEFINING</span>
-                        <span className="block text-lorenzo-accent">LIMITS</span>
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-brier uppercase leading-[0.85] tracking-tighter">
+                        <span className="block text-white">REDEFINING</span>
+                        <span className="block text-lorenzo-accent drop-shadow-md">LIMITS</span>
                         <motion.span
-                            className="block text-lorenzo-light/20 text-3xl md:text-5xl mt-4"
+                            className="block text-white/20 text-2xl md:text-4xl mt-3 tracking-normal"
                             initial={{ opacity: 0, x: -20 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.5 }}
@@ -69,22 +60,24 @@ export default function AboutSection() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
                     {/* Main Text Column */}
                     <motion.div
-                        className="lg:col-span-7"
+                        className="lg:col-span-7 flex flex-col gap-6"
                         initial={{ opacity: 0, y: 30 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
-                        <p className="text-xl md:text-2xl text-lorenzo-light/80 leading-relaxed mb-8 font-mona">
-                            I'm <span className="text-lorenzo-accent font-bold">Anamay Tripathy</span>, a passionate
-                            Data Science Engineering student at MIT Manipal, driven by the intersection of
-                            data and technology. Every line of code is a step towards innovation.
-                        </p>
-                        <p className="text-lg text-lorenzo-light/60 leading-relaxed mb-8 font-mona">
-                            As the <span className="text-lorenzo-accent">Technical Head at YaanBarpe</span>, I lead development
-                            teams, architect scalable solutions, and turn ideas into production-ready applications.
-                            From building fintech dashboards at <span className="text-lorenzo-accent">Intellect Design Arena</span>
-                            to creating AI-powered solutions—I'm always pushing boundaries.
-                        </p>
+                        <div className="p-8 md:p-10 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md hover:bg-white/[0.04] transition-colors">
+                            <p className="text-lg md:text-2xl text-white/90 leading-relaxed mb-6 font-light tracking-tight">
+                                I'm <span className="text-lorenzo-accent font-normal font-brier uppercase tracking-wide">Anamay Tripathy</span>, a passionate
+                                Data Science Engineering student at MIT Manipal, driven by the intersection of
+                                data and technology. Every line of code is a step towards innovation.
+                            </p>
+                            <p className="text-base md:text-lg text-white/60 leading-relaxed font-light">
+                                As the <span className="text-white/90">Technical Head at YaanBarpe</span>, I lead development
+                                teams, architect scalable solutions, and turn ideas into production-ready applications.
+                                From building fintech dashboards at <span className="text-white/90">Intellect Design Arena</span>
+                                to creating AI-powered solutions—I'm always pushing boundaries.
+                            </p>
+                        </div>
 
                         {/* Image with Hotspot Effect */}
                         <motion.div
@@ -125,15 +118,15 @@ export default function AboutSection() {
 
                         {/* Quote */}
                         <motion.div
-                            className="border-l-4 border-lorenzo-accent pl-6 py-4 my-12"
+                            className="p-8 md:p-10 rounded-2xl bg-white/[0.01] border-l-4 border-lorenzo-accent backdrop-blur-sm my-6"
                             initial={{ opacity: 0, x: -20 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.6 }}
                         >
-                            <p className="text-2xl md:text-3xl font-brier italic text-lorenzo-light">
+                            <p className="text-xl md:text-2xl font-light text-white italic leading-relaxed">
                                 "The only way to predict the future is to build it."
                             </p>
-                            <span className="text-sm text-lorenzo-accent uppercase tracking-wider mt-4 block">
+                            <span className="text-[10px] text-white/40 font-bold uppercase tracking-[0.2em] mt-4 block">
                                 — My Philosophy
                             </span>
                         </motion.div>
@@ -190,49 +183,40 @@ export default function AboutSection() {
                             ].map((stat, i) => (
                                 <motion.div
                                     key={i}
-                                    className="relative p-6 border border-lorenzo-accent/20 hover:border-lorenzo-accent transition-all duration-300 group cursor-pointer overflow-hidden"
+                                    className="relative p-6 bg-white/[0.02] border border-white/5 backdrop-blur-sm hover:bg-white/[0.04] hover:border-white/20 transition-all duration-300 group cursor-pointer overflow-hidden rounded-xl"
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                                     transition={{ delay: 0.5 + i * 0.1 }}
                                     onMouseEnter={() => setHoveredStat(i)}
                                     onMouseLeave={() => setHoveredStat(null)}
-                                    whileHover={{ scale: 1.02 }}
                                     data-cursor="VIEW"
                                 >
                                     {/* Background Icon */}
                                     <motion.div
-                                        className="absolute -right-4 -bottom-4 text-6xl opacity-10 group-hover:opacity-30 transition-opacity"
-                                        animate={{ scale: hoveredStat === i ? 1.2 : 1 }}
+                                        className="absolute -right-4 -bottom-4 text-6xl opacity-5 group-hover:opacity-10 transition-opacity"
+                                        animate={{ scale: hoveredStat === i ? 1.1 : 1 }}
                                     >
                                         {stat.icon}
                                     </motion.div>
 
                                     <motion.div
-                                        className="text-4xl md:text-5xl font-brier text-lorenzo-accent mb-2"
-                                        animate={{ scale: hoveredStat === i ? 1.1 : 1 }}
+                                        className="text-4xl md:text-5xl font-brier text-white group-hover:text-lorenzo-accent transition-colors mb-2"
+                                        animate={{ scale: hoveredStat === i ? 1.05 : 1 }}
                                     >
                                         {stat.value}
                                     </motion.div>
-                                    <div className="text-sm font-bold text-lorenzo-light uppercase tracking-wider">
+                                    <div className="text-[11px] font-bold text-white/70 uppercase tracking-[0.2em]">
                                         {stat.label}
                                     </div>
-                                    <div className="text-xs text-lorenzo-light/40 mt-1">
+                                    <div className="text-xs text-white/40 mt-1 font-light">
                                         {stat.sub}
                                     </div>
 
                                     {/* Corner accent on hover */}
                                     <motion.div
-                                        className="absolute top-0 right-0 w-0 h-0 border-t-[20px] border-r-[20px] border-t-transparent border-r-lorenzo-accent"
+                                        className="absolute top-0 right-0 w-0 h-0 border-t-[20px] border-r-[20px] border-t-transparent border-r-white/20 group-hover:border-r-lorenzo-accent transition-colors"
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: hoveredStat === i ? 1 : 0 }}
-                                    />
-
-                                    {/* Bottom line animation */}
-                                    <motion.div
-                                        className="absolute bottom-0 left-0 h-1 bg-lorenzo-accent"
-                                        initial={{ width: 0 }}
-                                        animate={{ width: hoveredStat === i ? "100%" : 0 }}
-                                        transition={{ duration: 0.3 }}
                                     />
                                 </motion.div>
                             ))}
@@ -247,24 +231,23 @@ export default function AboutSection() {
                             ].map((role, i) => (
                                 <motion.div
                                     key={i}
-                                    className="group flex items-center justify-between p-4 border-b border-lorenzo-light/10 hover:bg-lorenzo-accent/5 transition-all cursor-pointer"
+                                    className="group flex items-center justify-between p-4 bg-white/[0.01] border border-white/5 rounded-xl hover:bg-white/[0.03] hover:border-white/10 transition-all cursor-pointer"
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                                     transition={{ delay: 0.7 + i * 0.1 }}
-                                    whileHover={{ x: 10 }}
                                     data-cursor="VIEW"
                                 >
                                     <div className="flex items-center gap-4">
                                         {/* Color indicator */}
-                                        <div className={`w-2 h-12 bg-gradient-to-b ${role.color} rounded-full`} />
+                                        <div className={`w-1.5 h-10 bg-gradient-to-b ${role.color} rounded-full opacity-70 group-hover:opacity-100 transition-opacity`} />
                                         <div>
-                                            <div className="text-lorenzo-light font-bold uppercase text-sm group-hover:text-lorenzo-accent transition-colors">
+                                            <div className="text-white/90 font-bold uppercase text-[11px] tracking-[0.1em] group-hover:text-lorenzo-accent transition-colors">
                                                 {role.title}
                                             </div>
-                                            <div className="text-lorenzo-light/50 text-xs">{role.org}</div>
+                                            <div className="text-white/40 text-[10px] uppercase tracking-widest mt-0.5">{role.org}</div>
                                         </div>
                                     </div>
-                                    <div className="text-lorenzo-accent font-brier text-lg">{role.year}</div>
+                                    <div className="text-white/20 font-brier text-lg group-hover:text-lorenzo-accent transition-colors">{role.year}</div>
                                 </motion.div>
                             ))}
                         </div>

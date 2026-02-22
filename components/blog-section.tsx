@@ -326,6 +326,7 @@ export default function BlogSection() {
                             type="email"
                             placeholder="Enter your email"
                             className="flex-1 px-6 py-4 bg-lorenzo-dark border border-lorenzo-light/20 rounded-full text-lorenzo-light placeholder:text-lorenzo-light/30 focus:outline-none focus:border-lorenzo-accent transition-colors"
+                            suppressHydrationWarning
                         />
                         <button className="px-8 py-4 bg-lorenzo-accent text-lorenzo-dark font-bold uppercase tracking-wider rounded-full hover:shadow-lg hover:shadow-lorenzo-accent/30 transition-all">
                             Subscribe

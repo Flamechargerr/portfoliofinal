@@ -183,7 +183,7 @@ export function ExplorationProgress() {
                     }
                 })
             },
-            { threshold: 0.5 }
+            { threshold: 0.1 }
         )
 
         sections.forEach(id => {
@@ -191,14 +191,30 @@ export function ExplorationProgress() {
             if (el) observer.observe(el)
         })
 
-        return () => observer.disconnect()
+        // Scroll-based fallback: if user is near bottom, mark all sections as visited
+        const handleScroll = () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop
+            const scrollHeight = document.documentElement.scrollHeight
+            const clientHeight = document.documentElement.clientHeight
+            const scrollPercent = scrollTop / (scrollHeight - clientHeight)
+            if (scrollPercent > 0.9) {
+                setVisitedSections(new Set(sections))
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll, { passive: true })
+
+        return () => {
+            observer.disconnect()
+            window.removeEventListener('scroll', handleScroll)
+        }
     }, [])
 
     useEffect(() => {
         setProgress((visitedSections.size / sections.length) * 100)
     }, [visitedSections])
 
-    if (progress < 10) return null
+    if (progress < 5) return null
 
     return (
         <motion.div

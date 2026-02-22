@@ -271,7 +271,7 @@ export function PrintResume() {
             
             CONTACT
             Email: tripathy.anamay23@gmail.com
-            GitHub: github.com/anamaydev
+            GitHub: github.com/flamechargerr
             LinkedIn: linkedin.com/in/anamay-tripathy
             
             EDUCATION

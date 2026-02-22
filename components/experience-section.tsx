@@ -64,7 +64,7 @@ export default function ExperienceSection() {
         <section
             id="experience"
             ref={sectionRef}
-            className="relative min-h-screen bg-lorenzo-dark text-lorenzo-light py-24 overflow-hidden"
+            className="relative min-h-screen bg-transparent text-white py-16 md:py-20 overflow-hidden"
         >
             {/* Parallax Background Elements */}
             <motion.div
@@ -73,7 +73,7 @@ export default function ExperienceSection() {
             >
                 {/* Large Background Text */}
                 <motion.div className="absolute top-1/2 left-0 -translate-y-1/2">
-                    <span className="text-[25vw] font-brier text-lorenzo-accent/[0.03] leading-none select-none">
+                    <span className="text-[25vw] font-brier text-white/[0.02] leading-none select-none mix-blend-overlay">
                         STORY
                     </span>
                 </motion.div>
@@ -101,25 +101,25 @@ export default function ExperienceSection() {
                     className="mb-20"
                 >
                     <motion.div
-                        className="flex items-center gap-4 mb-6"
+                        className="flex items-center gap-6 mb-8"
                         initial={{ x: -30, opacity: 0 }}
                         animate={isInView ? { x: 0, opacity: 1 } : {}}
                         transition={{ delay: 0.2, duration: 0.6 }}
                     >
-                        <motion.div
-                            className="w-16 h-px bg-gradient-to-r from-lorenzo-accent to-transparent"
-                            initial={{ width: 0 }}
-                            animate={isInView ? { width: 64 } : {}}
-                            transition={{ delay: 0.3, duration: 0.8 }}
-                        />
-                        <span className="text-xs font-bold uppercase tracking-[0.3em] text-lorenzo-accent">
+                        <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/40">
                             CAREER PATH
                         </span>
+                        <motion.div
+                            className="h-[1px] bg-white/10"
+                            initial={{ width: 0 }}
+                            animate={isInView ? { width: 96 } : {}}
+                            transition={{ delay: 0.3, duration: 0.8 }}
+                        />
                     </motion.div>
 
-                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-brier uppercase leading-[0.85] tracking-tight">
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-brier uppercase leading-[0.85] tracking-tighter">
                         <motion.span
-                            className="block text-lorenzo-light"
+                            className="block text-white"
                             initial={{ x: -50, opacity: 0 }}
                             animate={isInView ? { x: 0, opacity: 1 } : {}}
                             transition={{ delay: 0.3, duration: 0.8 }}
@@ -127,7 +127,7 @@ export default function ExperienceSection() {
                             MY
                         </motion.span>
                         <motion.span
-                            className="block text-transparent bg-clip-text bg-gradient-to-r from-lorenzo-accent via-lime-300 to-lorenzo-accent"
+                            className="block text-lorenzo-accent drop-shadow-md"
                             initial={{ x: -50, opacity: 0 }}
                             animate={isInView ? { x: 0, opacity: 1 } : {}}
                             transition={{ delay: 0.4, duration: 0.8 }}
@@ -140,9 +140,9 @@ export default function ExperienceSection() {
                 {/* Timeline Container */}
                 <div className="relative">
                     {/* Animated Timeline Line */}
-                    <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-lorenzo-light/10 transform md:-translate-x-1/2">
+                    <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-white/5 transform md:-translate-x-1/2">
                         <motion.div
-                            className="w-full bg-gradient-to-b from-lorenzo-accent via-lime-400 to-lorenzo-accent/50"
+                            className="w-full bg-lorenzo-accent shadow-[0_0_10px_rgba(200,245,80,0.5)]"
                             style={{ height: lineHeight }}
                         />
                     </div>
@@ -162,63 +162,54 @@ export default function ExperienceSection() {
                                 <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 top-8 md:top-1/2">
                                     <motion.div
                                         className={`w-4 h-4 rounded-full border-2 ${event.highlight
-                                                ? 'bg-lorenzo-accent border-lorenzo-accent shadow-[0_0_20px_rgba(200,245,80,0.6)]'
-                                                : 'bg-lorenzo-dark border-lorenzo-accent'
+                                            ? 'bg-lorenzo-accent border-lorenzo-accent shadow-[0_0_20px_rgba(200,245,80,0.6)]'
+                                            : 'bg-lorenzo-dark border-lorenzo-accent'
                                             }`}
                                         whileHover={{ scale: 1.5 }}
                                         transition={{ duration: 0.2 }}
                                     />
                                 </div>
 
-                                {/* Content Card */}
                                 <motion.div
                                     className={`ml-8 md:ml-0 md:w-[calc(50%-40px)] ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'
                                         }`}
-                                    whileHover={{ scale: 1.02, y: -5 }}
+                                    whileHover={{ scale: 1.02 }}
                                     transition={{ duration: 0.3 }}
                                 >
-                                    <div className={`relative p-6 md:p-8 bg-gradient-to-br from-lorenzo-light/[0.08] to-lorenzo-light/[0.02] backdrop-blur-sm border border-lorenzo-light/10 rounded-2xl overflow-hidden group hover:border-lorenzo-accent/50 transition-all duration-500 ${event.highlight ? 'border-lorenzo-accent/30' : ''
+                                    <div className={`relative p-6 md:p-8 bg-white/[0.02] backdrop-blur-md border rounded-2xl overflow-hidden group hover:bg-white/[0.04] transition-all duration-500 ${event.highlight ? 'border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.05)]' : 'border-white/5 hover:border-white/10'
                                         }`}>
                                         {/* Highlight Glow */}
                                         {event.highlight && (
-                                            <div className="absolute inset-0 bg-gradient-to-br from-lorenzo-accent/5 to-transparent" />
+                                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
                                         )}
 
                                         {/* Position Number */}
-                                        <div className="absolute top-4 right-4 text-4xl md:text-5xl font-brier text-lorenzo-accent/10 group-hover:text-lorenzo-accent/20 transition-colors">
+                                        <div className="absolute top-4 right-4 text-4xl md:text-5xl font-brier text-white/5 group-hover:text-white/10 transition-colors">
                                             {event.position}
                                         </div>
 
                                         {/* Year Badge */}
-                                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-lorenzo-accent/10 rounded-full mb-4">
-                                            <span className="text-2xl">{event.logo}</span>
-                                            <span className="text-sm font-bold text-lorenzo-accent tracking-wider">
+                                        <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-6 relative z-10">
+                                            <span className="text-xl">{event.logo}</span>
+                                            <span className="text-[11px] font-bold text-white tracking-[0.2em] uppercase">
                                                 {event.year}
                                             </span>
                                         </div>
 
                                         {/* Title */}
-                                        <h3 className="text-xl md:text-2xl font-brier text-lorenzo-light uppercase tracking-wider mb-2 group-hover:text-lorenzo-accent transition-colors">
+                                        <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wider mb-2 group-hover:text-lorenzo-accent transition-colors relative z-10">
                                             {event.title}
                                         </h3>
 
                                         {/* Organization */}
-                                        <p className="text-lorenzo-accent font-bold text-sm uppercase tracking-wider mb-4">
+                                        <p className="text-lorenzo-accent font-bold text-[11px] uppercase tracking-[0.2em] mb-4 relative z-10 opacity-90">
                                             {event.organization}
                                         </p>
 
                                         {/* Description */}
-                                        <p className="text-lorenzo-light/60 text-sm leading-relaxed">
+                                        <p className="text-white/60 font-light text-sm leading-relaxed relative z-10">
                                             {event.description}
                                         </p>
-
-                                        {/* Bottom Accent */}
-                                        <motion.div
-                                            className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-lorenzo-accent to-lime-300"
-                                            initial={{ width: "0%" }}
-                                            whileHover={{ width: "100%" }}
-                                            transition={{ duration: 0.4 }}
-                                        />
                                     </div>
                                 </motion.div>
                             </motion.div>
@@ -241,16 +232,16 @@ export default function ExperienceSection() {
                     ].map((stat, i) => (
                         <motion.div
                             key={i}
-                            className="group relative p-6 md:p-8 bg-gradient-to-br from-lorenzo-light/[0.08] to-transparent border border-lorenzo-light/10 rounded-2xl overflow-hidden hover:border-lorenzo-accent/50 transition-all duration-300"
+                            className="group relative p-6 md:p-8 bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden backdrop-blur-md hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300"
                             whileHover={{ y: -5, scale: 1.02 }}
                         >
-                            <div className="absolute top-2 right-2 text-2xl opacity-30 group-hover:opacity-60 transition-opacity">
+                            <div className="absolute top-4 right-4 text-2xl opacity-30 group-hover:opacity-60 transition-opacity">
                                 {stat.icon}
                             </div>
-                            <div className="text-3xl md:text-5xl font-brier text-lorenzo-accent mb-2">
+                            <div className="text-3xl md:text-5xl font-brier text-white group-hover:text-lorenzo-accent transition-colors mb-2">
                                 {stat.value}
                             </div>
-                            <div className="text-xs md:text-sm font-bold uppercase tracking-wider text-lorenzo-light/50">
+                            <div className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-white/50">
                                 {stat.label}
                             </div>
                         </motion.div>

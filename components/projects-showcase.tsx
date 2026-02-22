@@ -12,7 +12,7 @@ const projects = [
         image: "/images/tech-workspace.png",
         tags: ["Next.js", "TypeScript", "AI/ML", "PostgreSQL"],
         category: "Featured",
-        link: "https://github.com/anamaydev",
+        link: "https://github.com/flamechargerr",
         demo: "#",
         metrics: {
             users: "500+",
@@ -27,7 +27,7 @@ const projects = [
         image: "/images/data-viz.png",
         tags: ["Python", "LangChain", "OpenAI", "Streamlit"],
         category: "AI/ML",
-        link: "https://github.com/anamaydev",
+        link: "https://github.com/flamechargerr",
         metrics: {
             users: "200+",
             accuracy: "92%",
@@ -41,7 +41,7 @@ const projects = [
         image: "/images/code-abstract.png",
         tags: ["React", "D3.js", "WebSocket", "Node.js"],
         category: "Data Viz",
-        link: "https://github.com/anamaydev",
+        link: "https://github.com/flamechargerr",
         metrics: {
             charts: "15+",
             dataPoints: "1M+",
@@ -55,7 +55,7 @@ const projects = [
         image: "/images/tech-workspace.png",
         tags: ["Next.js", "Stripe", "Prisma", "Redis"],
         category: "Full Stack",
-        link: "https://github.com/anamaydev",
+        link: "https://github.com/flamechargerr",
         metrics: {
             products: "1000+",
             orders: "5000+",
@@ -69,7 +69,7 @@ const projects = [
         image: "/images/code-abstract.png",
         tags: ["TypeScript", "GitHub API", "Tailwind", "Vercel"],
         category: "Developer Tools",
-        link: "https://github.com/anamaydev",
+        link: "https://github.com/flamechargerr",
         metrics: {
             portfolios: "100+",
             themes: "12",
@@ -83,7 +83,7 @@ const projects = [
         image: "/images/data-viz.png",
         tags: ["React", "Node.js", "MongoDB", "Socket.io"],
         category: "Productivity",
-        link: "https://github.com/anamaydev",
+        link: "https://github.com/flamechargerr",
         metrics: {
             teams: "50+",
             tasks: "10K+",
@@ -228,7 +228,7 @@ export default function ProjectsShowcase() {
                     className="text-center mt-12"
                 >
                     <Link
-                        href="https://github.com/anamaydev"
+                        href="https://github.com/flamechargerr"
                         target="_blank"
                         className="inline-flex items-center gap-3 px-8 py-4 border-2 border-lorenzo-accent text-lorenzo-accent font-bold uppercase tracking-wider hover:bg-lorenzo-accent hover:text-lorenzo-dark transition-all"
                     >

@@ -88,7 +88,7 @@ export default function ContactForm() {
     }
 
     return (
-        <section ref={sectionRef} className="py-20 bg-lorenzo-dark">
+        <section id="contact" ref={sectionRef} className="py-20 bg-lorenzo-dark">
             <Toaster position="bottom-right" />
 
             <div className="max-w-[1400px] mx-auto px-6 md:px-12">
@@ -230,6 +230,7 @@ export default function ContactForm() {
                                         className={`w-full px-4 py-4 bg-transparent border text-lorenzo-light focus:border-lorenzo-accent focus:outline-none transition-colors placeholder:text-lorenzo-light/30 focus-ring ${touched.email && !validation.email ? 'border-red-500' : 'border-lorenzo-light/20'
                                             }`}
                                         placeholder="john@example.com"
+                                        suppressHydrationWarning
                                     />
                                     {touched.email && !validation.email && (
                                         <p className="text-red-400 text-xs mt-1">Please enter a valid email address</p>
@@ -265,7 +266,7 @@ export default function ContactForm() {
                                         Message *
                                     </label>
                                     <span className={`text-xs ${formData.message.length < 10 ? 'text-lorenzo-light/30' :
-                                            formData.message.length > 1000 ? 'text-red-400' : 'text-lorenzo-accent'
+                                        formData.message.length > 1000 ? 'text-red-400' : 'text-lorenzo-accent'
                                         }`}>
                                         {formData.message.length}/1000
                                     </span>

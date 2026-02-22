@@ -22,14 +22,14 @@ export const blogPosts: BlogPost[] = [
         slug: "building-ai-study-assistant",
         title: "Building an AI Study Assistant with LangChain",
         excerpt: "A deep dive into creating an intelligent study companion using LLMs that helps students learn more effectively.",
-        date: "Dec 20, 2024",
+        date: "Feb 18, 2025",
         readTime: "8 min read",
         category: "AI/ML",
         image: "/images/data-viz.png",
         tags: ["AI", "LangChain", "Python", "Education Tech"],
         author: {
             name: "Anamay Tripathy",
-            avatar: "/images/profile.png",
+            avatar: "/images/anamay-profile.png",
             role: "Data Science Engineer"
         },
         content: `
@@ -146,14 +146,14 @@ AI has tremendous potential to democratize education. By building tools that ada
         slug: "data-visualization-best-practices",
         title: "Data Visualization Best Practices for 2024",
         excerpt: "Learn how to create compelling data visualizations that tell stories and drive decisions.",
-        date: "Dec 15, 2024",
+        date: "Feb 14, 2025",
         readTime: "6 min read",
         category: "Data Science",
         image: "/images/code-abstract.png",
         tags: ["Data Viz", "Python", "D3.js", "Storytelling"],
         author: {
             name: "Anamay Tripathy",
-            avatar: "/images/profile.png",
+            avatar: "/images/anamay-profile.png",
             role: "Data Science Engineer"
         },
         content: `
@@ -302,14 +302,14 @@ Great data visualization is both an art and a science. Master the fundamentals, 
         slug: "full-stack-development-roadmap",
         title: "My Full-Stack Development Roadmap",
         excerpt: "The technologies, resources, and strategies I used to become a proficient full-stack developer.",
-        date: "Dec 10, 2024",
+        date: "Feb 10, 2025",
         readTime: "10 min read",
         category: "Career",
         image: "/images/tech-workspace.png",
         tags: ["Career", "Learning", "Web Development", "Guide"],
         author: {
             name: "Anamay Tripathy",
-            avatar: "/images/profile.png",
+            avatar: "/images/anamay-profile.png",
             role: "Data Science Engineer"
         },
         content: `
@@ -498,14 +498,14 @@ These are forever valuable.
         slug: "python-automation-scripts",
         title: "10 Python Scripts That Save Me Hours Every Week",
         excerpt: "Automate the boring stuff with these practical Python scripts for everyday tasks.",
-        date: "Dec 5, 2024",
+        date: "Feb 5, 2025",
         readTime: "7 min read",
         category: "Python",
         image: "/images/code-abstract.png",
         tags: ["Python", "Automation", "Productivity", "Scripts"],
         author: {
             name: "Anamay Tripathy",
-            avatar: "/images/profile.png",
+            avatar: "/images/anamay-profile.png",
             role: "Data Science Engineer"
         },
         content: `
@@ -701,14 +701,14 @@ Automation is a superpower. Start with one script that solves a real problem, an
         slug: "react-performance-optimization",
         title: "React Performance: From Sluggish to Snappy",
         excerpt: "Practical techniques to optimize React applications for better user experience.",
-        date: "Nov 28, 2024",
+        date: "Jan 28, 2025",
         readTime: "9 min read",
         category: "React",
         image: "/images/tech-workspace.png",
         tags: ["React", "Performance", "Optimization", "Frontend"],
         author: {
             name: "Anamay Tripathy",
-            avatar: "/images/profile.png",
+            avatar: "/images/anamay-profile.png",
             role: "Data Science Engineer"
         },
         content: `

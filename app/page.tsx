@@ -1,11 +1,12 @@
 "use client"
 
+import { useState, useEffect } from "react"
+
 import dynamic from "next/dynamic"
 import Header from "@/components/header"
 import HeroSection from "@/components/hero-section"
 import AboutSection from "@/components/about-section"
 import SkillsSection from "@/components/skills-section"
-import ProjectsSection from "@/components/projects-section"
 import ExperienceSection from "@/components/experience-section"
 import SocialSection from "@/components/social-section"
 import Footer from "@/components/footer"
@@ -20,7 +21,10 @@ import ContactForm from "@/components/contact-form"
 import BlogSection from "@/components/blog-section"
 import MusicPlayer from "@/components/music-player"
 import WhyWorkWithMe from "@/components/why-work-with-me"
+import SectionDivider from "@/components/section-divider"
+import SelectedWorks from "@/components/selected-works"
 import { KeyboardShortcutsModal, useKeyboardShortcuts } from "@/components/keyboard-shortcuts"
+import CinematicIntro3D from "@/components/cinematic-intro-webgl"
 
 // React Bits inspired components
 import InfiniteMenu from "@/components/infinite-menu"
@@ -66,9 +70,20 @@ const techStackItems = [
 
 export default function Home() {
   useKeyboardShortcuts()
+  const [showIntro, setShowIntro] = useState(true)
+
+  // Avoid infinite loops: if we are inside the 3D iframe, don't show the intro again!
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.self !== window.top) {
+      setShowIntro(false)
+    }
+  }, [])
 
   return (
     <main id="main-content" className="relative cursor-none md:cursor-none">
+      {/* 3D Cinematic Intro Splash Screen */}
+      {showIntro && <CinematicIntro3D onComplete={() => setShowIntro(false)} />}
+
       <LoadingScreen />
       {/* Global Visual Effects */}
       <FloatingParticles count={15} />
@@ -109,6 +124,9 @@ export default function Home() {
         {/* Why Work With Me Section */}
         <WhyWorkWithMe />
 
+        {/* Chapter: Skills & Arsenal */}
+        <SectionDivider label="The Arsenal" sublabel="Technologies, tools, and skills I wield" variant="chapter" />
+
         {/* Skills Section */}
         <SkillsSection />
 
@@ -144,11 +162,11 @@ export default function Home() {
         {/* Currently Working On */}
         <CurrentlyWorkingSection />
 
-        {/* Projects Section */}
-        <ProjectsSection />
-
         {/* GitHub Activity */}
         <GitHubActivity />
+
+        {/* Selected Works Showcase (Replacing Projects, Highlights, and Featured) */}
+        <SelectedWorks />
 
         {/* Experience Section */}
         <ExperienceSection />
@@ -158,6 +176,9 @@ export default function Home() {
 
         {/* Blog Section */}
         <BlogSection />
+
+        {/* Chapter: Connect */}
+        <SectionDivider label="Let's Connect" sublabel="Start a conversation — I'd love to hear from you" variant="chapter" />
 
         {/* Fun Facts */}
         <FunFactsSection />

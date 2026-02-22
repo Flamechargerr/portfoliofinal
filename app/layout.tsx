@@ -2,8 +2,10 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
 import { Roboto, Libre_Baskerville, Alex_Brush, Oswald } from "next/font/google"
+import Script from "next/script"
 import SmoothScroll from "@/components/smooth-scroll"
 import Preloader from "@/components/preloader"
+import InteractiveBackground from "@/components/interactive-background"
 import "./globals.css"
 
 const roboto = Roboto({
@@ -117,6 +119,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <script
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
@@ -124,13 +127,16 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`font-sans antialiased ${roboto.variable} ${libreBaskerville.variable} ${alexBrush.variable} ${oswald.variable}`}
       >
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" strategy="beforeInteractive" />
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" strategy="beforeInteractive" />
         {/* Skip Link for Accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-lorenzo-accent focus:text-lorenzo-dark focus:font-bold focus:uppercase focus:text-sm"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-lorenzo-accent focus:text-lorenzo-dark focus:font-bold focus:uppercase text-sm"
         >
           Skip to main content
         </a>
+        <InteractiveBackground />
         <Preloader />
         <SmoothScroll>{children}</SmoothScroll>
         <Analytics />

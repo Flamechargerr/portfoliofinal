@@ -306,83 +306,94 @@ function SkillDetailPanel({
     const level = getSkillLevel(value)
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="absolute left-1/2 -translate-x-1/2 top-full mt-4 z-[60] w-full max-w-md"
-        >
-            <div className="bg-gradient-to-br from-lorenzo-dark via-lorenzo-dark to-lorenzo-accent/10 border-2 border-lorenzo-accent/30 rounded-2xl p-6 shadow-2xl shadow-lorenzo-accent/10 backdrop-blur-xl">
-                {/* Close button */}
-                <button
-                    onClick={onClose}
-                    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-lorenzo-accent/20 transition-colors"
-                >
-                    <span className="text-lorenzo-light">✕</span>
-                </button>
+        <>
+            {/* Backdrop */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90]"
+                onClick={onClose}
+            />
+            {/* Modal */}
+            <motion.div
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[91] w-[90vw] max-w-md"
+            >
+                <div className="bg-gradient-to-br from-lorenzo-dark via-lorenzo-dark to-lorenzo-accent/10 border-2 border-lorenzo-accent/30 rounded-2xl p-6 shadow-2xl shadow-lorenzo-accent/10 backdrop-blur-xl">
+                    {/* Close button */}
+                    <button
+                        onClick={onClose}
+                        className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-lorenzo-accent/20 transition-colors"
+                    >
+                        <span className="text-lorenzo-light">✕</span>
+                    </button>
 
-                {/* Header */}
-                <div className="flex items-start gap-4 mb-6">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-lorenzo-accent/30 to-lorenzo-accent/10 flex items-center justify-center text-3xl">
-                        {level.emoji}
+                    {/* Header */}
+                    <div className="flex items-start gap-4 mb-6">
+                        <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-lorenzo-accent/30 to-lorenzo-accent/10 flex items-center justify-center text-3xl">
+                            {level.emoji}
+                        </div>
+                        <div className="flex-1">
+                            <h4 className="text-2xl font-bold text-lorenzo-light">{skill}</h4>
+                            <div className="flex items-center gap-2 mt-1">
+                                <span
+                                    className="px-3 py-1 rounded-full text-xs font-bold uppercase"
+                                    style={{ backgroundColor: `${level.color}20`, color: level.color }}
+                                >
+                                    {level.label}
+                                </span>
+                                <span className="text-lorenzo-light/50 text-sm">{experience} exp</span>
+                            </div>
+                        </div>
                     </div>
-                    <div className="flex-1">
-                        <h4 className="text-2xl font-bold text-lorenzo-light">{skill}</h4>
-                        <div className="flex items-center gap-2 mt-1">
-                            <span
-                                className="px-3 py-1 rounded-full text-xs font-bold uppercase"
-                                style={{ backgroundColor: `${level.color}20`, color: level.color }}
-                            >
-                                {level.label}
-                            </span>
-                            <span className="text-lorenzo-light/50 text-sm">{experience} exp</span>
+
+                    {/* Progress bar */}
+                    <div className="mb-6">
+                        <div className="flex justify-between mb-2">
+                            <span className="text-lorenzo-light/70 text-sm">Proficiency</span>
+                            <span className="text-lorenzo-accent font-bold"><AnimatedCounter value={value} />%</span>
+                        </div>
+                        <div className="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+                            <motion.div
+                                className="h-full rounded-full"
+                                style={{
+                                    background: `linear-gradient(90deg, ${level.color}, #c8f550)`
+                                }}
+                                initial={{ width: 0 }}
+                                animate={{ width: `${value}%` }}
+                                transition={{ duration: 1, ease: "easeOut" }}
+                            />
+                        </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-lorenzo-light/70 text-sm mb-6 leading-relaxed">
+                        {description}
+                    </p>
+
+                    {/* Sub-skills */}
+                    <div>
+                        <span className="text-lorenzo-light/50 text-xs uppercase tracking-widest mb-3 block">Related Skills</span>
+                        <div className="flex flex-wrap gap-2">
+                            {subSkills.map((subSkill, i) => (
+                                <motion.span
+                                    key={subSkill}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className="px-3 py-1.5 rounded-lg bg-lorenzo-accent/10 border border-lorenzo-accent/30 text-lorenzo-accent text-sm font-medium hover:bg-lorenzo-accent/20 transition-colors cursor-default"
+                                >
+                                    {subSkill}
+                                </motion.span>
+                            ))}
                         </div>
                     </div>
                 </div>
-
-                {/* Progress bar */}
-                <div className="mb-6">
-                    <div className="flex justify-between mb-2">
-                        <span className="text-lorenzo-light/70 text-sm">Proficiency</span>
-                        <span className="text-lorenzo-accent font-bold"><AnimatedCounter value={value} />%</span>
-                    </div>
-                    <div className="w-full h-3 bg-white/10 rounded-full overflow-hidden">
-                        <motion.div
-                            className="h-full rounded-full"
-                            style={{
-                                background: `linear-gradient(90deg, ${level.color}, #c8f550)`
-                            }}
-                            initial={{ width: 0 }}
-                            animate={{ width: `${value}%` }}
-                            transition={{ duration: 1, ease: "easeOut" }}
-                        />
-                    </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-lorenzo-light/70 text-sm mb-6 leading-relaxed">
-                    {description}
-                </p>
-
-                {/* Sub-skills */}
-                <div>
-                    <span className="text-lorenzo-light/50 text-xs uppercase tracking-widest mb-3 block">Related Skills</span>
-                    <div className="flex flex-wrap gap-2">
-                        {subSkills.map((subSkill, i) => (
-                            <motion.span
-                                key={subSkill}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: i * 0.1 }}
-                                className="px-3 py-1.5 rounded-lg bg-lorenzo-accent/10 border border-lorenzo-accent/30 text-lorenzo-accent text-sm font-medium hover:bg-lorenzo-accent/20 transition-colors cursor-default"
-                            >
-                                {subSkill}
-                            </motion.span>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </motion.div>
+            </motion.div>
+        </>
     )
 }
 

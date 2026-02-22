@@ -34,7 +34,7 @@ export default function SocialSection() {
 
   return (
     <section
-      id="contact"
+      id="social"
       ref={sectionRef}
       className="relative bg-lorenzo-dark py-24 overflow-hidden"
     >

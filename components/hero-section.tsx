@@ -53,8 +53,8 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      id="home"
-      className="relative min-h-screen flex items-center bg-lorenzo-dark overflow-hidden pt-20"
+      id="hero"
+      className="relative min-h-screen flex items-center bg-transparent overflow-hidden pt-20"
     >
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
@@ -63,21 +63,9 @@ export default function HeroSection() {
       </div>
 
       {/* Grid Pattern */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
+      <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none"
         style={{ backgroundImage: 'radial-gradient(var(--lorenzo-accent) 1px, transparent 1px)', backgroundSize: '40px 40px' }}
       />
-
-      {/* Animated Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/tech-workspace.png"
-          alt="Tech Workspace"
-          fill
-          className="object-cover opacity-20"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-lorenzo-dark via-lorenzo-dark/90 to-lorenzo-dark" />
-      </div>
 
       {/* Large Background Text - ALWAYS BEYOND style */}
       <motion.div
@@ -101,37 +89,37 @@ export default function HeroSection() {
             <div className="relative">
               {/* Top accent */}
               <motion.div
-                className="flex items-center gap-3 mb-6"
+                className="flex items-center gap-4 mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isReady ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.2 }}
               >
-                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-xs font-bold uppercase tracking-widest text-lorenzo-light/70">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/50" suppressHydrationWarning>
                   {getGreeting()} • Available for Hire
                 </span>
-                <span className="text-xs text-lorenzo-accent ml-2">⚡ Reply &lt; 24h</span>
+                <span className="text-[10px] font-bold tracking-widest uppercase text-lorenzo-accent ml-2 border border-lorenzo-accent/30 px-2 py-1 rounded-sm backdrop-blur-sm">⚡ Reply &lt; 24h</span>
               </motion.div>
 
               {/* Main Title */}
               <motion.h1
-                className="text-5xl md:text-7xl lg:text-8xl font-brier uppercase tracking-tight leading-[0.85] mb-6"
+                className="text-4xl md:text-6xl lg:text-7xl font-brier uppercase tracking-tighter leading-[0.85] mb-6"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isReady ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.4, duration: 0.8 }}
               >
-                <span className="block text-lorenzo-accent">ANAMAY</span>
-                <span className="block text-lorenzo-light">TRIPATHY</span>
+                <span className="block text-lorenzo-accent drop-shadow-lg">ANAMAY</span>
+                <span className="block text-white">TRIPATHY</span>
               </motion.h1>
 
               {/* Subtitle */}
               <motion.p
-                className="text-lg md:text-xl text-lorenzo-light/60 mb-8 max-w-lg font-mona"
+                className="text-lg md:text-xl text-white/70 mb-10 max-w-lg font-light tracking-tight leading-relaxed"
                 initial={{ opacity: 0 }}
                 animate={isReady ? { opacity: 1 } : {}}
                 transition={{ delay: 0.6 }}
               >
-                <span className="text-lorenzo-accent font-bold min-h-[30px] inline-block">
+                <span className="text-lorenzo-accent font-normal tracking-wide min-h-[40px] block font-brier uppercase text-xl">
                   <TypeAnimation
                     sequence={[
                       "Data Science Engineer",
@@ -149,12 +137,12 @@ export default function HeroSection() {
                   />
                 </span>
                 <br />
-                B.Tech @ MIT Manipal • Lead Dev @ YaanBarpe
+                <span className="text-white/50 text-base">B.Tech @ MIT Manipal • Lead Dev @ YaanBarpe</span>
               </motion.p>
 
               {/* Stats Row */}
               <motion.div
-                className="flex flex-wrap gap-8 md:gap-12 mb-10 pb-10 border-b border-lorenzo-light/10"
+                className="flex flex-wrap gap-8 md:gap-12 mb-10 pb-10 border-b border-white/5"
                 initial={{ opacity: 0 }}
                 animate={isReady ? { opacity: 1 } : {}}
                 transition={{ delay: 0.7 }}
@@ -166,12 +154,12 @@ export default function HeroSection() {
                 ].map((stat, i) => (
                   <div key={i} className="text-center group cursor-pointer" data-cursor="VIEW">
                     <motion.div
-                      className="text-3xl md:text-4xl font-brier text-lorenzo-accent"
-                      whileHover={{ scale: 1.1 }}
+                      className="text-3xl md:text-4xl font-brier text-white group-hover:text-lorenzo-accent transition-colors"
+                      whileHover={{ scale: 1.05 }}
                     >
                       {stat.value}
                     </motion.div>
-                    <div className="text-xs text-lorenzo-light/50 uppercase tracking-wider">{stat.label}</div>
+                    <div className="text-[10px] text-white/40 uppercase tracking-[0.2em] font-bold mt-1">{stat.label}</div>
                   </div>
                 ))}
               </motion.div>

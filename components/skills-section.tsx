@@ -73,21 +73,13 @@ export default function SkillsSection() {
         <section
             id="skills"
             ref={sectionRef}
-            className="relative min-h-screen bg-lorenzo-light text-lorenzo-dark py-24 overflow-hidden"
+            className="relative min-h-screen bg-transparent text-white py-16 md:py-20 overflow-hidden"
         >
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0 opacity-5">
-                <Image
-                    src="/images/code-abstract.png"
-                    alt="Code Background"
-                    fill
-                    className="object-cover"
-                />
-            </div>
+
 
             {/* Background Number */}
             <div className="absolute top-1/2 right-0 -translate-y-1/2 pointer-events-none z-[1]">
-                <span className="text-[40vw] font-brier text-lorenzo-dark/[0.03] leading-none">
+                <span className="text-[40vw] font-brier text-white/[0.02] leading-none mix-blend-overlay">
                     01
                 </span>
             </div>
@@ -100,15 +92,15 @@ export default function SkillsSection() {
                     transition={{ duration: 0.8 }}
                     className="mb-16"
                 >
-                    <div className="flex items-center gap-4 mb-6">
-                        <div className="w-12 h-px bg-lorenzo-dark" />
-                        <span className="text-xs font-bold uppercase tracking-widest text-lorenzo-dark/60">
+                    <div className="flex items-center gap-6 mb-8">
+                        <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/40">
                             TECH SPECS
                         </span>
+                        <div className="w-24 h-[1px] bg-white/10" />
                     </div>
 
-                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-brier uppercase leading-[0.9] tracking-tight">
-                        <span className="block text-lorenzo-dark">SKILLS &</span>
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-brier uppercase leading-[0.85] tracking-tighter">
+                        <span className="block text-white">SKILLS &</span>
                         <span className="block text-lorenzo-accent">TECHNOLOGIES</span>
                     </h2>
                 </motion.div>
@@ -125,23 +117,23 @@ export default function SkillsSection() {
                             key={category.id}
                             onClick={() => setActiveCategory(category.id)}
                             className={`
-                relative px-6 py-3 font-bold uppercase text-sm tracking-wider transition-all overflow-hidden flex-shrink-0 whitespace-nowrap
+                relative px-6 py-3 font-bold uppercase text-xs tracking-[0.2em] transition-all overflow-hidden flex-shrink-0 whitespace-nowrap rounded-full border
                 ${activeCategory === category.id
-                                    ? "bg-lorenzo-dark text-lorenzo-accent"
-                                    : "bg-transparent text-lorenzo-dark border border-lorenzo-dark/20 hover:border-lorenzo-dark"}
+                                    ? "bg-white/10 border-white/20 text-white"
+                                    : "bg-transparent text-white/50 border-white/5 hover:border-white/20 hover:text-white"}
               `}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             data-cursor="SELECT"
                         >
                             <span className="flex items-center gap-3 relative z-10">
-                                <span className="text-xs opacity-50">0{index + 1}</span>
+                                <span className="text-[10px] opacity-40 font-brier">0{index + 1}</span>
                                 <span>{category.name}</span>
                             </span>
 
                             {activeCategory === category.id && (
                                 <motion.div
-                                    className="absolute bottom-0 left-0 right-0 h-1 bg-lorenzo-accent"
+                                    className="absolute inset-0 border border-white/30 rounded-full"
                                     layoutId="activeTab"
                                 />
                             )}
@@ -165,10 +157,9 @@ export default function SkillsSection() {
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.1 }}
-                                className="group relative p-6 bg-white border border-lorenzo-dark/10 hover:border-lorenzo-accent transition-all cursor-pointer overflow-hidden"
+                                className="group relative p-6 md:p-8 bg-white/[0.02] border border-white/5 rounded-2xl backdrop-blur-sm hover:bg-white/[0.04] hover:border-white/10 transition-all cursor-pointer overflow-hidden"
                                 onMouseEnter={() => setHoveredSkill(skill.name)}
                                 onMouseLeave={() => setHoveredSkill(null)}
-                                whileHover={{ y: -5 }}
                                 data-cursor="VIEW"
                             >
                                 {/* Background Icon */}
@@ -191,10 +182,10 @@ export default function SkillsSection() {
                                             {skill.icon}
                                         </motion.span>
                                         <div>
-                                            <h3 className="text-xl font-bold text-lorenzo-dark uppercase tracking-wider">
+                                            <h3 className="text-xl font-bold text-white uppercase tracking-wider group-hover:text-lorenzo-accent transition-colors">
                                                 {skill.name}
                                             </h3>
-                                            <p className="text-sm text-lorenzo-dark/50">{skill.projects} projects built</p>
+                                            <p className="text-xs text-white/40 mt-1 uppercase tracking-[0.1em]">{skill.projects} projects built</p>
                                         </div>
                                     </div>
                                     <motion.div
@@ -206,9 +197,9 @@ export default function SkillsSection() {
                                 </div>
 
                                 {/* Progress Bar - Racing Style with Animation */}
-                                <div className="relative h-3 bg-lorenzo-dark/10 overflow-hidden rounded-full">
+                                <div className="relative h-1 bg-white/5 overflow-hidden rounded-full mt-8">
                                     <motion.div
-                                        className="absolute top-0 left-0 h-full bg-gradient-to-r from-lorenzo-accent to-lorenzo-accent/80 rounded-full"
+                                        className="absolute top-0 left-0 h-full bg-lorenzo-accent rounded-full"
                                         initial={{ width: 0 }}
                                         animate={{ width: `${skill.level}%` }}
                                         transition={{ duration: 1, delay: index * 0.1 }}
@@ -231,17 +222,9 @@ export default function SkillsSection() {
                                 </div>
 
                                 {/* Corner Number */}
-                                <div className="absolute top-2 right-2 text-4xl font-brier text-lorenzo-dark/5 group-hover:text-lorenzo-accent/20 transition-colors">
+                                <div className="absolute top-4 right-4 text-3xl font-brier text-white/5 group-hover:text-white/10 transition-colors">
                                     0{index + 1}
                                 </div>
-
-                                {/* Hover line effect */}
-                                <motion.div
-                                    className="absolute bottom-0 left-0 h-1 bg-lorenzo-accent"
-                                    initial={{ width: 0 }}
-                                    animate={{ width: hoveredSkill === skill.name ? "100%" : 0 }}
-                                    transition={{ duration: 0.3 }}
-                                />
                             </motion.div>
                         ))}
                     </motion.div>
@@ -252,7 +235,7 @@ export default function SkillsSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.6 }}
-                    className="mt-20 p-8 bg-lorenzo-dark text-lorenzo-light relative overflow-hidden"
+                    className="mt-20 p-8 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md relative overflow-hidden"
                 >
                     {/* Background pattern */}
                     <div className="absolute inset-0 opacity-10">
@@ -266,10 +249,10 @@ export default function SkillsSection() {
 
                     <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
                         <div>
-                            <h3 className="text-2xl md:text-3xl font-brier uppercase mb-2">
+                            <h3 className="text-2xl md:text-3xl font-brier uppercase mb-2 text-white">
                                 <span className="text-lorenzo-accent">CERTIFIED</span> PROFESSIONAL
                             </h3>
-                            <p className="text-lorenzo-light/60 font-mona">
+                            <p className="text-white/60 font-light tracking-tight text-sm">
                                 Industry-validated expertise from global tech leaders
                             </p>
                         </div>
@@ -281,12 +264,12 @@ export default function SkillsSection() {
                             ].map((cert, i) => (
                                 <motion.div
                                     key={i}
-                                    className="flex items-center gap-3 px-5 py-3 border border-lorenzo-accent/30 hover:border-lorenzo-accent hover:bg-lorenzo-accent/10 transition-all cursor-pointer"
+                                    className="flex items-center gap-3 px-5 py-3 border border-white/10 rounded-xl bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all cursor-pointer"
                                     whileHover={{ scale: 1.05, y: -3 }}
                                     data-cursor="VIEW"
                                 >
-                                    <span className="text-2xl font-brier italic text-lorenzo-accent">{cert.pos}</span>
-                                    <span className="text-sm font-bold uppercase">{cert.name}</span>
+                                    <span className="text-xl font-brier italic text-white/50">{cert.pos}</span>
+                                    <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-white">{cert.name}</span>
                                 </motion.div>
                             ))}
                         </div>
