@@ -69,6 +69,15 @@ export default function SkillsSection() {
 
     const activeSkills = skillCategories.find(cat => cat.id === activeCategory)?.skills || []
 
+    // Mouse tracking for glow cards
+    const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect()
+        const x = ((e.clientX - rect.left) / rect.width) * 100
+        const y = ((e.clientY - rect.top) / rect.height) * 100
+        e.currentTarget.style.setProperty('--mouse-x', `${x}%`)
+        e.currentTarget.style.setProperty('--mouse-y', `${y}%`)
+    }
+
     return (
         <section
             id="skills"
@@ -119,7 +128,7 @@ export default function SkillsSection() {
                             className={`
                 relative px-6 py-3 font-bold uppercase text-xs tracking-[0.2em] transition-all overflow-hidden flex-shrink-0 whitespace-nowrap rounded-full border
                 ${activeCategory === category.id
-                                    ? "bg-white/10 border-white/20 text-white"
+                                    ? "glass-pill text-white"
                                     : "bg-transparent text-white/50 border-white/5 hover:border-white/20 hover:text-white"}
               `}
                             whileHover={{ scale: 1.05 }}
@@ -157,7 +166,8 @@ export default function SkillsSection() {
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.1 }}
-                                className="group relative p-6 md:p-8 bg-white/[0.02] border border-white/5 rounded-2xl backdrop-blur-sm hover:bg-white/[0.04] hover:border-white/10 transition-all cursor-pointer overflow-hidden"
+                                className="group relative p-6 md:p-8 glow-card bg-white/[0.02] border border-white/5 rounded-2xl backdrop-blur-sm hover:bg-white/[0.04] hover:border-white/10 transition-all cursor-pointer"
+                                onMouseMove={handleCardMouseMove}
                                 onMouseEnter={() => setHoveredSkill(skill.name)}
                                 onMouseLeave={() => setHoveredSkill(null)}
                                 data-cursor="VIEW"
@@ -197,9 +207,9 @@ export default function SkillsSection() {
                                 </div>
 
                                 {/* Progress Bar - Racing Style with Animation */}
-                                <div className="relative h-1 bg-white/5 overflow-hidden rounded-full mt-8">
+                                <div className="relative h-1.5 bg-white/5 overflow-hidden rounded-full mt-8">
                                     <motion.div
-                                        className="absolute top-0 left-0 h-full bg-lorenzo-accent rounded-full"
+                                        className="absolute top-0 left-0 h-full bg-lorenzo-accent rounded-full shine-bar"
                                         initial={{ width: 0 }}
                                         animate={{ width: `${skill.level}%` }}
                                         transition={{ duration: 1, delay: index * 0.1 }}

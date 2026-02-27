@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion"
 import { TypeAnimation } from "react-type-animation"
 import Image from "next/image"
 import ProfileCard from "./profile-card/ProfileCard"
+import CinematicVideoBackground from "./cinematic-video-bg"
 
 // Dynamic greeting based on time of day
 const getGreeting = () => {
@@ -56,10 +57,9 @@ export default function HeroSection() {
       id="hero"
       className="relative min-h-screen flex items-center bg-transparent overflow-hidden pt-20"
     >
-      {/* Background elements */}
+      {/* Cinematic Fluid Background (Hypedecay Style) */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-lorenzo-accent/10 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-lorenzo-accent/5 rounded-full blur-[150px] animate-pulse delay-700" />
+        <CinematicVideoBackground />
       </div>
 
       {/* Grid Pattern */}
@@ -172,7 +172,7 @@ export default function HeroSection() {
                 transition={{ delay: 0.8 }}
               >
                 <motion.a
-                  href="#projects"
+                  href="#selected-works"
                   className="group relative px-8 py-4 bg-lorenzo-accent text-lorenzo-dark font-bold uppercase tracking-wider text-sm overflow-hidden"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

@@ -10,7 +10,7 @@ import { Ripple } from "@/components/ui/material-design-3-ripple"
 const navItems = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
+  { name: "Projects", href: "#selected-works" },
   { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
 ]

@@ -24,7 +24,7 @@ import WhyWorkWithMe from "@/components/why-work-with-me"
 import SectionDivider from "@/components/section-divider"
 import SelectedWorks from "@/components/selected-works"
 import { KeyboardShortcutsModal, useKeyboardShortcuts } from "@/components/keyboard-shortcuts"
-import CinematicIntro3D from "@/components/cinematic-intro-webgl"
+import MacBookScrollIntro from "@/components/macbook-scroll-intro"
 
 // React Bits inspired components
 import InfiniteMenu from "@/components/infinite-menu"
@@ -72,17 +72,38 @@ export default function Home() {
   useKeyboardShortcuts()
   const [showIntro, setShowIntro] = useState(true)
 
-  // Avoid infinite loops: if we are inside the 3D iframe, don't show the intro again!
+  // Prevent browser from restoring scroll position on reload
   useEffect(() => {
-    if (typeof window !== "undefined" && window.self !== window.top) {
-      setShowIntro(false)
+    if (typeof window !== "undefined") {
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual"
+      }
+      // If inside iframe, skip intro
+      if (window.self !== window.top) {
+        setShowIntro(false)
+      }
     }
   }, [])
 
+  // Force scroll to top when intro dismisses
+  const handleIntroComplete = () => {
+    setShowIntro(false)
+    // Triple-force: native scroll reset
+    window.scrollTo(0, 0)
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+    // Also after next frame (after Lenis catches up)
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0)
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+    })
+  }
+
   return (
     <main id="main-content" className="relative cursor-none md:cursor-none">
-      {/* 3D Cinematic Intro Splash Screen */}
-      {showIntro && <CinematicIntro3D onComplete={() => setShowIntro(false)} />}
+      {/* MacBook Scrollytelling Intro */}
+      {showIntro && <MacBookScrollIntro onComplete={handleIntroComplete} />}
 
       <LoadingScreen />
       {/* Global Visual Effects */}

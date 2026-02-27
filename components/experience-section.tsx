@@ -140,10 +140,14 @@ export default function ExperienceSection() {
                 {/* Timeline Container */}
                 <div className="relative">
                     {/* Animated Timeline Line */}
-                    <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-white/5 transform md:-translate-x-1/2">
+                    <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] transform md:-translate-x-1/2" style={{ background: 'linear-gradient(to bottom, rgba(200,245,80,0.05), rgba(200,245,80,0.02))' }}>
                         <motion.div
-                            className="w-full bg-lorenzo-accent shadow-[0_0_10px_rgba(200,245,80,0.5)]"
-                            style={{ height: lineHeight }}
+                            className="w-full"
+                            style={{
+                                height: lineHeight,
+                                background: 'linear-gradient(to bottom, rgba(200,245,80,0.8), rgba(200,245,80,0.3))',
+                                boxShadow: '0 0 15px rgba(200,245,80,0.3), 0 0 30px rgba(200,245,80,0.1)',
+                            }}
                         />
                     </div>
 
@@ -161,7 +165,7 @@ export default function ExperienceSection() {
                                 {/* Timeline Node */}
                                 <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 top-8 md:top-1/2">
                                     <motion.div
-                                        className={`w-4 h-4 rounded-full border-2 ${event.highlight
+                                        className={`w-4 h-4 rounded-full border-2 timeline-dot-pulse ${event.highlight
                                             ? 'bg-lorenzo-accent border-lorenzo-accent shadow-[0_0_20px_rgba(200,245,80,0.6)]'
                                             : 'bg-lorenzo-dark border-lorenzo-accent'
                                             }`}

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"
 const navItems = [
     { name: "About", href: "#about", icon: "👤" },
     { name: "Skills", href: "#skills", icon: "⚡" },
-    { name: "Projects", href: "#projects", icon: "🚀" },
+    { name: "Projects", href: "#selected-works", icon: "🚀" },
     { name: "Experience", href: "#experience", icon: "💼" },
     { name: "Contact", href: "#contact", icon: "✉️" },
 ]

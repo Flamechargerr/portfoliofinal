@@ -8,7 +8,7 @@ const navigationLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/#about" },
   { label: "Skills", href: "/#skills" },
-  { label: "Projects", href: "/#projects" },
+  { label: "Projects", href: "/#selected-works" },
   { label: "Experience", href: "/#experience" },
   { label: "Contact", href: "/#contact" },
 ]
@@ -58,8 +58,18 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer ref={footerRef} className="bg-lorenzo-dark border-t border-lorenzo-accent/20">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16">
+    <footer ref={footerRef} className="relative bg-lorenzo-dark border-t border-lorenzo-accent/20 overflow-hidden">
+      {/* Gradient glow from top border */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-lorenzo-accent/5 to-transparent pointer-events-none" />
+
+      {/* Cinematic background watermark */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+        <span className="text-[18vw] font-brier text-lorenzo-accent/[0.02] uppercase leading-none whitespace-nowrap tracking-tighter">
+          ANAMAY
+        </span>
+      </div>
+
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <motion.div
@@ -143,16 +153,18 @@ export default function Footer() {
             </h3>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
-                <a
+                <motion.a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center border border-lorenzo-accent/30 text-lorenzo-light/60 hover:text-lorenzo-accent hover:border-lorenzo-accent transition-all"
+                  className="w-10 h-10 flex items-center justify-center border border-lorenzo-accent/30 rounded-lg text-lorenzo-light/60 hover:text-lorenzo-accent hover:border-lorenzo-accent hover:bg-lorenzo-accent/10 transition-all duration-300"
                   aria-label={social.label}
+                  whileHover={{ scale: 1.15, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   {social.icon}
-                </a>
+                </motion.a>
               ))}
             </div>
           </motion.div>

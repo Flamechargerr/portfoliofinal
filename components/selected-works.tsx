@@ -21,7 +21,7 @@ const PROJECTS: Project[] = [
         year: "2024",
         description: "Scaleable microservices backend powering the travel itinerary platform with AI integrations and real-time data sync.",
         image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600&q=80",
-        link: "https://github.com/flamechargerr/yaanbarpe",
+        link: "https://github.com/Flamechargerr",
     },
     {
         id: "02",
@@ -30,7 +30,7 @@ const PROJECTS: Project[] = [
         year: "2024",
         description: "Centralized criminal registry and court system administration featuring an FBI-cinematic agent-level data dashboard.",
         image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1600&q=80",
-        link: "https://github.com/flamechargerr/crime-connect",
+        link: "https://github.com/Flamechargerr/crime-connect-fbi",
     },
     {
         id: "03",
@@ -39,7 +39,7 @@ const PROJECTS: Project[] = [
         year: "2023",
         description: "Automated deployment and testing infrastructure built on Vue, Node, and Docker to simulate real-world attacks.",
         image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&q=80",
-        link: "https://github.com/flamechargerr/Hackops",
+        link: "https://github.com/Flamechargerr/HackOps",
     },
     {
         id: "04",
@@ -48,7 +48,7 @@ const PROJECTS: Project[] = [
         year: "2023",
         description: "Financial text sentiment analysis utilizing a fine-tuned BERT model hosted via HuggingFace and PyTorch.",
         image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1600&q=80",
-        link: "https://github.com/flamechargerr/Stock-Sentiment-News-Analyzer",
+        link: "https://github.com/Flamechargerr/VARtificial-Intelligence",
     }
 ]
 
@@ -170,7 +170,7 @@ export default function SelectedWorks() {
                                                 <a href={project.link} target="_blank" rel="noopener noreferrer">
                                                     <button className="group relative px-6 py-3 overflow-hidden rounded-full bg-lorenzo-accent text-lorenzo-dark font-bold font-roboto uppercase text-xs md:text-sm tracking-widest shrink-0 transition-transform hover:scale-105">
                                                         <span className="relative z-10 flex items-center gap-2">
-                                                            View Case Study
+                                                            View on GitHub
                                                             <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                                             </svg>
