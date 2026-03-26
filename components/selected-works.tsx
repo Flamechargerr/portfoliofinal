@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react"
 import { motion, useScroll, useTransform, useSpring } from "framer-motion"
+import Image from "next/image"
 
 interface Project {
     id: string
@@ -130,10 +131,12 @@ export default function SelectedWorks() {
                                     {/* Project Image Container */}
                                     <div className="relative w-full h-full md:h-[95vh] rounded-none md:rounded-3xl overflow-hidden group border-0 md:border border-white/5">
                                         <motion.div className="w-full h-full">
-                                            <img
+                                            <Image
                                                 src={project.image}
                                                 alt={project.title}
-                                                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)]"
+                                                fill
+                                                sizes="100vw"
+                                                className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)]"
                                             />
                                         </motion.div>
 

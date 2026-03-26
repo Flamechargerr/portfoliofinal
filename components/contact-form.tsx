@@ -242,22 +242,30 @@ export default function ContactForm() {
                                 <label className="block text-xs font-bold uppercase tracking-wider text-lorenzo-light/50 mb-2">
                                     Subject *
                                 </label>
-                                <select
-                                    name="subject"
-                                    value={formData.subject}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full px-4 py-4 bg-lorenzo-dark border border-lorenzo-light/20 text-lorenzo-light focus:border-lorenzo-accent focus:outline-none transition-colors focus-ring"
-                                >
-                                    <option value="">Select a topic...</option>
-                                    <option value="internship">Internship Opportunity</option>
-                                    <option value="fulltime">Full-time Role</option>
-                                    <option value="freelance">Freelance Project</option>
-                                    <option value="collaboration">Collaboration</option>
-                                    <option value="mentorship">Mentorship Request</option>
-                                    <option value="question">General Question</option>
-                                    <option value="other">Other</option>
-                                </select>
+                                <div className="relative">
+                                    <select
+                                        name="subject"
+                                        value={formData.subject}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full px-4 py-4 bg-lorenzo-dark border border-lorenzo-light/20 text-lorenzo-light focus:border-lorenzo-accent focus:outline-none transition-colors focus-ring appearance-none cursor-pointer pr-12"
+                                    >
+                                        <option value="">Select a topic...</option>
+                                        <option value="internship">Internship Opportunity</option>
+                                        <option value="fulltime">Full-time Role</option>
+                                        <option value="freelance">Freelance Project</option>
+                                        <option value="collaboration">Collaboration</option>
+                                        <option value="mentorship">Mentorship Request</option>
+                                        <option value="question">General Question</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    {/* Custom chevron */}
+                                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
+                                        <svg className="w-4 h-4 text-lorenzo-accent/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </div>
+                                </div>
                             </div>
 
                             <div>

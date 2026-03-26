@@ -38,6 +38,7 @@ const oswald = Oswald({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://anamay.vercel.app"),
   title: "Anamay Tripathy - Data Science Engineer & Full Stack Developer",
   description: "Portfolio of Anamay Tripathy - B.Tech Data Science Engineering student at MIT Manipal, Technical Head at YaanBarpe, Software Engineering Intern at Intellect Design Arena",
   keywords: ["Anamay Tripathy", "Data Science", "Full Stack Developer", "MIT Manipal", "Portfolio", "React", "Node.js", "Python", "Machine Learning"],

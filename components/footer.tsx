@@ -181,6 +181,14 @@ export default function Footer() {
             © {currentYear} Anamay Tripathy. Built with passion.
           </p>
           <div className="flex items-center gap-6 text-sm text-lorenzo-light/40">
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: 1.5, duration: 1 }}
+              className="text-lorenzo-accent/40 text-xs italic hidden lg:inline"
+            >
+              Thanks for scrolling this far ✨
+            </motion.span>
             <span className="flex items-center gap-2">
               <span>Next.js</span>
               <span className="text-lorenzo-accent">•</span>

@@ -1,9 +1,8 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { motion, useScroll, useTransform, useSpring } from "framer-motion"
+import { motion } from "framer-motion"
 import { TypeAnimation } from "react-type-animation"
-import Image from "next/image"
 import ProfileCard from "./profile-card/ProfileCard"
 import CinematicVideoBackground from "./cinematic-video-bg"
 
@@ -20,19 +19,6 @@ export default function HeroSection() {
   const [isReady, setIsReady] = useState(false)
   const containerRef = useRef<HTMLElement>(null)
 
-  const { scrollY } = useScroll()
-  const y1 = useTransform(scrollY, [0, 500], [0, 200])
-  const y2 = useTransform(scrollY, [0, 500], [0, -150])
-  const opacity = useTransform(scrollY, [0, 300], [1, 0])
-  const scale = useTransform(scrollY, [0, 300], [1, 0.8])
-
-  // Parallax for the background text
-  const bgTextX = useTransform(scrollY, [0, 1000], [0, -200])
-
-  // Spring animations for smoother movement
-  const springY1 = useSpring(y1, { stiffness: 100, damping: 30 })
-  const springY2 = useSpring(y2, { stiffness: 100, damping: 30 })
-
   // Floating effect for the portrait
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
@@ -47,9 +33,6 @@ export default function HeroSection() {
     window.addEventListener("mousemove", handleMouseMove)
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
-
-  const portraitY = useTransform(scrollY, [0, 500], [0, 100])
-  const portraitScale = useTransform(scrollY, [0, 500], [1, 1.1])
 
   return (
     <section
@@ -68,14 +51,13 @@ export default function HeroSection() {
       />
 
       {/* Large Background Text - ALWAYS BEYOND style */}
-      <motion.div
+      <div
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-[1]"
-        style={{ x: bgTextX }}
       >
         <span className="text-[18vw] md:text-[15vw] font-brier text-lorenzo-accent/[0.06] uppercase whitespace-nowrap tracking-tight">
           INNOVATOR
         </span>
-      </motion.div>
+      </div>
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full relative z-10 py-12 md:py-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
@@ -293,14 +275,20 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll Down Indicator */}
+      {/* Scroll Down Indicator — Mouse Icon */}
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2"
-        animate={{ y: [0, 10, 0], opacity: [0.3, 1, 0.3] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-3"
+        animate={{ opacity: [0.4, 1, 0.4] }}
+        transition={{ duration: 2.5, repeat: Infinity }}
       >
-        <div className="w-px h-12 bg-gradient-to-b from-transparent via-lorenzo-accent to-transparent" />
-        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-lorenzo-accent">Scroll</span>
+        <div className="w-6 h-10 rounded-full border-2 border-lorenzo-accent/60 flex items-start justify-center p-1.5">
+          <motion.div
+            className="w-1.5 h-1.5 rounded-full bg-lorenzo-accent"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-lorenzo-accent/70">Scroll</span>
       </motion.div>
     </section>
   )

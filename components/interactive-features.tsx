@@ -17,11 +17,12 @@ interface CommandPaletteProps {
 export function CommandPalette({ commands = [] }: CommandPaletteProps) {
     const [isOpen, setIsOpen] = useState(false)
     const [search, setSearch] = useState("")
+    const [selectedIndex, setSelectedIndex] = useState(0)
 
     const defaultCommands = [
         { id: "home", label: "Go to Home", shortcut: "G H", action: () => window.scrollTo({ top: 0, behavior: "smooth" }), icon: "🏠" },
         { id: "about", label: "Go to About", shortcut: "G A", action: () => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }), icon: "👤" },
-        { id: "projects", label: "Go to Projects", shortcut: "G P", action: () => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }), icon: "📁" },
+        { id: "projects", label: "Go to Projects", shortcut: "G P", action: () => document.getElementById("selected-works")?.scrollIntoView({ behavior: "smooth" }), icon: "📁" },
         { id: "contact", label: "Go to Contact", shortcut: "G C", action: () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }), icon: "📧" },
         { id: "blog", label: "Go to Blog", shortcut: "G B", action: () => window.location.href = "/blog", icon: "📝" },
         { id: "github", label: "Open GitHub", shortcut: "G G", action: () => window.open("https://github.com/Flamechargerr", "_blank"), icon: "🐙" },
@@ -34,11 +35,18 @@ export function CommandPalette({ commands = [] }: CommandPaletteProps) {
         cmd.label.toLowerCase().includes(search.toLowerCase())
     )
 
+    // Reset selected index when search changes
+    useEffect(() => {
+        setSelectedIndex(0)
+    }, [search])
+
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if ((e.metaKey || e.ctrlKey) && e.key === "k") {
                 e.preventDefault()
                 setIsOpen(prev => !prev)
+                setSearch("")
+                setSelectedIndex(0)
             }
             if (e.key === "Escape") setIsOpen(false)
         }
@@ -51,6 +59,20 @@ export function CommandPalette({ commands = [] }: CommandPaletteProps) {
         action()
         setIsOpen(false)
         setSearch("")
+        setSelectedIndex(0)
+    }
+
+    const handlePaletteKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === "ArrowDown") {
+            e.preventDefault()
+            setSelectedIndex(prev => (prev + 1) % filteredCommands.length)
+        } else if (e.key === "ArrowUp") {
+            e.preventDefault()
+            setSelectedIndex(prev => (prev - 1 + filteredCommands.length) % filteredCommands.length)
+        } else if (e.key === "Enter" && filteredCommands.length > 0) {
+            e.preventDefault()
+            executeCommand(filteredCommands[selectedIndex].action)
+        }
     }
 
     return (
@@ -72,6 +94,7 @@ export function CommandPalette({ commands = [] }: CommandPaletteProps) {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: -20 }}
                         className="fixed top-[20%] left-1/2 -translate-x-1/2 w-full max-w-lg bg-[#0a0a0a] border border-white/10 rounded-xl shadow-2xl z-[201] overflow-hidden"
+                        onKeyDown={handlePaletteKeyDown}
                     >
                         {/* Search Input */}
                         <div className="flex items-center gap-3 p-4 border-b border-white/10">
@@ -98,16 +121,30 @@ export function CommandPalette({ commands = [] }: CommandPaletteProps) {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: i * 0.03 }}
                                     onClick={() => executeCommand(cmd.action)}
-                                    className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-white/5 text-left group transition-colors"
+                                    onMouseEnter={() => setSelectedIndex(i)}
+                                    className={`w-full flex items-center justify-between p-3 rounded-lg text-left group transition-colors ${
+                                        i === selectedIndex ? "bg-white/10" : "hover:bg-white/5"
+                                    }`}
+                                    ref={(el) => {
+                                        if (i === selectedIndex && el) {
+                                            el.scrollIntoView({ block: "nearest" })
+                                        }
+                                    }}
                                 >
                                     <div className="flex items-center gap-3">
                                         <span className="text-lg">{cmd.icon}</span>
-                                        <span className="text-white group-hover:text-lorenzo-accent transition-colors">
+                                        <span className={`transition-colors ${
+                                            i === selectedIndex ? "text-lorenzo-accent" : "text-white group-hover:text-lorenzo-accent"
+                                        }`}>
                                             {cmd.label}
                                         </span>
                                     </div>
                                     {cmd.shortcut && (
-                                        <kbd className="px-2 py-1 text-xs bg-white/5 rounded text-white/30 group-hover:bg-lorenzo-accent/20 group-hover:text-lorenzo-accent">
+                                        <kbd className={`px-2 py-1 text-xs rounded ${
+                                            i === selectedIndex
+                                                ? "bg-lorenzo-accent/20 text-lorenzo-accent"
+                                                : "bg-white/5 text-white/30 group-hover:bg-lorenzo-accent/20 group-hover:text-lorenzo-accent"
+                                        }`}>
                                             {cmd.shortcut}
                                         </kbd>
                                     )}
@@ -241,9 +278,11 @@ export function ExplorationProgress() {
 // 31. Live Visitor Count (simulated)
 export function LiveVisitorCount() {
     const [count, setCount] = useState(0)
+    const [isMounted, setIsMounted] = useState(false)
 
     useEffect(() => {
-        // Simulate random visitor count between 5-30
+        // Defer random count to client only to avoid hydration mismatch
+        setIsMounted(true)
         setCount(Math.floor(Math.random() * 25) + 5)
 
         const interval = setInterval(() => {
@@ -255,6 +294,8 @@ export function LiveVisitorCount() {
 
         return () => clearInterval(interval)
     }, [])
+
+    if (!isMounted) return null
 
     return (
         <motion.div

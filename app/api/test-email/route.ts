@@ -12,7 +12,20 @@ export async function POST() {
       )
     }
 
-    const { Resend } = await import("resend")
+    let Resend: any
+    try {
+      const mod = await import("resend")
+      Resend = mod.Resend
+    } catch {
+      return NextResponse.json(
+        {
+          error: "Resend package not installed",
+          solution: "Run `npm install resend` to enable email functionality",
+        },
+        { status: 400 },
+      )
+    }
+
     const resend = new Resend(process.env.RESEND_API_KEY)
 
     // Test email

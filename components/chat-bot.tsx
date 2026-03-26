@@ -90,7 +90,7 @@ export default function ChatBot() {
             {/* Chat Button */}
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className="fixed bottom-6 right-6 w-14 h-14 bg-lorenzo-accent text-lorenzo-dark rounded-full flex items-center justify-center shadow-lg shadow-lorenzo-accent/30 z-50"
+                className="fixed bottom-24 right-6 w-14 h-14 bg-lorenzo-accent text-lorenzo-dark rounded-full flex items-center justify-center shadow-lg shadow-lorenzo-accent/30 z-50"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 animate={{ rotate: isOpen ? 45 : 0 }}
@@ -113,7 +113,7 @@ export default function ChatBot() {
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                        className="fixed bottom-24 right-6 w-[350px] h-[500px] bg-lorenzo-dark border border-lorenzo-accent/30 rounded-lg shadow-2xl z-50 flex flex-col overflow-hidden"
+                        className="fixed bottom-40 right-6 w-[350px] h-[500px] bg-lorenzo-dark border border-lorenzo-accent/30 rounded-lg shadow-2xl z-50 flex flex-col overflow-hidden"
                     >
                         {/* Header */}
                         <div className="p-4 border-b border-lorenzo-accent/20 bg-lorenzo-accent/5">
@@ -199,7 +199,7 @@ export default function ChatBot() {
                                     type="text"
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
-                                    onKeyPress={handleKeyPress}
+                                    onKeyDown={handleKeyPress}
                                     placeholder="Type a message..."
                                     className="flex-1 bg-transparent border border-lorenzo-accent/30 rounded-lg px-4 py-2 text-lorenzo-light text-sm focus:border-lorenzo-accent focus:outline-none placeholder:text-lorenzo-light/30"
                                 />
