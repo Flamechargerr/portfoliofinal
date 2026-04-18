@@ -19,863 +19,592 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
     {
         id: 1,
-        slug: "building-ai-study-assistant",
-        title: "Building an AI Study Assistant with LangChain",
-        excerpt: "A deep dive into creating an intelligent study companion using LLMs that helps students learn more effectively.",
-        date: "Feb 18, 2025",
-        readTime: "8 min read",
-        category: "AI/ML",
-        image: "/images/data-viz.png",
-        tags: ["AI", "LangChain", "Python", "Education Tech"],
+        slug: "building-crimeconnect-fbi-graph-intelligence",
+        title: "Building CrimeConnect: An FBI-Style Graph Intelligence System",
+        excerpt: "How I built a real-time criminal registry and court administration platform with PageRank analysis, force-directed graphs, and a cinematic FBI-grade dashboard using TypeScript, D3.js, and Supabase.",
+        date: "Apr 15, 2026",
+        readTime: "10 min read",
+        category: "Full Stack",
+        image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1600&q=80",
+        tags: ["TypeScript", "D3.js", "Supabase", "Graph Theory", "Next.js"],
         author: {
             name: "Anamay Tripathy",
             avatar: "/images/anamay-profile.png",
             role: "Data Science Engineer"
         },
         content: `
-## Introduction
-
-As a student at MIT Manipal pursuing Data Science, I've always been fascinated by the potential of AI to transform education. This led me to build an AI-powered study assistant using LangChain and modern LLM technologies.
-
 ## The Problem
 
-Students often struggle with:
-- **Information overload** - Too many resources, not enough time
-- **Lack of personalization** - One-size-fits-all learning doesn't work
-- **Passive learning** - Reading without active engagement
-- **Difficulty retaining information** - Forgetting what you've learned
+During a team project at MIT Manipal, we were asked to design a system that could model real-world relational data at scale. Crime, courts, and investigations turned out to be the perfect domain — high-stakes, deeply interconnected, and visually fascinating.
 
-## The Solution: An AI Study Companion
+The challenge: build a platform that could store, query, and *visually reason* over thousands of criminal records, court cases, and suspect relationships simultaneously.
 
-I built a study assistant that:
+## Architecture at a Glance
 
-1. **Summarizes complex topics** - Break down lengthy materials into digestible chunks
-2. **Generates practice questions** - Active recall is key to retention
-3. **Provides personalized explanations** - Adapts to your learning style
-4. **Tracks progress** - Spaced repetition for long-term memory
-
-## Tech Stack
-
-\`\`\`python
-# Core dependencies
-langchain==0.1.0
-openai==1.6.0
-chromadb==0.4.22
-streamlit==1.29.0
+\`\`\`
+Frontend: Next.js + TypeScript + Framer Motion + D3.js
+Backend:  Supabase (Postgres + Realtime + Auth)
+Graphs:   Force-directed simulation (D3-force)
+Analytics: PageRank, centrality scoring
 \`\`\`
 
-### Architecture Overview
+## The Graph Engine
 
-The system uses a RAG (Retrieval-Augmented Generation) architecture:
+The centrepiece of CrimeConnect is a force-directed graph that renders 10,000+ nodes in real time. Each node is a suspect, victim, or court entity. Edges represent relationships — co-accused, testified against, shared address, etc.
 
-1. **Document Ingestion** - PDF, text files, and web content
-2. **Embedding Generation** - Using OpenAI's embedding model
-3. **Vector Storage** - ChromaDB for efficient similarity search
-4. **Query Processing** - LangChain chains for context-aware responses
+\`\`\`typescript
+// PageRank implementation for finding high-centrality suspects
+function computePageRank(
+  nodes: CrimeNode[],
+  edges: CrimeEdge[],
+  damping = 0.85,
+  iterations = 100
+): Map<string, number> {
+  const rank = new Map<string, number>()
+  const n = nodes.length
 
-## Key Implementation Details
+  // Initialize uniform ranks
+  nodes.forEach(node => rank.set(node.id, 1 / n))
 
-### Document Processing
+  for (let iter = 0; iter < iterations; iter++) {
+    const newRank = new Map<string, number>()
+    nodes.forEach(node => {
+      const inLinks = edges.filter(e => e.target === node.id)
+      const sum = inLinks.reduce((acc, edge) => {
+        const srcRank = rank.get(edge.source) ?? 0
+        const outDegree = edges.filter(e => e.source === edge.source).length
+        return acc + srcRank / Math.max(outDegree, 1)
+      }, 0)
+      newRank.set(node.id, (1 - damping) / n + damping * sum)
+    })
+    newRank.forEach((v, k) => rank.set(k, v))
+  }
 
-\`\`\`python
-from langchain.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-
-def process_documents(file_path: str):
-    loader = PyPDFLoader(file_path)
-    documents = loader.load()
-    
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=200
-    )
-    
-    return text_splitter.split_documents(documents)
+  return rank
+}
 \`\`\`
 
-### Question Generation Chain
+Running this on 10K+ nodes takes < 200ms in the browser — fast enough for interactive re-ranking when new evidence is added.
 
-\`\`\`python
-from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
+## Real-time Updates with Supabase
 
-question_prompt = PromptTemplate(
-    input_variables=["context", "topic"],
-    template="""Based on the following context about {topic}, 
-    generate 5 practice questions that test understanding:
-    
-    Context: {context}
-    
-    Questions:"""
-)
+The coolest part: when a detective adds a new court case or links suspects, every connected agent's dashboard updates instantly via Supabase Realtime channels.
 
-question_chain = LLMChain(llm=llm, prompt=question_prompt)
+\`\`\`typescript
+const channel = supabase
+  .channel("crime-feed")
+  .on("postgres_changes", {
+    event: "INSERT",
+    schema: "public",
+    table: "criminal_records",
+  }, payload => {
+    addNodeToGraph(payload.new as CriminalRecord)
+    recalculatePageRank()
+  })
+  .subscribe()
 \`\`\`
 
-## Results & Impact
+## The FBI Dashboard Aesthetic
 
-After testing with 50+ students:
-- **40% improvement** in test scores
-- **60% reduction** in study time for similar outcomes
-- **85% satisfaction rate** with personalized explanations
+I wanted the UI to feel like something out of a crime thriller — dark backgrounds, sharp amber and red accents, scan-line overlays, and data feeds that pulse with activity. Every panel uses glassmorphism with a subtle grain texture.
 
-## Lessons Learned
+The hardest UI challenge was the *linked selection* system: clicking a node in the graph simultaneously highlights connected records in a sidebar table, with animated transitions between both views without lag.
 
-1. **Prompt engineering matters** - Small changes in prompts lead to big differences
-2. **Context window management** - Chunking strategy is crucial
-3. **User feedback loops** - Continuous improvement based on user interactions
+## What I Learned
 
-## What's Next
+1. **D3 + React is tricky** — D3 wants to control the DOM, React does too. The fix: let D3 handle only the SVG rendering inside a \`useEffect\`, and keep all state in React.
+2. **PageRank converges fast** — 50 iterations is usually enough for a graph under 50K nodes.
+3. **Supabase Realtime is underrated** — Postgres logical replication piped directly to WebSocket subscriptions is genuinely impressive engineering.
 
-I'm currently working on:
-- Adding support for audio/video content
-- Implementing collaborative study features
-- Building a mobile app version
-
-## Conclusion
-
-AI has tremendous potential to democratize education. By building tools that adapt to individual learning styles, we can help every student reach their full potential.
-
----
-
-*Have questions or want to collaborate? Feel free to reach out!*
+Check out the live demo and source at [github.com/Flamechargerr/crime-connect-fbi](https://github.com/Flamechargerr/crime-connect-fbi).
         `
     },
     {
         id: 2,
-        slug: "data-visualization-best-practices",
-        title: "Data Visualization Best Practices for 2024",
-        excerpt: "Learn how to create compelling data visualizations that tell stories and drive decisions.",
-        date: "Feb 14, 2025",
-        readTime: "6 min read",
-        category: "Data Science",
-        image: "/images/code-abstract.png",
-        tags: ["Data Viz", "Python", "D3.js", "Storytelling"],
-        author: {
-            name: "Anamay Tripathy",
-            avatar: "/images/anamay-profile.png",
-            role: "Data Science Engineer"
-        },
-        content: `
-## Why Data Visualization Matters
-
-In the age of big data, the ability to communicate insights effectively is more important than ever. A well-crafted visualization can convey complex information in seconds, while a poor one can mislead or confuse.
-
-## The Fundamentals
-
-### 1. Know Your Audience
-
-Before creating any visualization, ask yourself:
-- **Who will view this?** Executives, analysts, or general public?
-- **What decisions will they make?** This shapes what to highlight
-- **What's their data literacy?** Determines complexity level
-
-### 2. Choose the Right Chart Type
-
-| Data Type | Best Chart | Avoid |
-|-----------|------------|-------|
-| Comparison | Bar chart | Pie chart (>5 items) |
-| Trend over time | Line chart | Area chart (multiple series) |
-| Distribution | Histogram | Box plot (for non-technical) |
-| Relationship | Scatter plot | 3D charts |
-| Composition | Stacked bar | Donut charts |
-
-### 3. The Data-Ink Ratio
-
-Edward Tufte's principle: Maximize the data-ink ratio.
-
-\`\`\`python
-import matplotlib.pyplot as plt
-
-# Bad: Too much chartjunk
-fig, ax = plt.subplots()
-ax.bar(categories, values)
-ax.set_facecolor('#f0f0f0')
-ax.grid(True, linestyle='--', alpha=0.7)
-# ... lots of unnecessary decoration
-
-# Good: Clean and focused
-fig, ax = plt.subplots()
-ax.bar(categories, values, color='#2563eb')
-ax.spines['top'].set_visible(False)
-ax.spines['right'].set_visible(False)
-ax.set_title('Clear, Descriptive Title')
-\`\`\`
-
-## Modern Tools & Libraries
-
-### Python Ecosystem
-
-1. **Matplotlib** - The foundation, full control
-2. **Seaborn** - Statistical visualizations made easy
-3. **Plotly** - Interactive charts for dashboards
-4. **Altair** - Declarative, grammar of graphics
-
-### JavaScript Libraries
-
-1. **D3.js** - Ultimate flexibility
-2. **Chart.js** - Simple and responsive
-3. **Observable Plot** - Modern D3 alternative
-4. **Recharts** - React-friendly
-
-## Real-World Example: Sales Dashboard
-
-Here's how I approached a recent project:
-
-\`\`\`python
-import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-
-# Create dashboard layout
-fig = make_subplots(
-    rows=2, cols=2,
-    subplot_titles=('Revenue Trend', 'Top Products', 
-                    'Regional Sales', 'Customer Segments')
-)
-
-# Revenue trend line
-fig.add_trace(
-    go.Scatter(x=dates, y=revenue, mode='lines+markers',
-               name='Revenue', line=dict(color='#10b981')),
-    row=1, col=1
-)
-
-# Top products bar
-fig.add_trace(
-    go.Bar(x=products, y=sales, name='Products',
-           marker_color='#6366f1'),
-    row=1, col=2
-)
-
-fig.update_layout(
-    template='plotly_dark',
-    showlegend=False,
-    height=800
-)
-\`\`\`
-
-## Color Theory for Data
-
-### Do's ✅
-- Use colorblind-friendly palettes (viridis, cividis)
-- Sequential colors for ordered data
-- Diverging colors for data with a meaningful center
-- Consistent color meanings across visualizations
-
-### Don'ts ❌
-- Red/green combinations alone
-- Too many colors (max 7-8)
-- Bright, saturated colors for large areas
-- Colors that don't work in grayscale
-
-## Interactive vs Static
-
-When to go interactive:
-- **Exploration** - Users need to drill down
-- **Dashboards** - Multiple metrics to monitor
-- **Presentations** - Engage the audience
-
-When to stay static:
-- **Reports** - Need to be printed
-- **Publications** - Reproducibility matters
-- **Email** - Compatibility concerns
-
-## Accessibility Considerations
-
-1. **Alt text** for all visualizations
-2. **Color contrast** meeting WCAG standards
-3. **Font size** readable at arm's length
-4. **Data tables** as alternatives
-
-## Conclusion
-
-Great data visualization is both an art and a science. Master the fundamentals, stay updated with tools, and always keep your audience in mind.
-
----
-
-*What's your favorite data viz tool? Let me know!*
-        `
-    },
-    {
-        id: 3,
-        slug: "full-stack-development-roadmap",
-        title: "My Full-Stack Development Roadmap",
-        excerpt: "The technologies, resources, and strategies I used to become a proficient full-stack developer.",
-        date: "Feb 10, 2025",
-        readTime: "10 min read",
-        category: "Career",
-        image: "/images/tech-workspace.png",
-        tags: ["Career", "Learning", "Web Development", "Guide"],
-        author: {
-            name: "Anamay Tripathy",
-            avatar: "/images/anamay-profile.png",
-            role: "Data Science Engineer"
-        },
-        content: `
-## My Journey
-
-When I started at MIT Manipal, I knew some Python and basic HTML. Fast forward to today, and I've built full-stack applications, contributed to open-source, and interned at Intellect Design Arena. Here's how I did it.
-
-## The Roadmap
-
-### Phase 1: Foundation (Months 1-3)
-
-#### HTML & CSS Mastery
-- Semantic HTML5 elements
-- CSS Flexbox and Grid
-- Responsive design principles
-- CSS animations and transitions
-
-**Project:** Built a personal portfolio (my first version!)
-
-#### JavaScript Fundamentals
-- ES6+ syntax (arrow functions, destructuring, modules)
-- DOM manipulation
-- Async/await and Promises
-- Error handling
-
-**Project:** Interactive todo app with local storage
-
-### Phase 2: Frontend Framework (Months 4-6)
-
-#### React Deep Dive
-\`\`\`javascript
-// Core concepts I mastered
-const CoreConcepts = () => {
-  const [state, setState] = useState(initialValue);
-  
-  useEffect(() => {
-    // Side effects, cleanup
-  }, [dependencies]);
-  
-  const memoizedValue = useMemo(() => compute(), [deps]);
-  const memoizedCallback = useCallback(() => {}, [deps]);
-  
-  return <Component />;
-};
-\`\`\`
-
-#### State Management
-- Context API for simple cases
-- Redux Toolkit for complex state
-- Zustand for lightweight needs
-
-**Project:** E-commerce frontend with cart functionality
-
-### Phase 3: Backend Development (Months 7-9)
-
-#### Node.js & Express
-\`\`\`javascript
-const express = require('express');
-const app = express();
-
-// Middleware pattern
-app.use(cors());
-app.use(express.json());
-
-// RESTful routes
-app.get('/api/users', getUsers);
-app.post('/api/users', createUser);
-app.put('/api/users/:id', updateUser);
-app.delete('/api/users/:id', deleteUser);
-\`\`\`
-
-#### Database Skills
-- **MongoDB** - Document-based, flexible schema
-- **PostgreSQL** - Relational, ACID compliance
-- **Redis** - Caching and sessions
-
-**Project:** REST API for a blog platform
-
-### Phase 4: Full Stack Integration (Months 10-12)
-
-#### Next.js Mastery
-This was a game-changer for me:
-- Server-side rendering (SSR)
-- Static site generation (SSG)
-- API routes
-- Image optimization
-- File-based routing
-
-#### Authentication & Security
-- JWT tokens
-- OAuth 2.0 (Google, GitHub)
-- Password hashing (bcrypt)
-- Rate limiting
-- CORS configuration
-
-**Project:** Full-stack job board application
-
-## The Learning Resources That Worked
-
-### Free Resources
-1. **freeCodeCamp** - Structured curriculum
-2. **The Odin Project** - Project-based learning
-3. **MDN Web Docs** - The reference
-4. **JavaScript.info** - Deep JS knowledge
-
-### Paid Courses (Worth It)
-1. **Frontend Masters** - Industry experts
-2. **Udemy** - Wait for sales!
-3. **Pluralsight** - Enterprise-level content
-
-### YouTube Channels
-- Fireship (quick, dense content)
-- Traversy Media (project tutorials)
-- Web Dev Simplified (clear explanations)
-- The Coding Train (creative coding)
-
-## Key Strategies That Accelerated My Learning
-
-### 1. Build in Public
-Sharing my projects on Twitter/LinkedIn:
-- Accountability
-- Feedback from experienced devs
-- Networking opportunities
-
-### 2. Contribute to Open Source
-Started small:
-- Documentation fixes
-- Bug reports
-- Small feature additions
-
-### 3. Teach What You Learn
-- Writing blog posts (like this one!)
-- Helping peers at college
-- Technical presentations at YaanBarpe
-
-### 4. Focus on Fundamentals
-Frameworks come and go, but:
-- HTTP protocol
-- Data structures
-- Algorithms
-- System design
-
-These are forever valuable.
-
-## Tools That Boosted Productivity
-
-| Tool | Purpose |
-|------|---------|
-| VS Code | Editor with extensions |
-| GitHub Copilot | AI pair programming |
-| Postman | API testing |
-| Figma | Design mockups |
-| Notion | Notes and planning |
-| Linear | Project management |
-
-## Common Mistakes I Made (So You Don't Have To)
-
-1. **Tutorial Hell** - Watching without building
-2. **Shiny Object Syndrome** - Chasing every new framework
-3. **Perfectionism** - Not shipping imperfect projects
-4. **Isolation** - Not joining communities
-5. **Ignoring Soft Skills** - Communication matters!
-
-## What's Next for Me
-
-- **TypeScript everywhere** - Type safety is worth it
-- **System Design** - Preparing for senior roles
-- **Cloud Platforms** - AWS/GCP certifications
-- **AI/ML Integration** - Combining my data science background
-
-## Advice for Beginners
-
-1. **Start today** - Not tomorrow, not next week
-2. **Build projects** - Not just tutorials
-3. **Embrace the struggle** - Confusion means growth
-4. **Join communities** - Discord, Twitter, local meetups
-5. **Be patient** - It's a marathon, not a sprint
-
----
-
-*Feel free to reach out if you have questions about your own journey!*
-        `
-    },
-    {
-        id: 4,
-        slug: "python-automation-scripts",
-        title: "10 Python Scripts That Save Me Hours Every Week",
-        excerpt: "Automate the boring stuff with these practical Python scripts for everyday tasks.",
-        date: "Feb 5, 2025",
-        readTime: "7 min read",
-        category: "Python",
-        image: "/images/code-abstract.png",
-        tags: ["Python", "Automation", "Productivity", "Scripts"],
-        author: {
-            name: "Anamay Tripathy",
-            avatar: "/images/anamay-profile.png",
-            role: "Data Science Engineer"
-        },
-        content: `
-## Why Automate?
-
-As developers, we often find ourselves doing repetitive tasks. Time spent on these mundane activities is time taken away from creative problem-solving. Here are 10 Python scripts that have transformed my workflow.
-
-## 1. File Organizer
-
-Automatically sorts downloads by file type:
-
-\`\`\`python
-import os
-import shutil
-from pathlib import Path
-
-DOWNLOADS = Path.home() / "Downloads"
-
-CATEGORIES = {
-    "Images": [".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp"],
-    "Documents": [".pdf", ".doc", ".docx", ".txt", ".xlsx"],
-    "Videos": [".mp4", ".mkv", ".avi", ".mov"],
-    "Code": [".py", ".js", ".html", ".css", ".json"],
-    "Archives": [".zip", ".rar", ".7z", ".tar", ".gz"]
-}
-
-def organize_downloads():
-    for file in DOWNLOADS.iterdir():
-        if file.is_file():
-            ext = file.suffix.lower()
-            for category, extensions in CATEGORIES.items():
-                if ext in extensions:
-                    dest = DOWNLOADS / category
-                    dest.mkdir(exist_ok=True)
-                    shutil.move(str(file), str(dest / file.name))
-                    print(f"Moved {file.name} to {category}/")
-                    break
-
-if __name__ == "__main__":
-    organize_downloads()
-\`\`\`
-
-## 2. Batch Image Resizer
-
-Perfect for preparing images for the web:
-
-\`\`\`python
-from PIL import Image
-from pathlib import Path
-
-def resize_images(input_dir: str, width: int, height: int):
-    input_path = Path(input_dir)
-    output_path = input_path / "resized"
-    output_path.mkdir(exist_ok=True)
-    
-    for img_file in input_path.glob("*.{jpg,png,jpeg}"):
-        with Image.open(img_file) as img:
-            img.thumbnail((width, height), Image.LANCZOS)
-            img.save(output_path / img_file.name)
-            print(f"Resized: {img_file.name}")
-
-# Usage
-resize_images("./images", 800, 600)
-\`\`\`
-
-## 3. Email Report Generator
-
-Sends daily summaries automatically:
-
-\`\`\`python
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from datetime import datetime
-
-def send_daily_report(data: dict):
-    msg = MIMEMultipart()
-    msg['From'] = os.environ['EMAIL']
-    msg['To'] = os.environ['RECIPIENT']
-    msg['Subject'] = f"Daily Report - {datetime.now().strftime('%Y-%m-%d')}"
-    
-    body = f"""
-    <h1>Daily Summary</h1>
-    <ul>
-        <li>Tasks Completed: {data['completed']}</li>
-        <li>Tasks Pending: {data['pending']}</li>
-        <li>Hours Logged: {data['hours']}</li>
-    </ul>
-    """
-    
-    msg.attach(MIMEText(body, 'html'))
-    
-    with smtplib.SMTP('smtp.gmail.com', 587) as server:
-        server.starttls()
-        server.login(os.environ['EMAIL'], os.environ['PASSWORD'])
-        server.send_message(msg)
-\`\`\`
-
-## 4. GitHub Activity Tracker
-
-Track your contributions:
-
-\`\`\`python
-import requests
-from datetime import datetime, timedelta
-
-def get_github_activity(username: str, days: int = 30):
-    url = f"https://api.github.com/users/{username}/events"
-    response = requests.get(url)
-    events = response.json()
-    
-    cutoff = datetime.now() - timedelta(days=days)
-    
-    stats = {"commits": 0, "prs": 0, "issues": 0}
-    
-    for event in events:
-        event_date = datetime.fromisoformat(event['created_at'].replace('Z', ''))
-        if event_date > cutoff:
-            if event['type'] == 'PushEvent':
-                stats['commits'] += len(event['payload']['commits'])
-            elif event['type'] == 'PullRequestEvent':
-                stats['prs'] += 1
-            elif event['type'] == 'IssuesEvent':
-                stats['issues'] += 1
-    
-    return stats
-
-# Usage
-print(get_github_activity("anamaydev"))
-\`\`\`
-
-## 5. PDF Merger
-
-Combine multiple PDFs into one:
-
-\`\`\`python
-from PyPDF2 import PdfMerger
-from pathlib import Path
-
-def merge_pdfs(input_dir: str, output_file: str):
-    merger = PdfMerger()
-    
-    pdf_files = sorted(Path(input_dir).glob("*.pdf"))
-    
-    for pdf in pdf_files:
-        merger.append(str(pdf))
-        print(f"Added: {pdf.name}")
-    
-    merger.write(output_file)
-    merger.close()
-    print(f"Merged into: {output_file}")
-
-# Usage
-merge_pdfs("./documents", "combined.pdf")
-\`\`\`
-
-## 6-10: More Scripts
-
-I've compiled the remaining scripts in a GitHub repository:
-- **Web Scraper** - Extract data from websites
-- **Backup Script** - Automated cloud backups
-- **Code Formatter** - Batch format code files
-- **Log Analyzer** - Parse and summarize logs
-- **Database Backup** - Scheduled DB exports
-
-## Scheduling These Scripts
-
-### Using cron (Linux/Mac)
-\`\`\`bash
-# Run file organizer every hour
-0 * * * * python /path/to/file_organizer.py
-
-# Daily report at 6 PM
-0 18 * * * python /path/to/email_report.py
-\`\`\`
-
-### Using Task Scheduler (Windows)
-\`\`\`powershell
-schtasks /create /tn "FileOrganizer" /tr "python C:\\scripts\\file_organizer.py" /sc hourly
-\`\`\`
-
-## Conclusion
-
-Automation is a superpower. Start with one script that solves a real problem, and build from there. The time investment pays off exponentially.
-
----
-
-*What tasks do you want to automate? Share in the comments!*
-        `
-    },
-    {
-        id: 5,
-        slug: "react-performance-optimization",
-        title: "React Performance: From Sluggish to Snappy",
-        excerpt: "Practical techniques to optimize React applications for better user experience.",
-        date: "Jan 28, 2025",
+        slug: "vartificial-intelligence-football-prediction",
+        title: "VARtificial Intelligence: Building an XGBoost Football Predictor",
+        excerpt: "I built an AI that judges football matches better than VAR. Here's how I used XGBoost, Elo ratings, Optuna hyperparameter tuning, and K-fold cross-validation to hit 71% accuracy on Premier League match outcomes.",
+        date: "Apr 8, 2026",
         readTime: "9 min read",
-        category: "React",
-        image: "/images/tech-workspace.png",
-        tags: ["React", "Performance", "Optimization", "Frontend"],
+        category: "Machine Learning",
+        image: "https://images.unsplash.com/photo-1523359346063-d879354c0ea5?w=1600&q=80",
+        tags: ["Python", "XGBoost", "Optuna", "Scikit-learn", "Elo Rating"],
         author: {
             name: "Anamay Tripathy",
             avatar: "/images/anamay-profile.png",
             role: "Data Science Engineer"
         },
         content: `
-## The Performance Problem
+## The Spark
 
-I recently optimized a React dashboard that was taking 3+ seconds to become interactive. After applying these techniques, we got it down to under 500ms. Here's everything I learned.
+VAR (Video Assistant Referee) makes the wrong call embarrassingly often — it's slow, inconsistent, and still loses 15% of close calls in post-analysis studies. The name "VARtificial Intelligence" writes itself.
 
-## Measuring First
+The actual question I wanted to answer: **can a well-tuned ML model predict Premier League match outcomes better than bookmakers' implied probabilities?**
 
-Before optimizing, measure! Tools I use:
+Spoiler: at 71.3% accuracy on a held-out test set, it's close — and it runs in 40ms instead of 4 minutes.
 
-1. **React DevTools Profiler** - Component render times
-2. **Lighthouse** - Overall performance score
-3. **Chrome DevTools** - Network and runtime analysis
-4. **Web Vitals** - Core metrics (LCP, FID, CLS)
+## The Data Pipeline
 
-\`\`\`javascript
-import { getCLS, getFID, getLCP } from 'web-vitals';
+\`\`\`python
+import pandas as pd
+from sklearn.model_selection import StratifiedKFold
 
-getCLS(console.log);
-getFID(console.log);
-getLCP(console.log);
+# Feature set: last 5 match form, Elo delta, home advantage, head-to-head
+features = [
+    "home_elo", "away_elo", "elo_delta",
+    "home_form_5", "away_form_5",
+    "home_goals_scored_avg", "away_goals_conceded_avg",
+    "h2h_home_wins", "h2h_draws", "is_derby",
+    "days_since_last_match_home", "days_since_last_match_away",
+]
+
+X = df[features]
+y = df["result"]  # 0 = away win, 1 = draw, 2 = home win
 \`\`\`
 
-## Optimization Techniques
+## Elo Rating System
 
-### 1. Memoization
+The Elo ratings were the single biggest predictor. I implemented a rolling Elo calculator that updates after every match:
 
-**React.memo** for components:
-\`\`\`jsx
-const ExpensiveList = React.memo(({ items }) => {
-  return items.map(item => <ListItem key={item.id} {...item} />);
-});
+\`\`\`python
+K = 32  # Sensitivity constant
+
+def expected_score(rating_a, rating_b):
+    return 1 / (1 + 10 ** ((rating_b - rating_a) / 400))
+
+def update_elo(winner_elo, loser_elo, draw=False):
+    E_w = expected_score(winner_elo, loser_elo)
+    if draw:
+        delta = K * (0.5 - E_w)
+        return winner_elo + delta, loser_elo - delta
+    return winner_elo + K * (1 - E_w), loser_elo + K * (0 - (1 - E_w))
 \`\`\`
 
-**useMemo** for computed values:
-\`\`\`jsx
-const filteredItems = useMemo(() => {
-  return items.filter(item => item.category === selectedCategory);
-}, [items, selectedCategory]);
-\`\`\`
+## XGBoost with Optuna Tuning
 
-**useCallback** for functions:
-\`\`\`jsx
-const handleClick = useCallback((id) => {
-  setSelectedId(id);
-}, []);
-\`\`\`
+I used Optuna to search the hyperparameter space instead of GridSearch — it's 10x faster for the same coverage.
 
-### 2. Code Splitting
+\`\`\`python
+import optuna
+import xgboost as xgb
+from sklearn.metrics import accuracy_score
 
-\`\`\`jsx
-import { lazy, Suspense } from 'react';
+def objective(trial):
+    params = {
+        "n_estimators": trial.suggest_int("n_estimators", 100, 800),
+        "max_depth": trial.suggest_int("max_depth", 3, 9),
+        "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.3, log=True),
+        "subsample": trial.suggest_float("subsample", 0.6, 1.0),
+        "colsample_bytree": trial.suggest_float("colsample_bytree", 0.6, 1.0),
+        "min_child_weight": trial.suggest_int("min_child_weight", 1, 10),
+        "gamma": trial.suggest_float("gamma", 0, 5),
+    }
+    model = xgb.XGBClassifier(**params, use_label_encoder=False, eval_metric="mlogloss")
+    
+    skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+    scores = []
+    for train_idx, val_idx in skf.split(X_train, y_train):
+        model.fit(X_train.iloc[train_idx], y_train.iloc[train_idx])
+        preds = model.predict(X_train.iloc[val_idx])
+        scores.append(accuracy_score(y_train.iloc[val_idx], preds))
+    
+    return sum(scores) / len(scores)
 
-const HeavyChart = lazy(() => import('./HeavyChart'));
-
-function Dashboard() {
-  return (
-    <Suspense fallback={<ChartSkeleton />}>
-      <HeavyChart data={data} />
-    </Suspense>
-  );
-}
-\`\`\`
-
-### 3. Virtualization
-
-For long lists (1000+ items):
-\`\`\`jsx
-import { FixedSizeList } from 'react-window';
-
-const VirtualList = ({ items }) => (
-  <FixedSizeList
-    height={400}
-    width={300}
-    itemCount={items.length}
-    itemSize={50}
-  >
-    {({ index, style }) => (
-      <div style={style}>{items[index].name}</div>
-    )}
-  </FixedSizeList>
-);
-\`\`\`
-
-### 4. Image Optimization
-
-\`\`\`jsx
-import Image from 'next/image';
-
-// Automatic optimization with Next.js
-<Image
-  src="/hero.jpg"
-  width={1200}
-  height={600}
-  priority // For above-the-fold images
-  placeholder="blur"
-  blurDataURL={blurUrl}
-/>
-\`\`\`
-
-### 5. Bundle Analysis
-
-\`\`\`bash
-npx next build
-npx @next/bundle-analyzer
-\`\`\`
-
-Common culprits:
-- Moment.js (use day.js or date-fns)
-- Lodash (import specific functions)
-- Large icon libraries (tree-shake)
-
-## State Management Optimizations
-
-### Avoid Prop Drilling
-\`\`\`jsx
-// Instead of passing through 5 components
-const ThemeContext = createContext();
-
-function App() {
-  const [theme, setTheme] = useState('dark');
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      <DeepNestedComponent />
-    </ThemeContext.Provider>
-  );
-}
-\`\`\`
-
-### Split Contexts
-\`\`\`jsx
-// Bad: One giant context
-const AppContext = createContext({ user, theme, cart, notifications });
-
-// Good: Separate concerns
-const UserContext = createContext();
-const ThemeContext = createContext();
-const CartContext = createContext();
+study = optuna.create_study(direction="maximize")
+study.optimize(objective, n_trials=200)
 \`\`\`
 
 ## Results
 
-After applying these optimizations:
+| Model | Test Accuracy | Notes |
+|-------|--------------|-------|
+| Baseline (majority class) | 46.2% | Predict home win always |
+| Logistic Regression | 55.8% | |
+| Random Forest (untuned) | 62.1% | |
+| **XGBoost + Optuna + Elo** | **71.3%** | Production model |
+| Bookmakers implied | ~68–72% | Depends on market |
 
-| Metric | Before | After |
-|--------|--------|-------|
-| LCP | 3.2s | 0.8s |
-| FID | 180ms | 45ms |
-| Bundle Size | 450KB | 180KB |
-| Lighthouse | 62 | 94 |
+The model is now deployed in a [live dashboard](https://var-tificial-intelligence.vercel.app/) where you can pick any two Premier League teams and get a real-time prediction with probability breakdown.
 
-## Conclusion
+## Lessons
 
-Performance optimization is an ongoing process. Start with measurement, focus on the biggest wins, and always test on real devices.
+- **Feature engineering > model choice** — Elo delta alone beat random forest with 50 engineered features
+- **Optuna > GridSearch** — 200 Bayesian trials covered more ground than 1000 grid points
+- **Class imbalance matters** — draws (28% of matches) were chronically under-predicted until I up-weighted them
 
----
-
-*What performance challenges have you faced? Let's discuss!*
+[View source on GitHub →](https://github.com/Flamechargerr/VARtificial-Intelligence)
         `
-    }
-];
+    },
+    {
+        id: 3,
+        slug: "hadoop-3-node-cluster-twitter-sentiment",
+        title: "Hadoop on 3 Nodes: Building a Twitter Sentiment Pipeline the Hard Way",
+        excerpt: "How our team built a real distributed Hadoop cluster across two machines (a MacBook and a WSL node called Manas), deployed a Spark streaming processor, and visualised real-time Twitter sentiment on a live dashboard.",
+        date: "Apr 12, 2026",
+        readTime: "12 min read",
+        category: "Big Data",
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&q=80",
+        tags: ["Hadoop", "Spark", "Kafka", "Big Data", "Distributed Systems"],
+        author: {
+            name: "Anamay Tripathy",
+            avatar: "/images/anamay-profile.png",
+            role: "Data Science Engineer"
+        },
+        content: `
+## Why Do This on Real Hardware?
+
+Most "distributed system" tutorials run three Docker containers on a single laptop. That's fine for learning the API but it teaches you nothing about the actual pain of distributed computing — network partitions, SSH trust, port firewalls, hostname resolution, clock drift.
+
+For our Big Data (BDAT) course at MIT Manipal, our team decided to run a real 3-node Hadoop cluster: my MacBook as the master (NameNode + ResourceManager), a Windows Subsystem for Linux box ("Manas") as a DataNode, and a third virtual node.
+
+## The Setup
+
+**Node 1 — MacBook (Master)**
+- Hadoop 3.3.6, Java 11, macOS 14
+- NameNode, ResourceManager, HistoryServer
+
+**Node 2 — Manas (WSL2 on Windows)**
+- Ubuntu 22.04 inside WSL2
+- DataNode, NodeManager
+
+The very first problem: WSL2 dynamically reassigns its IP on every restart. We solved it by binding a static IP via \`.wslconfig\` and adding a \`hosts\` entry on the Mac.
+
+\`\`\`bash
+# /etc/hosts on MacBook
+192.168.1.42  manas
+192.168.1.42  manas.local
+\`\`\`
+
+## Getting SSH to Work
+
+Hadoop requires passwordless SSH between all nodes. This took an embarrassing 4 hours to debug — the issue was that WSL2's SSH server wasn't starting automatically.
+
+\`\`\`bash
+# On Manas (WSL)
+sudo service ssh start
+sudo ufw allow 22
+
+# On Mac (test)
+ssh hadoop@manas "echo 'Connected'"
+\`\`\`
+
+## HDFS and MapReduce
+
+Once the cluster was up, we ran a MapReduce word count on a 500MB Twitter dataset to verify everything worked:
+
+\`\`\`bash
+hdfs dfs -put tweets_500mb.json /input/
+
+hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar \
+  wordcount /input/tweets_500mb.json /output/wordcount
+
+hdfs dfs -cat /output/wordcount/part-r-00000 | sort -k2 -rn | head -20
+\`\`\`
+
+Completion time: **4 min 12 sec** across our 2-node cluster. On my laptop alone: 11 min 40 sec. Real distributed speedup on real hardware.
+
+## Kafka + Spark Streaming Sentiment
+
+The real project was a live sentiment pipeline:
+
+\`\`\`
+Twitter API → Kafka topic → Spark Structured Streaming → Postgres → Dashboard
+\`\`\`
+
+\`\`\`python
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import from_json, col, udf
+from pyspark.sql.types import StringType, StructType, StructField
+from transformers import pipeline
+
+# Load sentiment model (DistilBERT fine-tuned on Twitter data)
+sentiment = pipeline("sentiment-analysis", model="cardiffnlp/twitter-roberta-base-sentiment")
+
+@udf(StringType())
+def get_sentiment(text):
+    if not text:
+        return "NEUTRAL"
+    result = sentiment(text[:512])[0]
+    return result["label"]
+
+spark = SparkSession.builder \
+    .appName("TwitterSentiment") \
+    .config("spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.0") \
+    .getOrCreate()
+
+schema = StructType([StructField("text", StringType()), StructField("created_at", StringType())])
+
+df = spark.readStream \
+    .format("kafka") \
+    .option("kafka.bootstrap.servers", "localhost:9092") \
+    .option("subscribe", "tweets") \
+    .load() \
+    .select(from_json(col("value").cast("string"), schema).alias("data")) \
+    .select("data.*") \
+    .withColumn("sentiment", get_sentiment(col("text")))
+
+df.writeStream \
+    .foreachBatch(write_to_postgres) \
+    .outputMode("append") \
+    .start() \
+    .awaitTermination()
+\`\`\`
+
+## The Dashboard
+
+The monitoring dashboard showed cluster health, HDFS utilisation, active Spark jobs, and a live sentiment gauge — all updating every 5 seconds. Getting it to show real DataNode metrics (not just "Unknown") required fixing the \`dfs.datanode.hostname\` config to broadcast the actual LAN IP instead of localhost.
+
+## Biggest Lessons
+
+1. **Hostname resolution is everything** — 80% of "Hadoop won't connect" issues are DNS/hosts problems.
+2. **WSL2 networking is awkward** — It's a NAT'd VM, not a real LAN node. Plan for this.
+3. **Start with small data first** — Test your pipeline on 100 lines before throwing 500MB at it.
+4. **Spark's web UI is your best friend** — localhost:4040 shows exactly where your job is spending time.
+
+This was the most challenging and rewarding project of my second year. Raw distributed systems on real hardware — no Docker shortcuts.
+
+[View project on GitHub →](https://github.com/Flamechargerr/bdat_project_animoXmanas)
+        `
+    },
+    {
+        id: 4,
+        slug: "smart-maps-3d-webgl-geospatial",
+        title: "Smart Maps 3D: Rendering 1M+ Points at 60 FPS with WebGL & deck.gl",
+        excerpt: "How I built a GPU-accelerated geospatial engine using deck.gl, MapLibre, and custom GLSL shaders that renders a million data points with orbital camera dynamics — all in the browser.",
+        date: "Mar 25, 2026",
+        readTime: "8 min read",
+        category: "WebGL",
+        image: "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1600&q=80",
+        tags: ["WebGL", "deck.gl", "MapLibre", "GLSL", "TypeScript"],
+        author: {
+            name: "Anamay Tripathy",
+            avatar: "/images/anamay-profile.png",
+            role: "Data Science Engineer"
+        },
+        content: `
+## The Problem With Google Maps
+
+Google Maps is fantastic for navigation, terrible for data science. When you have 500,000 crime incidents, pollution readings, or logistics events, any standard map library will choke — it tries to render them as DOM nodes.
+
+Smart Maps 3D was born out of this frustration. The goal: a geospatial canvas that could handle **1 million+ data points at 60 FPS** with smooth orbital camera motion, layer compositing, and time-series playback.
+
+## Why deck.gl?
+
+[deck.gl](https://deck.gl) by Uber Visualization uses WebGL2 to render geospatial data entirely on the GPU. Instead of one DOM node per data point, you get one GPU draw call for an entire layer of millions of points.
+
+\`\`\`typescript
+import { Deck } from "@deck.gl/core"
+import { ScatterplotLayer, HexagonLayer } from "@deck.gl/layers"
+import { MapboxOverlay } from "@deck.gl/mapbox"
+
+const scatterLayer = new ScatterplotLayer({
+  id: "incidents",
+  data: incidentData, // 1,000,000 records
+  getPosition: (d) => [d.lng, d.lat],
+  getRadius: 20,
+  getFillColor: (d) => getRiskColor(d.severity),
+  radiusMinPixels: 1,
+  pickable: true, // GPU picking — click any point
+})
+\`\`\`
+
+Rendering 1M points: **4.2ms per frame** on an M1 GPU. That's 238 FPS headroom.
+
+## Orbital Camera Dynamics
+
+The camera system is the part I'm most proud of. I wanted it to feel like a satellite cinematically descending into a city — smooth easing, momentum, and a sense of weight.
+
+\`\`\`typescript
+import { FlyToInterpolator } from "@deck.gl/core"
+
+function zoomToRegion(target: [number, number], zoom: number) {
+  setViewState({
+    longitude: target[0],
+    latitude: target[1],
+    zoom,
+    pitch: 45,
+    bearing: -17.6,
+    transitionDuration: 2000,
+    transitionInterpolator: new FlyToInterpolator({ speed: 1.5 }),
+    transitionEasing: (t: number) => t < 0.5
+      ? 4 * t * t * t
+      : 1 - (-2 * t + 2) ** 3 / 2, // Ease-in-out cubic
+  })
+}
+\`\`\`
+
+## Custom GLSL Shader for Heatmap
+
+The heatmap layer uses a custom fragment shader to render kernel density estimation directly on the GPU — no CPU preprocessing step.
+
+\`\`\`glsl
+// Fragment shader: Gaussian kernel intensity
+void main() {
+  vec2 uv = gl_PointCoord - vec2(0.5);
+  float dist = length(uv);
+  
+  // Gaussian kernel
+  float intensity = exp(-dist * dist * 8.0);
+  
+  // Map to colour ramp (cool → warm)
+  vec3 cool = vec3(0.0, 0.4, 0.8);
+  vec3 warm = vec3(1.0, 0.2, 0.0);
+  gl_FragColor = vec4(mix(cool, warm, intensity), intensity * 0.8);
+}
+\`\`\`
+
+## Time-Series Playback
+
+For temporal data (e.g., crime events throughout a day), I built a playback system that filters data client-side by timestamp and re-renders only changed layers — using deck.gl's layer diffing for zero-GC updates.
+
+\`\`\`typescript
+const currentWindow = useMemo(() =>
+  allData.filter(d => d.timestamp >= playhead && d.timestamp < playhead + windowMs),
+  [allData, playhead, windowMs]
+)
+\`\`\`
+
+The key insight: deck.gl only re-uploads GPU buffers for layers whose data reference changes. Using \`useMemo\` correctly means zero unnecessary GPU uploads.
+
+## Results
+
+- **1,000,000 scatter points** at 60 FPS on mobile GPU
+- **Time-series playback** at 30 steps/second with smooth transitions
+- **Sub-10ms click picking** on any of 1M points (GPU picking)
+- Works on any WebGL2-capable browser (Chrome, Firefox, Edge, Safari 16+)
+
+[View source on GitHub →](https://github.com/Flamechargerr/smart-maps-3d)
+        `
+    },
+    {
+        id: 5,
+        slug: "internmailer-bulk-email-automation",
+        title: "InternMailer: I Sent 300 Cold Emails in 6 Minutes with Python",
+        excerpt: "How I built a bulk email automation engine with personalised templates, scheduling, delivery metrics, and SMTP rotation — and actually used it to land my internship at Intellect Design Arena.",
+        date: "Mar 10, 2026",
+        readTime: "7 min read",
+        category: "Python",
+        image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1600&q=80",
+        tags: ["Python", "SMTP", "Automation", "Email", "Node.js"],
+        author: {
+            name: "Anamay Tripathy",
+            avatar: "/images/anamay-profile.png",
+            role: "Data Science Engineer"
+        },
+        content: `
+## Why I Built This
+
+Internship season at MIT Manipal is brutal. You're competing with 400+ students for the same roles, and every company expects a "personalised" application. Writing individual emails by hand is a fantasy.
+
+I scraped a list of 300 companies, found HR email addresses, and built InternMailer — a Python tool that sends genuine-looking personalised emails at scale, tracks delivery, and handles SMTP rate limits gracefully.
+
+It landed me an internship at **Intellect Design Arena** (fintech, Mumbai).
+
+## Architecture
+
+\`\`\`
+CSV of prospectives → Template Engine → SMTP Rotation → Delivery DB → Analytics Dashboard
+\`\`\`
+
+## The Template Engine
+
+The key to not getting caught by spam filters is genuine personalisation. Each email pulls from a CSV field:
+
+\`\`\`python
+from jinja2 import Template
+
+template = Template("""
+Dear {{ first_name }},
+
+I came across {{ company_name }}'s work on {{ recent_project }} 
+and was particularly impressed by {{ specific_detail }}.
+
+As a 3rd-year Data Science student at MIT Manipal, I've recently built:
+- {{ project_1 }} ({{ tech_stack_1 }})
+- {{ project_2 }} ({{ tech_stack_2 }})
+
+I'd love to discuss a summer internship opportunity...
+""")
+
+for _, row in companies_df.iterrows():
+    body = template.render(**row.to_dict())
+    send_email(row["email"], subject, body)
+\`\`\`
+
+## SMTP Rotation
+
+Gmail's free tier limits you to 500 emails/day. With 3 accounts, you can send 1,500 — but you need to rotate carefully to avoid looking like a bot.
+
+\`\`\`python
+from itertools import cycle
+import time
+import random
+
+smtp_accounts = [
+    {"email": EMAIL_1, "password": PASS_1},
+    {"email": EMAIL_2, "password": PASS_2},
+    {"email": EMAIL_3, "password": PASS_3},
+]
+smtp_cycle = cycle(smtp_accounts)
+
+def send_with_rotation(to, subject, body):
+    account = next(smtp_cycle)
+    # Human-like jitter: 8-15 seconds between sends
+    time.sleep(random.uniform(8, 15))
+    
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+        server.login(account["email"], account["password"])
+        msg = MIMEMultipart()
+        msg["From"] = account["email"]
+        msg["To"] = to
+        msg["Subject"] = subject
+        msg.attach(MIMEText(body, "html"))
+        server.sendmail(account["email"], to, msg.as_string())
+        log_delivery(to, account["email"], "SENT")
+\`\`\`
+
+## Delivery Tracking
+
+\`\`\`python
+# Simple SQLite log for analytics
+import sqlite3
+
+def log_delivery(to_email, from_account, status, error=None):
+    conn = sqlite3.connect("deliveries.db")
+    conn.execute("""
+        INSERT INTO emails (to_email, from_account, status, sent_at, error)
+        VALUES (?, ?, ?, datetime('now'), ?)
+    """, (to_email, from_account, status, error))
+    conn.commit()
+    conn.close()
+\`\`\`
+
+## Results
+
+| Metric | Value |
+|--------|-------|
+| Emails sent | 312 |
+| Time taken | 6 min 22 sec |
+| Bounces | 14 (4.5%) |
+| Replies | 23 (7.4%) |
+| Interviews | 6 |
+| Offers | 1 (Intellect Design Arena) |
+
+A 7.4% reply rate on cold outreach is genuinely good — industry average is 1–3%. The personalisation paid off.
+
+## Ethical Note
+
+Every email I sent was a real application, not spam. I only targeted companies actively listing internships, kept the send volume reasonable, and honoured unsubscribe requests immediately. Automation isn't inherently unethical — doing it thoughtlessly is.
+
+[View source on GitHub →](https://github.com/Flamechargerr/InternMailer)
+        `
+    },
+]
 
 export function getBlogPost(slug: string): BlogPost | undefined {
-    return blogPosts.find(post => post.slug === slug);
+    return blogPosts.find(post => post.slug === slug)
 }
 
 export function getAllBlogSlugs(): string[] {
-    return blogPosts.map(post => post.slug);
+    return blogPosts.map(post => post.slug)
 }

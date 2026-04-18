@@ -283,14 +283,18 @@ export function LiveVisitorCount() {
     useEffect(() => {
         // Defer random count to client only to avoid hydration mismatch
         setIsMounted(true)
-        setCount(Math.floor(Math.random() * 25) + 5)
+        // Realistic: 1-3 viewers at any given time
+        setCount(Math.floor(Math.random() * 3) + 1)
 
         const interval = setInterval(() => {
             setCount(prev => {
-                const change = Math.random() > 0.5 ? 1 : -1
-                return Math.max(5, Math.min(50, prev + change))
+                // Weighted: 70% chance stays same, 15% goes up, 15% goes down
+                const rand = Math.random()
+                if (rand < 0.15) return Math.min(3, prev + 1)
+                if (rand < 0.30) return Math.max(1, prev - 1)
+                return prev
             })
-        }, 5000)
+        }, 20000)
 
         return () => clearInterval(interval)
     }, [])

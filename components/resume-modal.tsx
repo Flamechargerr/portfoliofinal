@@ -64,7 +64,8 @@ export default function ResumeModal() {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 20, scale: 0.98 }}
                             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-                            className="fixed inset-0 md:inset-6 lg:inset-12 z-[101] flex flex-col bg-transparent overflow-hidden"
+                            className="fixed inset-0 md:inset-6 lg:inset-12 z-[101] flex flex-col"
+                            style={{ background: 'transparent', maxHeight: '100dvh' }}
                             onClick={(e) => e.stopPropagation()}
                         >
                             {/* Floating Header */}
@@ -94,8 +95,15 @@ export default function ResumeModal() {
                                 </div>
                             </div>
 
-                            {/* Editorial Scrollable Content */}
-                            <div className="flex-1 overflow-y-auto overscroll-contain px-6 pb-24 md:px-12 lg:px-24 scrollbar-hide relative z-10" style={{ WebkitOverflowScrolling: 'touch' }}>
+                            {/* Editorial Scrollable Content — explicit height so scroll actually works */}
+                            <div
+                                className="overflow-y-auto overscroll-contain px-6 pb-24 md:px-12 lg:px-24 relative z-10"
+                                style={{
+                                    WebkitOverflowScrolling: 'touch',
+                                    flex: '1 1 0',
+                                    minHeight: 0,
+                                }}
+                            >
                                 <div className="max-w-[1400px] mx-auto mt-12 grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-16 lg:gap-32">
 
                                     {/* Left Content Column (Main Info) */}
@@ -205,7 +213,7 @@ export default function ResumeModal() {
                                                 <span className="text-sm font-bold font-roboto uppercase tracking-widest text-white/70 group-hover:text-lorenzo-accent">GitHub</span>
                                                 <span className="text-white/40 group-hover:text-white transition-colors">↗</span>
                                             </a>
-                                            <a href="https://linkedin.com/in/anamay-tripathy" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 border border-white/10 rounded-xl hover:border-lorenzo-accent hover:bg-lorenzo-accent/5 transition-all">
+                                            <a href="https://linkedin.com/in/anamay-tripathy-b53829296" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 border border-white/10 rounded-xl hover:border-lorenzo-accent hover:bg-lorenzo-accent/5 transition-all">
                                                 <span className="text-sm font-bold font-roboto uppercase tracking-widest text-white/70 group-hover:text-lorenzo-accent">LinkedIn</span>
                                                 <span className="text-white/40 group-hover:text-white transition-colors">↗</span>
                                             </a>

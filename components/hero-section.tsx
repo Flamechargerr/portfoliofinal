@@ -132,7 +132,7 @@ export default function HeroSection() {
                 {[
                   { value: "15+", label: "Projects" },
                   { value: "8+", label: "Certs" },
-                  { value: "570+", label: "Commits" },
+                  { value: "6,100+", label: "Commits" },
                 ].map((stat, i) => (
                   <div key={i} className="text-center group cursor-pointer" data-cursor="VIEW">
                     <motion.div

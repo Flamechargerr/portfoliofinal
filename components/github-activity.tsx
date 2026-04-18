@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useEffect, useState } from "react"
 import { motion, useInView } from "framer-motion"
 import dynamic from "next/dynamic"
 
@@ -17,30 +17,65 @@ const GitHubCalendar = dynamic<any>(
     }
 )
 
+interface GitHubStats {
+    public_repos: number
+    followers: number
+    totalStars: number
+    totalForks: number
+    isFallback?: boolean
+}
+
 export default function GitHubActivity() {
     const sectionRef = useRef<HTMLDivElement>(null)
     const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
+    const [stats, setStats] = useState<GitHubStats>({
+        public_repos: 26,
+        followers: 6,
+        totalStars: 4,
+        totalForks: 1,
+    })
+    const [isLoading, setIsLoading] = useState(true)
 
-    // Custom color theme matching Lorenzo style
-    const selectLastHalfYear = (contributions: any[]) => {
-        const currentYear = new Date().getFullYear()
-        const currentMonth = new Date().getMonth()
-        const shownMonths = 6
-
-        return contributions.filter((activity) => {
-            const date = new Date(activity.date)
-            const monthOfActivity = date.getMonth()
-            return (
-                date.getFullYear() === currentYear &&
-                monthOfActivity > currentMonth - shownMonths &&
-                monthOfActivity <= currentMonth
-            )
-        })
-    }
+    useEffect(() => {
+        fetch("/api/github-stats")
+            .then(res => res.json())
+            .then((data: GitHubStats) => {
+                setStats(data)
+                setIsLoading(false)
+            })
+            .catch(() => setIsLoading(false))
+    }, [])
 
     const customTheme = {
         dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#c8f550"],
     }
+
+    const statItems = [
+        {
+            value: "6,100+",
+            label: "Total Contributions",
+            delta: "Past year",
+            icon: "📊",
+        },
+        {
+            value: isLoading ? "—" : `${stats.totalStars}+`,
+            label: "Stars Earned",
+            delta: "Across all repos",
+            icon: "⭐",
+        },
+        {
+            value: isLoading ? "—" : `${stats.public_repos}`,
+            label: "Public Repos",
+            delta: "& counting",
+            icon: "📁",
+        },
+        {
+            value: "Daily",
+            label: "Activity Level",
+            delta: "Always shipping",
+            icon: "🔥",
+        },
+    ]
 
     return (
         <div ref={sectionRef} className="py-16 bg-lorenzo-dark">
@@ -58,7 +93,7 @@ export default function GitHubActivity() {
                                 <span className="text-lorenzo-accent">GitHub</span> Contribution Graph
                             </h3>
                             <p className="text-lorenzo-light/50 text-sm">
-                                My coding activity over the last 6 months
+                                My coding activity — live from GitHub
                             </p>
                         </div>
                         <motion.a
@@ -81,30 +116,34 @@ export default function GitHubActivity() {
                         <GitHubCalendar
                             username="Flamechargerr"
                             colorScheme="dark"
+                            theme={customTheme}
                             blockSize={14}
                             blockMargin={4}
                             fontSize={14}
                         />
                     </div>
 
-                    {/* Stats Row */}
+                    {/* Stats Row — Live Data */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.4 }}
                         className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-lorenzo-accent/10"
                     >
-                        {[
-                            { value: "570+", label: "Total Commits", delta: "+47 this week" },
-                            { value: "75+", label: "Stars Earned", delta: "+12 this month" },
-                            { value: "15+", label: "Repositories", delta: "+2 new" },
-                            { value: "Daily", label: "Activity Level", delta: "Active" },
-                        ].map((stat, i) => (
-                            <div key={i} className="text-center">
-                                <div className="text-2xl md:text-3xl font-brier text-lorenzo-accent">{stat.value}</div>
+                        {statItems.map((stat, i) => (
+                            <motion.div
+                                key={i}
+                                className="text-center"
+                                animate={isLoading ? { opacity: [0.5, 1, 0.5] } : { opacity: 1 }}
+                                transition={isLoading ? { duration: 1.5, repeat: Infinity } : {}}
+                            >
+                                <div className="text-2xl mb-1">{stat.icon}</div>
+                                <div className="text-2xl md:text-3xl font-brier text-lorenzo-accent">
+                                    {stat.value}
+                                </div>
                                 <div className="text-xs text-lorenzo-light/50 uppercase tracking-wider">{stat.label}</div>
                                 <div className="text-xs text-green-400 mt-1">{stat.delta}</div>
-                            </div>
+                            </motion.div>
                         ))}
                     </motion.div>
                 </motion.div>
