@@ -1,141 +1,16 @@
 "use client"
 
-import { useState, useRef, useEffect, useCallback, useMemo } from "react"
-import { motion, useInView, AnimatePresence, useMotionValue, useSpring, animate, useTransform } from "framer-motion"
-import {
-    Chart as ChartJS,
-    RadialLinearScale,
-    PointElement,
-    LineElement,
-    Filler,
-    Tooltip,
-    Legend,
-} from "chart.js"
-import { Radar } from "react-chartjs-2"
+import { useState, useRef, useEffect, useCallback } from "react"
+import { motion, useInView, AnimatePresence } from "framer-motion"
+import { playSound } from "@/lib/audio"
 
-ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend)
-
-// Particle explosion effect component
-function ParticleExplosion({ x, y, color, onComplete }: { x: number; y: number; color: string; onComplete: () => void }) {
-    const particles = useMemo(() =>
-        Array.from({ length: 12 }, (_, i) => ({
-            id: i,
-            angle: (i * 30) * (Math.PI / 180),
-            distance: 40 + Math.random() * 30,
-            size: 4 + Math.random() * 4,
-            delay: Math.random() * 0.1
-        })), []
-    )
-
-    useEffect(() => {
-        const timer = setTimeout(onComplete, 600)
-        return () => clearTimeout(timer)
-    }, [onComplete])
-
-    return (
-        <div
-            className="fixed pointer-events-none z-50"
-            style={{ left: x, top: y, transform: 'translate(-50%, -50%)' }}
-        >
-            {particles.map((particle) => (
-                <motion.div
-                    key={particle.id}
-                    className="absolute rounded-full"
-                    style={{
-                        width: particle.size,
-                        height: particle.size,
-                        backgroundColor: color,
-                        boxShadow: `0 0 10px ${color}`
-                    }}
-                    initial={{
-                        x: 0,
-                        y: 0,
-                        opacity: 1,
-                        scale: 1
-                    }}
-                    animate={{
-                        x: Math.cos(particle.angle) * particle.distance,
-                        y: Math.sin(particle.angle) * particle.distance,
-                        opacity: 0,
-                        scale: 0
-                    }}
-                    transition={{
-                        duration: 0.5,
-                        delay: particle.delay,
-                        ease: "easeOut"
-                    }}
-                />
-            ))}
-            {/* Central burst */}
-            <motion.div
-                className="absolute rounded-full"
-                style={{
-                    width: 20,
-                    height: 20,
-                    backgroundColor: color,
-                    left: -10,
-                    top: -10,
-                    boxShadow: `0 0 20px ${color}`
-                }}
-                initial={{ scale: 0, opacity: 1 }}
-                animate={{ scale: 3, opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-            />
-        </div>
-    )
-}
-
-// Simple subtle background decoration (no orbiting items)
-
-// Selection indicator removed for cleaner look
-
-// 3D Tilt container component
-function TiltContainer({ children, className }: { children: React.ReactNode; className?: string }) {
-    const containerRef = useRef<HTMLDivElement>(null)
-    const rotateX = useMotionValue(0)
-    const rotateY = useMotionValue(0)
-
-    const springConfig = { stiffness: 150, damping: 20 }
-    const springRotateX = useSpring(rotateX, springConfig)
-    const springRotateY = useSpring(rotateY, springConfig)
-
-    const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-        if (!containerRef.current) return
-
-        const rect = containerRef.current.getBoundingClientRect()
-        const centerX = rect.left + rect.width / 2
-        const centerY = rect.top + rect.height / 2
-
-        const mouseX = e.clientX - centerX
-        const mouseY = e.clientY - centerY
-
-        // Limit rotation to ±10 degrees
-        const maxRotation = 10
-        rotateX.set((mouseY / (rect.height / 2)) * -maxRotation)
-        rotateY.set((mouseX / (rect.width / 2)) * maxRotation)
-    }, [rotateX, rotateY])
-
-    const handleMouseLeave = useCallback(() => {
-        rotateX.set(0)
-        rotateY.set(0)
-    }, [rotateX, rotateY])
-
-    return (
-        <motion.div
-            ref={containerRef}
-            className={className}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{
-                rotateX: springRotateX,
-                rotateY: springRotateY,
-                transformStyle: "preserve-3d",
-                perspective: 1000,
-            }}
-        >
-            {children}
-        </motion.div>
-    )
+// Skill level badges
+const getSkillLevel = (value: number): { label: string; color: string; emoji: string } => {
+    if (value >= 90) return { label: "Expert", color: "#c8f550", emoji: "🏆" }
+    if (value >= 80) return { label: "Advanced", color: "#60a5fa", emoji: "⭐" }
+    if (value >= 70) return { label: "Proficient", color: "#a78bfa", emoji: "💪" }
+    if (value >= 60) return { label: "Intermediate", color: "#f59e0b", emoji: "📈" }
+    return { label: "Learning", color: "#6b7280", emoji: "🌱" }
 }
 
 // Skill categories with colors and icons
@@ -147,7 +22,7 @@ const skillCategories = [
     { id: "tools", label: "Tools & DevOps", icon: "🛠️", color: "#34d399" },
 ]
 
-// Enhanced skills data with descriptions and sub-skills
+// Detailed skills data
 const skillsData = {
     all: {
         labels: ["Frontend", "Backend", "Data Science", "DevOps", "UI/UX", "Problem Solving"],
@@ -256,17 +131,8 @@ const skillsData = {
     },
 }
 
-// Skill level badges
-const getSkillLevel = (value: number): { label: string; color: string; emoji: string } => {
-    if (value >= 90) return { label: "Expert", color: "#c8f550", emoji: "🏆" }
-    if (value >= 80) return { label: "Advanced", color: "#60a5fa", emoji: "⭐" }
-    if (value >= 70) return { label: "Proficient", color: "#a78bfa", emoji: "💪" }
-    if (value >= 60) return { label: "Intermediate", color: "#f59e0b", emoji: "📈" }
-    return { label: "Learning", color: "#6b7280", emoji: "🌱" }
-}
-
 // Animated counter component
-function AnimatedCounter({ value, duration = 1.5 }: { value: number; duration?: number }) {
+function AnimatedCounter({ value, duration = 1.2 }: { value: number; duration?: number }) {
     const [displayValue, setDisplayValue] = useState(0)
     const [mounted, setMounted] = useState(false)
 
@@ -276,11 +142,22 @@ function AnimatedCounter({ value, duration = 1.5 }: { value: number; duration?: 
 
     useEffect(() => {
         if (!mounted) return
-        const controls = animate(0, value, {
-            duration,
-            onUpdate: (latest) => setDisplayValue(Math.round(latest)),
-        })
-        return () => controls.stop()
+        let start = 0
+        const end = value
+        if (start === end) return
+
+        const totalMiliseconds = duration * 1000
+        const incrementTime = Math.abs(Math.floor(totalMiliseconds / end))
+        
+        const timer = setInterval(() => {
+            start += 1
+            setDisplayValue(start)
+            if (start >= end) {
+                clearInterval(timer)
+            }
+        }, incrementTime)
+
+        return () => clearInterval(timer)
     }, [value, duration, mounted])
 
     if (!mounted) return <span>0</span>
@@ -305,6 +182,14 @@ function SkillDetailPanel({
 }) {
     const level = getSkillLevel(value)
 
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") onClose()
+        }
+        window.addEventListener("keydown", handleKeyDown)
+        return () => window.removeEventListener("keydown", handleKeyDown)
+    }, [onClose])
+
     return (
         <>
             {/* Backdrop */}
@@ -312,32 +197,33 @@ function SkillDetailPanel({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90]"
+                className="fixed inset-0 bg-black/70 backdrop-blur-md z-[90]"
                 onClick={onClose}
             />
             {/* Modal */}
             <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[91] w-[90vw] max-w-md"
+                exit={{ opacity: 0, y: 30, scale: 0.95 }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[91] w-[90vw] max-w-md pointer-events-auto"
             >
-                <div className="bg-gradient-to-br from-lorenzo-dark via-lorenzo-dark to-lorenzo-accent/10 border-2 border-lorenzo-accent/30 rounded-2xl p-6 shadow-2xl shadow-lorenzo-accent/10 backdrop-blur-xl">
+                <div className="bg-[#1b1c11]/90 border border-white/10 rounded-2xl p-6 shadow-2xl backdrop-blur-xl">
                     {/* Close button */}
                     <button
                         onClick={onClose}
-                        className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-lorenzo-accent/20 transition-colors"
+                        className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#c8f550]/20 hover:text-[#c8f550] transition-colors"
                     >
-                        <span className="text-lorenzo-light">✕</span>
+                        <span className="text-sm font-bold">✕</span>
                     </button>
 
                     {/* Header */}
                     <div className="flex items-start gap-4 mb-6">
-                        <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-lorenzo-accent/30 to-lorenzo-accent/10 flex items-center justify-center text-3xl">
+                        <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-3xl">
                             {level.emoji}
                         </div>
                         <div className="flex-1">
-                            <h4 className="text-2xl font-bold text-lorenzo-light">{skill}</h4>
+                            <h4 className="text-2xl font-bold text-white">{skill}</h4>
                             <div className="flex items-center gap-2 mt-1">
                                 <span
                                     className="px-3 py-1 rounded-full text-xs font-bold uppercase"
@@ -345,7 +231,7 @@ function SkillDetailPanel({
                                 >
                                     {level.label}
                                 </span>
-                                <span className="text-lorenzo-light/50 text-sm">{experience} exp</span>
+                                <span className="text-white/50 text-sm">{experience} experience</span>
                             </div>
                         </div>
                     </div>
@@ -353,8 +239,10 @@ function SkillDetailPanel({
                     {/* Progress bar */}
                     <div className="mb-6">
                         <div className="flex justify-between mb-2">
-                            <span className="text-lorenzo-light/70 text-sm">Proficiency</span>
-                            <span className="text-lorenzo-accent font-bold"><AnimatedCounter value={value} />%</span>
+                            <span className="text-white/70 text-sm">Proficiency</span>
+                            <span className="text-[#c8f550] font-bold">
+                                <AnimatedCounter value={value} />%
+                            </span>
                         </div>
                         <div className="w-full h-3 bg-white/10 rounded-full overflow-hidden">
                             <motion.div
@@ -370,13 +258,13 @@ function SkillDetailPanel({
                     </div>
 
                     {/* Description */}
-                    <p className="text-lorenzo-light/70 text-sm mb-6 leading-relaxed">
+                    <p className="text-white/70 text-sm mb-6 leading-relaxed">
                         {description}
                     </p>
 
                     {/* Sub-skills */}
                     <div>
-                        <span className="text-lorenzo-light/50 text-xs uppercase tracking-widest mb-3 block">Related Skills</span>
+                        <span className="text-white/40 text-xs uppercase tracking-widest mb-3 block">Related Tech Stack</span>
                         <div className="flex flex-wrap gap-2">
                             {subSkills.map((subSkill, i) => (
                                 <motion.span
@@ -384,7 +272,7 @@ function SkillDetailPanel({
                                     initial={{ opacity: 0, scale: 0.8 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="px-3 py-1.5 rounded-lg bg-lorenzo-accent/10 border border-lorenzo-accent/30 text-lorenzo-accent text-sm font-medium hover:bg-lorenzo-accent/20 transition-colors cursor-default"
+                                    className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-white hover:border-[#c8f550]/40 hover:bg-[#c8f550]/10 transition-colors text-xs font-medium cursor-default"
                                 >
                                     {subSkill}
                                 </motion.span>
@@ -397,79 +285,56 @@ function SkillDetailPanel({
     )
 }
 
-// Interactive skill card with click functionality
+// Interactive skill card
 function InteractiveSkillCard({
     skill,
     value,
     index,
-    isHovered,
     isSelected,
-    isFocused = false,
     onClick,
     delay = 0,
-    direction = "left"
 }: {
     skill: string
     value: number
     index: number
-    isHovered: boolean
     isSelected: boolean
-    isFocused?: boolean
     onClick: (e: React.MouseEvent) => void
     delay?: number
-    direction?: "left" | "right"
 }) {
     const level = getSkillLevel(value)
 
     return (
         <motion.div
             onClick={onClick}
-            className={`p-4 border rounded-xl transition-all cursor-pointer relative overflow-hidden group ${isSelected
-                ? "bg-lorenzo-accent/20 border-lorenzo-accent shadow-lg shadow-lorenzo-accent/20"
-                : isHovered || isFocused
-                    ? "bg-lorenzo-accent/10 border-lorenzo-accent/50"
-                    : "bg-white/5 border-white/10 hover:border-lorenzo-accent/30"
-                } ${isFocused ? "ring-2 ring-lorenzo-accent ring-offset-2 ring-offset-lorenzo-dark" : ""}`}
-            whileHover={{ x: direction === "left" ? 10 : -10, scale: 1.02 }}
+            onMouseEnter={() => playSound("tick")}
+            className={`p-5 border rounded-2xl transition-all cursor-pointer relative overflow-hidden group ${
+                isSelected
+                    ? "bg-[#c8f550]/20 border-[#c8f550] shadow-lg shadow-[#c8f550]/10"
+                    : "bg-white/5 border-white/10 hover:border-[#c8f550]/40"
+            }`}
+            whileHover={{ y: -5, scale: 1.01 }}
             whileTap={{ scale: 0.98 }}
-            initial={{ opacity: 0, x: direction === "left" ? -30 : 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay }}
-            tabIndex={0}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay, duration: 0.4 }}
             role="button"
             aria-pressed={isSelected}
-            aria-label={`${skill}: ${value}% proficiency, ${level.label}`}
         >
-            {/* Focus pulse animation */}
-            {isFocused && (
-                <motion.div
-                    className="absolute inset-0 rounded-xl border-2 border-lorenzo-accent"
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                />
-            )}
-
-            {/* Glow effect on hover */}
+            {/* Glow on hover */}
             <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-lorenzo-accent/0 via-lorenzo-accent/10 to-lorenzo-accent/0"
+                className="absolute inset-0 bg-gradient-to-r from-[#c8f550]/0 via-[#c8f550]/5 to-[#c8f550]/0"
                 initial={{ x: "-100%" }}
-                animate={isHovered || isSelected || isFocused ? { x: "100%" } : { x: "-100%" }}
-                transition={{ duration: 0.6 }}
+                whileHover={{ x: "100%" }}
+                transition={{ duration: 0.8 }}
             />
 
             <div className="relative z-10">
-                <div className="flex justify-between items-center mb-2">
-                    <div className="flex items-center gap-2">
-                        <motion.span
-                            className="text-lg"
-                            animate={isFocused ? { scale: [1, 1.2, 1] } : { scale: 1 }}
-                            transition={{ duration: 0.5, repeat: isFocused ? Infinity : 0 }}
-                        >
-                            {level.emoji}
-                        </motion.span>
-                        <span className="font-bold text-white">{skill}</span>
+                <div className="flex justify-between items-center mb-3">
+                    <div className="flex items-center gap-2.5">
+                        <span className="text-xl">{level.emoji}</span>
+                        <span className="font-bold text-white tracking-wide">{skill}</span>
                     </div>
-                    <span className="text-lorenzo-accent font-bold text-lg">
+                    <span className="text-[#c8f550] font-bold text-lg">
                         <AnimatedCounter value={value} />%
                     </span>
                 </div>
@@ -482,423 +347,199 @@ function InteractiveSkillCard({
                         }}
                         initial={{ width: 0 }}
                         animate={{ width: `${value}%` }}
-                        transition={{ duration: 1, delay: delay + 0.3 }}
+                        transition={{ duration: 1, delay: delay + 0.2 }}
                     />
                 </div>
 
-                <div className="flex justify-between items-center mt-2">
+                <div className="flex justify-between items-center mt-3">
                     <span
-                        className="text-xs font-medium"
+                        className="text-xs font-bold uppercase tracking-wider"
                         style={{ color: level.color }}
                     >
                         {level.label}
                     </span>
-                    <motion.span
-                        className="text-xs text-lorenzo-light/50"
-                        animate={isSelected ? { color: "#c8f550" } : { color: "rgba(255,255,255,0.5)" }}
-                    >
-                        {isSelected ? "Click to close" : isFocused ? "Press Enter" : "Click for details"}
-                    </motion.span>
+                    <span className="text-xs text-white/40 group-hover:text-[#c8f550]/80 transition-colors">
+                        {isSelected ? "Click to close" : "Click for details →"}
+                    </span>
                 </div>
             </div>
         </motion.div>
     )
 }
 
-// Clean, subtle background decoration
+// Clean background circles decoration
 function RotatingBackground() {
     return (
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {/* Visible concentric circles for depth */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-lorenzo-accent/15 rounded-full" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-lorenzo-accent/20 rounded-full" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] border border-lorenzo-accent/25 rounded-full" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-lorenzo-accent/10 rounded-full" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-lorenzo-accent/15 rounded-full" />
         </div>
     )
 }
 
 export default function SkillsRadar() {
     const sectionRef = useRef<HTMLDivElement>(null)
-    const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
+    // once: false ensures that the entrance transitions run again every single time it scrolls in!
+    const inViewDetector = useInView(sectionRef, { once: false, amount: 0.05 })
+    const [isInView, setIsInView] = useState(false)
+    const [mounted, setMounted] = useState(false)
     const [activeCategory, setActiveCategory] = useState<keyof typeof skillsData>("all")
-    const [hoveredSkill, setHoveredSkill] = useState<number | null>(null)
     const [selectedSkill, setSelectedSkill] = useState<number | null>(null)
-    const [isAnimating, setIsAnimating] = useState(false)
-    const [focusedSkill, setFocusedSkill] = useState<number>(0)
-    const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; color: string }>>([])
 
     const currentSkills = skillsData[activeCategory]
-    const currentCategoryColor = skillCategories.find(c => c.id === activeCategory)?.color || "#c8f550"
 
-    // Keyboard navigation
     useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (!isInView) return
-
-            switch (e.key) {
-                case 'ArrowRight':
-                case 'ArrowDown':
-                    e.preventDefault()
-                    setFocusedSkill((prev) => (prev + 1) % currentSkills.labels.length)
-                    break
-                case 'ArrowLeft':
-                case 'ArrowUp':
-                    e.preventDefault()
-                    setFocusedSkill((prev) => (prev - 1 + currentSkills.labels.length) % currentSkills.labels.length)
-                    break
-                case 'Enter':
-                case ' ':
-                    e.preventDefault()
-                    handleSkillClick(focusedSkill)
-                    break
-                case 'Escape':
-                    setSelectedSkill(null)
-                    break
-            }
-        }
-
-        window.addEventListener('keydown', handleKeyDown)
-        return () => window.removeEventListener('keydown', handleKeyDown)
-    }, [isInView, currentSkills.labels.length, focusedSkill])
-
-    // Handle category change with animation
-    const handleCategoryChange = useCallback((categoryId: keyof typeof skillsData) => {
-        if (isAnimating) return
-        setIsAnimating(true)
-        setSelectedSkill(null)
-        setFocusedSkill(0)
-        setActiveCategory(categoryId)
-        setTimeout(() => setIsAnimating(false), 500)
-    }, [isAnimating])
-
-    // Handle skill click with particle effect
-    const handleSkillClick = useCallback((index: number, event?: React.MouseEvent) => {
-        const isDeselecting = selectedSkill === index
-        setSelectedSkill(isDeselecting ? null : index)
-
-        // Add particle explosion on selection
-        if (!isDeselecting && event) {
-            const newParticle = {
-                id: Date.now(),
-                x: event.clientX,
-                y: event.clientY,
-                color: currentCategoryColor
-            }
-            setParticles(prev => [...prev, newParticle])
-        }
-    }, [selectedSkill, currentCategoryColor])
-
-    // Remove particle after animation
-    const removeParticle = useCallback((id: number) => {
-        setParticles(prev => prev.filter(p => p.id !== id))
+        setMounted(true)
     }, [])
 
-    const data = {
-        labels: currentSkills.labels,
-        datasets: [
-            {
-                label: "Skill Level",
-                data: currentSkills.data,
-                backgroundColor: `${currentCategoryColor}20`,
-                borderColor: currentCategoryColor,
-                borderWidth: 3,
-                pointBackgroundColor: currentCategoryColor,
-                pointBorderColor: "#1b1c11",
-                pointBorderWidth: 2,
-                pointHoverBackgroundColor: "#fff",
-                pointHoverBorderColor: currentCategoryColor,
-                pointHoverBorderWidth: 3,
-                pointRadius: 8,
-                pointHoverRadius: 14,
-            },
-        ],
-    }
+    // Sync viewport detector
+    useEffect(() => {
+        setIsInView(inViewDetector)
+    }, [inViewDetector])
 
-    const options = {
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: {
-            duration: 800,
-            easing: "easeOutQuart" as const,
-        },
-        plugins: {
-            legend: {
-                display: false,
-            },
-            tooltip: {
-                enabled: true,
-                backgroundColor: "rgba(27, 28, 17, 0.98)",
-                titleColor: currentCategoryColor,
-                titleFont: {
-                    size: 16,
-                    weight: "bold" as const,
-                },
-                bodyColor: "#fff",
-                bodyFont: {
-                    size: 14,
-                },
-                borderColor: currentCategoryColor,
-                borderWidth: 2,
-                padding: 20,
-                cornerRadius: 12,
-                displayColors: false,
-                callbacks: {
-                    title: function (context: any) {
-                        return `${context[0].label}`
-                    },
-                    label: function (context: any) {
-                        const value = context.raw
-                        const level = getSkillLevel(value)
-                        const idx = context.dataIndex
-                        return [
-                            `${level.emoji} ${value}% proficiency`,
-                            `Level: ${level.label}`,
-                            ``,
-                            `Click skill card for details →`
-                        ]
-                    },
-                },
-            },
-        },
-        scales: {
-            r: {
-                angleLines: {
-                    color: `${currentCategoryColor}15`,
-                    lineWidth: 1,
-                },
-                grid: {
-                    color: `${currentCategoryColor}10`,
-                    circular: true,
-                    lineWidth: 1,
-                },
-                pointLabels: {
-                    color: "rgba(255, 255, 255, 0.85)",
-                    font: {
-                        size: 14,
-                        weight: "bold" as const,
-                        family: "'Inter', sans-serif",
-                    },
-                    padding: 20,
-                },
-                ticks: {
-                    display: false,
-                    stepSize: 20,
-                },
-                suggestedMin: 0,
-                suggestedMax: 100,
-            },
-        },
-        interaction: {
-            intersect: false,
-            mode: "index" as const,
-        },
-        onHover: (event: any, chartElement: any) => {
-            if (chartElement.length > 0) {
-                setHoveredSkill(chartElement[0].index)
-            } else {
-                setHoveredSkill(null)
-            }
-        },
-        onClick: (event: any, chartElement: any) => {
-            if (chartElement.length > 0) {
-                handleSkillClick(chartElement[0].index)
-            }
-        },
-    }
+    // Mount fallback to prevent empty state in hot reload
+    useEffect(() => {
+        if (!mounted) return
+        const timer = setTimeout(() => {
+            setIsInView(true)
+        }, 400)
+        return () => clearTimeout(timer)
+    }, [mounted])
+
+    // Handle category filter clicks
+    const handleCategoryChange = useCallback((categoryId: keyof typeof skillsData) => {
+        setSelectedSkill(null)
+        setActiveCategory(categoryId)
+        playSound("click")
+    }, [])
+
+    const handleSkillClick = useCallback((index: number) => {
+        setSelectedSkill(selectedSkill === index ? null : index)
+        playSound("click")
+    }, [selectedSkill])
+
+    if (!mounted) return null
 
     return (
         <div ref={sectionRef} className="py-20 bg-lorenzo-dark relative overflow-hidden">
             {/* Animated background */}
             <RotatingBackground />
 
-            {/* Particle explosions portal */}
-            {particles.map(particle => (
-                <ParticleExplosion
-                    key={particle.id}
-                    x={particle.x}
-                    y={particle.y}
-                    color={particle.color}
-                    onComplete={() => removeParticle(particle.id)}
-                />
-            ))}
-
             <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+                
+                {/* Header Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     className="text-center mb-12"
                 >
                     <div className="flex items-center justify-center gap-4 mb-4">
-                        <motion.div
-                            className="w-12 h-px"
-                            style={{ backgroundColor: currentCategoryColor }}
-                            layoutId="line-left"
-                        />
+                        <div className="w-12 h-px bg-[#c8f550]" />
                         <span className="text-xs font-bold uppercase tracking-widest text-lorenzo-accent">
-                            EXPERTISE
+                            ARCHITECTURE
                         </span>
-                        <motion.div
-                            className="w-12 h-px"
-                            style={{ backgroundColor: currentCategoryColor }}
-                            layoutId="line-right"
-                        />
+                        <div className="w-12 h-px bg-[#c8f550]" />
                     </div>
                     <h3 className="text-3xl md:text-5xl font-brier text-lorenzo-light uppercase mb-4">
-                        SKILL <span style={{ color: currentCategoryColor }}>RADAR</span>
+                        SYSTEMS <span className="text-[#c8f550]">ARCHITECTURE</span>
                     </h3>
-                    <p className="text-lorenzo-light/50 max-w-lg mx-auto">
-                        Click on categories to explore different skill sets. Click on skill cards or radar points for detailed insights.
+                    <p className="text-lorenzo-light/50 max-w-lg mx-auto text-sm leading-relaxed">
+                        Interactive 3D Spline visualization of my development pipelines, technical nodes, and engineering architecture. Drag and rotate to explore.
                     </p>
                 </motion.div>
 
-                {/* Enhanced Category Filters */}
+                {/* 1. INTERACTIVE 3D SPLINE SHOWCASE - Stacked Widescreen with Continuous Float Loop */}
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 0.2, duration: 0.8 }}
+                    className="w-full mb-16"
+                >
+                    <motion.div
+                        animate={{
+                            y: [0, -8, 0],
+                        }}
+                        transition={{
+                            duration: 6,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                        className="relative w-full h-[550px] md:h-[650px] lg:h-[720px] rounded-3xl border border-white/10 overflow-hidden shadow-2xl bg-zinc-950/80 backdrop-blur-md flex items-center justify-center select-none"
+                    >
+                        {/* Interactive 3D Spline Backdrop with watermark clipping */}
+                        <iframe
+                            src="https://my.spline.design/3ddiagram-bhPtViCxVebX07oBXN35RwZ2/"
+                            style={{ border: "none", height: "calc(100% + 48px)", width: "100%", position: "absolute", top: 0, left: 0 }}
+                            title="3D Interactive Spline Diagram"
+                            className="pointer-events-auto z-0"
+                        />
+
+                        {/* Central Watermark Shield overlay */}
+                        <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10 bg-black/60 backdrop-blur-md border border-white/10 rounded-full px-4 py-1.5 text-[10px] font-bold text-white/50 uppercase tracking-[0.25em] flex items-center gap-2 pointer-events-none">
+                            <span className="w-1.5 h-1.5 bg-[#c8f550] rounded-full animate-pulse shadow-[0_0_6px_#c8f550]" />
+                            3D INTERACTIVE DIAGRAM
+                        </div>
+                    </motion.div>
+                </motion.div>
+
+                {/* 2. DYNAMIC DEEP-DIVE SKILLS EXPLORER SECTION */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 0.3 }}
+                    className="flex flex-col items-center mt-20 mb-8"
+                >
+                    <div className="flex items-center gap-4 mb-2">
+                        <div className="w-8 h-px bg-lorenzo-accent/30" />
+                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#c8f550]">
+                            DEEP DIVE EXPLORER
+                        </span>
+                        <div className="w-8 h-px bg-lorenzo-accent/30" />
+                    </div>
+                    <h4 className="text-2xl md:text-3xl font-brier text-white uppercase text-center mb-4">
+                        TECHNICAL <span className="text-[#c8f550]">CORE INVENTORY</span>
+                    </h4>
+                    <p className="text-white/50 text-xs max-w-md mx-auto text-center leading-relaxed">
+                        Filter by expertise layers to review detailed proficiency metrics, codebases, and sub-skills. Click cards to launch deep-dive audits.
+                    </p>
+                </motion.div>
+
+                {/* Category Filters */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.2 }}
-                    className="flex flex-wrap justify-center gap-3 mb-12"
+                    transition={{ delay: 0.4 }}
+                    className="flex flex-wrap justify-center gap-3 mb-10"
                 >
                     {skillCategories.map((category, i) => (
                         <motion.button
                             key={category.id}
                             onClick={() => handleCategoryChange(category.id as keyof typeof skillsData)}
-                            className={`relative px-6 py-3 text-sm font-bold uppercase tracking-wider transition-all border-2 rounded-xl overflow-hidden ${activeCategory === category.id
-                                ? "text-lorenzo-dark"
-                                : "bg-transparent text-lorenzo-light/70 border-lorenzo-light/20 hover:border-lorenzo-accent hover:text-lorenzo-accent"
-                                }`}
-                            style={{
-                                borderColor: activeCategory === category.id ? category.color : undefined,
-                            }}
+                            className={`relative px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all border rounded-xl overflow-hidden ${
+                                activeCategory === category.id
+                                    ? "text-black bg-[#c8f550] border-[#c8f550]"
+                                    : "bg-transparent text-white/70 border-white/10 hover:border-[#c8f550] hover:text-[#c8f550]"
+                            }`}
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.05 }}
                         >
-                            {/* Active background */}
-                            {activeCategory === category.id && (
-                                <motion.div
-                                    layoutId="active-category"
-                                    className="absolute inset-0"
-                                    style={{ backgroundColor: category.color }}
-                                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                />
-                            )}
                             <span className="relative z-10 flex items-center gap-2">
-                                <span className="text-base">{category.icon}</span>
+                                <span className="text-sm">{category.icon}</span>
                                 {category.label}
                             </span>
                         </motion.button>
                     ))}
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                    {/* Skills List - Left */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ delay: 0.3 }}
-                        className="hidden lg:block space-y-3"
-                    >
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={activeCategory + "-left"}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: 20 }}
-                                className="space-y-3"
-                            >
-                                {currentSkills.labels.slice(0, 3).map((skill, i) => (
-                                    <InteractiveSkillCard
-                                        key={skill}
-                                        skill={skill}
-                                        value={currentSkills.data[i]}
-                                        index={i}
-                                        isHovered={hoveredSkill === i}
-                                        isSelected={selectedSkill === i}
-                                        isFocused={focusedSkill === i}
-                                        onClick={(e) => handleSkillClick(i, e)}
-                                        delay={i * 0.1}
-                                        direction="left"
-                                    />
-                                ))}
-                            </motion.div>
-                        </AnimatePresence>
-                    </motion.div>
-
-                    {/* Radar Chart - Center with 3D Tilt */}
-                    <TiltContainer className="h-[400px] md:h-[500px] relative">
-                        <motion.div
-                            key={activeCategory}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                            transition={{ delay: 0.3, type: "spring", stiffness: 100 }}
-                            className="h-full relative"
-                        >
-                            {/* Subtle static glow for depth */}
-                            <div
-                                className="absolute inset-0 blur-3xl rounded-full opacity-20"
-                                style={{ backgroundColor: currentCategoryColor }}
-                            />
-
-                            <Radar data={data} options={options} />
-
-                            {/* Skill Detail Panel */}
-                            <AnimatePresence>
-                                {selectedSkill !== null && (
-                                    <SkillDetailPanel
-                                        skill={currentSkills.labels[selectedSkill]}
-                                        value={currentSkills.data[selectedSkill]}
-                                        description={currentSkills.descriptions[selectedSkill]}
-                                        subSkills={currentSkills.subSkills[selectedSkill]}
-                                        experience={currentSkills.experience[selectedSkill]}
-                                        onClose={() => setSelectedSkill(null)}
-                                    />
-                                )}
-                            </AnimatePresence>
-                        </motion.div>
-                    </TiltContainer>
-
-                    {/* Skills List - Right */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ delay: 0.3 }}
-                        className="hidden lg:block space-y-3"
-                    >
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={activeCategory + "-right"}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -20 }}
-                                className="space-y-3"
-                            >
-                                {currentSkills.labels.slice(3).map((skill, i) => (
-                                    <InteractiveSkillCard
-                                        key={skill}
-                                        skill={skill}
-                                        value={currentSkills.data[i + 3]}
-                                        index={i + 3}
-                                        isHovered={hoveredSkill === i + 3}
-                                        isSelected={selectedSkill === i + 3}
-                                        isFocused={focusedSkill === i + 3}
-                                        onClick={(e) => handleSkillClick(i + 3, e)}
-                                        delay={i * 0.1}
-                                        direction="right"
-                                    />
-                                ))}
-                            </motion.div>
-                        </AnimatePresence>
-                    </motion.div>
-                </div>
-
-                {/* Mobile Skills List */}
+                {/* Interactive Grid of Cards - Re-keyed to activeCategory to trigger countups on select */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.4 }}
-                    className="lg:hidden mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3"
+                    key={activeCategory + "-" + isInView}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
                 >
                     {currentSkills.labels.map((skill, i) => (
                         <InteractiveSkillCard
@@ -906,22 +547,33 @@ export default function SkillsRadar() {
                             skill={skill}
                             value={currentSkills.data[i]}
                             index={i}
-                            isHovered={hoveredSkill === i}
                             isSelected={selectedSkill === i}
-                            isFocused={focusedSkill === i}
-                            onClick={(e) => handleSkillClick(i, e)}
+                            onClick={() => handleSkillClick(i)}
                             delay={i * 0.05}
-                            direction="left"
                         />
                     ))}
                 </motion.div>
 
-                {/* Enhanced Stats */}
+                {/* Popup Details Modal */}
+                <AnimatePresence>
+                    {selectedSkill !== null && (
+                        <SkillDetailPanel
+                            skill={currentSkills.labels[selectedSkill]}
+                            value={currentSkills.data[selectedSkill]}
+                            description={currentSkills.descriptions[selectedSkill]}
+                            subSkills={currentSkills.subSkills[selectedSkill]}
+                            experience={currentSkills.experience[selectedSkill]}
+                            onClose={() => setSelectedSkill(null)}
+                        />
+                    )}
+                </AnimatePresence>
+
+                {/* Enhanced Stats foundational row - Re-keyed to isInView to trigger on every scroll */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.5 }}
-                    className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4"
+                    transition={{ delay: 0.4 }}
+                    className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4"
                 >
                     {[
                         { label: "Technologies", value: 25, suffix: "+", icon: "💻", color: "#c8f550" },
@@ -930,12 +582,14 @@ export default function SkillsRadar() {
                         { label: "Avg. Proficiency", value: 82, suffix: "%", icon: "📊", color: "#34d399" },
                     ].map((stat, i) => (
                         <motion.div
-                            key={stat.label}
-                            className="relative p-5 bg-gradient-to-br from-white/5 to-white/0 border border-white/10 rounded-xl text-center group overflow-hidden"
+                            key={stat.label + "-" + isInView}
+                            onMouseEnter={() => playSound("tick")}
+                            onClick={() => playSound("click")}
+                            className="relative p-5 bg-gradient-to-br from-white/5 to-white/0 border border-white/10 rounded-xl text-center group overflow-hidden cursor-pointer"
                             whileHover={{ y: -5, borderColor: stat.color }}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5 + i * 0.1 }}
+                            transition={{ delay: 0.4 + i * 0.1 }}
                         >
                             {/* Hover glow */}
                             <motion.div
@@ -954,21 +608,6 @@ export default function SkillsRadar() {
                             </div>
                         </motion.div>
                     ))}
-                </motion.div>
-
-                {/* Interactive tip */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ delay: 0.8 }}
-                    className="text-center mt-8 space-y-2"
-                >
-                    <p className="text-lorenzo-light/40 text-sm">
-                        💡 Click on any skill card or radar point to see detailed breakdown
-                    </p>
-                    <p className="text-lorenzo-light/30 text-xs">
-                        ⌨️ Use arrow keys to navigate • Enter to select • Escape to close
-                    </p>
                 </motion.div>
             </div>
         </div>

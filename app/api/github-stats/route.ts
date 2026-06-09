@@ -28,7 +28,7 @@ export async function GET() {
         const totalForks = ownRepos.reduce((acc: number, r: any) => acc + (r.forks_count || 0), 0)
 
         // Get featured repos (pick the most meaningful ones)
-        const featuredSlugs = ["crime-connect-fbi", "HackOps", "VARtificial-Intelligence", "smart-maps-3d", "InternMailer", "portfoliofinal"]
+        const featuredSlugs = ["ChargerOS", "MedRAG", "crime-connect-fbi", "HackOps", "VARtificial-Intelligence", "smart-maps-3d", "intellect-emi-platform", "ecell-mes-2025"]
         const featuredRepos = featuredSlugs
             .map(slug => repos.find((r: any) => r.name === slug))
             .filter(Boolean)

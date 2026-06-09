@@ -72,10 +72,10 @@ export default function AboutSection() {
                                 data and technology. Every line of code is a step towards innovation.
                             </p>
                             <p className="text-base md:text-lg text-white/60 leading-relaxed font-light">
-                                As the <span className="text-white/90">Technical Head at YaanBarpe</span>, I lead development
-                                teams, architect scalable solutions, and turn ideas into production-ready applications.
-                                From building fintech dashboards at <span className="text-white/90">Intellect Design Arena</span>
-                                to creating AI-powered solutions—I'm always pushing boundaries.
+                                As the <span className="text-white/90">Technical Head at YBiee (Student Startup)</span>, I lead development
+                                teams and architect scalable MVP systems. From modeling pricing engines during my
+                                <span className="text-white/90"> J.P. Morgan Quantitative Research</span> simulation to building fintech dashboards at <span className="text-white/90">Intellect Design Arena</span>
+                                and clinical AI platforms like MedRAG—I'm always pushing boundaries.
                             </p>
                         </div>
 
@@ -225,9 +225,10 @@ export default function AboutSection() {
                         {/* Roles - with Images */}
                         <div className="mt-8 space-y-4">
                             {[
-                                { title: "Technical Head", org: "YaanBarpe Startup", year: "2024", color: "from-green-500 to-emerald-600" },
-                                { title: "Data Analyst & Web Dev Intern", org: "Intellect Design Arena", year: "2024", color: "from-blue-500 to-cyan-600" },
-                                { title: "Class Rep & E-Cell", org: "MIT Manipal", year: "2023-27", color: "from-purple-500 to-pink-600" },
+                                { title: "Quantitative Research Analyst", org: "J.P. Morgan QR (Simulation)", year: "2026", color: "from-yellow-500 to-amber-600" },
+                                { title: "Software Engineering Intern", org: "Intellect Design Arena (FinTech)", year: "2025", color: "from-blue-500 to-cyan-600" },
+                                { title: "Premium Tier Developer (AI Pro)", org: "Google Developer Program", year: "2021-P", color: "from-purple-500 to-pink-600" },
+                                { title: "Technical Head", org: "YBiee (Student Startup)", year: "2024-P", color: "from-green-500 to-emerald-600" },
                             ].map((role, i) => (
                                 <motion.div
                                     key={i}

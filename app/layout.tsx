@@ -2,7 +2,6 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
 import { Roboto, Libre_Baskerville, Alex_Brush, Oswald } from "next/font/google"
-import Script from "next/script"
 import SmoothScroll from "@/components/smooth-scroll"
 import Preloader from "@/components/preloader"
 import InteractiveBackground from "@/components/interactive-background"
@@ -40,7 +39,7 @@ const oswald = Oswald({
 export const metadata: Metadata = {
   metadataBase: new URL("https://anamay.vercel.app"),
   title: "Anamay Tripathy - Data Science Engineer & Full Stack Developer",
-  description: "Portfolio of Anamay Tripathy - B.Tech Data Science Engineering student at MIT Manipal, Technical Head at YaanBarpe, Software Engineering Intern at Intellect Design Arena",
+  description: "Portfolio of Anamay Tripathy - B.Tech Data Science Engineering student at MIT Manipal, Technical Head at YBiee (Student Startup), Software Engineering Intern at Intellect Design Arena",
   keywords: ["Anamay Tripathy", "Data Science", "Full Stack Developer", "MIT Manipal", "Portfolio", "React", "Node.js", "Python", "Machine Learning"],
   authors: [{ name: "Anamay Tripathy" }],
   creator: "Anamay Tripathy",
@@ -91,7 +90,7 @@ export default function RootLayout({
     jobTitle: "Data Science Engineer & Full Stack Developer",
     worksFor: {
       "@type": "Organization",
-      name: "YaanBarpe",
+      name: "YBiee",
     },
     alumniOf: {
       "@type": "EducationalOrganization",
@@ -99,7 +98,7 @@ export default function RootLayout({
     },
     sameAs: [
       "https://github.com/Flamechargerr",
-      "https://linkedin.com/in/anamay-tripathy-b53829296",
+      "https://linkedin.com/in/anamay-tripathy",
     ],
     knowsAbout: [
       "Data Science",
@@ -128,8 +127,6 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`font-sans antialiased ${roboto.variable} ${libreBaskerville.variable} ${alexBrush.variable} ${oswald.variable}`}
       >
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" strategy="beforeInteractive" />
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" strategy="beforeInteractive" />
         {/* Skip Link for Accessibility */}
         <a
           href="#main-content"

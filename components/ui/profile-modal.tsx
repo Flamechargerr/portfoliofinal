@@ -64,7 +64,7 @@ export function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                 <p className="text-gray-300 text-center leading-relaxed">
                   Passionate Data Science Engineering student at{" "}
                   <span className="text-blue-400 font-bold">MIT Manipal</span>, combining technical expertise with
-                  leadership as Technical Head at <span className="text-green-400 font-bold">YaanBarpe</span>. Building
+                  leadership as Technical Head at <span className="text-green-400 font-bold">YBiee (Student Startup)</span>. Building
                   innovative solutions at the intersection of data science, AI, and full-stack development.
                 </p>
               </div>
@@ -111,7 +111,7 @@ export function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                   GitHub
                 </Button>
                 <Button
-                  onClick={() => window.open("https://www.linkedin.com/in/anamay-tripathy-b53829296/", "_blank")}
+                  onClick={() => window.open("https://www.linkedin.com/in/anamay-tripathy/", "_blank")}
                   className="bg-blue-600 hover:bg-blue-700 border-0 text-white"
                 >
                   <Linkedin className="w-5 h-5 mr-2" />

@@ -9,6 +9,7 @@
     "target": "ES6",
     "skipLibCheck": true,
     "strict": true,
+    "strictPropertyInitialization": false,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -38,6 +39,7 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "phenomenon_local"
   ]
 }

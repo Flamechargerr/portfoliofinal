@@ -7,7 +7,7 @@ import Link from "next/link"
 const projects = [
     {
         id: 1,
-        title: "YaanBarpe Platform",
+        title: "YBiee Platform",
         description: "A comprehensive startup ecosystem platform connecting entrepreneurs, mentors, and investors. Built with Next.js, featuring real-time updates and AI-powered matching.",
         image: "/images/tech-workspace.png",
         tags: ["Next.js", "TypeScript", "AI/ML", "PostgreSQL"],

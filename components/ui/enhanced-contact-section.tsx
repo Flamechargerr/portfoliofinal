@@ -137,7 +137,7 @@ export function EnhancedContactSection() {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      url: "https://www.linkedin.com/in/anamay-tripathy-b53829296/",
+      url: "https://www.linkedin.com/in/anamay-tripathy/",
       color: "from-blue-600 to-blue-800",
       hoverColor: "hover:bg-blue-700",
     },

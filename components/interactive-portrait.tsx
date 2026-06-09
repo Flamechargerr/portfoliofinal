@@ -8,7 +8,7 @@ import * as THREE from "three"
 export default function InteractivePortrait() {
   const containerRef = useRef<HTMLDivElement>(null)
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null)
-  const animationFrameRef = useRef<number>()
+  const animationFrameRef = useRef<number | null>(null)
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -72,59 +72,59 @@ export default function InteractivePortrait() {
         container.addEventListener("mousemove", handleMouseMove)
         container.addEventListener("mouseleave", handleMouseLeave)
 
+        const rtMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 })
+        rtMaterial.onBeforeCompile = (shader) => {
+          shader.uniforms.dTime = gu.dTime
+          shader.uniforms.aspect = gu.aspect
+          shader.uniforms.pointer = this.uniforms.pointer
+          shader.uniforms.pointerDown = this.uniforms.pointerDown
+          shader.uniforms.pointerRadius = this.uniforms.pointerRadius
+          shader.uniforms.pointerDuration = this.uniforms.pointerDuration
+          shader.uniforms.fbTexture = this.fbTexture
+          shader.uniforms.time = gu.time
+          shader.fragmentShader = `
+            uniform float dTime, aspect, pointerDown, pointerRadius, pointerDuration, time;
+            uniform vec2 pointer;
+            uniform sampler2D fbTexture;
+            float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
+            float noise(vec2 p) {
+              vec2 i = floor(p); vec2 f = fract(p); f = f*f*(3.0-2.0*f);
+              float a = hash(i); float b = hash(i + vec2(1.,0.)); float c = hash(i + vec2(0.,1.)); float d = hash(i + vec2(1.,1.));
+              return mix(mix(a,b,f.x),mix(c,d,f.x),f.y);
+            }
+            ${shader.fragmentShader}
+          `.replace(
+            `#include <color_fragment>`,
+            `#include <color_fragment>
+            float rVal = texture2D(fbTexture, vUv).r;
+            rVal -= clamp(dTime / pointerDuration, 0., 0.05);
+            rVal = clamp(rVal, 0., 1.);
+            float f = 0.;
+            if (pointerDown > 0.5) {
+              vec2 uv = (vUv - 0.5) * 2. * vec2(aspect, 1.);
+              vec2 mouse = pointer * vec2(aspect, 1.);
+              vec2 toMouse = uv - mouse;
+              float angle = atan(toMouse.y, toMouse.x);
+              float dist = length(toMouse);
+              float noiseVal = noise(vec2(angle*3. + time*0.5, dist*5.));
+              float noiseVal2 = noise(vec2(angle*5. - time*0.3, dist*3. + time));
+              float radiusVariation = 0.7 + noiseVal*0.5 + noiseVal2*0.3;
+              float organicRadius = pointerRadius * radiusVariation;
+              f = 1. - smoothstep(organicRadius*0.05, organicRadius*1.2, dist);
+              f *= 0.8 + noiseVal*0.2;
+            }
+            rVal += f * 0.25;
+            rVal = clamp(rVal, 0., 1.);
+            diffuseColor.rgb = vec3(rVal);
+            `,
+          )
+        }
+
         this.rtScene = new THREE.Mesh(
           new THREE.PlaneGeometry(2, 2),
-          new THREE.MeshBasicMaterial({
-            color: 0x000000,
-            onBeforeCompile: (shader) => {
-              shader.uniforms.dTime = gu.dTime
-              shader.uniforms.aspect = gu.aspect
-              shader.uniforms.pointer = this.uniforms.pointer
-              shader.uniforms.pointerDown = this.uniforms.pointerDown
-              shader.uniforms.pointerRadius = this.uniforms.pointerRadius
-              shader.uniforms.pointerDuration = this.uniforms.pointerDuration
-              shader.uniforms.fbTexture = this.fbTexture
-              shader.uniforms.time = gu.time
-              shader.fragmentShader = `
-                uniform float dTime, aspect, pointerDown, pointerRadius, pointerDuration, time;
-                uniform vec2 pointer;
-                uniform sampler2D fbTexture;
-                float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
-                float noise(vec2 p) {
-                  vec2 i = floor(p); vec2 f = fract(p); f = f*f*(3.0-2.0*f);
-                  float a = hash(i); float b = hash(i + vec2(1.,0.)); float c = hash(i + vec2(0.,1.)); float d = hash(i + vec2(1.,1.));
-                  return mix(mix(a,b,f.x),mix(c,d,f.x),f.y);
-                }
-                ${shader.fragmentShader}
-              `.replace(
-                `#include <color_fragment>`,
-                `#include <color_fragment>
-                float rVal = texture2D(fbTexture, vUv).r;
-                rVal -= clamp(dTime / pointerDuration, 0., 0.05);
-                rVal = clamp(rVal, 0., 1.);
-                float f = 0.;
-                if (pointerDown > 0.5) {
-                  vec2 uv = (vUv - 0.5) * 2. * vec2(aspect, 1.);
-                  vec2 mouse = pointer * vec2(aspect, 1.);
-                  vec2 toMouse = uv - mouse;
-                  float angle = atan(toMouse.y, toMouse.x);
-                  float dist = length(toMouse);
-                  float noiseVal = noise(vec2(angle*3. + time*0.5, dist*5.));
-                  float noiseVal2 = noise(vec2(angle*5. - time*0.3, dist*3. + time));
-                  float radiusVariation = 0.7 + noiseVal*0.5 + noiseVal2*0.3;
-                  float organicRadius = pointerRadius * radiusVariation;
-                  f = 1. - smoothstep(organicRadius*0.05, organicRadius*1.2, dist);
-                  f *= 0.8 + noiseVal*0.2;
-                }
-                rVal += f * 0.25;
-                rVal = clamp(rVal, 0., 1.);
-                diffuseColor.rgb = vec3(rVal);
-                `,
-              )
-            },
-          }),
+          rtMaterial
         )
-        this.rtScene.material.defines = { USE_UV: "" }
+        ;(this.rtScene.material as any).defines = { USE_UV: "" }
         this.rtCamera = new THREE.Camera()
       }
 
@@ -167,7 +167,7 @@ export default function InteractivePortrait() {
     scene.add(baseImage)
 
     const bgPlaneMaterial = new THREE.MeshBasicMaterial({ color: 0x1a1f1a, transparent: true })
-    bgPlaneMaterial.defines = { USE_UV: "" }
+    ;(bgPlaneMaterial as any).defines = { USE_UV: "" }
 
     bgPlaneMaterial.onBeforeCompile = (shader) => {
       shader.uniforms.texBlob = { value: blob.rtOutput.texture }

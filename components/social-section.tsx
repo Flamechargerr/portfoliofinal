@@ -13,7 +13,7 @@ const socialLinks = [
   },
   {
     name: "LinkedIn",
-    url: "https://www.linkedin.com/in/anamay-tripathy-b53829296/",
+    url: "https://www.linkedin.com/in/anamay-tripathy/",
     handle: "@anamay-tripathy",
     stats: "500+ Connections",
     gradient: "from-blue-700 to-blue-900",

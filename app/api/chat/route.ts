@@ -1,5 +1,5 @@
-// import { streamText } from "ai"
-// import { openai } from "@ai-sdk/openai"
+import { streamText } from "ai"
+import { openai } from "@ai-sdk/openai"
 
 export async function POST(req: Request) {
   try {
@@ -31,24 +31,24 @@ export async function POST(req: Request) {
     const systemPrompt = `You are Anamay Tripathy's AI assistant. You help visitors learn about Anamay's background, projects, skills, and experience. 
 
     Here's what you know about Anamay:
-    - B.Tech Data Science Engineering student at MIT Manipal (Class of 2027)
-    - Technical Head at YaanBarpe startup (6 months) - Leading technical development, managing 5 developers
-    - Data Analyst & Web Dev Intern at Intellect Design Arena (3 months) - Fintech solutions, data analysis
-    - E-Cell Executive at MIT Manipal - Organizing entrepreneurship events, managing website
-    - Class Representative at Student Council MIT - Representing 60+ students
-    - Meta Data Analyst Certified - Statistical analysis, Tableau dashboards, 95% score
-    - IBM GenAI Professional - Built 3 AI applications, prompt engineering, RAG systems
+    - B.Tech Data Science Engineering student at MIT Manipal (Expected May 2027)
+    - Quantitative Research Analyst (Simulation) at J.P. Morgan QR (June 2026) - modeled natural gas pricing engines and credit risk logistic regression models
+    - Software Engineering Intern at Intellect Design Arena (June 2025 - July 2025) - fintech systems, Spark pipelines, agent dashboards
+    - Technical Head at YBiee (Student Startup) (2024 - Present) - leading MVP architectures and dev teams
+    - Premium Tier Developer (AI Pro) at Google Developer Program (2021 - Present) - early beta Taskmate contributor, Gemini Pro prototypes
+    - Certifications: Johns Hopkins ML, IBM GenAI & LLMs, Meta Data Analyst, Google Prompting Essentials, ISB Finance, J.P. Morgan QR
     
     Projects:
-    - CrimeConnect: Case management system for law enforcement (React, Node.js, MongoDB) - Ready for deployment
-    - VARtificial Intelligence: AI-powered sports match predictor (Python, ML, 85%+ accuracy) - Live
-    - HackOps: Interactive cybersecurity learning platform (JavaScript, Node.js) - Live
-    - Flora Fight Frenzy: Plants vs Zombies inspired tower defense game (JavaScript, HTML5 Canvas) - UI Complete
+    - ChargerOS: Browser operating system simulation (React 19, TS 5.9, Vite 7) with 59 built-in apps, drag-and-drop window manager
+    - MedRAG: Clinical GenAI RAG platform (Python, LangChain, FAISS, Flask, Docker) with Groq/Gemini fallback and hallucination controls
+    - CrimeConnect: Law enforcement graph intelligence and PageRank system (TypeScript, D3.js, Supabase)
+    - VARtificial Intelligence: AI-powered sports match predictor (Python, XGBoost, Optuna)
+    - HackOps: Interactive cybersecurity training simulator and password-guessing CTF
     
-    Skills: React, Node.js, Python, Data Analysis, Machine Learning, SQL, Tableau, DevOps, Leadership
+    Skills: React, Next.js, TypeScript, Python, Apache Spark, FAISS, Machine Learning, Data Analytics, SQL, Docker, Quant Risk Modeling
     Contact: tripathy.anamay23@gmail.com, +91 9877454747
     GitHub: https://github.com/Flamechargerr
-    LinkedIn: https://www.linkedin.com/in/anamay-Tripathy-b53829296/
+    LinkedIn: https://www.linkedin.com/in/anamay-tripathy/
 
     Be helpful, friendly, and informative. Answer questions about his projects, experience, skills, and how to contact him. 
     If someone wants to get in touch, encourage them to use the contact form on the website or reach out directly via email.
@@ -58,12 +58,10 @@ export async function POST(req: Request) {
       model: openai("gpt-4o-mini"), // Using gpt-4o-mini for better reliability
       system: systemPrompt,
       messages,
-      maxTokens: 500,
-      temperature: 0.7,
     })
 
-    return result.toDataStreamResponse()
-  } catch (error) {
+    return result.toTextStreamResponse()
+  } catch (error: any) {
     console.error("Chat API Error:", error)
 
     // More specific error handling

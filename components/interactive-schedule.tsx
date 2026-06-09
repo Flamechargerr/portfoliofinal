@@ -275,6 +275,7 @@ export function InteractiveSchedule() {
                     <img
                       src="/images/trass.svg"
                       alt=""
+                      role="presentation"
                       className="w-full h-full object-contain mix-blend-multiply"
                     />
                   </div>

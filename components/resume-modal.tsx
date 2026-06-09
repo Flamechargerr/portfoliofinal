@@ -112,8 +112,8 @@ export default function ResumeModal() {
                                         {/* Summary - Glass Panel */}
                                         <section className="p-8 md:p-10 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md hover:bg-white/[0.04] transition-colors">
                                             <p className="text-lg md:text-2xl font-light text-white/90 leading-relaxed tracking-tight">
-                                                Technical Head leading a high-performing engineering team at YaanBarpe.
-                                                Specializing in <span className="font-brier text-lorenzo-accent uppercase tracking-normal font-normal">full-stack architecture</span> and <span className="font-brier text-lorenzo-accent uppercase tracking-normal font-normal">machine learning</span> across massive datasets.
+                                                Final-year Data Science Engineering student and Technical Head at <span className="font-brier text-lorenzo-accent uppercase tracking-normal font-normal">YBiee (Student Startup)</span>.
+                                                Specializing in <span className="font-brier text-lorenzo-accent uppercase tracking-normal font-normal">machine learning</span>, <span className="font-brier text-lorenzo-accent uppercase tracking-normal font-normal">quantitative research</span>, and full-stack systems.
                                             </p>
                                         </section>
 
@@ -125,15 +125,15 @@ export default function ResumeModal() {
                                             </div>
 
                                             <div className="space-y-12">
-                                                {/* YaanBarpe */}
+                                                {/* J.P. Morgan */}
                                                 <div className="group relative">
                                                     <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
-                                                        <h3 className="text-xl md:text-3xl font-bold font-roboto text-white group-hover:text-lorenzo-accent transition-colors tracking-tight">Technical Head</h3>
-                                                        <div className="text-xs font-roboto tracking-widest text-white/40 uppercase mt-2 md:mt-0 font-bold border border-white/10 px-3 py-1 rounded-full">2024 — Present</div>
+                                                        <h3 className="text-xl md:text-3xl font-bold font-roboto text-white group-hover:text-lorenzo-accent transition-colors tracking-tight">Quantitative Research Analyst (Simulation)</h3>
+                                                        <div className="text-xs font-roboto tracking-widest text-white/40 uppercase mt-2 md:mt-0 font-bold border border-white/10 px-3 py-1 rounded-full">Jun 2026</div>
                                                     </div>
-                                                    <div className="text-sm md:text-base font-brier text-lorenzo-accent mb-6 uppercase tracking-widest">YaanBarpe Startup</div>
+                                                    <div className="text-sm md:text-base font-brier text-lorenzo-accent mb-6 uppercase tracking-widest">J.P. Morgan Quantitative Research</div>
                                                     <ul className="space-y-4">
-                                                        {["Leading a high-performing development team of 5+ engineers", "Architected scalable MVP using React, Next.js, Node.js, and PostgreSQL", "Implemented CI/CD pipelines with GitHub Actions and automated testing", "Designed system architecture handling 10K+ concurrent users"].map((point, i) => (
+                                                        {["Modeled natural gas price dynamics and built a commodity storage contract pricing engine in Python, incorporating seasonal forecasting and contract valuation", "Developed a credit risk model using Logistic Regression; engineered FICO score bucketing via quantization to assess default probability across a loan portfolio"].map((point, i) => (
                                                             <li key={i} className="text-sm md:text-base text-white/70 font-light flex items-start gap-4 leading-relaxed">
                                                                 <span className="text-lorenzo-accent mt-1.5 opacity-50">✦</span>
                                                                 {point}
@@ -144,15 +144,53 @@ export default function ResumeModal() {
 
                                                 <div className="h-px w-full bg-white/5" />
 
-                                                {/* Intellect */}
+                                                {/* Intellect Design Arena */}
                                                 <div className="group relative">
                                                     <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
-                                                        <h3 className="text-xl md:text-3xl font-bold font-roboto text-white group-hover:text-lorenzo-accent transition-colors tracking-tight">Data Analyst & Web Dev</h3>
-                                                        <div className="text-xs font-roboto tracking-widest text-white/40 uppercase mt-2 md:mt-0 font-bold border border-white/10 px-3 py-1 rounded-full">Summer 2024</div>
+                                                        <h3 className="text-xl md:text-3xl font-bold font-roboto text-white group-hover:text-lorenzo-accent transition-colors tracking-tight">Software Engineering Intern</h3>
+                                                        <div className="text-xs font-roboto tracking-widest text-white/40 uppercase mt-2 md:mt-0 font-bold border border-white/10 px-3 py-1 rounded-full">June 2025 — July 2025</div>
                                                     </div>
-                                                    <div className="text-sm md:text-base font-brier text-lorenzo-accent mb-6 uppercase tracking-widest">Intellect Design Arena</div>
+                                                    <div className="text-sm md:text-base font-brier text-lorenzo-accent mb-6 uppercase tracking-widest">Intellect Design Arena Ltd (FinTech)</div>
                                                     <ul className="space-y-4">
-                                                        {["Built interactive fintech data visualization dashboards using React and D3.js", "Developed RESTful APIs for enterprise banking applications", "Analyzed large datasets using Python, Pandas, and SQL", "Improved dashboard performance by 40% through optimization"].map((point, i) => (
+                                                        {["Built EMI collection agent management platform integrating data pipelines and analytics dashboards using Python, SQL, and Apache Spark", "Reduced manual reporting effort by ~40% for teams managing 10,000+ loan accounts", "Designed KPI dashboards tracking repayment behavior and agent efficiency, and implemented CI/CD pipelines via GitHub Actions"].map((point, i) => (
+                                                            <li key={i} className="text-sm md:text-base text-white/70 font-light flex items-start gap-4 leading-relaxed">
+                                                                <span className="text-lorenzo-accent mt-1.5 opacity-50">✦</span>
+                                                                {point}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+
+                                                <div className="h-px w-full bg-white/5" />
+
+                                                {/* Google Developer Program */}
+                                                <div className="group relative">
+                                                    <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
+                                                        <h3 className="text-xl md:text-3xl font-bold font-roboto text-white group-hover:text-lorenzo-accent transition-colors tracking-tight">Premium Tier Developer (AI Pro)</h3>
+                                                        <div className="text-xs font-roboto tracking-widest text-white/40 uppercase mt-2 md:mt-0 font-bold border border-white/10 px-3 py-1 rounded-full">2021 — Present</div>
+                                                    </div>
+                                                    <div className="text-sm md:text-base font-brier text-lorenzo-accent mb-6 uppercase tracking-widest">Google Developer Program</div>
+                                                    <ul className="space-y-4">
+                                                        {["Contributed to real-world data collection and geo-based task workflows supporting Google Maps and Search quality at scale as an early Google Taskmate user", "Selected for Premium Tier (AI Pro) and received early access to Gemini Pro LLMs and Project IDX to prototype conversational AI interfaces"].map((point, i) => (
+                                                            <li key={i} className="text-sm md:text-base text-white/70 font-light flex items-start gap-4 leading-relaxed">
+                                                                <span className="text-lorenzo-accent mt-1.5 opacity-50">✦</span>
+                                                                {point}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+
+                                                <div className="h-px w-full bg-white/5" />
+
+                                                {/* YBiee */}
+                                                <div className="group relative">
+                                                    <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
+                                                        <h3 className="text-xl md:text-3xl font-bold font-roboto text-white group-hover:text-lorenzo-accent transition-colors tracking-tight">Technical Head</h3>
+                                                        <div className="text-xs font-roboto tracking-widest text-white/40 uppercase mt-2 md:mt-0 font-bold border border-white/10 px-3 py-1 rounded-full">2024 — Present</div>
+                                                    </div>
+                                                    <div className="text-sm md:text-base font-brier text-lorenzo-accent mb-6 uppercase tracking-widest">YBiee (Student Startup) / YaanBarpe</div>
+                                                    <ul className="space-y-4">
+                                                        {["Leading technical development and architecting scalable MVP solutions using React, Next.js, Node.js, and PostgreSQL", "Managing a development team, establishing Agile development practices, and building core product interfaces"].map((point, i) => (
                                                             <li key={i} className="text-sm md:text-base text-white/70 font-light flex items-start gap-4 leading-relaxed">
                                                                 <span className="text-lorenzo-accent mt-1.5 opacity-50">✦</span>
                                                                 {point}
@@ -162,7 +200,6 @@ export default function ResumeModal() {
                                                 </div>
                                             </div>
                                         </section>
-
                                     </div>
 
                                     {/* Right Content Column (Metadata & Details) */}
@@ -173,10 +210,10 @@ export default function ResumeModal() {
                                             <h4 className="text-xs font-bold font-roboto tracking-[0.2em] text-lorenzo-accent uppercase mb-8">Technical Arsenal</h4>
                                             <div className="flex flex-col gap-6">
                                                 {[
-                                                    { cat: "Frontend", tools: "React, Next.js, Tailwind, Framer" },
-                                                    { cat: "Backend", tools: "Node, Express, Flask, FastAPI" },
-                                                    { cat: "Data", tools: "Pandas, NumPy, Scikit, PyTorch" },
-                                                    { cat: "Infra", tools: "Docker, Vercel, AWS, Git" }
+                                                    { cat: "Languages", tools: "Python, JavaScript, TypeScript, Java, SQL" },
+                                                    { cat: "Web & APIs", tools: "React, Next.js, Node.js, Flask, REST APIs" },
+                                                    { cat: "Data & ML", tools: "Apache Spark, FAISS, PyTorch, scikit-learn, NLP" },
+                                                    { cat: "Tools", tools: "Git, GitHub Actions, Docker, Firebase, PostgreSQL, MongoDB" }
                                                 ].map((t, i) => (
                                                     <div key={i}>
                                                         <div className="text-[10px] text-white/40 uppercase tracking-widest mb-1">{t.cat}</div>
@@ -188,14 +225,14 @@ export default function ResumeModal() {
 
                                         {/* Education Block */}
                                         <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-sm">
-                                            <h4 className="text-xs font-bold font-roboto tracking-[0.2em] text-lorenzo-accent uppercase mb-8">Education</h4>
+                                            <h4 className="text-xs font-bold font-roboto tracking-[0.2em] text-lorenzo-accent uppercase mb-8">Education & Activities</h4>
 
                                             <div className="text-2xl font-brier text-white uppercase mb-2">B.Tech</div>
                                             <div className="text-sm text-lorenzo-light/70 mb-4">Data Science Engineering</div>
                                             <div className="text-base text-lorenzo-accent mb-6">MIT Manipal (2023-2027)</div>
 
                                             <div className="flex flex-wrap gap-2">
-                                                {["Class Representative", "E-Cell", "Tech Club"].map((role, i) => (
+                                                {["YBiee (Student Startup)", "TechTatva", "The Data Alchemists", "Enactus", "IEEE", "MIST"].map((role, i) => (
                                                     <span key={i} className="px-3 py-1 bg-white/5 text-white/80 text-[10px] uppercase tracking-wider rounded-md border border-white/10">
                                                         {role}
                                                     </span>
@@ -213,7 +250,7 @@ export default function ResumeModal() {
                                                 <span className="text-sm font-bold font-roboto uppercase tracking-widest text-white/70 group-hover:text-lorenzo-accent">GitHub</span>
                                                 <span className="text-white/40 group-hover:text-white transition-colors">↗</span>
                                             </a>
-                                            <a href="https://linkedin.com/in/anamay-tripathy-b53829296" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 border border-white/10 rounded-xl hover:border-lorenzo-accent hover:bg-lorenzo-accent/5 transition-all">
+                                            <a href="https://linkedin.com/in/anamay-tripathy" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 border border-white/10 rounded-xl hover:border-lorenzo-accent hover:bg-lorenzo-accent/5 transition-all">
                                                 <span className="text-sm font-bold font-roboto uppercase tracking-widest text-white/70 group-hover:text-lorenzo-accent">LinkedIn</span>
                                                 <span className="text-white/40 group-hover:text-white transition-colors">↗</span>
                                             </a>

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card } from "@/components/ui/card"
 import { Send, X, Minimize2, Maximize2, Bot, User, Brain, Code, Coffee, Rocket, Loader2 } from "lucide-react"
-import { useChat } from "ai/react"
+import { useChat } from "@ai-sdk/react"
 import { trackEvent } from "@/lib/analytics"
 
 interface ChatbotProps {
@@ -18,7 +18,7 @@ export default function AIChatbot({ isOpen, onToggle }: ChatbotProps) {
   const [isMinimized, setIsMinimized] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat({
+  const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat(({
     api: "/api/chat",
     initialMessages: [
       {
@@ -28,7 +28,7 @@ export default function AIChatbot({ isOpen, onToggle }: ChatbotProps) {
           "Hey there! 👋 I'm Anamay's AI assistant. I can help you learn more about his projects, skills, experience, or answer any questions you might have!",
       },
     ],
-    onFinish: async (message) => {
+    onFinish: async (message: any) => {
       // Store user message in backend
       try {
         await fetch("/api/messages", {
@@ -54,13 +54,13 @@ export default function AIChatbot({ isOpen, onToggle }: ChatbotProps) {
         console.error("Failed to store message:", error)
       }
     },
-    onError: (error) => {
+    onError: (error: any) => {
       console.error("Chat error:", error)
       if (typeof window !== "undefined") {
         trackEvent("chatbot_error", { error: error.message })
       }
     },
-  })
+  }) as any) as any
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -161,7 +161,7 @@ export default function AIChatbot({ isOpen, onToggle }: ChatbotProps) {
           <>
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-3 md:p-4 space-y-3 md:space-y-4 h-[300px] md:h-[400px] bg-gradient-to-b from-slate-900/50 to-slate-800/50">
-              {messages.map((message) => (
+              {messages.map((message: any) => (
                 <div
                   key={message.id}
                   className={`flex gap-2 md:gap-3 ${message.role === "user" ? "justify-end" : "justify-start"} animate-in slide-in-from-bottom-2 duration-300`}

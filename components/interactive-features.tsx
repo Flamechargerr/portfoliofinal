@@ -26,7 +26,7 @@ export function CommandPalette({ commands = [] }: CommandPaletteProps) {
         { id: "contact", label: "Go to Contact", shortcut: "G C", action: () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }), icon: "📧" },
         { id: "blog", label: "Go to Blog", shortcut: "G B", action: () => window.location.href = "/blog", icon: "📝" },
         { id: "github", label: "Open GitHub", shortcut: "G G", action: () => window.open("https://github.com/Flamechargerr", "_blank"), icon: "🐙" },
-        { id: "linkedin", label: "Open LinkedIn", shortcut: "G L", action: () => window.open("https://linkedin.com/in/anamay-tripathy-b53829296", "_blank"), icon: "💼" },
+        { id: "linkedin", label: "Open LinkedIn", shortcut: "G L", action: () => window.open("https://linkedin.com/in/anamay-tripathy", "_blank"), icon: "💼" },
         { id: "theme", label: "Toggle Theme", shortcut: "T", action: () => document.documentElement.classList.toggle("light"), icon: "🌓" },
         ...commands
     ]

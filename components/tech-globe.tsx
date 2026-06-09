@@ -106,9 +106,7 @@ function RotatingGlobe() {
                     <bufferGeometry>
                         <bufferAttribute
                             attach="attributes-position"
-                            count={2}
-                            array={new Float32Array([0, 0, 0, ...pos])}
-                            itemSize={3}
+                            args={[new Float32Array([0, 0, 0, ...pos]), 3]}
                         />
                     </bufferGeometry>
                     <lineBasicMaterial color="#c8f550" opacity={0.2} transparent />

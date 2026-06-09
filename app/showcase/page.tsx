@@ -130,7 +130,16 @@ export default function ShowcasePage() {
                             </h2>
                         </RevealOnScroll>
                         <div className="flex justify-center">
-                            <ProfileCard />
+                            <ProfileCard 
+                                avatarUrl="/images/anamay-profile.png"
+                                name="Anamay Tripathy"
+                                title="Data Science Engineer"
+                                handle="anamaydev"
+                                status="Available for Work"
+                                contactText="Contact Me"
+                                showUserInfo={true}
+                                enableTilt={true}
+                            />
                         </div>
                     </section>
 

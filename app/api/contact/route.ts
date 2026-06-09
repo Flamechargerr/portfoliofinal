@@ -69,8 +69,6 @@ export async function POST(request: NextRequest) {
         })
         */
 
-        console.log('New contact message received:', newMessage)
-
         return NextResponse.json({
             success: true,
             message: 'Message received successfully! I\'ll get back to you soon.',

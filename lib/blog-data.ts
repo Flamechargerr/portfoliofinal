@@ -18,6 +18,199 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
     {
+        id: 7,
+        slug: "medrag-production-hardened-clinical-genai-rag-platform",
+        title: "MedRAG: Building a Production-Hardened Clinical GenAI Platform",
+        excerpt: "How I built a full-stack clinical RAG platform over the USMLE knowledge base, leveraging FAISS vector search, dual-LLM fallback orchestration, and token-based security for a 30% accuracy lift.",
+        date: "June 1, 2026",
+        readTime: "10 min read",
+        category: "AI & ML",
+        image: "/images/project-medrag.png",
+        tags: ["Python", "LangChain", "FAISS", "Flask", "Docker", "GenAI"],
+        author: {
+            name: "Anamay Tripathy",
+            avatar: "/images/anamay-profile.png",
+            role: "Data Science Engineer"
+        },
+        content: `
+## The Challenge
+
+In clinical environments, generic LLM queries are not just inadequate—they are dangerous due to hallucinations. A clinical assistant must be grounded in verified medical literature (like the USMLE text and clinical notes) and must verify its facts prior to response.
+
+**MedRAG** was designed as an enterprise-grade Clinical RAG (Retrieval-Augmented Generation) engine built over a custom medical knowledge base.
+
+## System Architecture
+
+The core architecture consists of a multi-stage retrieval pipeline, semantic index chunking, dual-LLM fallback, and a dashboard for real-time validation scoring.
+
+\`\`\`
+  [Medical Docs / USMLE] -> Recursive Character Split -> HuggingFace Embeddings
+                                                                 |
+                                                                 v
+                                                          [FAISS Vector Index]
+                                                                 |
+  [User Query] -------------> [Security Guardrails] ------------>+
+                                       |
+                                       v
+                             [Retrieve Top K Chunks]
+                                       |
+                                       v
+                           [Prompt Synthesis Engine]
+                                       |
+                                       +-------> [Primary LLM: Groq Llama3] --(Fail?)--> [Fallback: Gemini Pro]
+                                                                 |
+                                                                 v
+                                                      [ROUGE-L Accuracy Scorer]
+\`\`\`
+
+### 1. FAISS Semantic Indexing
+- Documents are split into overlapping 512-token chunks using recursive semantic token splitters.
+- Vectorized using HuggingFace sentence-transformers and indexed using L2 Euclidean distance inside a FAISS index.
+- Bootstrapped via multi-threaded vector population.
+
+### 2. Dual-LLM Fallback Orchestration
+To ensure high availability and prevent rate-limiting or service denial, I engineered a fallback system:
+- **Primary Engine**: Llama-3-70B hosted on Groq API for sub-300ms token generation.
+- **Secondary Engine**: Gemini 1.5 Pro via Google AI Studio API for complex reasoning queries and automatic fallback.
+
+### 3. Rigorous Safety Guardrails
+Given the medical domain, several guardrails were integrated:
+- Token-based JWT authentication and CORS allowlisting.
+- Strict request size caps and rate limiting (Flask-Limiter).
+- Real-time output validation scoring (ROUGE-L similarity against the retrieved source chunks) to flag hallucinations before they reach the user interface.
+
+## Verification & Impact
+- Bootstrapping the vector search yielded a **30% improvement in factual generation accuracy** on the USMLE-QA dataset.
+- Real-time hallucination ratios were reduced below 1.5% through strict context grounding prompt templates.
+- Fully containerized using Docker, allowing rapid deployment into healthcare IT environments.
+
+Check out the full repository and deployment instructions at [github.com/Flamechargerr/MedRAG](https://github.com/Flamechargerr/MedRAG).
+`
+    },
+    {
+        id: 6,
+        slug: "chargeros-interactive-browser-desktop-simulation",
+        title: "ChargerOS: Building a Fully-Featured Desktop Simulator in React",
+        excerpt: "How I engineered a complete browser-based operating system shell simulation with a draggable window manager, Unix-style virtual filesystem, persistent storage, and a suite of 59 built-in apps.",
+        date: "May 1, 2026",
+        readTime: "12 min read",
+        category: "Systems",
+        image: "/images/project-chargeros.png",
+        tags: ["React", "TypeScript", "Vite", "Window Manager", "Tailwind CSS"],
+        author: {
+            name: "Anamay Tripathy",
+            avatar: "/images/anamay-profile.png",
+            role: "Data Science Engineer"
+        },
+        content: `
+## The Vision
+
+What started as a simple experiment in window management evolved into a fully realized desktop operating system simulation inside a browser tab. ChargerOS 🔥 recreates a complete computing environment — complete with authentication, wallpaper configuration, panels, taskbars, draggable/resizable windows, an interactive command-line terminal, a Unix-style virtual filesystem, and a suite of **59 built-in applications**.
+
+The ultimate goal was to build a system that was decoupled, performant, and completely client-side.
+
+## Core Architectural Concepts
+
+Operating systems are complex states of coordinates, processes, and data. In a React framework, managing this without triggering laggy global re-renders required decoupling the OS shell state from individual application modules.
+
+\`\`\`
+  +-------------------------------------------------+
+  |                  Vite / React                   |
+  +-------------------------------------------------+
+                           |
+                           v
+                  +-----------------+
+                  |   AuthContext   |
+                  +-----------------+
+                           |
+                           v
+                +---------------------+
+                |  FileSystemContext  |
+                +---------------------+
+                           |
+                           v
+                +---------------------+
+                |   DesktopContext    |
+                +---------------------+
+                           |
+                           +---------> [Desktop Shell]
+                           +---------> [Taskbar & App Menu]
+                           +---------> [Window Manager]
+                                             |
+                                             v
+                                      [59 App Modules]
+\`\`\`
+
+### 1. Draggable & Resizable Window Manager
+Each window is treated as an active process with coordinates (\`x, y\`), dimensions (\`width, height\`), a minimize/maximize state, and a dynamic \`zIndex\`. Focus tracking is managed through an array of open window IDs, where clicking any window moves its ID to the top of the stack, dynamically updates the z-indices, and triggers hardware-accelerated transforms.
+
+### 2. Unix-Style Virtual Filesystem
+To make the OS simulation feel authentic, I built a hierarchical virtual filesystem tree from scratch in TypeScript. 
+- Directories like \`/home\`, \`/etc\`, \`/var\`, and \`/tmp\` are stored as recursive JSON nodes.
+- Exposes standard filesystem APIs: \`readFile\`, \`writeFile\`, \`createFolder\`, \`deleteFile\`, and \`listDir\`.
+- Exposes persistent synchronization to the browser's \`localStorage\` API, ensuring folders and customized configurations persist across browser sessions.
+
+## The Interactive Terminal
+
+One of the most complex apps is the simulated **Terminal**. It integrates directly with the virtual filesystem, allowing users to run interactive commands.
+
+\`\`\`typescript
+// Command dispatcher interface
+interface ShellCommand {
+    name: string;
+    execute: (args: string[]) => string;
+}
+
+const commands: Record<string, ShellCommand> = {
+    ls: {
+        name: "ls",
+        execute: (args) => {
+            const contents = fileSystem.listDir(currentPath);
+            return contents.map(item => item.name).join("  ");
+        }
+    },
+    cd: {
+        name: "cd",
+        execute: (args) => {
+            const target = args[0] || "/home";
+            if (fileSystem.changeDirectory(target)) {
+                setCurrentPath(target);
+                return "";
+            }
+            return \`cd: no such file or directory: \${target}\`;
+        }
+    },
+    neofetch: {
+        name: "neofetch",
+        execute: () => \`
+   /\\_/\\      ChargerOS 🔥 2026
+  ( o.o )     OS: React 19 / TS 5.9
+   > ^ <      Shell: Terminal Emulator
+  /     \\     Uptime: \${Math.floor(performance.now() / 1000)}s
+  \\_____/     Persistence: LocalStorage
+\`
+    }
+};
+\`\`\`
+
+## Scaling to 59 Apps
+
+Managing 59 separate apps inside a single React bundle would typically create a heavy initial download size. I solved this by leveraging a register-pattern database, decoupling app metadata (icon, categories, dimensions) from their runtime dependencies. The suite spans:
+- **Productivity & Office**: Word Writer, Spreadsheet engine, Todo list, PDF Reader, Calendar.
+- **Media & Design**: Music Player, Canvas Paint program, ASCII Art generator.
+- **Utilities**: Network tools, Scientific calculators, password generator.
+- **Games**: Solitaire, Chess, Minesweeper, Tetris, Snake.
+
+## Lessons Learned
+
+1. **Keep CSS Hardware-Accelerated:** Using CSS margins or layout triggers (like grid changes) for window dragging is too expensive. We use \`transform: translate3d(x, y, 0)\` to offload window movements directly to the GPU.
+2. **Persistence Compression:** Browsers cap \`localStorage\` at 5MB. As users build files, we compress the virtual filesystem JSON serialization to save bandwidth.
+3. **Decoupled Providers:** Keeping the file system, authentication, and window managers as separate React context providers keeps the codebase modular and readable.
+
+Check out the full repository and deployment instructions at [github.com/Flamechargerr/ChargerOS](https://github.com/Flamechargerr/ChargerOS).
+        `
+    },
+    {
         id: 1,
         slug: "building-crimeconnect-fbi-graph-intelligence",
         title: "Building CrimeConnect: An FBI-Style Graph Intelligence System",
@@ -25,7 +218,7 @@ export const blogPosts: BlogPost[] = [
         date: "Apr 15, 2026",
         readTime: "10 min read",
         category: "Full Stack",
-        image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1600&q=80",
+        image: "/images/project-crimeconnect.png",
         tags: ["TypeScript", "D3.js", "Supabase", "Graph Theory", "Next.js"],
         author: {
             name: "Anamay Tripathy",
@@ -127,7 +320,7 @@ Check out the live demo and source at [github.com/Flamechargerr/crime-connect-fb
         date: "Apr 8, 2026",
         readTime: "9 min read",
         category: "Machine Learning",
-        image: "https://images.unsplash.com/photo-1523359346063-d879354c0ea5?w=1600&q=80",
+        image: "/images/project-vartificial.png",
         tags: ["Python", "XGBoost", "Optuna", "Scikit-learn", "Elo Rating"],
         author: {
             name: "Anamay Tripathy",
@@ -243,7 +436,7 @@ The model is now deployed in a [live dashboard](https://var-tificial-intelligenc
         date: "Apr 12, 2026",
         readTime: "12 min read",
         category: "Big Data",
-        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&q=80",
+        image: "/images/tech-workspace.png",
         tags: ["Hadoop", "Spark", "Kafka", "Big Data", "Distributed Systems"],
         author: {
             name: "Anamay Tripathy",
@@ -374,7 +567,7 @@ This was the most challenging and rewarding project of my second year. Raw distr
         date: "Mar 25, 2026",
         readTime: "8 min read",
         category: "WebGL",
-        image: "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1600&q=80",
+        image: "/images/project-smartmaps3d.png",
         tags: ["WebGL", "deck.gl", "MapLibre", "GLSL", "TypeScript"],
         author: {
             name: "Anamay Tripathy",
@@ -484,7 +677,7 @@ The key insight: deck.gl only re-uploads GPU buffers for layers whose data refer
         date: "Mar 10, 2026",
         readTime: "7 min read",
         category: "Python",
-        image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1600&q=80",
+        image: "/images/project-emiplatform.png",
         tags: ["Python", "SMTP", "Automation", "Email", "Node.js"],
         author: {
             name: "Anamay Tripathy",

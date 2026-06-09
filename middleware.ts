@@ -15,9 +15,8 @@ export function middleware(request: NextRequest) {
 
   // Rate limiting for contact form (simple implementation)
   if (request.nextUrl.pathname === "/api/contact" && request.method === "POST") {
-    const ip = request.ip || request.headers.get("x-forwarded-for") || "unknown"
+    const ip = (request as any).ip || request.headers.get("x-forwarded-for") || "unknown"
     // In production, implement proper rate limiting with Redis or similar
-    console.log(`Contact form submission from IP: ${ip}`)
   }
 
   return NextResponse.next()

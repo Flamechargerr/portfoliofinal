@@ -112,8 +112,8 @@ export function Component() {
 
                 tl.set(navWrap, { display: "block" })
                     .set(menu, { xPercent: 0 }, "<")
-                    .fromTo(menuButtonTexts, { yPercent: 0 }, { yPercent: -100, stagger: 0.2 })
-                    .fromTo(menuButtonIcon, { rotate: 0 }, { rotate: 315 }, "<")
+                    .fromTo(menuButtonTexts as any, { yPercent: 0 }, { yPercent: -100, stagger: 0.2 })
+                    .fromTo(menuButtonIcon as any, { rotate: 0 }, { rotate: 315 }, "<")
 
                     .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
                     .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.12, duration: 0.575 }, "<")
@@ -128,8 +128,8 @@ export function Component() {
 
                 tl.to(overlay, { autoAlpha: 0 })
                     .to(menu, { xPercent: 120 }, "<")
-                    .to(menuButtonTexts, { yPercent: 0 }, "<")
-                    .to(menuButtonIcon, { rotate: 0 }, "<")
+                    .to(menuButtonTexts as any, { yPercent: 0 }, "<")
+                    .to(menuButtonIcon as any, { rotate: 0 }, "<")
                     .set(navWrap, { display: "none" });
             }
 
@@ -163,7 +163,7 @@ export function Component() {
                                     <span className="toggle-text">click me</span>
                                 </div>
 
-                                <button role="button" className="nav-close-btn" onClick={toggleMenu} style={{ pointerEvents: 'auto' }}>
+                                <button className="nav-close-btn" onClick={toggleMenu} style={{ pointerEvents: 'auto' }}>
                                     <div className="menu-button-text">
                                         <p className="p-large">Menu</p>
                                         <p className="p-large">Close</p>

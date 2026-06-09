@@ -1,7 +1,3 @@
-"use client"
-
-import { useState, useEffect } from "react"
-
 import dynamic from "next/dynamic"
 import Header from "@/components/header"
 import HeroSection from "@/components/hero-section"
@@ -23,8 +19,8 @@ import MusicPlayer from "@/components/music-player"
 import WhyWorkWithMe from "@/components/why-work-with-me"
 import SectionDivider from "@/components/section-divider"
 import SelectedWorks from "@/components/selected-works"
-import { KeyboardShortcutsModal, useKeyboardShortcuts } from "@/components/keyboard-shortcuts"
-import MacBookScrollIntro from "@/components/macbook-scroll-intro"
+import { KeyboardShortcutsModal } from "@/components/keyboard-shortcuts"
+import HomeClientWrapper from "@/components/home-client-wrapper"
 
 // React Bits inspired components
 import InfiniteMenu from "@/components/infinite-menu"
@@ -36,7 +32,6 @@ import { FloatingParticles, NoiseOverlay } from "@/components/visual-effects"
 
 // Dynamically import heavy components
 const SkillsRadar = dynamic(() => import("@/components/skills-radar"), {
-  ssr: false,
   loading: () => (
     <div className="w-full h-[400px] flex items-center justify-center bg-lorenzo-dark">
       <div className="text-lorenzo-accent animate-pulse">Loading Chart...</div>
@@ -44,13 +39,9 @@ const SkillsRadar = dynamic(() => import("@/components/skills-radar"), {
   ),
 })
 
-const ChatBot = dynamic(() => import("@/components/chat-bot"), {
-  ssr: false,
-})
+const ChatBot = dynamic(() => import("@/components/chat-bot"))
 
-const TypingAnimation = dynamic(() => import("@/components/typing-animation"), {
-  ssr: false,
-})
+const TypingAnimation = dynamic(() => import("@/components/typing-animation"))
 
 // Tech stack items for InfiniteMenu with images
 const techStackItems = [
@@ -69,42 +60,8 @@ const techStackItems = [
 ]
 
 export default function Home() {
-  useKeyboardShortcuts()
-  const [showIntro, setShowIntro] = useState(true)
-
-  // Prevent browser from restoring scroll position on reload
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      if ("scrollRestoration" in history) {
-        history.scrollRestoration = "manual"
-      }
-      // If inside iframe, skip intro
-      if (window.self !== window.top) {
-        setShowIntro(false)
-      }
-    }
-  }, [])
-
-  // Force scroll to top when intro dismisses
-  const handleIntroComplete = () => {
-    setShowIntro(false)
-    // Triple-force: native scroll reset
-    window.scrollTo(0, 0)
-    document.documentElement.scrollTop = 0
-    document.body.scrollTop = 0
-    // Also after next frame (after Lenis catches up)
-    requestAnimationFrame(() => {
-      window.scrollTo(0, 0)
-      document.documentElement.scrollTop = 0
-      document.body.scrollTop = 0
-    })
-  }
-
   return (
-    <main id="main-content" className="relative cursor-none md:cursor-none">
-      {/* MacBook Scrollytelling Intro */}
-      {showIntro && <MacBookScrollIntro onComplete={handleIntroComplete} />}
-
+    <HomeClientWrapper>
       <LoadingScreen />
       {/* Global Visual Effects */}
       <FloatingParticles count={15} />
@@ -213,7 +170,7 @@ export default function Home() {
         {/* Footer */}
         <Footer />
       </div>
-    </main>
+    </HomeClientWrapper>
   )
 }
 

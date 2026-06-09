@@ -157,6 +157,7 @@ export default function HelmetHall() {
                     <Image
                       src={helmet.image || "/placeholder.svg"}
                       alt=""
+                      role="presentation"
                       fill
                       className="object-contain"
                       style={{

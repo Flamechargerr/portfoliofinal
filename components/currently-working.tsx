@@ -37,7 +37,7 @@ const currentProjects: CurrentProject[] = [
     },
     {
         id: 3,
-        name: "YaanBarpe Platform",
+        name: "YBiee Platform",
         description: "Leading the development of the core platform features including user authentication, dashboard, and payment integration.",
         progress: 40,
         tech: ["React", "Node.js", "PostgreSQL", "Stripe"],

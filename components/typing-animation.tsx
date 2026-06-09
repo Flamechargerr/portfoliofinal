@@ -48,7 +48,7 @@ export default function TypingAnimation() {
                         <span className="text-lorenzo-accent">$</span>
                         <TypeAnimation
                             sequence={codeSnippets}
-                            wrapper="pre"
+                            wrapper="div"
                             speed={50}
                             repeat={Infinity}
                             className="text-gray-300 whitespace-pre-wrap overflow-hidden"

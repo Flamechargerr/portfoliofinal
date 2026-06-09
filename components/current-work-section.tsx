@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion"
 
 const currentProjects = [
     {
-        title: "YaanBarpe MVP",
+        title: "YBiee MVP",
         description: "Building a full-stack travel planning platform with AI-powered recommendations",
         tech: ["Next.js", "Python", "OpenAI", "PostgreSQL"],
         progress: 75,

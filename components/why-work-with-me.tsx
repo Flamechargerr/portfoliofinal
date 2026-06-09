@@ -21,7 +21,7 @@ const reasons = [
     {
         icon: "🏢",
         title: "Industry Leader",
-        description: "Tech Head @ YaanBarpe, Intern @ Intellect Design Arena",
+        description: "Tech Head @ YBiee, Intern @ Intellect Design Arena",
         color: "#c8f550",
         number: "03"
     },

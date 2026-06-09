@@ -190,7 +190,7 @@ export default function RadialOrbitalTimeline({ timelineData }: RadialOrbitalTim
             return (
               <div
                 key={item.id}
-                ref={(el) => (nodeRefs.current[item.id] = el)}
+                ref={(el) => { nodeRefs.current[item.id] = el }}
                 className="absolute transition-all duration-700 cursor-pointer"
                 style={nodeStyle}
                 onClick={(e) => {
@@ -226,7 +226,10 @@ export default function RadialOrbitalTimeline({ timelineData }: RadialOrbitalTim
                   ${isExpanded ? "scale-150" : "hover:scale-110"}
                 `}
                 >
-                  <Icon size={16} className="md:w-5 md:h-5" />
+                  {(() => {
+                    const IconComp = Icon as any
+                    return <IconComp size={16} className="md:w-5 md:h-5" />
+                  })()}
                 </div>
 
                 <div

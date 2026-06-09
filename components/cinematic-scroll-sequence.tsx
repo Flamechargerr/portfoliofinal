@@ -73,11 +73,11 @@ export default function CinematicScrollSequence({ frameCount, getFrameUrl }: Cin
         const gsap = (window as any).gsap
         const ScrollTrigger = (window as any).ScrollTrigger
 
+        // Animate an object from 0 to frameCount - 1
+        let playhead = { frame: 0 }
+
         if (gsap && ScrollTrigger) {
             gsap.registerPlugin(ScrollTrigger)
-
-            // Animate an object from 0 to frameCount - 1
-            const playhead = { frame: 0 }
 
             const animation = gsap.to(playhead, {
                 frame: frameCount - 1,

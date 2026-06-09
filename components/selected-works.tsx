@@ -20,51 +20,88 @@ interface Project {
 // Static map of repo name → display info (description, image, category, year)
 const REPO_META: Record<string, Partial<Project>> = {
     "crime-connect-fbi": {
-        id: "01",
+        id: "03",
         title: "Crime Connect",
         category: "Graph Intelligence",
         year: "2025",
         description: "Centralised criminal registry & court system with an FBI-cinematic agent-level dashboard. Real-time PageRank analysis with force-directed graph rendering for 10K+ nodes using TypeScript, D3.js, and Supabase.",
-        image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1600&q=80",
+        image: "/images/project-crimeconnect.png",
     },
     "HackOps": {
-        id: "02",
+        id: "04",
         title: "HackOps",
         category: "Cybersecurity Training",
         year: "2025",
         description: "Interactive CTF Security Lab — password-guessing game that simulates real-world attack scenarios. Features a terminal emulator, live hint system, and auth bypass challenges built with TypeScript and Supabase.",
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&q=80",
+        image: "/images/project-hackops.png",
     },
     "VARtificial-Intelligence": {
-        id: "03",
+        id: "05",
         title: "VARtificial",
         category: "Machine Learning",
         year: "2025",
         description: "AI that makes the right call, unlike VAR. XGBoost with Elo ratings, Optuna hyper-parameter tuning, K-fold cross-validation, and a live prediction dashboard for football match outcomes.",
-        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1600&q=80",
+        image: "/images/project-vartificial.png",
     },
     "smart-maps-3d": {
-        id: "04",
+        id: "06",
         title: "Smart Maps 3D",
         category: "GPU Geospatial Engine",
         year: "2026",
         description: "WebGL + deck.gl rendering engine for geospatial data at 60 FPS with orbital camera dynamics, MapLibre tile layers, custom GLSL shaders, and real-time clustering of 1M+ data points.",
-        image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600&q=80",
+        image: "/images/project-smartmaps3d.png",
+    },
+    "intellect-emi-platform": {
+        id: "07",
+        title: "Intellect EMI Platform",
+        category: "FinTech & Analytics",
+        year: "2025",
+        description: "An EMI collection agent management platform with an analytics dashboard built using Python, SQL, and Apache Spark. Reduced manual reporting effort by ~40% for teams managing 10,000+ accounts.",
+        image: "/images/project-emiplatform.png",
+        githubUrl: "https://github.com/Flamechargerr",
+    },
+    "ecell-mes-2025": {
+        id: "08",
+        title: "E-Cell MES 2025",
+        category: "Full Stack Web",
+        year: "2025",
+        description: "Official event website for MES 2025 entrepreneurship summit at MIT Manipal. Architected to support high-traffic loads and coordinate event-day digital infrastructure with zero downtime.",
+        image: "/images/tech-workspace.png",
+        githubUrl: "https://github.com/Flamechargerr",
+    },
+    "ChargerOS": {
+        id: "01",
+        title: "ChargerOS",
+        category: "Web OS & Emulator",
+        year: "2025",
+        description: "Interactive browser desktop operating system simulation built with React and TypeScript. Features a draggable window manager, a virtual Unix-style filesystem with local persistence, a terminal emulator, and 59 built-in apps.",
+        image: "/images/project-chargeros.png",
+        githubUrl: "https://github.com/Flamechargerr/ChargerOS",
+    },
+    "MedRAG": {
+        id: "02",
+        title: "MedRAG",
+        category: "Clinical GenAI & RAG",
+        year: "2025",
+        description: "Full-stack medical RAG platform over USMLE knowledge base. Built using LangChain, FAISS, and Flask, with token-based auth, dual-LLM fallback orchestration, and real-time evaluation charts.",
+        image: "/images/project-medrag.png",
+        githubUrl: "https://github.com/Flamechargerr/MedRAG",
     },
 }
 
-const FEATURED_SLUGS = ["crime-connect-fbi", "HackOps", "VARtificial-Intelligence", "smart-maps-3d"]
+const FEATURED_SLUGS = ["ChargerOS", "MedRAG", "crime-connect-fbi", "HackOps", "VARtificial-Intelligence", "smart-maps-3d", "intellect-emi-platform", "ecell-mes-2025"]
 
 import { ZoomParallax } from "./zoom-parallax"
 
 const PARALLAX_IMAGES = [
-    { src: "https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?w=1600&q=80", alt: "Deep Space Node" },
-    { src: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80", alt: "Cyber Security Grid" },
-    { src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80", alt: "Hardware Chip" },
-    { src: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80", alt: "Matrix Code" },
-    { src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80", alt: "Global Network" },
-    { src: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80", alt: "Abstract Data" },
-    { src: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80", alt: "Console Output" },
+    { src: "/images/project-chargeros.png", alt: "ChargerOS Desktop" },
+    { src: "/images/project-medrag.png", alt: "MedRAG Clinical AI" },
+    { src: "/images/project-crimeconnect.png", alt: "Crime Connect" },
+    { src: "/images/project-hackops.png", alt: "HackOps Platform" },
+    { src: "/images/project-vartificial.png", alt: "VARtificial Match Outcomes" },
+    { src: "/images/project-smartmaps3d.png", alt: "Smart Maps 3D" },
+    { src: "/images/project-emiplatform.png", alt: "Intellect EMI Dashboard" },
+    { src: "/images/tech-workspace.png", alt: "E-Cell MES 2025 Summit" },
 ]
 
 export default function SelectedWorks() {
@@ -78,8 +115,8 @@ export default function SelectedWorks() {
             year: REPO_META[slug]?.year ?? "2025",
             description: REPO_META[slug]?.description ?? "",
             image: REPO_META[slug]?.image ?? "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1600&q=80",
-            githubUrl: `https://github.com/Flamechargerr/${slug}`,
-            liveUrl: null,
+            githubUrl: REPO_META[slug]?.githubUrl ?? `https://github.com/Flamechargerr/${slug}`,
+            liveUrl: REPO_META[slug]?.liveUrl ?? null,
             stars: undefined,
         }))
     )
@@ -151,7 +188,7 @@ export default function SelectedWorks() {
                         <div className="h-px w-12 bg-lorenzo-accent/50 mb-2"></div>
                     </div>
 
-                    <motion.div style={{ x }} className="flex h-screen w-[400vw]">
+                    <motion.div style={{ x, width: `${projects.length * 100}vw` }} className="flex h-screen">
                         {projects.map((project, index) => (
                             <div
                                 key={project.id}
