@@ -15,7 +15,7 @@ interface TimelineEvent {
 
 const timeline: TimelineEvent[] = [
     {
-        year: "June 2026",
+        year: "June 2026 (Simulation)",
         title: "Quantitative Research Analyst (Simulation)",
         organization: "J.P. Morgan Quantitative Research",
         logo: "📈",
@@ -40,11 +40,11 @@ const timeline: TimelineEvent[] = [
         position: "03",
     },
     {
-        year: "2024 - Present",
-        title: "Technical Head",
-        organization: "YBiee (Student Startup) / YaanBarpe",
+        year: "August 2024 - May 2025",
+        title: "Web Developer Executive",
+        organization: "E-Cell, MIT Manipal",
         logo: "🚀",
-        description: "Leading technical development and architecting scalable MVP solutions using React, Next.js, Node.js, and PostgreSQL.",
+        description: "Led end-to-end development of the official website for MES 2025, one of India's largest entrepreneurship summits. Coordinated digital infrastructure to ensure zero downtime during high-traffic periods.",
         position: "04",
     },
     {
@@ -52,7 +52,7 @@ const timeline: TimelineEvent[] = [
         title: "B.Tech Data Science Engineering (Final Year)",
         organization: "Manipal Institute of Technology",
         logo: "🎓",
-        description: "Focusing on machine learning, database systems, big data analytics, and operating systems. Active in YBiee, TechTatva, Enactus, and MIST.",
+        description: "Focusing on machine learning, database systems, big data analytics, and operating systems. Active in E-Cell, TechTatva, Enactus, and MIST.",
         position: "05",
     },
 ]

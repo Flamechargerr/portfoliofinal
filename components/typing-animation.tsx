@@ -2,29 +2,30 @@
 
 import { TypeAnimation } from "react-type-animation"
 import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
 
 const codeSnippets = [
-    `const analyze = async (data) => {
-  const insights = await ml.predict(data);
-  return insights.filter(i => i.confidence > 0.95);
-};`,
+    "whoami",
+    1000,
+    "whoami\nanamaytripathy (Data Science Engineer & Full Stack Developer)",
     2000,
-    `class DataPipeline:
-    def __init__(self, source):
-        self.source = source
-        self.transforms = []
-    
-    def process(self):
-        return self.execute()`,
-    2000,
-    `SELECT users.name, COUNT(projects.id) 
-FROM users 
-JOIN projects ON users.id = projects.user_id 
-GROUP BY users.id HAVING COUNT(*) > 5;`,
-    2000,
+    "whoami\nanamaytripathy (Data Science Engineer & Full Stack Developer)\n\n$ cat skills.txt",
+    1000,
+    "whoami\nanamaytripathy (Data Science Engineer & Full Stack Developer)\n\n$ cat skills.txt\nLanguages: Python, TypeScript, SQL\nFrameworks: React, Next.js, TensorFlow",
+    2500,
+    "whoami\nanamaytripathy (Data Science Engineer & Full Stack Developer)\n\n$ cat skills.txt\nLanguages: Python, TypeScript, SQL\nFrameworks: React, Next.js, TensorFlow\n\n$ npm run build",
+    1000,
+    "whoami\nanamaytripathy (Data Science Engineer & Full Stack Developer)\n\n$ cat skills.txt\nLanguages: Python, TypeScript, SQL\nFrameworks: React, Next.js, TensorFlow\n\n$ npm run build\nReady for production! ⚡",
+    3000,
 ]
 
 export default function TypingAnimation() {
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -39,21 +40,28 @@ export default function TypingAnimation() {
                     <div className="w-3 h-3 rounded-full bg-red-500" />
                     <div className="w-3 h-3 rounded-full bg-yellow-500" />
                     <div className="w-3 h-3 rounded-full bg-green-500" />
-                    <span className="ml-4 text-xs text-gray-400 font-mono">anamay@dev ~ </span>
+                    <span className="ml-4 text-xs text-gray-400 font-mono" role="img" aria-label="Decorative terminal prompt">anamay@dev ~ </span>
                 </div>
 
                 {/* Terminal Content */}
                 <div className="p-4 md:p-6 font-mono text-sm md:text-base">
                     <div className="flex items-start gap-2">
                         <span className="text-lorenzo-accent">$</span>
-                        <TypeAnimation
-                            sequence={codeSnippets}
-                            wrapper="div"
-                            speed={50}
-                            repeat={Infinity}
-                            className="text-gray-300 whitespace-pre-wrap overflow-hidden"
-                            cursor={true}
-                        />
+                        {mounted ? (
+                            <TypeAnimation
+                                sequence={codeSnippets}
+                                wrapper="div"
+                                speed={50}
+                                repeat={Infinity}
+                                className="text-gray-300 whitespace-pre-wrap overflow-hidden"
+                                cursor={true}
+                            />
+                        ) : (
+                            <div className="text-gray-300 whitespace-pre-wrap font-mono">
+                                whoami<br />
+                                anamaytripathy (Data Science Engineer & Full Stack Developer)
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -69,3 +77,4 @@ export default function TypingAnimation() {
         </motion.div>
     )
 }
+

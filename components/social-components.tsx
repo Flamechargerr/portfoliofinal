@@ -279,7 +279,7 @@ export function PrintResume() {
             2023-2027
             
             EXPERIENCE
-            Technical Head @ YaanBarpe | 2024-Present
+            Web Dev Executive @ E-Cell MIT Manipal | 2024-2025
             SWE Intern @ Intellect Design Arena | 2024
             
             SKILLS

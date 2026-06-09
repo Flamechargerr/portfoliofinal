@@ -21,6 +21,7 @@ import SectionDivider from "@/components/section-divider"
 import SelectedWorks from "@/components/selected-works"
 import { KeyboardShortcutsModal } from "@/components/keyboard-shortcuts"
 import HomeClientWrapper from "@/components/home-client-wrapper"
+import Testimonials from "@/components/testimonials"
 
 // React Bits inspired components
 import InfiniteMenu from "@/components/infinite-menu"
@@ -149,6 +150,9 @@ export default function Home() {
         {/* Experience Section */}
         <ExperienceSection />
 
+        {/* Testimonials Section */}
+        <Testimonials />
+
         {/* Achievements Section */}
         <AchievementsSection />
 
@@ -156,7 +160,7 @@ export default function Home() {
         <BlogSection />
 
         {/* Chapter: Connect */}
-        <SectionDivider label="Let's Connect" sublabel="Start a conversation — I'd love to hear from you" variant="chapter" />
+        <SectionDivider label="Say Hello" sublabel="Start a conversation — I'd love to hear from you" variant="chapter" />
 
         {/* Fun Facts */}
         <FunFactsSection />

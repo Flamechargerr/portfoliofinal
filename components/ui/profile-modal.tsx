@@ -64,7 +64,7 @@ export function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                 <p className="text-gray-300 text-center leading-relaxed">
                   Passionate Data Science Engineering student at{" "}
                   <span className="text-blue-400 font-bold">MIT Manipal</span>, combining technical expertise with
-                  leadership as Technical Head at <span className="text-green-400 font-bold">YBiee (Student Startup)</span>. Building
+                  leadership as Web Developer Executive at <span className="text-green-400 font-bold">E-Cell MIT Manipal</span>. Building
                   innovative solutions at the intersection of data science, AI, and full-stack development.
                 </p>
               </div>

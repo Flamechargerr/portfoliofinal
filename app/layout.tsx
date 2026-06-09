@@ -39,7 +39,7 @@ const oswald = Oswald({
 export const metadata: Metadata = {
   metadataBase: new URL("https://anamay.vercel.app"),
   title: "Anamay Tripathy - Data Science Engineer & Full Stack Developer",
-  description: "Portfolio of Anamay Tripathy - B.Tech Data Science Engineering student at MIT Manipal, Technical Head at YBiee (Student Startup), Software Engineering Intern at Intellect Design Arena",
+  description: "Portfolio of Anamay Tripathy - B.Tech Data Science Engineering student at MIT Manipal, Web Developer Executive at E-Cell MIT Manipal, Software Engineering Intern at Intellect Design Arena",
   keywords: ["Anamay Tripathy", "Data Science", "Full Stack Developer", "MIT Manipal", "Portfolio", "React", "Node.js", "Python", "Machine Learning"],
   authors: [{ name: "Anamay Tripathy" }],
   creator: "Anamay Tripathy",
@@ -51,11 +51,20 @@ export const metadata: Metadata = {
     siteName: "Anamay Tripathy Portfolio",
     title: "Anamay Tripathy - Data Science Engineer & Full Stack Developer",
     description: "Portfolio showcasing projects, skills, and experience in data science and full-stack development",
+    images: [
+      {
+        url: "https://anamay.vercel.app/images/anamay-profile.png",
+        width: 800,
+        height: 800,
+        alt: "Anamay Tripathy Profile",
+      }
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Anamay Tripathy - Data Science Engineer & Full Stack Developer",
     description: "Portfolio showcasing projects, skills, and experience in data science and full-stack development",
+    images: ["https://anamay.vercel.app/images/anamay-profile.png"],
   },
   icons: {
     icon: [
@@ -90,7 +99,7 @@ export default function RootLayout({
     jobTitle: "Data Science Engineer & Full Stack Developer",
     worksFor: {
       "@type": "Organization",
-      name: "YBiee",
+      name: "E-Cell MIT Manipal",
     },
     alumniOf: {
       "@type": "EducationalOrganization",

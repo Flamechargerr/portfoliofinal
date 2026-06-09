@@ -163,7 +163,7 @@ export default function SelectedWorks() {
             <div className="relative w-full">
                 <div className="absolute top-[40vh] left-0 w-full text-center z-[5] pointer-events-none">
                     <h2 className="text-[8vw] font-brier tracking-tighter text-white uppercase drop-shadow-2xl">
-                        Featured Works
+                        Selected Works
                     </h2>
                     <p className="font-mono text-lorenzo-accent/80 tracking-[0.4em] uppercase text-sm mt-4">
                         Case Studies & Architecture

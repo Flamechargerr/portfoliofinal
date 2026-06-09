@@ -21,30 +21,16 @@ const reasons = [
     {
         icon: "🏢",
         title: "Industry Leader",
-        description: "Tech Head @ YBiee, Intern @ Intellect Design Arena",
+        description: "Executive @ E-Cell MIT Manipal, Intern @ Intellect Design Arena",
         color: "#c8f550",
         number: "03"
-    },
-    {
-        icon: "⚡",
-        title: "Rapid Delivery",
-        description: "Agile methodology, MVP in weeks not months",
-        color: "#c8f550",
-        number: "04"
     },
     {
         icon: "🔧",
         title: "Full Stack Mastery",
         description: "Frontend → Backend → Data → DevOps → AI/ML",
         color: "#c8f550",
-        number: "05"
-    },
-    {
-        icon: "🔒",
-        title: "Security First",
-        description: "Enterprise-grade security baked into every line",
-        color: "#c8f550",
-        number: "06"
+        number: "04"
     }
 ]
 
@@ -134,7 +120,7 @@ export default function WhyWorkWithMe() {
                             animate={isInView ? { x: 0, opacity: 1 } : {}}
                             transition={{ delay: 0.4, duration: 0.8 }}
                         >
-                            WHY WORK
+                            WHY WORK{" "}
                         </motion.span>
                         <motion.span
                             className="block text-transparent bg-clip-text bg-gradient-to-r from-lorenzo-accent via-lime-300 to-lorenzo-accent"
@@ -156,18 +142,15 @@ export default function WhyWorkWithMe() {
                     </motion.p>
                 </motion.div>
 
-                {/* Bento Grid Layout */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                {/* Bento Grid Layout - Clean Symmetrical 2x2 Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     {reasons.map((reason, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 40, scale: 0.95 }}
                             animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
                             transition={{ delay: 0.2 + index * 0.1, duration: 0.6, ease: "easeOut" }}
-                            className={`group relative overflow-hidden cursor-pointer
-                                ${index === 0 ? 'md:col-span-2 lg:col-span-1' : ''}
-                                ${index === 3 ? 'lg:col-span-2' : ''}
-                            `}
+                            className="group relative overflow-hidden cursor-pointer"
                             whileHover={{ y: -8, transition: { duration: 0.3 } }}
                         >
                             {/* Card Background */}

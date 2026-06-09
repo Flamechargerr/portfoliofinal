@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     - B.Tech Data Science Engineering student at MIT Manipal (Expected May 2027)
     - Quantitative Research Analyst (Simulation) at J.P. Morgan QR (June 2026) - modeled natural gas pricing engines and credit risk logistic regression models
     - Software Engineering Intern at Intellect Design Arena (June 2025 - July 2025) - fintech systems, Spark pipelines, agent dashboards
-    - Technical Head at YBiee (Student Startup) (2024 - Present) - leading MVP architectures and dev teams
+    - Web Developer Executive at E-Cell, MIT Manipal (August 2024 - May 2025) - led development of the MES 2025 entrepreneurship summit website and event-day digital infrastructure
     - Premium Tier Developer (AI Pro) at Google Developer Program (2021 - Present) - early beta Taskmate contributor, Gemini Pro prototypes
     - Certifications: Johns Hopkins ML, IBM GenAI & LLMs, Meta Data Analyst, Google Prompting Essentials, ISB Finance, J.P. Morgan QR
     

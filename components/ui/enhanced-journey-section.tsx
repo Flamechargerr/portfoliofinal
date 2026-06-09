@@ -52,13 +52,13 @@ const journeyItems: JourneyItem[] = [
   },
   {
     id: 4,
-    title: "Startup Experience",
-    description: "Joined YaanBarpe as Technical Head, leading development teams",
+    title: "Summit Development",
+    description: "Led development of MES 2025 Summit portal for E-Cell MIT Manipal",
     year: "2024",
     icon: Rocket,
     color: "from-orange-500 to-red-600",
-    achievements: ["Led technical team of 5", "Built MVP from scratch"],
-    skills: ["Team Management", "Architecture", "DevOps"],
+    achievements: ["Led web development team", "Zero downtime during peak summit registrations"],
+    skills: ["Web Development", "Team Coordination", "Infrastructure"],
   },
   {
     id: 5,

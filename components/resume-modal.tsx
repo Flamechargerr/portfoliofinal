@@ -112,7 +112,7 @@ export default function ResumeModal() {
                                         {/* Summary - Glass Panel */}
                                         <section className="p-8 md:p-10 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md hover:bg-white/[0.04] transition-colors">
                                             <p className="text-lg md:text-2xl font-light text-white/90 leading-relaxed tracking-tight">
-                                                Final-year Data Science Engineering student and Technical Head at <span className="font-brier text-lorenzo-accent uppercase tracking-normal font-normal">YBiee (Student Startup)</span>.
+                                                 Final-year Data Science Engineering student and Web Developer Executive at <span className="font-brier text-lorenzo-accent uppercase tracking-normal font-normal">E-Cell MIT Manipal</span>.
                                                 Specializing in <span className="font-brier text-lorenzo-accent uppercase tracking-normal font-normal">machine learning</span>, <span className="font-brier text-lorenzo-accent uppercase tracking-normal font-normal">quantitative research</span>, and full-stack systems.
                                             </p>
                                         </section>
@@ -129,7 +129,7 @@ export default function ResumeModal() {
                                                 <div className="group relative">
                                                     <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
                                                         <h3 className="text-xl md:text-3xl font-bold font-roboto text-white group-hover:text-lorenzo-accent transition-colors tracking-tight">Quantitative Research Analyst (Simulation)</h3>
-                                                        <div className="text-xs font-roboto tracking-widest text-white/40 uppercase mt-2 md:mt-0 font-bold border border-white/10 px-3 py-1 rounded-full">Jun 2026</div>
+                                                        <div className="text-xs font-roboto tracking-widest text-white/40 uppercase mt-2 md:mt-0 font-bold border border-white/10 px-3 py-1 rounded-full">Jun 2026 (Simulation)</div>
                                                     </div>
                                                     <div className="text-sm md:text-base font-brier text-lorenzo-accent mb-6 uppercase tracking-widest">J.P. Morgan Quantitative Research</div>
                                                     <ul className="space-y-4">
@@ -182,15 +182,15 @@ export default function ResumeModal() {
 
                                                 <div className="h-px w-full bg-white/5" />
 
-                                                {/* YBiee */}
+                                                {/* E-Cell */}
                                                 <div className="group relative">
                                                     <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
-                                                        <h3 className="text-xl md:text-3xl font-bold font-roboto text-white group-hover:text-lorenzo-accent transition-colors tracking-tight">Technical Head</h3>
-                                                        <div className="text-xs font-roboto tracking-widest text-white/40 uppercase mt-2 md:mt-0 font-bold border border-white/10 px-3 py-1 rounded-full">2024 — Present</div>
+                                                        <h3 className="text-xl md:text-3xl font-bold font-roboto text-white group-hover:text-lorenzo-accent transition-colors tracking-tight">Web Developer Executive</h3>
+                                                        <div className="text-xs font-roboto tracking-widest text-white/40 uppercase mt-2 md:mt-0 font-bold border border-white/10 px-3 py-1 rounded-full">Aug 2024 — May 2025</div>
                                                     </div>
-                                                    <div className="text-sm md:text-base font-brier text-lorenzo-accent mb-6 uppercase tracking-widest">YBiee (Student Startup) / YaanBarpe</div>
+                                                    <div className="text-sm md:text-base font-brier text-lorenzo-accent mb-6 uppercase tracking-widest">E-Cell, MIT Manipal</div>
                                                     <ul className="space-y-4">
-                                                        {["Leading technical development and architecting scalable MVP solutions using React, Next.js, Node.js, and PostgreSQL", "Managing a development team, establishing Agile development practices, and building core product interfaces"].map((point, i) => (
+                                                        {["Led end-to-end development of the official website for MES 2025 entrepreneurship summit", "Coordinated with cross-functional teams to manage event-day digital infrastructure ensuring zero downtime during high-traffic periods"].map((point, i) => (
                                                             <li key={i} className="text-sm md:text-base text-white/70 font-light flex items-start gap-4 leading-relaxed">
                                                                 <span className="text-lorenzo-accent mt-1.5 opacity-50">✦</span>
                                                                 {point}
@@ -232,7 +232,7 @@ export default function ResumeModal() {
                                             <div className="text-base text-lorenzo-accent mb-6">MIT Manipal (2023-2027)</div>
 
                                             <div className="flex flex-wrap gap-2">
-                                                {["YBiee (Student Startup)", "TechTatva", "The Data Alchemists", "Enactus", "IEEE", "MIST"].map((role, i) => (
+                                                {["E-Cell MIT Manipal", "TechTatva", "The Data Alchemists", "Enactus", "IEEE", "MIST"].map((role, i) => (
                                                     <span key={i} className="px-3 py-1 bg-white/5 text-white/80 text-[10px] uppercase tracking-wider rounded-md border border-white/10">
                                                         {role}
                                                     </span>

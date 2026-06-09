@@ -16,7 +16,7 @@ const botResponses: Record<string, string> = {
     "projects": "I've built several cool projects! Check out CrimeConnect (case management), VARtificial (sports AI), HackOps (cybersecurity), and Flora Fight (tower defense game). You can see them all in the Projects section! 🚀",
     "skills": "Anamay is skilled in: Frontend (React, Next.js, TypeScript), Backend (Node.js, Python, Express), Data Science (Pandas, TensorFlow, Scikit-learn), and Tools (Git, Docker, AWS). Check the Skills section for more! 💻",
     "contact": "You can reach Anamay at tripathy.anamay23@gmail.com or call +91 9877454747. He's based in Mumbai and open to remote work! 📧",
-    "experience": "Anamay is currently the Technical Head at YaanBarpe startup and interned at Intellect Design Arena as a Software Engineer. He's also pursuing B.Tech in Data Science at MIT Manipal! 🎓",
+    "experience": "Anamay is a Web Developer Executive at E-Cell MIT Manipal and interned at Intellect Design Arena as a Software Engineer. He's also pursuing B.Tech in Data Science at MIT Manipal! 🎓",
     "hire": "Anamay is available for hire! He's looking for opportunities in Data Science, Full Stack Development, or Software Engineering roles. Reach out via email or the contact form! 💼",
     "default": "I'm not sure about that, but I can tell you about Anamay's projects, skills, experience, or how to contact him. What would you like to know? 🤔",
 }

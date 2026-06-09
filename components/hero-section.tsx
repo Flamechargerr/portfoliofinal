@@ -17,6 +17,7 @@ const getGreeting = () => {
 
 export default function HeroSection() {
   const [isReady, setIsReady] = useState(false)
+  const [greeting, setGreeting] = useState("Hello")
   const containerRef = useRef<HTMLElement>(null)
 
   // Floating effect for the portrait
@@ -24,6 +25,7 @@ export default function HeroSection() {
 
   useEffect(() => {
     setIsReady(true)
+    setGreeting(getGreeting())
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({
         x: (e.clientX / window.innerWidth - 0.5) * 20,
@@ -77,8 +79,8 @@ export default function HeroSection() {
                 transition={{ delay: 0.2 }}
               >
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/50" suppressHydrationWarning>
-                  {getGreeting()} • Available for Hire
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/50">
+                  {greeting} • Available for Hire
                 </span>
                 <span className="text-[10px] font-bold tracking-widest uppercase text-lorenzo-accent ml-2 border border-lorenzo-accent/30 px-2 py-1 rounded-sm backdrop-blur-sm">⚡ Reply &lt; 24h</span>
               </motion.div>
@@ -119,7 +121,7 @@ export default function HeroSection() {
                   />
                 </span>
                 <br />
-                <span className="text-white/50 text-base">B.Tech @ MIT Manipal • Technical Head @ YBiee</span>
+                <span className="text-white/50 text-base">B.Tech @ MIT Manipal • Executive @ E-Cell MIT Manipal</span>
               </motion.p>
 
               {/* Stats Row */}

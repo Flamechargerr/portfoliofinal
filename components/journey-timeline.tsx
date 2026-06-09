@@ -21,7 +21,7 @@ const timelineEvents = [
         title: "Leadership & Industry",
         subtitle: "Building & Growing",
         items: [
-            "Technical Head @ YaanBarpe Startup",
+            "Web Developer Executive @ E-Cell MIT Manipal",
             "Data Analyst Intern @ Intellect Design Arena",
             "Built CrimeConnect, VARtificial, HackOps",
             "8+ Professional Certifications"

@@ -29,7 +29,7 @@ import Stepper from "@/components/stepper"
 const timelineItems = [
     { id: "1", year: "2023", title: "Started at MIT Manipal", description: "Began my journey in Data Science Engineering at Manipal Institute of Technology.", icon: "🎓" },
     { id: "2", year: "2024", title: "Intellect Internship", description: "Software Engineering Intern at Intellect Design Arena, building fintech solutions.", icon: "💼" },
-    { id: "3", year: "2024", title: "YaanBarpe Technical Head", description: "Leading the technical team at a startup, architecting scalable solutions.", icon: "🚀" },
+    { id: "3", year: "2024", title: "E-Cell Web Dev Lead", description: "Led web development team for MES 2025 Summit at MIT Manipal.", icon: "🚀" },
     { id: "4", year: "2025", title: "Open Source Contributions", description: "570+ commits on GitHub, contributing to various open source projects.", icon: "💻" },
     { id: "5", year: "Future", title: "World Domination 🌍", description: "Building the next big thing in AI and technology.", icon: "🔮" }
 ]
@@ -54,7 +54,7 @@ const metrics = [
 
 const testimonials = [
     { name: "Tech Lead", role: "Senior Engineer", company: "Intellect Design", content: "Anamay showed exceptional problem-solving skills and quickly adapted to our fintech stack. His work on the dashboard was outstanding." },
-    { name: "Startup Founder", role: "CEO", company: "YaanBarpe", content: "An incredible technical leader who turned our vision into reality. His full-stack expertise is remarkable for his experience level." },
+    { name: "Event Chair", role: "Lead Organizer", company: "E-Cell Summit", content: "An incredible technical leader who turned our digital event vision into reality. His full-stack expertise is remarkable." },
     { name: "Professor", role: "Faculty", company: "MIT Manipal", content: "One of the most dedicated students I've mentored. His passion for data science and AI is truly inspiring." }
 ]
 

@@ -2,20 +2,7 @@
 
 import { useRef, useEffect, useState } from "react"
 import { motion, useInView } from "framer-motion"
-import dynamic from "next/dynamic"
-
-// Dynamically import GitHubCalendar to avoid SSR issues
-const GitHubCalendar = dynamic<any>(
-    () => import("react-github-calendar").then(mod => mod.GitHubCalendar),
-    {
-        ssr: false,
-        loading: () => (
-            <div className="h-40 bg-lorenzo-dark/50 animate-pulse rounded-lg flex items-center justify-center">
-                <span className="text-lorenzo-light/50 text-sm">Loading GitHub activity...</span>
-            </div>
-        ),
-    }
-)
+import { GitHubCalendar } from "react-github-calendar"
 
 interface GitHubStats {
     public_repos: number
@@ -28,15 +15,17 @@ interface GitHubStats {
 export default function GitHubActivity() {
     const sectionRef = useRef<HTMLDivElement>(null)
     const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
+    const [mounted, setMounted] = useState(false)
     const [stats, setStats] = useState<GitHubStats>({
-        public_repos: 26,
-        followers: 6,
+        public_repos: 28,
+        followers: 5,
         totalStars: 4,
         totalForks: 1,
     })
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
+        setMounted(true)
         fetch("/api/github-stats")
             .then(res => res.json())
             .then((data: GitHubStats) => {
@@ -58,13 +47,13 @@ export default function GitHubActivity() {
             icon: "📊",
         },
         {
-            value: isLoading ? "—" : `${stats.totalStars}+`,
+            value: `${stats.totalStars}+`,
             label: "Stars Earned",
             delta: "Across all repos",
             icon: "⭐",
         },
         {
-            value: isLoading ? "—" : `${stats.public_repos}`,
+            value: `${stats.public_repos}`,
             label: "Public Repos",
             delta: "& counting",
             icon: "📁",
@@ -76,6 +65,7 @@ export default function GitHubActivity() {
             icon: "🔥",
         },
     ]
+
 
     return (
         <div ref={sectionRef} className="py-16 bg-lorenzo-dark">
@@ -112,15 +102,21 @@ export default function GitHubActivity() {
                     </div>
 
                     {/* GitHub Calendar */}
-                    <div className="overflow-x-auto">
-                        <GitHubCalendar
-                            username="Flamechargerr"
-                            colorScheme="dark"
-                            theme={customTheme}
-                            blockSize={14}
-                            blockMargin={4}
-                            fontSize={14}
-                        />
+                    <div className="overflow-x-auto min-h-40 flex items-center justify-center">
+                        {mounted ? (
+                            <GitHubCalendar
+                                username="Flamechargerr"
+                                colorScheme="dark"
+                                theme={customTheme}
+                                blockSize={14}
+                                blockMargin={4}
+                                fontSize={14}
+                            />
+                        ) : (
+                            <div className="h-40 w-full bg-lorenzo-dark/50 animate-pulse rounded-lg flex items-center justify-center">
+                                <span className="text-lorenzo-light/50 text-sm">Loading GitHub activity...</span>
+                            </div>
+                        )}
                     </div>
 
                     {/* Stats Row — Live Data */}
