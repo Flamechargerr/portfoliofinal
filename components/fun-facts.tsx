@@ -80,24 +80,86 @@ export default function FunFactsSection() {
                             {/* Glow backlights */}
                             <div className="absolute inset-0 bg-gradient-to-br from-[#c8f550]/0 to-[#c8f550]/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
+                            {/* Night Owl Moonlight Pulse */}
+                            {fact.title === "Night Owl" && hoveredIndex === index && (
+                                <motion.div
+                                    className="absolute top-10 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full pointer-events-none"
+                                    style={{
+                                        background: "radial-gradient(circle, rgba(200, 245, 80, 0.35) 0%, transparent 70%)"
+                                    }}
+                                    animate={{
+                                        scale: [0.8, 1.4, 0.8],
+                                        opacity: [0.6, 1, 0.6]
+                                    }}
+                                    transition={{
+                                        duration: 2,
+                                        repeat: Infinity,
+                                        ease: "easeInOut"
+                                    }}
+                                />
+                            )}
+
                             <motion.div
-                                className="text-4xl mb-3 flex justify-center"
+                                className="text-4xl mb-3 flex justify-center items-center gap-2 relative z-10"
                                 animate={{
                                     scale: hoveredIndex === index ? 1.25 : 1,
                                     rotate: hoveredIndex === index ? [0, -8, 8, 0] : 0
                                 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                {fact.emoji}
+                                <span>{fact.emoji}</span>
+
+                                {/* Coffee Steam Animation */}
+                                {fact.title === "Coffee Powered" && hoveredIndex === index && (
+                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex gap-0.5 pointer-events-none h-4">
+                                        {[1, 2, 3].map((i) => (
+                                            <motion.div
+                                                key={i}
+                                                className="w-0.5 bg-white/40 rounded-full"
+                                                animate={{
+                                                    y: [4, -8],
+                                                    opacity: [0, 0.8, 0],
+                                                }}
+                                                transition={{
+                                                    duration: 1.2,
+                                                    repeat: Infinity,
+                                                    delay: i * 0.3,
+                                                    ease: "easeOut",
+                                                }}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+
+                                {/* Lo-fi Coder Equalizer Wave */}
+                                {fact.title === "Lo-fi Coder" && hoveredIndex === index && (
+                                    <div className="flex items-end gap-0.5 h-3 pointer-events-none ml-2">
+                                        {[1, 2, 3, 4].map((i) => (
+                                            <motion.div
+                                                key={i}
+                                                className="w-0.5 bg-[#c8f550]"
+                                                initial={{ height: 2 }}
+                                                animate={{
+                                                    height: [2, 10, 2],
+                                                }}
+                                                transition={{
+                                                    duration: 0.4 + i * 0.15,
+                                                    repeat: Infinity,
+                                                    ease: "easeInOut",
+                                                }}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
                             </motion.div>
-                            <div className="text-sm font-bold text-white uppercase tracking-wider mb-2">{fact.title}</div>
+                            <div className="text-sm font-bold text-white uppercase tracking-wider mb-2 relative z-10">{fact.title}</div>
                             <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{
                                     opacity: hoveredIndex === index ? 1 : 0,
                                     height: hoveredIndex === index ? "auto" : 0
                                 }}
-                                className="text-xs text-white/50 group-hover:text-white/80 transition-colors overflow-hidden"
+                                className="text-xs text-white/50 group-hover:text-white/80 transition-colors overflow-hidden relative z-10"
                             >
                                 {fact.description}
                             </motion.div>

@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
+import { motion, useInView, useScroll, useSpring } from "framer-motion"
 
 const timelineEvents = [
     {
@@ -46,7 +46,19 @@ const timelineEvents = [
 
 export default function JourneyTimeline() {
     const sectionRef = useRef<HTMLDivElement>(null)
+    const containerRef = useRef<HTMLDivElement>(null)
     const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start center", "end center"]
+    })
+
+    const scaleY = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    })
 
     return (
         <div ref={sectionRef} className="py-20 bg-lorenzo-dark">
@@ -76,9 +88,15 @@ export default function JourneyTimeline() {
                 </motion.div>
 
                 {/* Timeline */}
-                <div className="relative">
+                <div ref={containerRef} className="relative">
                     {/* Central Line */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-lorenzo-accent/20 hidden md:block" />
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-lorenzo-accent/10 hidden md:block" />
+
+                    {/* Scroll Progress Line */}
+                    <motion.div 
+                        className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-lorenzo-accent hidden md:block origin-top"
+                        style={{ scaleY, height: "100%" }}
+                    />
 
                     <div className="space-y-12 md:space-y-0">
                         {timelineEvents.map((event, index) => (

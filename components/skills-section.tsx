@@ -3,6 +3,7 @@
 import { useState, useRef } from "react"
 import { motion, useInView, AnimatePresence } from "framer-motion"
 import Image from "next/image"
+import { TiltCard } from "@/components/ui/tilt-card"
 
 interface Skill {
     name: string
@@ -86,33 +87,7 @@ export default function SkillsSection() {
         >
 
 
-            {/* Background Number */}
-            <div className="absolute top-1/2 right-0 -translate-y-1/2 pointer-events-none z-[1]">
-                <span className="text-[40vw] font-brier text-white/[0.02] leading-none mix-blend-overlay">
-                    01
-                </span>
-            </div>
-
-            <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
-                {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8 }}
-                    className="mb-16"
-                >
-                    <div className="flex items-center gap-6 mb-8">
-                        <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/40">
-                            TECH SPECS
-                        </span>
-                        <div className="w-24 h-[1px] bg-white/10" />
-                    </div>
-
-                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-brier uppercase leading-[0.85] tracking-tighter">
-                        <span className="block text-white">SKILLS &</span>
-                        <span className="block text-lorenzo-accent">TECHNOLOGIES</span>
-                    </h2>
-                </motion.div>
+            <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10 pt-8">
 
                 {/* Category Tabs - Racing Style with Hover Effects */}
                 <motion.div
@@ -166,75 +141,76 @@ export default function SkillsSection() {
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.1 }}
-                                className="group relative p-6 md:p-8 glow-card bg-white/[0.02] border border-white/5 rounded-2xl backdrop-blur-sm hover:bg-white/[0.04] hover:border-white/10 transition-all cursor-pointer"
-                                onMouseMove={handleCardMouseMove}
+                                className="group relative cursor-pointer"
                                 onMouseEnter={() => setHoveredSkill(skill.name)}
                                 onMouseLeave={() => setHoveredSkill(null)}
                                 data-cursor="VIEW"
                             >
-                                {/* Background Icon */}
-                                <motion.div
-                                    className="absolute -right-4 -top-4 text-8xl opacity-5 group-hover:opacity-20 transition-all"
-                                    animate={{
-                                        scale: hoveredSkill === skill.name ? 1.2 : 1,
-                                        rotate: hoveredSkill === skill.name ? 10 : 0
-                                    }}
-                                >
-                                    {skill.icon}
-                                </motion.div>
+                                <TiltCard className="p-6 md:p-8 glow-card bg-white/[0.02] border border-white/5 rounded-2xl backdrop-blur-sm hover:bg-white/[0.04] hover:border-white/10 transition-all h-full" onMouseMove={handleCardMouseMove}>
+                                    {/* Background Icon */}
+                                    <motion.div
+                                        className="absolute -right-4 -top-4 text-8xl opacity-5 group-hover:opacity-20 transition-all"
+                                        animate={{
+                                            scale: hoveredSkill === skill.name ? 1.2 : 1,
+                                            rotate: hoveredSkill === skill.name ? 10 : 0
+                                        }}
+                                    >
+                                        {skill.icon}
+                                    </motion.div>
 
-                                <div className="flex items-start justify-between mb-4 relative z-10">
-                                    <div className="flex items-center gap-4">
-                                        <motion.span
-                                            className="text-3xl"
+                                    <div className="flex items-start justify-between mb-4 relative z-10">
+                                        <div className="flex items-center gap-4">
+                                            <motion.span
+                                                className="text-3xl"
+                                                animate={{ scale: hoveredSkill === skill.name ? 1.2 : 1 }}
+                                            >
+                                                {skill.icon}
+                                            </motion.span>
+                                            <div>
+                                                <h3 className="text-xl font-bold text-white uppercase tracking-wider group-hover:text-lorenzo-accent transition-colors">
+                                                    {skill.name}
+                                                </h3>
+                                                <p className="text-xs text-white/40 mt-1 uppercase tracking-[0.1em]">{skill.projects} projects built</p>
+                                            </div>
+                                        </div>
+                                        <motion.div
+                                            className="text-3xl font-brier text-lorenzo-accent"
                                             animate={{ scale: hoveredSkill === skill.name ? 1.2 : 1 }}
                                         >
-                                            {skill.icon}
-                                        </motion.span>
-                                        <div>
-                                            <h3 className="text-xl font-bold text-white uppercase tracking-wider group-hover:text-lorenzo-accent transition-colors">
-                                                {skill.name}
-                                            </h3>
-                                            <p className="text-xs text-white/40 mt-1 uppercase tracking-[0.1em]">{skill.projects} projects built</p>
-                                        </div>
+                                            {skill.level}%
+                                        </motion.div>
                                     </div>
-                                    <motion.div
-                                        className="text-3xl font-brier text-lorenzo-accent"
-                                        animate={{ scale: hoveredSkill === skill.name ? 1.2 : 1 }}
-                                    >
-                                        {skill.level}%
-                                    </motion.div>
-                                </div>
 
-                                {/* Progress Bar - Racing Style with Animation */}
-                                <div className="relative h-1.5 bg-white/5 overflow-hidden rounded-full mt-8">
-                                    <motion.div
-                                        className="absolute top-0 left-0 h-full bg-lorenzo-accent rounded-full shine-bar"
-                                        initial={{ width: 0 }}
-                                        animate={{ width: `${skill.level}%` }}
-                                        transition={{ duration: 1, delay: index * 0.1 }}
-                                    />
-                                    {/* Racing stripes effect */}
-                                    <motion.div
-                                        className="absolute inset-0 opacity-30"
-                                        style={{
-                                            backgroundImage: `repeating-linear-gradient(
-                        45deg,
-                        transparent,
-                        transparent 3px,
-                        rgba(0,0,0,0.1) 3px,
-                        rgba(0,0,0,0.1) 6px
-                      )`,
-                                        }}
-                                        animate={{ x: hoveredSkill === skill.name ? [0, 10] : 0 }}
-                                        transition={{ duration: 0.5, repeat: hoveredSkill === skill.name ? Infinity : 0 }}
-                                    />
-                                </div>
+                                    {/* Progress Bar - Racing Style with Animation */}
+                                    <div className="relative h-1.5 bg-white/5 overflow-hidden rounded-full mt-8">
+                                        <motion.div
+                                            className="absolute top-0 left-0 h-full bg-lorenzo-accent rounded-full shine-bar"
+                                            initial={{ width: 0 }}
+                                            animate={{ width: `${skill.level}%` }}
+                                            transition={{ duration: 1, delay: index * 0.1 }}
+                                        />
+                                        {/* Racing stripes effect */}
+                                        <motion.div
+                                            className="absolute inset-0 opacity-30"
+                                            style={{
+                                                backgroundImage: `repeating-linear-gradient(
+                            45deg,
+                            transparent,
+                            transparent 3px,
+                            rgba(0,0,0,0.1) 3px,
+                            rgba(0,0,0,0.1) 6px
+                          )`,
+                                            }}
+                                            animate={{ x: hoveredSkill === skill.name ? [0, 10] : 0 }}
+                                            transition={{ duration: 0.5, repeat: hoveredSkill === skill.name ? Infinity : 0 }}
+                                        />
+                                    </div>
 
-                                {/* Corner Number */}
-                                <div className="absolute top-4 right-4 text-3xl font-brier text-white/5 group-hover:text-white/10 transition-colors">
-                                    0{index + 1}
-                                </div>
+                                    {/* Corner Number */}
+                                    <div className="absolute top-4 right-4 text-3xl font-brier text-white/5 group-hover:text-white/10 transition-colors">
+                                        0{index + 1}
+                                    </div>
+                                </TiltCard>
                             </motion.div>
                         ))}
                     </motion.div>

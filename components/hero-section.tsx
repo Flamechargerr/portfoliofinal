@@ -15,6 +15,48 @@ const getGreeting = () => {
   return "You're up late! 🌙"
 }
 
+function TextScramble({ text, delay = 0 }: { text: string; delay?: number }) {
+  const [display, setDisplay] = useState(text)
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%"
+
+  useEffect(() => {
+    let isMounted = true
+    let frame = 0
+    const duration = 15 // frames
+
+    const timeout = setTimeout(() => {
+      const interval = setInterval(() => {
+        const progress = frame / duration
+        if (progress >= 1) {
+          setDisplay(text)
+          clearInterval(interval)
+          return
+        }
+        const revealIndex = Math.floor(progress * text.length)
+        let result = text.substring(0, revealIndex)
+        for (let i = revealIndex; i < text.length; i++) {
+          if (text[i] === " ") {
+            result += " "
+          } else {
+            result += chars[Math.floor(Math.random() * chars.length)]
+          }
+        }
+        if (isMounted) setDisplay(result)
+        frame++
+      }, 30)
+
+      return () => clearInterval(interval)
+    }, delay * 1000)
+
+    return () => {
+      isMounted = false
+      clearTimeout(timeout)
+    }
+  }, [text, delay])
+
+  return <span>{display}</span>
+}
+
 export default function HeroSection() {
   const [isReady, setIsReady] = useState(false)
   const [greeting, setGreeting] = useState("Hello")
@@ -46,6 +88,22 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <CinematicVideoBackground />
       </div>
+
+      {/* Interactive Spotlight Glow Backdrop */}
+      <motion.div
+        className="absolute w-[600px] h-[600px] rounded-full pointer-events-none opacity-[0.15] blur-[120px] z-[2]"
+        style={{
+          background: "radial-gradient(circle at center, rgba(200, 245, 80, 0.4) 0%, transparent 70%)",
+          left: "20%",
+          top: "10%",
+          transform: "translate(-50%, -50%)"
+        }}
+        animate={{
+          x: mousePos.x * 2.5,
+          y: mousePos.y * 2.5,
+        }}
+        transition={{ type: "spring", stiffness: 40, damping: 20 }}
+      />
 
       {/* Grid Pattern */}
       <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none"
@@ -92,8 +150,12 @@ export default function HeroSection() {
                 animate={isReady ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.4, duration: 0.8 }}
               >
-                <span className="block text-lorenzo-accent drop-shadow-lg">ANAMAY</span>
-                <span className="block text-white">TRIPATHY</span>
+                <span className="block text-lorenzo-accent drop-shadow-lg">
+                  <TextScramble text="ANAMAY" delay={0.3} />
+                </span>
+                <span className="block text-white">
+                  <TextScramble text="TRIPATHY" delay={0.6} />
+                </span>
               </motion.h1>
 
               {/* Subtitle */}

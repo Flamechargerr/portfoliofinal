@@ -2,6 +2,7 @@
 
 import { useRef } from "react"
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
+import { TiltCard } from "@/components/ui/tilt-card"
 
 const reasons = [
     {
@@ -153,58 +154,60 @@ export default function WhyWorkWithMe() {
                             className="group relative overflow-hidden cursor-pointer"
                             whileHover={{ y: -8, transition: { duration: 0.3 } }}
                         >
-                            {/* Card Background */}
-                            <div className="relative h-full p-8 bg-gradient-to-br from-lorenzo-light/[0.08] to-lorenzo-light/[0.02] backdrop-blur-sm border border-lorenzo-light/10 rounded-2xl overflow-hidden transition-all duration-500 group-hover:border-lorenzo-accent/50 group-hover:bg-lorenzo-light/[0.05]">
+                            <TiltCard className="h-full">
+                                {/* Card Background */}
+                                <div className="relative h-full p-8 bg-gradient-to-br from-lorenzo-light/[0.08] to-lorenzo-light/[0.02] backdrop-blur-sm border border-lorenzo-light/10 rounded-2xl overflow-hidden transition-all duration-500 group-hover:border-lorenzo-accent/50 group-hover:bg-lorenzo-light/[0.05] h-full">
 
-                                {/* Number Badge */}
-                                <div className="absolute top-4 right-4 text-xs font-mono text-lorenzo-accent/30 group-hover:text-lorenzo-accent/60 transition-colors">
-                                    {reason.number}
+                                    {/* Number Badge */}
+                                    <div className="absolute top-4 right-4 text-xs font-mono text-lorenzo-accent/30 group-hover:text-lorenzo-accent/60 transition-colors">
+                                        {reason.number}
+                                    </div>
+
+                                    {/* Glow Effect on Hover */}
+                                    <motion.div
+                                        className="absolute inset-0 bg-gradient-to-br from-lorenzo-accent/0 via-lorenzo-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                    />
+
+                                    {/* Animated Border Glow */}
+                                    <motion.div
+                                        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                        style={{
+                                            background: 'linear-gradient(45deg, transparent, rgba(200,245,80,0.1), transparent)',
+                                        }}
+                                    />
+
+                                    {/* Icon with Animation */}
+                                    <motion.div
+                                        className="text-5xl mb-6 filter drop-shadow-lg"
+                                        whileHover={{
+                                            scale: 1.2,
+                                            rotate: [0, -10, 10, -5, 0],
+                                            transition: { duration: 0.5 }
+                                        }}
+                                    >
+                                        {reason.icon}
+                                    </motion.div>
+
+                                    {/* Content */}
+                                    <h3 className="text-xl md:text-2xl font-bold text-lorenzo-light uppercase tracking-wider mb-3 group-hover:text-lorenzo-accent transition-colors duration-300">
+                                        {reason.title}
+                                    </h3>
+                                    <p className="text-lorenzo-light/50 text-sm md:text-base leading-relaxed group-hover:text-lorenzo-light/70 transition-colors duration-300">
+                                        {reason.description}
+                                    </p>
+
+                                    {/* Bottom Accent Line */}
+                                    <motion.div
+                                        className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-lorenzo-accent to-lime-300 rounded-full"
+                                        initial={{ width: "0%" }}
+                                        whileHover={{ width: "100%" }}
+                                        transition={{ duration: 0.4, ease: "easeOut" }}
+                                    />
+
+                                    {/* Corner Accent */}
+                                    <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-lorenzo-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-tl-full" />
                                 </div>
-
-                                {/* Glow Effect on Hover */}
-                                <motion.div
-                                    className="absolute inset-0 bg-gradient-to-br from-lorenzo-accent/0 via-lorenzo-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                                />
-
-                                {/* Animated Border Glow */}
-                                <motion.div
-                                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                                    style={{
-                                        background: 'linear-gradient(45deg, transparent, rgba(200,245,80,0.1), transparent)',
-                                    }}
-                                />
-
-                                {/* Icon with Animation */}
-                                <motion.div
-                                    className="text-5xl mb-6 filter drop-shadow-lg"
-                                    whileHover={{
-                                        scale: 1.2,
-                                        rotate: [0, -10, 10, -5, 0],
-                                        transition: { duration: 0.5 }
-                                    }}
-                                >
-                                    {reason.icon}
-                                </motion.div>
-
-                                {/* Content */}
-                                <h3 className="text-xl md:text-2xl font-bold text-lorenzo-light uppercase tracking-wider mb-3 group-hover:text-lorenzo-accent transition-colors duration-300">
-                                    {reason.title}
-                                </h3>
-                                <p className="text-lorenzo-light/50 text-sm md:text-base leading-relaxed group-hover:text-lorenzo-light/70 transition-colors duration-300">
-                                    {reason.description}
-                                </p>
-
-                                {/* Bottom Accent Line */}
-                                <motion.div
-                                    className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-lorenzo-accent to-lime-300 rounded-full"
-                                    initial={{ width: "0%" }}
-                                    whileHover={{ width: "100%" }}
-                                    transition={{ duration: 0.4, ease: "easeOut" }}
-                                />
-
-                                {/* Corner Accent */}
-                                <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-lorenzo-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-tl-full" />
-                            </div>
+                            </TiltCard>
                         </motion.div>
                     ))}
                 </div>
