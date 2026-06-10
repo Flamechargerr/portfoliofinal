@@ -20,7 +20,6 @@ import WhyWorkWithMe from "@/components/why-work-with-me"
 import SectionDivider from "@/components/section-divider"
 import SelectedWorks from "@/components/selected-works"
 import FeaturedLaptop from "@/components/featured-laptop"
-import CreativeMarquee from "@/components/creative-marquee"
 import { KeyboardShortcutsModal } from "@/components/keyboard-shortcuts"
 import HomeClientWrapper from "@/components/home-client-wrapper"
 import Testimonials from "@/components/testimonials"
@@ -151,9 +150,6 @@ export default function Home() {
 
         {/* Selected Works Showcase (Replacing Projects, Highlights, and Featured) */}
         <SelectedWorks />
-
-        {/* 3D System Architecture Wall Marquee */}
-        <CreativeMarquee />
 
         {/* Experience Section */}
         <ExperienceSection />
