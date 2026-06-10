@@ -6,6 +6,12 @@ import TrackSplitSection from "@/components/track-split-section"
 import TestimonialSection from "@/components/testimonial-section"
 import HelmetHall from "@/components/helmet-hall-bk"
 
+import MacbookScrollDemo from "@/components/macbook-scroll-demo"
+import ThreeDCardDemo from "@/components/3d-card-demo"
+import ThreeDMarqueeDemo from "@/components/3d-marquee-demo"
+import AnimatedModalDemo from "@/components/animated-modal-demo"
+import ExpandableCardDemo from "@/components/expandable-card-demo-standard"
+
 import Link from "next/link"
 
 export default function ComponentsArchivePage() {
@@ -83,6 +89,56 @@ export default function ComponentsArchivePage() {
           </h2>
           <div className="relative isolate">
             <TestimonialSection />
+          </div>
+        </div>
+
+        {/* 7. Macbook Scroll Demo */}
+        <div className="border-t border-white/10 pt-12">
+          <h2 className="text-2xl font-mono text-center mb-8 text-gray-500">
+            7. Macbook Scroll Section (New)
+          </h2>
+          <div className="relative isolate">
+            <MacbookScrollDemo />
+          </div>
+        </div>
+
+        {/* 8. 3D Card Demo */}
+        <div className="border-t border-white/10 pt-12">
+          <h2 className="text-2xl font-mono text-center mb-8 text-gray-500">
+            8. 3D Hover Card Section (New)
+          </h2>
+          <div className="relative isolate flex justify-center">
+            <ThreeDCardDemo />
+          </div>
+        </div>
+
+        {/* 9. 3D Marquee Demo */}
+        <div className="border-t border-white/10 pt-12">
+          <h2 className="text-2xl font-mono text-center mb-8 text-gray-500">
+            9. 3D Marquee Section (New)
+          </h2>
+          <div className="relative isolate">
+            <ThreeDMarqueeDemo />
+          </div>
+        </div>
+
+        {/* 10. Animated Modal Demo */}
+        <div className="border-t border-white/10 pt-12">
+          <h2 className="text-2xl font-mono text-center mb-8 text-gray-500">
+            10. Animated Modal Section (New)
+          </h2>
+          <div className="relative isolate">
+            <AnimatedModalDemo />
+          </div>
+        </div>
+
+        {/* 11. Expandable Card Demo */}
+        <div className="border-t border-white/10 pt-12">
+          <h2 className="text-2xl font-mono text-center mb-8 text-gray-500">
+            11. Expandable Cards List (New)
+          </h2>
+          <div className="relative isolate">
+            <ExpandableCardDemo />
           </div>
         </div>
       </div>
