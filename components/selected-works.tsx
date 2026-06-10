@@ -75,7 +75,7 @@ const REPO_META: Record<string, Partial<Project>> = {
         category: "Web OS & Emulator",
         year: "2025",
         description: "Interactive browser desktop operating system simulation built with React and TypeScript. Features a draggable window manager, a virtual Unix-style filesystem with local persistence, a terminal emulator, and 59 built-in apps.",
-        image: "/images/project-chargeros.png",
+        image: "/images/project-chargeros-original.png",
         githubUrl: "https://github.com/Flamechargerr/ChargerOS",
     },
     "MedRAG": {
@@ -94,7 +94,7 @@ const FEATURED_SLUGS = ["ChargerOS", "MedRAG", "crime-connect-fbi", "HackOps", "
 import { ZoomParallax } from "./zoom-parallax"
 
 const PARALLAX_IMAGES = [
-    { src: "/images/project-chargeros.png", alt: "ChargerOS Desktop" },
+    { src: "/images/project-chargeros-original.png", alt: "ChargerOS Desktop" },
     { src: "/images/project-medrag.png", alt: "MedRAG Clinical AI" },
     { src: "/images/project-crimeconnect.png", alt: "Crime Connect" },
     { src: "/images/project-hackops.png", alt: "HackOps Platform" },

@@ -21,6 +21,7 @@ export const CometCard = ({
   children: React.ReactNode;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = React.useState(false);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -57,6 +58,7 @@ export const CometCard = ({
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
+    setIsHovered(true);
 
     const rect = ref.current.getBoundingClientRect();
 
@@ -74,6 +76,7 @@ export const CometCard = ({
   };
 
   const handleMouseLeave = () => {
+    setIsHovered(false);
     x.set(0);
     y.set(0);
   };
@@ -82,6 +85,7 @@ export const CometCard = ({
     <div className={cn("perspective-distant transform-3d", className)}>
       <motion.div
         ref={ref}
+        onMouseEnter={() => setIsHovered(true)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{
@@ -105,9 +109,11 @@ export const CometCard = ({
           className="pointer-events-none absolute inset-0 z-50 h-full w-full rounded-[16px] mix-blend-overlay"
           style={{
             background: glareBackground,
-            opacity: 0.6,
           }}
-          transition={{ duration: 0.2 }}
+          animate={{
+            opacity: isHovered ? 0.15 : 0,
+          }}
+          transition={{ duration: 0.3 }}
         />
       </motion.div>
     </div>
