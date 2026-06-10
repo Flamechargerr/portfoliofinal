@@ -28,7 +28,7 @@ export default function BlogSection() {
                 style={{ y: backgroundY }}
             >
                 {/* Large Background Text */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <div aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
                     <span className="text-[25vw] font-brier text-lorenzo-accent/[0.02] leading-none select-none whitespace-nowrap">
                         BLOG
                     </span>

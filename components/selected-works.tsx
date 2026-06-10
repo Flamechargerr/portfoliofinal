@@ -121,6 +121,35 @@ export default function SelectedWorks() {
         }))
     )
 
+    const [currentSlide, setCurrentSlide] = useState(0)
+
+    const scrollToSlide = (index: number) => {
+        if (!containerRef.current) return
+        const container = containerRef.current
+        const rect = container.getBoundingClientRect()
+        const absoluteTop = window.pageYOffset + rect.top
+        const slideHeight = window.innerHeight
+        window.scrollTo({
+            top: absoluteTop + index * slideHeight,
+            behavior: "smooth",
+        })
+    }
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (!containerRef.current) return
+            const container = containerRef.current
+            const rect = container.getBoundingClientRect()
+            const totalHeight = rect.height - window.innerHeight
+            if (totalHeight <= 0) return
+            const progress = Math.min(Math.max(-rect.top / totalHeight, 0), 1)
+            const index = Math.min(Math.floor(progress * projects.length), projects.length - 1)
+            setCurrentSlide(index)
+        }
+        window.addEventListener("scroll", handleScroll, { passive: true })
+        return () => window.removeEventListener("scroll", handleScroll)
+    }, [projects.length])
+
     // Hydrate star counts + live URLs from API
     useEffect(() => {
         fetch("/api/github-stats")
@@ -268,6 +297,37 @@ export default function SelectedWorks() {
                             </div>
                         ))}
                     </motion.div>
+
+                    {/* Carousel Navigation Controls */}
+                    <div className="absolute bottom-8 left-6 md:left-12 z-50 flex items-center gap-4 bg-black/40 backdrop-blur-md border border-white/5 px-4 py-2 rounded-full">
+                        <button
+                            onClick={() => currentSlide > 0 && scrollToSlide(currentSlide - 1)}
+                            disabled={currentSlide === 0}
+                            className="p-1 text-white hover:text-lorenzo-accent disabled:opacity-30 disabled:hover:text-white transition-colors"
+                            aria-label="Previous Project"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        
+                        <div className="text-xs font-mono text-white/50 tracking-wider select-none">
+                            <span className="text-lorenzo-accent font-bold">{(currentSlide + 1).toString().padStart(2, '0')}</span>
+                            <span className="mx-1">/</span>
+                            <span>{projects.length.toString().padStart(2, '0')}</span>
+                        </div>
+                        
+                        <button
+                            onClick={() => currentSlide < projects.length - 1 && scrollToSlide(currentSlide + 1)}
+                            disabled={currentSlide === projects.length - 1}
+                            className="p-1 text-white hover:text-lorenzo-accent disabled:opacity-30 disabled:hover:text-white transition-colors"
+                            aria-label="Next Project"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
 
                     {/* Scroll Progress Indicator */}
                     <div className="absolute bottom-8 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-12 z-50 pointer-events-none flex items-center gap-4">

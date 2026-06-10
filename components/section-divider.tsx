@@ -18,7 +18,8 @@ export default function SectionDivider({ label, sublabel, variant = "line" }: Se
             <div ref={ref} className="relative py-24 overflow-hidden bg-lorenzo-dark">
                 {/* Large background number */}
                 <motion.div
-                    className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                    aria-hidden="true"
+                    className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 1 }}

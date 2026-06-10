@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react"
 import { motion, useInView } from "framer-motion"
-import { GitHubCalendar } from "react-github-calendar"
+import { ActivityCalendar } from "react-activity-calendar"
 
 interface GitHubStats {
     public_repos: number
@@ -10,6 +10,39 @@ interface GitHubStats {
     totalStars: number
     totalForks: number
     isFallback?: boolean
+}
+
+interface Activity {
+    date: string
+    count: number
+    level: 0 | 1 | 2 | 3 | 4
+}
+
+// Helper to generate 365 days of realistic mock contributions in case of offline/timeout
+const generateMockContributions = (): Activity[] => {
+    const data: Activity[] = []
+    const today = new Date()
+    for (let i = 365; i >= 0; i--) {
+        const date = new Date(today)
+        date.setDate(today.getDate() - i)
+        const dateString = date.toISOString().split("T")[0]
+        
+        let level: 0 | 1 | 2 | 3 | 4 = 0
+        const rand = Math.random()
+        if (rand > 0.92) level = 4
+        else if (rand > 0.82) level = 3
+        else if (rand > 0.65) level = 2
+        else if (rand > 0.4) level = 1
+        
+        const count = level === 0 ? 0 : Math.floor(Math.random() * 5) + 1
+        
+        data.push({
+            date: dateString,
+            count,
+            level
+        })
+    }
+    return data
 }
 
 export default function GitHubActivity() {
@@ -22,17 +55,55 @@ export default function GitHubActivity() {
         totalStars: 4,
         totalForks: 1,
     })
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoadingStats, setIsLoadingStats] = useState(true)
+    
+    // Calendar state
+    const [calendarData, setCalendarData] = useState<Activity[]>([])
+    const [calendarLoading, setCalendarLoading] = useState(true)
+    const [totalContributions, setTotalContributions] = useState<number>(6100)
 
     useEffect(() => {
         setMounted(true)
+        
+        // Fetch stats API
         fetch("/api/github-stats")
             .then(res => res.json())
             .then((data: GitHubStats) => {
                 setStats(data)
-                setIsLoading(false)
+                setIsLoadingStats(false)
             })
-            .catch(() => setIsLoading(false))
+            .catch(() => setIsLoadingStats(false))
+
+        // Fetch calendar data with a 3.5s timeout abort controller
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => {
+            controller.abort()
+        }, 3500)
+
+        fetch("https://github-contributions-api.deno.dev/Flamechargerr", { signal: controller.signal })
+            .then(res => {
+                if (!res.ok) throw new Error("Failed to fetch calendar")
+                return res.json()
+            })
+            .then((data: { total?: { lastYear?: number }; contributions?: Activity[] }) => {
+                if (data.contributions && Array.isArray(data.contributions)) {
+                    setCalendarData(data.contributions)
+                    if (data.total && typeof data.total.lastYear === "number") {
+                        setTotalContributions(data.total.lastYear)
+                    }
+                } else {
+                    throw new Error("Invalid contributions format")
+                }
+                setCalendarLoading(false)
+            })
+            .catch((err) => {
+                console.warn("GitHub calendar fetch error, using fallback data:", err)
+                setCalendarData(generateMockContributions())
+                setCalendarLoading(false)
+            })
+            .finally(() => {
+                clearTimeout(timeoutId)
+            })
     }, [])
 
     const customTheme = {
@@ -41,7 +112,7 @@ export default function GitHubActivity() {
 
     const statItems = [
         {
-            value: "6,100+",
+            value: calendarLoading ? "6,100+" : `${totalContributions.toLocaleString()}+`,
             label: "Total Contributions",
             delta: "Past year",
             icon: "📊",
@@ -65,7 +136,6 @@ export default function GitHubActivity() {
             icon: "🔥",
         },
     ]
-
 
     return (
         <div ref={sectionRef} className="py-16 bg-lorenzo-dark">
@@ -103,9 +173,9 @@ export default function GitHubActivity() {
 
                     {/* GitHub Calendar */}
                     <div className="overflow-x-auto min-h-40 flex items-center justify-center">
-                        {mounted ? (
-                            <GitHubCalendar
-                                username="Flamechargerr"
+                        {mounted && !calendarLoading ? (
+                            <ActivityCalendar
+                                data={calendarData}
                                 colorScheme="dark"
                                 theme={customTheme}
                                 blockSize={14}
@@ -130,8 +200,8 @@ export default function GitHubActivity() {
                             <motion.div
                                 key={i}
                                 className="text-center"
-                                animate={isLoading ? { opacity: [0.5, 1, 0.5] } : { opacity: 1 }}
-                                transition={isLoading ? { duration: 1.5, repeat: Infinity } : {}}
+                                animate={isLoadingStats ? { opacity: [0.5, 1, 0.5] } : { opacity: 1 }}
+                                transition={isLoadingStats ? { duration: 1.5, repeat: Infinity } : {}}
                             >
                                 <div className="text-2xl mb-1">{stat.icon}</div>
                                 <div className="text-2xl md:text-3xl font-brier text-lorenzo-accent">

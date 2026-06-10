@@ -58,6 +58,7 @@ export default function WhyWorkWithMe() {
 
                 {/* Large floating numbers */}
                 <motion.div
+                    aria-hidden="true"
                     className="absolute top-10 right-10 text-[30vw] font-brier text-lorenzo-accent/[0.02] leading-none select-none"
                     style={{ opacity }}
                 >

@@ -114,7 +114,7 @@ export default function HeroSection() {
       <div
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-[1]"
       >
-        <span className="text-[18vw] md:text-[15vw] font-brier text-lorenzo-accent/[0.06] uppercase whitespace-nowrap tracking-tight">
+        <span aria-hidden="true" className="text-[18vw] md:text-[15vw] font-brier text-lorenzo-accent/[0.06] uppercase whitespace-nowrap tracking-tight">
           INNOVATOR
         </span>
       </div>

@@ -42,7 +42,7 @@ export default function Testimonials() {
             {/* Background elements */}
             <div className="absolute inset-0 pointer-events-none z-0">
                 {/* Large Background Text */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <div aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
                     <span className="text-[20vw] font-brier text-white/[0.01] leading-none select-none whitespace-nowrap">
                         TRUST
                     </span>
@@ -87,7 +87,7 @@ export default function Testimonials() {
                             <div className="h-full p-8 md:p-10 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md transition-all duration-500 hover:border-lorenzo-accent/40 hover:bg-white/[0.04] flex flex-col justify-between shadow-2xl relative overflow-hidden">
                                 
                                 {/* Top Quote Mark Icon */}
-                                <div className="text-lorenzo-accent/10 absolute -top-4 -left-2 text-8xl font-serif select-none pointer-events-none">
+                                <div aria-hidden="true" className="text-lorenzo-accent/10 absolute -top-4 -left-2 text-8xl font-serif select-none pointer-events-none">
                                     “
                                 </div>
 

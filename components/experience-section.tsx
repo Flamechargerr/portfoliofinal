@@ -11,6 +11,7 @@ interface TimelineEvent {
     description: string
     position: string
     highlight?: boolean
+    link?: string
 }
 
 const timeline: TimelineEvent[] = [
@@ -22,6 +23,7 @@ const timeline: TimelineEvent[] = [
         description: "Modeled natural gas price dynamics and built a commodity storage contract pricing engine. Developed a credit risk model using Logistic Regression with FICO score bucketing via quantization.",
         position: "01",
         highlight: true,
+        link: "https://www.jpmorganchase.com",
     },
     {
         year: "June 2025 - July 2025",
@@ -30,6 +32,7 @@ const timeline: TimelineEvent[] = [
         logo: "💼",
         description: "Built EMI collection agent management platform integrating data pipelines and dashboards using Python, SQL, and Apache Spark, reducing manual reporting effort by ~40% for 10K+ accounts.",
         position: "02",
+        link: "https://www.intellectdesign.com",
     },
     {
         year: "2021 - Present",
@@ -38,6 +41,7 @@ const timeline: TimelineEvent[] = [
         logo: "🤖",
         description: "Contributed to geo-based task workflows supporting Google Maps and Search. Received early access to Gemini Pro LLMs and Project IDX to prototype conversational AI interfaces.",
         position: "03",
+        link: "https://developers.google.com",
     },
     {
         year: "August 2024 - May 2025",
@@ -46,6 +50,7 @@ const timeline: TimelineEvent[] = [
         logo: "🚀",
         description: "Led end-to-end development of the official website for MES 2025, one of India's largest entrepreneurship summits. Coordinated digital infrastructure to ensure zero downtime during high-traffic periods.",
         position: "04",
+        link: "https://ecellmit.in",
     },
     {
         year: "August 2023 - Expected May 2027",
@@ -54,6 +59,7 @@ const timeline: TimelineEvent[] = [
         logo: "🎓",
         description: "Focusing on machine learning, database systems, big data analytics, and operating systems. Active in E-Cell, TechTatva, Enactus, and MIST.",
         position: "05",
+        link: "https://manipal.edu/mit.html",
     },
 ]
 
@@ -80,7 +86,7 @@ export default function ExperienceSection() {
                 style={{ y: backgroundY }}
             >
                 {/* Large Background Text */}
-                <motion.div className="absolute top-1/2 left-0 -translate-y-1/2">
+                <motion.div aria-hidden="true" className="absolute top-1/2 left-0 -translate-y-1/2 pointer-events-none select-none">
                     <span className="text-[25vw] font-brier text-white/[0.02] leading-none select-none mix-blend-overlay">
                         STORY
                     </span>
@@ -187,42 +193,89 @@ export default function ExperienceSection() {
                                         }`}
                                     whileHover={{ scale: 1.02 }}
                                     transition={{ duration: 0.3 }}
+                                    data-cursor={event.link ? "EXPLORE" : "VIEW"}
                                 >
-                                    <div className={`relative p-6 md:p-8 bg-white/[0.02] backdrop-blur-md border rounded-2xl overflow-hidden group hover:bg-white/[0.04] transition-all duration-500 ${event.highlight ? 'border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.05)]' : 'border-white/5 hover:border-white/10'
-                                        }`}>
-                                        {/* Highlight Glow */}
-                                        {event.highlight && (
-                                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
-                                        )}
+                                    {event.link ? (
+                                        <a
+                                            href={event.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="block"
+                                        >
+                                            <div className={`relative p-6 md:p-8 bg-white/[0.02] backdrop-blur-md border rounded-2xl overflow-hidden group hover:bg-white/[0.04] hover:border-lorenzo-accent/40 transition-all duration-500 ${event.highlight ? 'border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.05)]' : 'border-white/5 hover:border-white/10'
+                                                }`}>
+                                                {/* Highlight Glow */}
+                                                {event.highlight && (
+                                                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+                                                )}
 
-                                        {/* Position Number */}
-                                        <div className="absolute top-4 right-4 text-4xl md:text-5xl font-brier text-white/5 group-hover:text-white/10 transition-colors">
-                                            {event.position}
+                                                {/* Position Number */}
+                                                <div className="absolute top-4 right-4 text-4xl md:text-5xl font-brier text-white/5 group-hover:text-white/10 transition-colors">
+                                                    {event.position}
+                                                </div>
+
+                                                {/* Year Badge */}
+                                                <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-6 relative z-10">
+                                                    <span className="text-xl">{event.logo}</span>
+                                                    <span className="text-[11px] font-bold text-white tracking-[0.2em] uppercase">
+                                                        {event.year}
+                                                    </span>
+                                                </div>
+
+                                                {/* Title */}
+                                                <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wider mb-2 group-hover:text-lorenzo-accent transition-colors relative z-10 flex items-center gap-2">
+                                                    <span>{event.title}</span>
+                                                    <span className="text-xs text-white/30 group-hover:text-lorenzo-accent transition-colors">↗</span>
+                                                </h3>
+
+                                                {/* Organization */}
+                                                <p className="text-lorenzo-accent font-bold text-[11px] uppercase tracking-[0.2em] mb-4 relative z-10 opacity-90">
+                                                    {event.organization}
+                                                </p>
+
+                                                {/* Description */}
+                                                <p className="text-white/60 font-light text-sm leading-relaxed relative z-10">
+                                                    {event.description}
+                                                </p>
+                                            </div>
+                                        </a>
+                                    ) : (
+                                        <div className={`relative p-6 md:p-8 bg-white/[0.02] backdrop-blur-md border rounded-2xl overflow-hidden group hover:bg-white/[0.04] transition-all duration-500 ${event.highlight ? 'border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.05)]' : 'border-white/5 hover:border-white/10'
+                                            }`}>
+                                            {/* Highlight Glow */}
+                                            {event.highlight && (
+                                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+                                            )}
+
+                                            {/* Position Number */}
+                                            <div className="absolute top-4 right-4 text-4xl md:text-5xl font-brier text-white/5 group-hover:text-white/10 transition-colors">
+                                                {event.position}
+                                            </div>
+
+                                            {/* Year Badge */}
+                                            <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-6 relative z-10">
+                                                <span className="text-xl">{event.logo}</span>
+                                                <span className="text-[11px] font-bold text-white tracking-[0.2em] uppercase">
+                                                    {event.year}
+                                                </span>
+                                            </div>
+
+                                            {/* Title */}
+                                            <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wider mb-2 group-hover:text-lorenzo-accent transition-colors relative z-10">
+                                                {event.title}
+                                            </h3>
+
+                                            {/* Organization */}
+                                            <p className="text-lorenzo-accent font-bold text-[11px] uppercase tracking-[0.2em] mb-4 relative z-10 opacity-90">
+                                                {event.organization}
+                                            </p>
+
+                                            {/* Description */}
+                                            <p className="text-white/60 font-light text-sm leading-relaxed relative z-10">
+                                                {event.description}
+                                            </p>
                                         </div>
-
-                                        {/* Year Badge */}
-                                        <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-6 relative z-10">
-                                            <span className="text-xl">{event.logo}</span>
-                                            <span className="text-[11px] font-bold text-white tracking-[0.2em] uppercase">
-                                                {event.year}
-                                            </span>
-                                        </div>
-
-                                        {/* Title */}
-                                        <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wider mb-2 group-hover:text-lorenzo-accent transition-colors relative z-10">
-                                            {event.title}
-                                        </h3>
-
-                                        {/* Organization */}
-                                        <p className="text-lorenzo-accent font-bold text-[11px] uppercase tracking-[0.2em] mb-4 relative z-10 opacity-90">
-                                            {event.organization}
-                                        </p>
-
-                                        {/* Description */}
-                                        <p className="text-white/60 font-light text-sm leading-relaxed relative z-10">
-                                            {event.description}
-                                        </p>
-                                    </div>
+                                    )}
                                 </motion.div>
                             </motion.div>
                         ))}

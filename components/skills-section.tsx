@@ -149,7 +149,8 @@ export default function SkillsSection() {
                                 <TiltCard className="p-6 md:p-8 glow-card bg-white/[0.02] border border-white/5 rounded-2xl backdrop-blur-sm hover:bg-white/[0.04] hover:border-white/10 transition-all h-full" onMouseMove={handleCardMouseMove}>
                                     {/* Background Icon */}
                                     <motion.div
-                                        className="absolute -right-4 -top-4 text-8xl opacity-5 group-hover:opacity-20 transition-all"
+                                        aria-hidden="true"
+                                        className="absolute -right-4 -top-4 text-8xl opacity-5 group-hover:opacity-20 transition-all pointer-events-none select-none"
                                         animate={{
                                             scale: hoveredSkill === skill.name ? 1.2 : 1,
                                             rotate: hoveredSkill === skill.name ? 10 : 0
@@ -223,15 +224,13 @@ export default function SkillsSection() {
                     transition={{ delay: 0.6 }}
                     className="mt-20 p-8 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md relative overflow-hidden"
                 >
-                    {/* Background pattern */}
-                    <div className="absolute inset-0 opacity-10">
-                        <Image
-                            src="/images/data-viz.png"
-                            alt="Background"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
+                    {/* Background pattern - CSS Grid */}
+                    <div aria-hidden="true" className="absolute inset-0 opacity-[0.03] pointer-events-none"
+                        style={{
+                            backgroundImage: "linear-gradient(rgba(200, 245, 80, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(200, 245, 80, 0.2) 1px, transparent 1px)",
+                            backgroundSize: "20px 20px"
+                        }}
+                    />
 
                     <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
                         <div>
@@ -254,7 +253,7 @@ export default function SkillsSection() {
                                     whileHover={{ scale: 1.05, y: -3 }}
                                     data-cursor="VIEW"
                                 >
-                                    <span className="text-xl font-brier italic text-white/50">{cert.pos}</span>
+                                    <span className="text-xl font-brier italic text-white/50">{cert.pos}{" "}</span>
                                     <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-white">{cert.name}</span>
                                 </motion.div>
                             ))}

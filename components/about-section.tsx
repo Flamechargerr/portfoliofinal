@@ -19,7 +19,7 @@ export default function AboutSection() {
 
             {/* Large Background Text */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-[1]">
-                <span className="text-[25vw] font-brier text-white/[0.05] uppercase whitespace-nowrap">
+                <span aria-hidden="true" className="text-[25vw] font-brier text-white/[0.05] uppercase whitespace-nowrap select-none">
                     CODER
                 </span>
             </div>
@@ -43,8 +43,8 @@ export default function AboutSection() {
                     </div>
 
                     <h2 className="text-4xl md:text-6xl lg:text-7xl font-brier uppercase leading-[0.85] tracking-tighter">
-                        <span className="block text-white">REDEFINING</span>
-                        <span className="block text-lorenzo-accent drop-shadow-md">LIMITS</span>
+                        <span className="block text-white">REDEFINING{" "}</span>
+                        <span className="block text-lorenzo-accent drop-shadow-md">LIMITS{" "}</span>
                         <motion.span
                             className="block text-white/20 text-2xl md:text-4xl mt-3 tracking-normal"
                             initial={{ opacity: 0, x: -20 }}
@@ -152,7 +152,7 @@ export default function AboutSection() {
                             <motion.a
                                 href="/resume.pdf"
                                 download
-                                className="inline-flex items-center gap-3 px-8 py-4 border-2 border-lorenzo-accent text-lorenzo-accent font-bold uppercase tracking-wider text-sm hover:bg-lorenzo-accent hover:text-lorenzo-dark transition-all"
+                                className="inline-flex items-center gap-3 px-8 py-4 border border-white/20 text-white/80 hover:border-white hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider font-bold text-sm"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 data-cursor="DOWNLOAD"
@@ -177,7 +177,7 @@ export default function AboutSection() {
                                 { value: "2+", label: "YEARS", sub: "Active Experience", icon: "🚀" },
                                 { value: "8+", label: "CERTS", sub: "Meta, IBM, etc.", icon: "📜" },
                                 { value: "570+", label: "COMMITS", sub: "Active Contributor", icon: "💻" },
-                                { value: "75+", label: "STARS", sub: "GitHub Projects", icon: "⭐" },
+                                { value: "4+", label: "STARS", sub: "GitHub Projects", icon: "⭐" },
                             ].map((stat, i) => (
                                 <motion.div
                                     key={i}
