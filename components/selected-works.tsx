@@ -101,7 +101,6 @@ const PARALLAX_IMAGES = [
     { src: "/images/project-vartificial.png", alt: "VARtificial Match Outcomes" },
     { src: "/images/project-smartmaps3d.png", alt: "Smart Maps 3D" },
     { src: "/images/project-emiplatform.png", alt: "Intellect EMI Dashboard" },
-    { src: "/images/tech-workspace.png", alt: "E-Cell MES 2025 Summit" },
 ]
 
 export default function SelectedWorks() {
