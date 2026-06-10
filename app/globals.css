@@ -395,6 +395,14 @@
   .glow-card:hover::after {
     opacity: 1;
   }
+
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+
+  .perspective-distant {
+    perspective: 1500px;
+  }
 }
 
 /* Shine sweep animation for progress bars */

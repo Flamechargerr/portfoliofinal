@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion"
 import { ThreeDMarquee } from "@/components/ui/3d-marquee"
 
 const images = [
-    "/images/project-chargeros.png",
+    "/images/project-showcase.png",
     "/images/project-medrag.png",
     "/images/project-crimeconnect.png",
     "/images/project-hackops.png",
