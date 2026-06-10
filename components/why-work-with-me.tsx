@@ -2,7 +2,7 @@
 
 import { useRef } from "react"
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
-import { TiltCard } from "@/components/ui/tilt-card"
+import { CometCard } from "@/components/ui/comet-card"
 
 const reasons = [
     {
@@ -155,9 +155,9 @@ export default function WhyWorkWithMe() {
                             className="group relative overflow-hidden cursor-pointer"
                             whileHover={{ y: -8, transition: { duration: 0.3 } }}
                         >
-                            <TiltCard className="h-full">
+                            <CometCard className="h-full" rotateDepth={10} translateDepth={15}>
                                 {/* Card Background */}
-                                <div className="relative h-full p-8 bg-gradient-to-br from-lorenzo-light/[0.08] to-lorenzo-light/[0.02] backdrop-blur-sm border border-lorenzo-light/10 rounded-2xl overflow-hidden transition-all duration-500 group-hover:border-lorenzo-accent/50 group-hover:bg-lorenzo-light/[0.05] h-full">
+                                <div className="relative h-full p-8 bg-gradient-to-br from-lorenzo-light/[0.08] to-lorenzo-light/[0.02] backdrop-blur-sm border border-lorenzo-light/10 rounded-2xl overflow-hidden transition-all duration-500 group-hover:border-lorenzo-accent/50 group-hover:bg-lorenzo-light/[0.05]">
 
                                     {/* Number Badge */}
                                     <div className="absolute top-4 right-4 text-xs font-mono text-lorenzo-accent/30 group-hover:text-lorenzo-accent/60 transition-colors">
@@ -208,7 +208,7 @@ export default function WhyWorkWithMe() {
                                     {/* Corner Accent */}
                                     <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-lorenzo-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-tl-full" />
                                 </div>
-                            </TiltCard>
+                            </CometCard>
                         </motion.div>
                     ))}
                 </div>

@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion, useInView, AnimatePresence } from "framer-motion"
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card"
 
 interface CurrentProject {
     id: number
@@ -149,87 +150,92 @@ export default function CurrentlyWorkingSection() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
-                                className="p-8 border border-lorenzo-accent/20 bg-lorenzo-dark/50 h-full"
                             >
-                                {/* Project Header */}
-                                <div className="flex items-start justify-between mb-6">
-                                    <div>
-                                        <h3 className="text-2xl md:text-3xl font-brier text-lorenzo-accent uppercase mb-2">
-                                            {activeProject.name}
-                                        </h3>
-                                        <div className="flex items-center gap-4 text-sm text-lorenzo-light/50">
-                                            <span>Started: {activeProject.startDate}</span>
-                                            <span>•</span>
-                                            <span>Target: {activeProject.targetDate}</span>
-                                        </div>
-                                    </div>
-                                    <div className={`px-4 py-2 ${statusColors[activeProject.status].bg} ${statusColors[activeProject.status].text} ${statusColors[activeProject.status].border} border uppercase text-sm font-bold`}>
-                                        {activeProject.status.replace("-", " ")}
-                                    </div>
-                                </div>
+                                <CardContainer containerClassName="py-0 flex items-stretch justify-stretch w-full h-full" className="w-full h-full">
+                                    <CardBody className="p-8 border border-lorenzo-accent/20 bg-lorenzo-dark/50 h-auto w-full md:h-full rounded-none relative group/card flex flex-col justify-between">
+                                        <div>
+                                            {/* Project Header */}
+                                            <div className="flex items-start justify-between mb-6">
+                                                <CardItem translateZ={50}>
+                                                    <h3 className="text-2xl md:text-3xl font-brier text-lorenzo-accent uppercase mb-2">
+                                                        {activeProject.name}
+                                                    </h3>
+                                                    <div className="flex items-center gap-4 text-sm text-lorenzo-light/50">
+                                                        <span>Started: {activeProject.startDate}</span>
+                                                        <span>•</span>
+                                                        <span>Target: {activeProject.targetDate}</span>
+                                                    </div>
+                                                </CardItem>
+                                                <CardItem translateZ={65} className={`px-4 py-2 ${statusColors[activeProject.status].bg} ${statusColors[activeProject.status].text} ${statusColors[activeProject.status].border} border uppercase text-sm font-bold`}>
+                                                    {activeProject.status.replace("-", " ")}
+                                                </CardItem>
+                                            </div>
 
-                                {/* Description */}
-                                <p className="text-lorenzo-light/70 text-lg mb-8 font-mona">
-                                    {activeProject.description}
-                                </p>
+                                            {/* Description */}
+                                            <CardItem translateZ={40} className="text-lorenzo-light/70 text-lg mb-8 font-mona">
+                                                {activeProject.description}
+                                            </CardItem>
 
-                                {/* Progress Circle */}
-                                <div className="flex items-center gap-8 mb-8">
-                                    <div className="relative w-32 h-32">
-                                        <svg className="w-full h-full transform -rotate-90">
-                                            <circle
-                                                cx="64"
-                                                cy="64"
-                                                r="56"
-                                                stroke="rgba(200, 245, 80, 0.1)"
-                                                strokeWidth="8"
-                                                fill="none"
-                                            />
-                                            <motion.circle
-                                                cx="64"
-                                                cy="64"
-                                                r="56"
-                                                stroke="#c8f550"
-                                                strokeWidth="8"
-                                                fill="none"
-                                                strokeLinecap="round"
-                                                strokeDasharray={352}
-                                                initial={{ strokeDashoffset: 352 }}
-                                                animate={{ strokeDashoffset: 352 - (352 * progress) / 100 }}
-                                                transition={{ duration: 1.5, ease: "easeOut" }}
-                                            />
-                                        </svg>
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <span className="text-3xl font-brier text-lorenzo-accent">{progress}%</span>
+                                            {/* Progress Circle */}
+                                            <div className="flex items-center gap-8 mb-8">
+                                                <CardItem translateZ={75} className="relative w-32 h-32 shrink-0">
+                                                    <svg className="w-full h-full transform -rotate-90">
+                                                        <circle
+                                                            cx="64"
+                                                            cy="64"
+                                                            r="56"
+                                                            stroke="rgba(200, 245, 80, 0.1)"
+                                                            strokeWidth="8"
+                                                            fill="none"
+                                                        />
+                                                        <motion.circle
+                                                            cx="64"
+                                                            cy="64"
+                                                            r="56"
+                                                            stroke="#c8f550"
+                                                            strokeWidth="8"
+                                                            fill="none"
+                                                            strokeLinecap="round"
+                                                            strokeDasharray={352}
+                                                            initial={{ strokeDashoffset: 352 }}
+                                                            animate={{ strokeDashoffset: 352 - (352 * progress) / 100 }}
+                                                            transition={{ duration: 1.5, ease: "easeOut" }}
+                                                        />
+                                                    </svg>
+                                                    <div className="absolute inset-0 flex items-center justify-center">
+                                                        <span className="text-3xl font-brier text-lorenzo-accent">{progress}%</span>
+                                                    </div>
+                                                </CardItem>
+                                                <CardItem translateZ={50} className="flex-1 w-full">
+                                                    <div className="text-sm text-lorenzo-light/50 uppercase tracking-wider mb-2">Progress</div>
+                                                    <div className="h-3 bg-lorenzo-light/10 rounded-full overflow-hidden">
+                                                        <motion.div
+                                                            className="h-full bg-gradient-to-r from-lorenzo-accent/50 to-lorenzo-accent rounded-full"
+                                                            initial={{ width: 0 }}
+                                                            animate={{ width: `${progress}%` }}
+                                                            transition={{ duration: 1.5, ease: "easeOut" }}
+                                                        />
+                                                    </div>
+                                                </CardItem>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="flex-1">
-                                        <div className="text-sm text-lorenzo-light/50 uppercase tracking-wider mb-2">Progress</div>
-                                        <div className="h-3 bg-lorenzo-light/10 rounded-full overflow-hidden">
-                                            <motion.div
-                                                className="h-full bg-gradient-to-r from-lorenzo-accent/50 to-lorenzo-accent rounded-full"
-                                                initial={{ width: 0 }}
-                                                animate={{ width: `${progress}%` }}
-                                                transition={{ duration: 1.5, ease: "easeOut" }}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
 
-                                {/* Tech Stack */}
-                                <div>
-                                    <div className="text-sm text-lorenzo-light/50 uppercase tracking-wider mb-3">Tech Stack</div>
-                                    <div className="flex flex-wrap gap-2">
-                                        {activeProject.tech.map((tech) => (
-                                            <span
-                                                key={tech}
-                                                className="px-4 py-2 border border-lorenzo-accent/30 text-lorenzo-accent text-sm font-bold uppercase"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
+                                        {/* Tech Stack */}
+                                        <CardItem translateZ={80} className="w-full">
+                                            <div className="text-sm text-lorenzo-light/50 uppercase tracking-wider mb-3">Tech Stack</div>
+                                            <div className="flex flex-wrap gap-2">
+                                                {activeProject.tech.map((tech) => (
+                                                    <span
+                                                        key={tech}
+                                                        className="px-4 py-2 border border-lorenzo-accent/30 text-lorenzo-accent text-sm font-bold uppercase"
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </CardItem>
+                                    </CardBody>
+                                </CardContainer>
                             </motion.div>
                         </AnimatePresence>
                     </motion.div>
