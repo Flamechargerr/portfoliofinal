@@ -25,7 +25,7 @@ export default function SignatureMarqueeSection() {
             {[...Array(4)].map((_, i) => (
               <h2
                 key={i}
-                className="font-[family-name:var(--font-brier)] text-[12vw] md:text-[8vw] text-[#D1FF1C] leading-[0.9] tracking-tight px-4"
+                className="font-[family-name:var(--font-brier)] text-[12vw] md:text-[8vw] text-[#c8f550] leading-[0.9] tracking-tight px-4"
               >
                 REDEFINING LIMITS REDEFINING LIMITS REDEFINING LIMITS REDEFINING LIMITS
               </h2>

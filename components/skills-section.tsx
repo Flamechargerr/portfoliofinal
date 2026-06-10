@@ -146,7 +146,7 @@ export default function SkillsSection() {
                                 onMouseLeave={() => setHoveredSkill(null)}
                                 data-cursor="VIEW"
                             >
-                                <TiltCard className="p-6 md:p-8 glow-card bg-white/[0.02] border border-white/5 rounded-2xl backdrop-blur-sm hover:bg-white/[0.04] hover:border-white/10 transition-all h-full" onMouseMove={handleCardMouseMove}>
+                                <TiltCard className="p-6 md:p-8 glow-card bg-[#222415]/75 border border-white/15 rounded-2xl backdrop-blur-sm hover:bg-[#222415]/90 hover:border-white/30 transition-all h-full" onMouseMove={handleCardMouseMove}>
                                     {/* Background Icon */}
                                     <motion.div
                                         aria-hidden="true"
@@ -222,7 +222,7 @@ export default function SkillsSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.6 }}
-                    className="mt-20 p-8 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md relative overflow-hidden"
+                    className="mt-20 p-8 rounded-2xl bg-[#222415]/75 border border-white/15 backdrop-blur-md relative overflow-hidden"
                 >
                     {/* Background pattern - CSS Grid */}
                     <div aria-hidden="true" className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -249,7 +249,7 @@ export default function SkillsSection() {
                             ].map((cert, i) => (
                                 <motion.div
                                     key={i}
-                                    className="flex items-center gap-3 px-5 py-3 border border-white/10 rounded-xl bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all cursor-pointer"
+                                    className="flex items-center gap-3 px-5 py-3 border border-white/10 rounded-xl bg-[#222415]/60 hover:bg-[#222415]/80 hover:border-white/30 border border-white/10 transition-all cursor-pointer"
                                     whileHover={{ scale: 1.05, y: -3 }}
                                     data-cursor="VIEW"
                                 >

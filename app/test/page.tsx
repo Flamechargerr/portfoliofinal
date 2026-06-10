@@ -14,6 +14,7 @@ interface TestResult {
 }
 
 export default function IntegrationTestPage() {
+  const [adminPassword, setAdminPassword] = useState("admin123")
   const [tests, setTests] = useState<TestResult[]>([
     { name: "Contact API", status: "pending", message: "Not tested yet" },
     { name: "Messages API", status: "pending", message: "Not tested yet" },
@@ -133,7 +134,7 @@ export default function IntegrationTestPage() {
     // Test 5: Admin API (basic connectivity test)
     try {
       const adminResponse = await fetch("/api/admin/messages", {
-        headers: { Authorization: "Bearer admin-secret-key" },
+        headers: { Authorization: `Bearer ${adminPassword}` },
       })
 
       const adminData = await adminResponse.json()
@@ -181,20 +182,29 @@ export default function IntegrationTestPage() {
           <p className="text-gray-400 text-lg">
             Verify that AI and backend systems are properly integrated and working
           </p>
-          <Button
-            onClick={runAllTests}
-            disabled={isRunning}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-          >
-            {isRunning ? (
-              <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Running Tests...
-              </>
-            ) : (
-              "Run All Tests"
-            )}
-          </Button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <input
+              type="password"
+              placeholder="Admin Password"
+              value={adminPassword}
+              onChange={(e) => setAdminPassword(e.target.value)}
+              className="bg-gray-800/50 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-purple-500 w-48 text-center"
+            />
+            <Button
+              onClick={runAllTests}
+              disabled={isRunning}
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+            >
+              {isRunning ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  Running Tests...
+                </>
+              ) : (
+                "Run All Tests"
+              )}
+            </Button>
+          </div>
         </div>
 
         {/* Test Results */}

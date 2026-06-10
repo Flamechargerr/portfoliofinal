@@ -6,7 +6,7 @@ const partners = ["HILTON", "UBER", "UYKART", "BELL", "PURE ELECTRIC", "GOOGLE",
 
 export default function PartnersSection() {
   return (
-    <section className="relative min-h-screen bg-[#F5F1E8] py-24 px-6 md:px-12">
+    <section className="relative min-h-screen bg-[#e8e8e3] py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div

@@ -138,13 +138,13 @@ export default function GitHubActivity() {
     ]
 
     return (
-        <div ref={sectionRef} className="py-16 bg-lorenzo-dark">
+        <div ref={sectionRef} className="py-16 bg-transparent">
             <div className="max-w-[1400px] mx-auto px-6 md:px-12">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8 }}
-                    className="p-8 border border-lorenzo-accent/20 bg-lorenzo-dark/50"
+                    className="p-8 border border-lorenzo-accent/20 bg-[#222415]/75 border border-white/15"
                 >
                     {/* Header */}
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
@@ -183,7 +183,7 @@ export default function GitHubActivity() {
                                 fontSize={14}
                             />
                         ) : (
-                            <div className="h-40 w-full bg-lorenzo-dark/50 animate-pulse rounded-lg flex items-center justify-center">
+                            <div className="h-40 w-full bg-[#222415]/75 border border-white/15 animate-pulse rounded-lg flex items-center justify-center">
                                 <span className="text-lorenzo-light/50 text-sm">Loading GitHub activity...</span>
                             </div>
                         )}

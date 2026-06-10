@@ -357,26 +357,28 @@ export function EasterEggs() {
         <AnimatePresence>
             {showEasterEgg && (
                 <motion.div
-                    initial={{ opacity: 0, scale: 0 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0 }}
-                    className="fixed inset-0 flex items-center justify-center z-[300] pointer-events-none"
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    className="fixed inset-0 flex items-center justify-center z-[300] bg-black/40 backdrop-blur-sm pointer-events-none"
                 >
-                    <div className="text-center">
-                        <motion.div
-                            className="text-8xl mb-4"
-                            animate={{
-                                rotate: [0, 360],
-                                scale: [1, 1.5, 1]
-                            }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                        >
-                            🎉
-                        </motion.div>
-                        <h2 className="text-4xl font-bold text-lorenzo-accent">
-                            You found an Easter Egg!
-                        </h2>
-                        <p className="text-white/60 mt-2">You're a true explorer! 🕵️</p>
+                    <div className="bg-[#1b1c11]/95 border-2 border-lorenzo-accent p-8 rounded-2xl shadow-[0_0_50px_rgba(200,245,80,0.3)] max-w-md w-full mx-4 backdrop-blur-md relative overflow-hidden font-mono text-left select-none">
+                        {/* Terminal header bar */}
+                        <div className="flex items-center justify-between border-b border-lorenzo-accent/20 pb-3 mb-4 text-[10px] text-lorenzo-accent/50">
+                            <span>SYSTEM OVERRIDE DETECTED // KONAMI.SYS</span>
+                            <span className="animate-pulse">● LIVE CONNECTION</span>
+                        </div>
+                        <div className="text-lorenzo-accent text-2xl font-bold uppercase tracking-tight mb-3 flex items-center gap-3">
+                            <span>🔓</span> BYPASS GRANTED
+                        </div>
+                        <p className="text-white/80 text-xs mb-4 leading-relaxed">
+                            Elite developer credentials unlocked. Mainframe security core successfully bypassed.
+                        </p>
+                        <div className="bg-black/40 border border-white/5 p-4 rounded text-[10px] space-y-1 text-lorenzo-accent/80 font-mono">
+                            <div>$ decrypting system_specs.bin...</div>
+                            <div>$ 100% decrypted // access_level: developer</div>
+                            <div>$ welcome back, operator Anamay Tripathy.</div>
+                        </div>
                     </div>
                 </motion.div>
             )}
@@ -392,26 +394,48 @@ export function useSoundEffects() {
         if (isMuted) return
 
         const sounds = {
-            click: 800,
-            hover: 600,
-            success: 1000,
-            error: 400
+            click: { type: "triangle" as OscillatorType, startFreq: 1000, endFreq: 80, duration: 0.04, volume: 0.15 },
+            hover: { type: "sine" as OscillatorType, startFreq: 1500, endFreq: 600, duration: 0.02, volume: 0.05 },
+            success: { type: "sine" as OscillatorType, startFreq: 400, endFreq: 1200, duration: 0.2, volume: 0.12 },
+            error: { type: "sawtooth" as OscillatorType, startFreq: 120, endFreq: 60, duration: 0.3, volume: 0.18 }
         }
 
+        const sound = sounds[type]
         const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
+        
+        // Safety: suspend/close context if created in non-user gesture state
+        if (audioContext.state === "suspended") {
+            audioContext.resume()
+        }
+
         const oscillator = audioContext.createOscillator()
         const gainNode = audioContext.createGain()
 
         oscillator.connect(gainNode)
         gainNode.connect(audioContext.destination)
 
-        oscillator.frequency.value = sounds[type]
-        oscillator.type = "sine"
-        gainNode.gain.value = 0.1
+        oscillator.type = sound.type
+        
+        // Frequency sweep for responsive snapping sound
+        oscillator.frequency.setValueAtTime(sound.startFreq, audioContext.currentTime)
+        if (type === "success") {
+            // Arpeggio / pitch slide
+            oscillator.frequency.exponentialRampToValueAtTime(sound.endFreq, audioContext.currentTime + sound.duration)
+        } else {
+            oscillator.frequency.exponentialRampToValueAtTime(sound.endFreq, audioContext.currentTime + sound.duration)
+        }
+
+        // Volume Envelope
+        gainNode.gain.setValueAtTime(sound.volume, audioContext.currentTime)
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + sound.duration)
 
         oscillator.start()
-        gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1)
-        oscillator.stop(audioContext.currentTime + 0.1)
+        oscillator.stop(audioContext.currentTime + sound.duration)
+        
+        // Close context after completion to avoid browser resource leaks
+        setTimeout(() => {
+            audioContext.close()
+        }, (sound.duration + 0.1) * 1000)
     }, [isMuted])
 
     return { playSound, isMuted, setIsMuted }

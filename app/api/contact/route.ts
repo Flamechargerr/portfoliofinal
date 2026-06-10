@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 
 // In-memory storage for demo purposes
 // In production, use a database like PostgreSQL, MongoDB, or a service like Supabase
@@ -41,8 +42,30 @@ export async function POST(request: NextRequest) {
             createdAt: new Date().toISOString()
         }
 
-        // Store message
+        // Store message in memory
         messages.push(newMessage)
+
+        // Store message in database if configured
+        if (isSupabaseConfigured() && supabase) {
+            try {
+                const { error: dbError } = await supabase
+                    .from('contacts')
+                    .insert([
+                        {
+                            id: newMessage.id,
+                            name: newMessage.name,
+                            email: newMessage.email,
+                            message: newMessage.message,
+                            created_at: newMessage.createdAt
+                        }
+                    ])
+                if (dbError) {
+                    console.error('Failed to save contact message to Supabase:', dbError)
+                }
+            } catch (dbErr) {
+                console.error('Supabase exception saving contact message:', dbErr)
+            }
+        }
 
         // In production, you would:
         // 1. Save to database
@@ -85,8 +108,36 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET() {
-    // This endpoint could be used for an admin dashboard
-    // In production, add authentication
+    // If Supabase is configured, fetch messages from database
+    if (isSupabaseConfigured() && supabase) {
+        try {
+            const { data, error } = await supabase
+                .from('contacts')
+                .select('*')
+                .order('created_at', { ascending: false })
+                .limit(5)
+            
+            if (!error && data) {
+                const { count, error: countError } = await supabase
+                    .from('contacts')
+                    .select('*', { count: 'exact', head: true })
+                
+                return NextResponse.json({
+                    totalMessages: countError ? data.length : (count || 0),
+                    recentMessages: data.map((item: any) => ({
+                        id: item.id,
+                        name: item.name,
+                        email: item.email,
+                        message: item.message,
+                        createdAt: item.created_at
+                    }))
+                })
+            }
+        } catch (dbError) {
+            console.error('Failed to fetch contact messages from Supabase:', dbError)
+        }
+    }
+
     return NextResponse.json({
         totalMessages: messages.length,
         recentMessages: messages.slice(-5).reverse()

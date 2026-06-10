@@ -47,7 +47,7 @@ export default function WhyWorkWithMe() {
     const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.5, 1, 1, 0.5])
 
     return (
-        <section ref={sectionRef} className="relative py-24 bg-lorenzo-dark overflow-hidden">
+        <section ref={sectionRef} className="relative py-24 bg-transparent overflow-hidden">
             {/* Parallax Background Elements */}
             <motion.div
                 className="absolute inset-0 pointer-events-none"
@@ -157,7 +157,7 @@ export default function WhyWorkWithMe() {
                         >
                             <CometCard className="h-full" rotateDepth={10} translateDepth={15}>
                                 {/* Card Background */}
-                                <div className="relative h-full p-8 bg-gradient-to-br from-lorenzo-light/[0.08] to-lorenzo-light/[0.02] backdrop-blur-sm border border-lorenzo-light/10 rounded-2xl overflow-hidden transition-all duration-500 group-hover:border-lorenzo-accent/50 group-hover:bg-lorenzo-light/[0.05]">
+                                <div className="relative h-full p-8 bg-[#222415]/75 border border-white/15 backdrop-blur-sm rounded-2xl overflow-hidden transition-all duration-500 group-hover:border-lorenzo-accent/50 group-hover:bg-lorenzo-light/[0.05]">
 
                                     {/* Number Badge */}
                                     <div className="absolute top-4 right-4 text-xs font-mono text-lorenzo-accent/30 group-hover:text-lorenzo-accent/60 transition-colors">

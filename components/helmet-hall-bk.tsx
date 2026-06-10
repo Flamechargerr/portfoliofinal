@@ -6,26 +6,26 @@ import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motio
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const helmets = [
-  { id: 1, name: "Season", year: "2025", image: "/images/helmets/helmet-collection1.png" },
-  { id: 2, name: "Dark Glitter", year: "2025", image: "/images/helmets/helmet-collection2.png" },
-  { id: 3, name: "Discoball", year: "2025", image: "/images/helmets/helmet-collection3.png" },
-  { id: 4, name: "Season", year: "2024", image: "/images/helmets/helmet-collection4.png" },
-  { id: 5, name: "Japan", year: "2024", image: "/images/helmets/helmet-collection5.png" },
-  { id: 6, name: "GIF", year: "2024", image: "/images/helmets/helmet-collection6.png" },
-  { id: 7, name: "Season", year: "2025", image: "/images/helmets/helmet-collection7.png" },
-  { id: 8, name: "Dark Glitter", year: "2025", image: "/images/helmets/helmet-collection8.png" },
-  { id: 9, name: "Discoball", year: "2025", image: "/images/helmets/helmet-collection9.png" },
-  { id: 10, name: "Japan", year: "2024", image: "/images/helmets/helmet-collection10.png" },
-  { id: 11, name: "GIF", year: "2024", image: "/images/helmets/helmet-collection11.png" },
-  { id: 12, name: "Porcelain", year: "2024", image: "/images/helmets/helmet-collection12.png" },
-  { id: 13, name: "Dark Mode", year: "2024", image: "/images/helmets/helmet-collection13.png" },
-  { id: 14, name: "Raze", year: "2023", image: "/images/helmets/helmet-collection14.png" },
-  { id: 15, name: "Chrome", year: "2023", image: "/images/helmets/helmet-collection15.png" },
-  { id: 16, name: "Beachball", year: "2023", image: "/images/helmets/helmet-collection16.png" },
-  { id: 17, name: "Las Vegas", year: "2023", image: "/images/helmets/helmet-collection17.png" },
-  { id: 18, name: "Basketball", year: "2022", image: "/images/helmets/helmet-collection18.png" },
-  { id: 19, name: "Silverstone", year: "2020", image: "/images/helmets/helmet-collection19.png" },
-  { id: 20, name: "Season", year: "2021", image: "/images/helmets/helmet-collection20.png" },
+  { id: 1, name: "Season", year: "2025", image: "https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?w=500&auto=format&fit=crop&q=80" },
+  { id: 2, name: "Dark Glitter", year: "2025", image: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=500&auto=format&fit=crop&q=80" },
+  { id: 3, name: "Discoball", year: "2025", image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=500&auto=format&fit=crop&q=80" },
+  { id: 4, name: "Season", year: "2024", image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=500&auto=format&fit=crop&q=80" },
+  { id: 5, name: "Japan", year: "2024", image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=500&auto=format&fit=crop&q=80" },
+  { id: 6, name: "GIF", year: "2024", image: "https://images.unsplash.com/photo-1547949003-9792a18a2601?w=500&auto=format&fit=crop&q=80" },
+  { id: 7, name: "Season", year: "2025", image: "https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?w=500&auto=format&fit=crop&q=80" },
+  { id: 8, name: "Dark Glitter", year: "2025", image: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=500&auto=format&fit=crop&q=80" },
+  { id: 9, name: "Discoball", year: "2025", image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=500&auto=format&fit=crop&q=80" },
+  { id: 10, name: "Japan", year: "2024", image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=500&auto=format&fit=crop&q=80" },
+  { id: 11, name: "GIF", year: "2024", image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=500&auto=format&fit=crop&q=80" },
+  { id: 12, name: "Porcelain", year: "2024", image: "https://images.unsplash.com/photo-1547949003-9792a18a2601?w=500&auto=format&fit=crop&q=80" },
+  { id: 13, name: "Dark Mode", year: "2024", image: "https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?w=500&auto=format&fit=crop&q=80" },
+  { id: 14, name: "Raze", year: "2023", image: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=500&auto=format&fit=crop&q=80" },
+  { id: 15, name: "Chrome", year: "2023", image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=500&auto=format&fit=crop&q=80" },
+  { id: 16, name: "Beachball", year: "2023", image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=500&auto=format&fit=crop&q=80" },
+  { id: 17, name: "Las Vegas", year: "2023", image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=500&auto=format&fit=crop&q=80" },
+  { id: 18, name: "Basketball", year: "2022", image: "https://images.unsplash.com/photo-1547949003-9792a18a2601?w=500&auto=format&fit=crop&q=80" },
+  { id: 19, name: "Silverstone", year: "2020", image: "https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?w=500&auto=format&fit=crop&q=80" },
+  { id: 20, name: "Season", year: "2021", image: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=500&auto=format&fit=crop&q=80" },
 ]
 
 export default function HelmetHall() {
@@ -73,7 +73,12 @@ export default function HelmetHall() {
     >
       {/* Background Texture & Lighting */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#1a1a1a] to-black opacity-80" />
-      <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-5 mix-blend-overlay" />
+      <div 
+        className="absolute inset-0 opacity-5 mix-blend-overlay pointer-events-none" 
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+        }}
+      />
 
       {/* Floor Perspective Grid */}
       <div

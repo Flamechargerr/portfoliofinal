@@ -310,7 +310,7 @@ function InteractiveSkillCard({
             className={`p-5 border rounded-2xl transition-all cursor-pointer relative overflow-hidden group ${
                 isSelected
                     ? "bg-[#c8f550]/20 border-[#c8f550] shadow-lg shadow-[#c8f550]/10"
-                    : "bg-white/5 border-white/10 hover:border-[#c8f550]/40"
+                    : "bg-[#222415]/75 border border-white/15 hover:border-[#c8f550]/60"
             }`}
             whileHover={{ y: -5, scale: 1.01 }}
             whileTap={{ scale: 0.98 }}
@@ -421,9 +421,8 @@ export default function SkillsRadar() {
     if (!mounted) return null
 
     return (
-        <div ref={sectionRef} className="py-20 bg-lorenzo-dark relative overflow-hidden">
-            {/* Animated background */}
-            <RotatingBackground />
+        <div ref={sectionRef} className="py-20 bg-black/65 backdrop-blur-sm relative overflow-hidden">
+            {/* Animated background removed */}
 
             <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
                 
@@ -585,7 +584,7 @@ export default function SkillsRadar() {
                             key={stat.label + "-" + isInView}
                             onMouseEnter={() => playSound("tick")}
                             onClick={() => playSound("click")}
-                            className="relative p-5 bg-gradient-to-br from-white/5 to-white/0 border border-white/10 rounded-xl text-center group overflow-hidden cursor-pointer"
+                            className="relative p-5 bg-[#222415]/75 border border-white/15 rounded-xl text-center group overflow-hidden cursor-pointer"
                             whileHover={{ y: -5, borderColor: stat.color }}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}

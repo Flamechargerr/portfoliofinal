@@ -2,11 +2,41 @@ import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
 export function middleware(request: NextRequest) {
+  // Handle preflight OPTIONS requests
+  if (request.method === "OPTIONS" && request.nextUrl.pathname.startsWith("/api/")) {
+    const response = new NextResponse(null, { status: 204 })
+    const origin = request.headers.get("origin")
+    const host = request.headers.get("host")
+    const isAllowed = origin && (
+      origin.startsWith("http://localhost:") ||
+      origin.startsWith("https://localhost:") ||
+      origin.includes("127.0.0.1") ||
+      (host && origin.includes(host))
+    )
+    if (origin) {
+      response.headers.set("Access-Control-Allow-Origin", isAllowed ? origin : `https://${host || "yourdomain.com"}`)
+    }
+    response.headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+    response.headers.set("Access-Control-Max-Age", "86400")
+    return response
+  }
+
   // Add CORS headers for API routes
   if (request.nextUrl.pathname.startsWith("/api/")) {
     const response = NextResponse.next()
+    const origin = request.headers.get("origin")
+    const host = request.headers.get("host")
+    const isAllowed = origin && (
+      origin.startsWith("http://localhost:") ||
+      origin.startsWith("https://localhost:") ||
+      origin.includes("127.0.0.1") ||
+      (host && origin.includes(host))
+    )
 
-    response.headers.set("Access-Control-Allow-Origin", "*")
+    if (origin) {
+      response.headers.set("Access-Control-Allow-Origin", isAllowed ? origin : `https://${host || "yourdomain.com"}`)
+    }
     response.headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
     response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization")
 

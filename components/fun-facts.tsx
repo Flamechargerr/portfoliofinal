@@ -26,7 +26,7 @@ export default function FunFactsSection() {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
     return (
-        <div className="py-20 bg-lorenzo-dark relative overflow-hidden">
+        <div className="py-20 bg-transparent relative overflow-hidden">
             {/* Subtle background decoration */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/5 rounded-full" />

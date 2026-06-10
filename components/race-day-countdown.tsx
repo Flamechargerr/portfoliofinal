@@ -85,7 +85,7 @@ export function RaceDayCountdown() {
 function TimeUnit({ value, label }: { value: number; label: string }) {
   return (
     <div className="flex flex-row items-baseline">
-      <span className="font-oswald font-bold text-[5rem] md:text-[8rem] lg:text-[12rem] text-[#dde1d2] leading-none tracking-tighter tabular-nums uppercase stretch-125">
+      <span className="font-oswald font-bold text-[5rem] md:text-[8rem] lg:text-[12rem] text-[#e8e8e3] leading-none tracking-tighter tabular-nums uppercase stretch-125">
         {value.toString().padStart(2, "0")}
       </span>
       <span className="font-oswald font-bold text-[5rem] md:text-[8rem] lg:text-[12rem] text-[#535450] leading-none tracking-tighter uppercase stretch-125 ml-1">

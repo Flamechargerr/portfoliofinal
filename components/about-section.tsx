@@ -65,7 +65,7 @@ export default function AboutSection() {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
-                        <div className="p-8 md:p-10 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md hover:bg-white/[0.04] transition-colors">
+                        <div className="p-8 md:p-10 rounded-2xl bg-[#222415]/75 border border-white/15 backdrop-blur-md hover:bg-[#222415]/90 transition-colors">
                             <p className="text-lg md:text-2xl text-white/90 leading-relaxed mb-6 font-light tracking-tight">
                                 I'm <span className="text-lorenzo-accent font-normal font-brier uppercase tracking-wide">Anamay Tripathy</span>, a passionate
                                 Data Science Engineering student at MIT Manipal, driven by the intersection of
@@ -116,7 +116,7 @@ export default function AboutSection() {
 
                         {/* Quote */}
                         <motion.div
-                            className="p-8 md:p-10 rounded-2xl bg-white/[0.01] border-l-4 border-lorenzo-accent backdrop-blur-sm my-6"
+                            className="p-8 md:p-10 rounded-2xl bg-[#222415]/75 border border-white/15 border-l-4 border-l-lorenzo-accent backdrop-blur-sm my-6"
                             initial={{ opacity: 0, x: -20 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.6 }}
@@ -181,7 +181,7 @@ export default function AboutSection() {
                             ].map((stat, i) => (
                                 <motion.div
                                     key={i}
-                                    className="relative p-6 bg-white/[0.02] border border-white/5 backdrop-blur-sm hover:bg-white/[0.04] hover:border-white/20 transition-all duration-300 group cursor-pointer overflow-hidden rounded-xl"
+                                    className="relative p-6 bg-[#222415]/75 border border-white/15 backdrop-blur-sm hover:bg-[#222415]/90 hover:border-white/30 transition-all duration-300 group cursor-pointer overflow-hidden rounded-xl"
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                                     transition={{ delay: 0.5 + i * 0.1 }}
@@ -230,7 +230,7 @@ export default function AboutSection() {
                             ].map((role, i) => (
                                 <motion.div
                                     key={i}
-                                    className="group flex items-center justify-between p-4 bg-white/[0.01] border border-white/5 rounded-xl hover:bg-white/[0.03] hover:border-white/10 transition-all cursor-pointer"
+                                    className="group flex items-center justify-between p-4 bg-[#222415]/60 border border-white/10 rounded-xl hover:bg-[#222415]/80 hover:border-white/30 transition-all cursor-pointer"
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                                     transition={{ delay: 0.7 + i * 0.1 }}

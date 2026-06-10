@@ -110,7 +110,7 @@ export default function ResumeModal() {
                                     <div className="flex-1 flex flex-col gap-8">
 
                                         {/* Summary - Glass Panel */}
-                                        <section className="p-8 md:p-10 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md hover:bg-white/[0.04] transition-colors">
+                                        <section className="p-8 md:p-10 rounded-2xl bg-[#222415]/75 border border-white/15 backdrop-blur-md hover:bg-[#222415]/90 hover:border-[#c8f550]/40 transition-all">
                                             <p className="text-lg md:text-2xl font-light text-white/90 leading-relaxed tracking-tight">
                                                  Final-year Data Science Engineering student and Web Developer Executive at <span className="font-brier text-lorenzo-accent uppercase tracking-normal font-normal">E-Cell MIT Manipal</span>.
                                                 Specializing in <span className="font-brier text-lorenzo-accent uppercase tracking-normal font-normal">machine learning</span>, <span className="font-brier text-lorenzo-accent uppercase tracking-normal font-normal">quantitative research</span>, and full-stack systems.
@@ -118,7 +118,7 @@ export default function ResumeModal() {
                                         </section>
 
                                         {/* Experience Section - Glass Panel */}
-                                        <section className="p-8 md:p-10 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md">
+                                        <section className="p-8 md:p-10 rounded-2xl bg-[#222415]/75 border border-white/15 backdrop-blur-md">
                                             <div className="flex items-center justify-between mb-10">
                                                 <h4 className="text-xs font-bold font-roboto tracking-[0.3em] text-lorenzo-accent uppercase">Experience</h4>
                                                 <div className="h-px flex-1 bg-gradient-to-r from-lorenzo-accent/20 to-transparent ml-6" />
@@ -152,7 +152,7 @@ export default function ResumeModal() {
                                                     </div>
                                                     <div className="text-sm md:text-base font-brier text-lorenzo-accent mb-6 uppercase tracking-widest">Intellect Design Arena Ltd (FinTech)</div>
                                                     <ul className="space-y-4">
-                                                        {["Built EMI collection agent management platform integrating data pipelines and analytics dashboards using Python, SQL, and Apache Spark", "Reduced manual reporting effort by ~40% for teams managing 10,000+ loan accounts", "Designed KPI dashboards tracking repayment behavior and agent efficiency, and implemented CI/CD pipelines via GitHub Actions"].map((point, i) => (
+                                                        {["Built an EMI collection agent management platform integrating data pipelines and analytics dashboards using Python, SQL, and Apache Spark", "Reduced manual reporting effort by ~40% for teams managing 10,000+ loan accounts", "Designed KPI dashboards tracking repayment behavior and agent efficiency, and implemented CI/CD pipelines via GitHub Actions"].map((point, i) => (
                                                             <li key={i} className="text-sm md:text-base text-white/70 font-light flex items-start gap-4 leading-relaxed">
                                                                 <span className="text-lorenzo-accent mt-1.5 opacity-50">✦</span>
                                                                 {point}
@@ -190,7 +190,7 @@ export default function ResumeModal() {
                                                     </div>
                                                     <div className="text-sm md:text-base font-brier text-lorenzo-accent mb-6 uppercase tracking-widest">E-Cell, MIT Manipal</div>
                                                     <ul className="space-y-4">
-                                                        {["Led end-to-end development of the official website for MES 2025 entrepreneurship summit", "Coordinated with cross-functional teams to manage event-day digital infrastructure ensuring zero downtime during high-traffic periods"].map((point, i) => (
+                                                        {["Led end-to-end development of the official website for the MES 2025 Entrepreneurship Summit", "Coordinated with cross-functional teams to manage event-day digital infrastructure ensuring zero downtime during high-traffic periods"].map((point, i) => (
                                                             <li key={i} className="text-sm md:text-base text-white/70 font-light flex items-start gap-4 leading-relaxed">
                                                                 <span className="text-lorenzo-accent mt-1.5 opacity-50">✦</span>
                                                                 {point}
@@ -206,7 +206,7 @@ export default function ResumeModal() {
                                     <div className="w-full lg:w-[400px] flex flex-col gap-6 shrink-0 lg:sticky lg:top-0 lg:h-max">
 
                                         {/* Core Stack Block */}
-                                        <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-sm">
+                                        <div className="p-8 rounded-2xl bg-[#222415]/75 border border-white/15 backdrop-blur-md">
                                             <h4 className="text-xs font-bold font-roboto tracking-[0.2em] text-lorenzo-accent uppercase mb-8">Technical Arsenal</h4>
                                             <div className="flex flex-col gap-6">
                                                 {[
@@ -224,7 +224,7 @@ export default function ResumeModal() {
                                         </div>
 
                                         {/* Education Block */}
-                                        <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-sm">
+                                        <div className="p-8 rounded-2xl bg-[#222415]/75 border border-white/15 backdrop-blur-md">
                                             <h4 className="text-xs font-bold font-roboto tracking-[0.2em] text-lorenzo-accent uppercase mb-8">Education & Activities</h4>
 
                                             <div className="text-2xl font-brier text-white uppercase mb-2">B.Tech</div>

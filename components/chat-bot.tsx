@@ -113,7 +113,7 @@ export default function ChatBot() {
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                        className="fixed bottom-40 right-6 w-[350px] h-[500px] bg-lorenzo-dark border border-lorenzo-accent/30 rounded-lg shadow-2xl z-50 flex flex-col overflow-hidden"
+                        className="fixed bottom-40 right-6 w-[350px] h-[500px] bg-[#222415]/95 backdrop-blur-md border border-lorenzo-accent/30 rounded-lg shadow-2xl z-50 flex flex-col overflow-hidden"
                     >
                         {/* Header */}
                         <div className="p-4 border-b border-lorenzo-accent/20 bg-lorenzo-accent/5">

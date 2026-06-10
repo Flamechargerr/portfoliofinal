@@ -84,7 +84,7 @@ export default function Testimonials() {
                             className="relative group h-full"
                         >
                             {/* Card Body */}
-                            <div className="h-full p-8 md:p-10 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md transition-all duration-500 hover:border-lorenzo-accent/40 hover:bg-white/[0.04] flex flex-col justify-between shadow-2xl relative overflow-hidden">
+                            <div className="h-full p-8 md:p-10 rounded-2xl bg-[#222415]/75 border border-white/15 backdrop-blur-md transition-all duration-500 hover:border-lorenzo-accent/40 hover:bg-white/[0.04] flex flex-col justify-between shadow-2xl relative overflow-hidden">
                                 
                                 {/* Top Quote Mark Icon */}
                                 <div aria-hidden="true" className="text-lorenzo-accent/10 absolute -top-4 -left-2 text-8xl font-serif select-none pointer-events-none">

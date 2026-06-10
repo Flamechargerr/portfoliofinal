@@ -36,7 +36,7 @@ export default function SocialSection() {
     <section
       id="social"
       ref={sectionRef}
-      className="relative bg-lorenzo-dark py-24 overflow-hidden"
+      className="relative bg-transparent py-24 overflow-hidden"
     >
       {/* Large Background Text */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">

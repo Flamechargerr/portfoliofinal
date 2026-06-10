@@ -41,7 +41,7 @@ export default function CurrentWorkSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative py-24 bg-lorenzo-dark overflow-hidden"
+            className="relative py-24 bg-transparent overflow-hidden"
         >
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
@@ -82,7 +82,7 @@ export default function CurrentWorkSection() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ delay: 0.2 + i * 0.1 }}
-                            className="group p-6 border border-lorenzo-accent/20 hover:border-lorenzo-accent/50 bg-lorenzo-dark/50 backdrop-blur-sm transition-all"
+                            className="group p-6 border border-lorenzo-accent/20 hover:border-lorenzo-accent/50 bg-[#222415]/75 border border-white/15 backdrop-blur-sm transition-all"
                         >
                             <div className="flex items-center justify-between mb-4">
                                 <span className={`text-xs uppercase tracking-wider px-3 py-1 ${project.status === "In Development" ? "bg-blue-500/20 text-blue-400" :
@@ -131,7 +131,7 @@ export default function CurrentWorkSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.5 }}
-                    className="p-8 border border-lorenzo-accent/20 bg-lorenzo-accent/5"
+                    className="p-8 border border-lorenzo-accent/20 bg-[#222415]/50 border border-white/10"
                 >
                     <h3 className="text-2xl font-brier text-lorenzo-accent uppercase mb-6 flex items-center gap-3">
                         <span className="text-3xl">📚</span>

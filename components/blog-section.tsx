@@ -21,7 +21,7 @@ export default function BlogSection() {
     const displayedPosts = blogPosts.slice(0, 3)
 
     return (
-        <section id="blog" ref={sectionRef} className="relative py-24 bg-lorenzo-dark overflow-hidden">
+        <section id="blog" ref={sectionRef} className="relative py-24 bg-transparent overflow-hidden">
             {/* Parallax Background */}
             <motion.div
                 className="absolute inset-0 pointer-events-none"
@@ -137,7 +137,7 @@ export default function BlogSection() {
                     >
                         <Link href={`/blog/${displayedPosts[0].slug}`}>
                             <motion.div
-                                className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 bg-gradient-to-br from-lorenzo-light/[0.08] to-lorenzo-light/[0.02] border border-lorenzo-light/10 rounded-3xl overflow-hidden hover:border-lorenzo-accent/50 transition-all duration-500"
+                                className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 bg-[#222415]/75 border border-white/15 rounded-3xl overflow-hidden hover:border-lorenzo-accent/50 transition-all duration-500"
                                 whileHover={{ y: -5 }}
                             >
                                 {/* Image */}
@@ -231,7 +231,7 @@ export default function BlogSection() {
                         >
                             <Link href={`/blog/${post.slug}`}>
                                 <motion.div
-                                    className="relative bg-gradient-to-br from-lorenzo-light/[0.08] to-lorenzo-light/[0.02] border border-lorenzo-light/10 rounded-2xl overflow-hidden hover:border-lorenzo-accent/50 transition-all duration-500"
+                                    className="relative bg-[#222415]/75 border border-white/15 rounded-2xl overflow-hidden hover:border-lorenzo-accent/50 transition-all duration-500"
                                     whileHover={{ y: -8, scale: 1.02 }}
                                 >
                                     {/* Image */}
@@ -325,7 +325,7 @@ export default function BlogSection() {
                         <input
                             type="email"
                             placeholder="Enter your email"
-                            className="flex-1 px-6 py-4 bg-lorenzo-dark border border-lorenzo-light/20 rounded-full text-lorenzo-light placeholder:text-lorenzo-light/30 focus:outline-none focus:border-lorenzo-accent transition-colors"
+                            className="flex-1 px-6 py-4 bg-[#222415] border border-white/10 rounded-full text-lorenzo-light placeholder:text-lorenzo-light/30 focus:outline-none focus:border-lorenzo-accent transition-colors"
                             suppressHydrationWarning
                         />
                         <button className="px-8 py-4 bg-lorenzo-accent text-lorenzo-dark font-bold uppercase tracking-wider rounded-full hover:shadow-lg hover:shadow-lorenzo-accent/30 transition-all">

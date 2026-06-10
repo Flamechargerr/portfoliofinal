@@ -88,7 +88,7 @@ export default function ContactForm() {
     }
 
     return (
-        <section id="contact" ref={sectionRef} className="py-20 bg-lorenzo-dark">
+        <section id="contact" ref={sectionRef} className="py-20 bg-transparent">
             <Toaster position="bottom-right" />
 
             <div className="max-w-[1400px] mx-auto px-6 md:px-12">

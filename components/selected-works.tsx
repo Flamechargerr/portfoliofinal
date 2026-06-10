@@ -24,7 +24,7 @@ const REPO_META: Record<string, Partial<Project>> = {
         title: "Crime Connect",
         category: "Graph Intelligence",
         year: "2025",
-        description: "Centralised criminal registry & court system with an FBI-cinematic agent-level dashboard. Real-time PageRank analysis with force-directed graph rendering for 10K+ nodes using TypeScript, D3.js, and Supabase.",
+        description: "Centralized criminal registry & court system with an FBI-cinematic agent-level dashboard. Real-time PageRank analysis with force-directed graph rendering for 10K+ nodes using TypeScript, D3.js, and Supabase.",
         image: "/images/project-crimeconnect.png",
     },
     "HackOps": {
@@ -65,7 +65,7 @@ const REPO_META: Record<string, Partial<Project>> = {
         title: "E-Cell MES 2025",
         category: "Full Stack Web",
         year: "2025",
-        description: "Official event website for MES 2025 entrepreneurship summit at MIT Manipal. Architected to support high-traffic loads and coordinate event-day digital infrastructure with zero downtime.",
+        description: "Official event website for the MES 2025 Entrepreneurship Summit at MIT Manipal. Architected to support high-traffic loads and coordinate event-day digital infrastructure with zero downtime.",
         image: "/images/tech-workspace.png",
         githubUrl: "https://github.com/Flamechargerr",
     },
@@ -186,7 +186,7 @@ export default function SelectedWorks() {
     const x = useTransform(springScroll, [0, 1], ["0%", `-${(projects.length - 1) * 100}vw`])
 
     return (
-        <div className="relative w-full bg-lorenzo-dark">
+        <div className="relative w-full bg-transparent">
             {/* 1. Cinematic Zoom Parallax Intro */}
             <div className="relative w-full">
                 <div className="absolute top-[40vh] left-0 w-full text-center z-[5] pointer-events-none">
@@ -198,18 +198,18 @@ export default function SelectedWorks() {
                     </p>
                 </div>
                 <ZoomParallax images={PARALLAX_IMAGES} />
-                <div className="absolute bottom-0 left-0 w-full h-[30vh] bg-gradient-to-t from-lorenzo-dark to-transparent z-[10] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-full h-[30vh] bg-gradient-to-t from-[#1b1c11] to-transparent z-[10] pointer-events-none" />
             </div>
 
             {/* 2. Horizontal Scroll Project Showcase */}
             <section
                 ref={containerRef}
                 id="selected-works"
-                className="relative bg-lorenzo-dark"
+                className="relative bg-transparent"
                 style={{ height: `${projects.length * 100}vh` }}
             >
                 {/* Sticky container */}
-                <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center bg-lorenzo-dark z-10">
+                <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center bg-transparent z-10">
 
                     <div className="absolute top-8 left-6 md:left-12 md:top-12 z-50 pointer-events-none mix-blend-difference">
                         <p className="text-[10px] md:text-xs font-bold font-roboto uppercase tracking-[0.2em] text-lorenzo-accent mb-2">Selected Works</p>
@@ -220,9 +220,9 @@ export default function SelectedWorks() {
                         {projects.map((project, index) => (
                             <div
                                 key={project.id}
-                                className="relative w-screen h-screen flex-shrink-0 flex items-center justify-center p-0 md:p-4 lg:p-8"
+                                className="relative w-screen h-screen flex-shrink-0 flex items-center justify-center p-4 md:p-8"
                             >
-                                <div className="relative w-full h-full md:h-[95vh] rounded-none md:rounded-3xl overflow-hidden group border-0 md:border border-white/5">
+                                <div className="relative w-[90vw] h-[70vh] md:w-[75vw] md:h-[75vh] rounded-3xl overflow-hidden group border border-white/15 shadow-[0_0_50px_rgba(0,0,0,0.8)] backdrop-blur-md bg-[#222415]/75">
                                     <motion.div className="w-full h-full">
                                         <Image
                                             src={project.image}
@@ -233,38 +233,38 @@ export default function SelectedWorks() {
                                         />
                                     </motion.div>
 
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent pointer-events-none" />
 
-                                    <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 lg:p-16 flex flex-col items-start justify-end pointer-events-auto">
+                                    <div className="absolute bottom-0 left-0 w-full p-6 md:p-10 lg:p-12 flex flex-col items-start justify-end pointer-events-auto">
 
                                         {/* Metadata Row */}
-                                        <div className="flex flex-wrap items-center gap-4 mb-4 md:mb-6">
-                                            <span className="text-3xl md:text-5xl font-mono text-lorenzo-accent/80 font-light leading-none">
+                                        <div className="flex flex-wrap items-center gap-4 mb-3 md:mb-5">
+                                            <span className="text-2xl md:text-4xl font-mono text-lorenzo-accent/80 font-light leading-none">
                                                 {project.id}
                                             </span>
-                                            <div className="h-px flex-1 bg-lorenzo-light/20 min-w-[40px] max-w-[100px]" />
-                                            <span className="text-[10px] md:text-xs font-bold font-roboto tracking-[0.2em] uppercase text-lorenzo-light px-4 py-1.5 rounded-full border border-lorenzo-light/20 backdrop-blur-md bg-white/5">
+                                            <div className="h-px flex-1 bg-lorenzo-light/20 min-w-[30px] max-w-[80px]" />
+                                            <span className="text-[9px] md:text-xs font-bold font-roboto tracking-[0.2em] uppercase text-lorenzo-light px-3 py-1 rounded-full border border-lorenzo-light/20 backdrop-blur-md bg-white/5">
                                                 {project.category}
                                             </span>
-                                            <span className="text-sm md:text-base font-mono text-lorenzo-accent/60">
+                                            <span className="text-xs md:text-sm font-mono text-lorenzo-accent/60">
                                                 {project.year}
                                             </span>
                                             {/* Live star count badge */}
                                             {project.stars !== undefined && (
-                                                <span className="flex items-center gap-1 text-xs font-mono text-yellow-400/80 border border-yellow-400/20 px-3 py-1 rounded-full bg-black/30 backdrop-blur-sm">
+                                                <span className="flex items-center gap-1 text-[10px] font-mono text-yellow-400/80 border border-yellow-400/20 px-2.5 py-0.5 rounded-full bg-black/30 backdrop-blur-sm">
                                                     ⭐ {project.stars}
                                                 </span>
                                             )}
                                         </div>
 
                                         {/* Title */}
-                                        <h2 className="text-[12vw] md:text-[8vw] lg:text-[7vw] font-brier leading-[0.8] tracking-tighter text-white uppercase mb-6 drop-shadow-2xl mix-blend-overlay">
+                                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-brier leading-[0.9] tracking-tighter text-white uppercase mb-4 drop-shadow-2xl mix-blend-overlay">
                                             {project.title}
                                         </h2>
 
                                         {/* Description and Actions */}
-                                        <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-12">
-                                            <p className="text-sm md:text-lg text-lorenzo-light/80 max-w-xl font-light leading-relaxed">
+                                        <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-10">
+                                            <p className="text-xs md:text-base text-lorenzo-light/80 max-w-xl font-light leading-relaxed">
                                                 {project.description}
                                             </p>
 

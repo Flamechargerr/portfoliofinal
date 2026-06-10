@@ -13,28 +13,38 @@ export default function AdminDashboard() {
   const [adminData, setAdminData] = useState<any>(null)
   const [loading, setLoading] = useState(false)
 
-  const handleLogin = () => {
-    // Simple password check (use proper auth in production)
-    if (password === "admin123") {
+  const handleLogin = async () => {
+    if (!password) {
+      alert("Please enter a password")
+      return
+    }
+    const success = await fetchAdminData(password)
+    if (success) {
       setIsAuthenticated(true)
-      fetchAdminData()
     } else {
       alert("Invalid password")
     }
   }
 
-  const fetchAdminData = async () => {
+  const fetchAdminData = async (pass?: any) => {
+    // If pass is an event or undefined, fall back to current password state
+    const authPass = typeof pass === "string" ? pass : password
     setLoading(true)
     try {
       const response = await fetch("/api/admin/messages", {
         headers: {
-          Authorization: "Bearer admin-secret-key",
+          Authorization: `Bearer ${authPass}`,
         },
       })
-      const data = await response.json()
-      setAdminData(data)
+      if (response.ok) {
+        const data = await response.json()
+        setAdminData(data)
+        return true
+      }
+      return false
     } catch (error) {
       console.error("Failed to fetch admin data:", error)
+      return false
     } finally {
       setLoading(false)
     }
@@ -59,7 +69,7 @@ export default function AdminDashboard() {
             <Button onClick={handleLogin} className="w-full bg-gradient-to-r from-blue-600 to-purple-600">
               Login
             </Button>
-            <p className="text-gray-400 text-sm text-center">Demo password: admin123</p>
+            <p className="text-gray-400 text-sm text-center">Demo password: admin123 (configurable via ADMIN_PASSWORD env var)</p>
           </CardContent>
         </Card>
       </div>

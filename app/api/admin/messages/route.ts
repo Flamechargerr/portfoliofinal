@@ -42,9 +42,11 @@ const mockData = {
 
 export async function GET(req: NextRequest) {
   try {
-    // Simple auth check (use proper auth in production)
+    // Auth check against dynamic environment variable password (or fallback)
     const authHeader = req.headers.get("authorization")
-    if (!authHeader || !authHeader.includes("admin-secret-key")) {
+    const expectedPassword = process.env.ADMIN_PASSWORD || "admin123"
+    
+    if (!authHeader || !authHeader.startsWith("Bearer ") || authHeader.substring(7) !== expectedPassword) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 

@@ -172,7 +172,7 @@ export default function MusicPlayer() {
             transition={{ delay: 2, duration: 0.8 }}
         >
             <motion.div
-                className="relative bg-lorenzo-dark/95 backdrop-blur-md border border-lorenzo-accent/30 rounded-2xl overflow-hidden cursor-pointer shadow-2xl shadow-black/50"
+                className="relative bg-[#222415]/90 backdrop-blur-md border border-lorenzo-accent/30 rounded-2xl overflow-hidden cursor-pointer shadow-2xl shadow-black/50"
                 animate={{
                     width: isExpanded ? 280 : 56,
                     height: isExpanded ? 100 : 56,

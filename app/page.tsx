@@ -13,6 +13,7 @@ import LoadingScreen from "@/components/loading-screen"
 import CurrentlyWorkingSection from "@/components/current-work-section"
 import AchievementsSection from "@/components/achievements-section"
 import FunFactsSection from "@/components/fun-facts"
+import ScrollScrubBackground from "@/components/scroll-scrub-background"
 import ContactForm from "@/components/contact-form"
 import BlogSection from "@/components/blog-section"
 import MusicPlayer from "@/components/music-player"
@@ -65,6 +66,7 @@ export default function Home() {
   return (
     <HomeClientWrapper>
       <LoadingScreen />
+      <ScrollScrubBackground />
       {/* Global Visual Effects */}
       <FloatingParticles count={15} />
       <NoiseOverlay opacity={0.02} />
@@ -95,7 +97,7 @@ export default function Home() {
         <AboutSection />
 
         {/* Code Typing Animation */}
-        <div className="py-16 bg-lorenzo-dark">
+        <div className="py-16 bg-transparent">
           <div className="max-w-[1400px] mx-auto px-6 md:px-12">
             <TypingAnimation />
           </div>
@@ -114,7 +116,7 @@ export default function Home() {
         <SkillsRadar />
 
         {/* Tech Stack Section with React Bits InfiniteMenu */}
-        <section className="py-16 bg-lorenzo-dark overflow-hidden">
+        <section className="py-16 bg-transparent overflow-hidden">
           <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center mb-4">
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="w-12 h-px bg-lorenzo-accent" />

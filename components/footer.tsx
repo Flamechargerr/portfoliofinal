@@ -58,7 +58,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer ref={footerRef} className="relative bg-lorenzo-dark border-t border-lorenzo-accent/20 overflow-hidden">
+    <footer ref={footerRef} className="relative bg-transparent border-t border-lorenzo-accent/20 overflow-hidden">
       {/* Gradient glow from top border */}
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-lorenzo-accent/5 to-transparent pointer-events-none" />
 
